@@ -1,0 +1,1385 @@
+%\documentclass[12pt,oneside,a4paper]{book}
+
+%\usepackage{amsmath}
+%\usepackage{mathtools}
+%\usepackage{amsfonts}
+%\usepackage{unicode-math}
+%\usepackage{geometry}
+%\usepackage{ctex}
+
+%\begin{document}
+
+%\setcounter{chapter}{0}
+\setcounter{section}{0}
+\setcounter{subsection}{0}
+
+\chapter{点集}
+
+\begin{dingyi}
+对集合$X$,其中$X\neq \varnothing$\\
+若对子集族$\mcf\subset \mcp(X)$,有$X\in\mcf,\varnothing\in\mcf$\\
+对任意$X_1,X_2,\cdots \in \mcf$,有$\bigcup\limits_{i=1}^{\infty}X_i\in\mcf,X_1\cap X_2\in\mcf$\\
+则称$\mcf$为$X$上的拓扑,则称$(X,\mcf)$为拓扑空间\\
+则称$X_i\in \mcf$为开集,则称$X_i^{c}\subset X$为闭集
+\end{dingyi}
+
+\begin{zhu}
+以下为一种等价的定义:\\
+对集合$X$,其中$X\neq \varnothing$,若有映射$N:X\to \mcp(\mcp(X))$\\
+对任意$x\in X$,有$N(x)\neq \varnothing$且对任意$U\in N(x)$,有$x\in U$\\
+对任意$U,V\in N(x)$,存在$W\in N(x)$,有$W\subset U\cap V$\\
+对任意$y\in U\in N(x)$,存在$V\in N(y)$,有$V\subset U$\\
+则称$N$为$X$上的基准开邻域结构,则称$U\in N(x)$为$x$的基准开邻域\\
+若对$x\in X,B\in\mcp(X)$,存在$U\in N(x)$,有$U\subset B$,则称$B$为$x$的邻域\\
+若对子集族$\mcf=\{B\in \mcp(X)|\forall x\in B,\exists U\in N(x),U\subset B\}\subset \mcp(X)$\\
+则称$\mcf$为$X$上由$N$生成的拓扑,则称$(X,\mcf)$为拓扑空间\\
+则称$B\in \mcf$为开集,则称$B^{c}\subset X$为闭集\\
+则有$\mcf=\{B\in \mcp(X)|\exists I,U_i\in N(x_i),U=\bigcup\limits_{i\in I}U_i\}$
+\end{zhu}
+
+\begin{zhu}
+以下为常见的拓扑空间:\\
+对任意集合$X$,有平凡拓扑$\mcf=\{\varnothing,X\}$\\
+对任意集合$X$,有离散拓扑$\mcf=\mcp(X)$\\
+对任意集合$X,|X|=\infty$,有余有限拓扑$\mcf=\{U\subset X\Big||U^{c}|<\infty\}$\\
+对任意集合$X,|X|>\aleph_0$,有余可数拓扑$\mcf=\{U\subset X\Big||U^{c}|=\aleph_0\}$\\
+对任意$\R^n,n\in\N^*$\\
+有Euclidean拓扑$\mcf=\{U\subset\R^n|U=\bigcup\limits_{i\in I}B_{\varepsilon_i}(a_i)\}=\{U\subset \R^n|U=\bigcup\limits_{i\in I}\operatorname*{\times}\limits_{j=1}^{n}(a_{ij},b_{ij})\}$
+\end{zhu}
+
+\begin{dingli}
+对拓扑空间$(X,\mcf)$\\
+则有$X,\varnothing$为闭集\\
+则对任意$X_1,X_2,\cdots$为闭集,有$\bigcap\limits_{i=1}^{\infty}X_i,X_1\cup X_2$为闭集
+\end{dingli}
+
+\begin{dingyi}
+对拓扑空间$(X,\mcf)$\\
+对任意$x\in X,N\subset X$,若存在$U\in \mcf$,有$x\in U\subset N$\\
+则称$N$为$x$的邻域,则称$x$为$N$的内点\\
+则称$N^{\circ}=\{x\in X|x\text{为}B\text{的内点}\}$为$N$的内部\\
+对任意$x\in X,A\subset X$,对任意$N$为$x$的邻域,有$(A\backslash\{x\})\cap N\neq\varnothing$\\
+则称$x$为$A$的聚点\\
+则称$A'=\{x\in X|x\text{为}B\text{的聚点}\}$为$A$的导集\\
+则称$\overline{A}=A\cup A'$为$A$的闭包\\
+对任意$x\in X,A\subset X$,对任意$N$为$x$的邻域,有$A\cap N\neq\varnothing\neq A^{c}\cap N$\\
+则称$x$为$A$的边点\\
+对任意$x\in X,A\subset X$,存在$N$为$x$的邻域,有$A\cap N=\{x\}$\\
+则称$x$为$A$的孤点
+\end{dingyi}
+
+\begin{dingli}
+对拓扑空间$(X,\mcf)$\\
+对任意$A\subset X$,则有$A^{\circ}=\bigcup\limits_{A\subset U,U\in \mcf}U$\\
+对任意$A\subset X$,则有$A$为开集当且仅当$A^{\circ}=A$\\
+对任意$A\subset B\subset X$,则有$A^{\circ}\subset B^{\circ}$\\
+对任意$A_1,A_2\subset X$,则有$(A_1\cap A_2)^{\circ}=A_1^{\circ}\cap A_2^{\circ}$\\
+对任意$A_i\subset X,i\in I$,则有$\bigcup\limits_{i\in I}(A_i^{\circ})\subset (\bigcup\limits_{i\in I}A_i)^{\circ}$\\
+对任意$B\subset X$,则有$\overline{B}=\bigcap\limits_{B\subset V,V^{c}\in\mcf }V$\\
+对任意$B\subset X$,则有$B$为闭集当且仅当$\overline{B}=B$\\
+对任意$B\subset A\subset X$,则有$\overline{B}\subset \overline{A}$\\
+对任意$B_1,B_2\subset X$,则有$\overline{B_1\cup B_2}=\overline{B_1}\cup\overline{B_2}$\\
+对任意$B_i\subset X,i\in I$,则有$\overline{\bigcap\limits_{i\in I}B_i}\subset \bigcap\limits_{i\in I}\overline{B_i}$
+\end{dingli}
+
+\begin{dingyi}
+对拓扑空间$(X,\mcf)$\\
+对子集$A\subset X$,若$\overline{A}=X$,则称$A$在$X$中稠密\\
+若存在$A\subset X$且$\overline{A}=X,|A|\leq \aleph_0$,则称$X$为可分的
+\end{dingyi}
+
+\begin{zhu}
+以下为常见的可分空间:\\
+对任意$\R^n,n\in\N^*$,有Euclidean拓扑为可分的\\
+对$\R$上,有余有限拓扑$\mcf=\{U\subset \R\Big||U^{c}|<\infty\}$为可分的\\
+对$\R$上,有余可数拓扑$\mcf=\{U\subset \R\Big||U^{c}|=\aleph_0\}$为不可分的
+\end{zhu}
+
+\begin{dingyi}
+对拓扑空间$(X,\mcf),(Y,\mcg)$\\
+若对映射$f:X\to Y$,对$y\in f(X)$的邻域$V$,有$f^{-1}(V)$为$x=f^{-1}(y)$的邻域\\
+则称$f$在$x$处连续\\
+若对映射$f:X\to Y$,对任意$x\in X$,有$f$在$x$处连续\\
+则称$f$为连续映射
+\end{dingyi}
+
+\begin{dingli}
+对拓扑空间$(X,\mcf),(Y,\mcg),(Z,\mcl)$\\
+若对映射$f:X\to Y$和$x\in X$\\
+则$f$在$x$处连续当且仅当对任意$V\in N_{\mcg}(f(x))$,存在$U\in N(x)$,有$f^{-1}(V)\subset U$\\
+若对映射$f:X\to Y,g:Y\to Z$和$x\in X$,有$f$在$x$处连续且$g$在$f(x)$处连续\\
+则$g\circ f:X\to Z$在$x$处连续
+\end{dingli}
+
+\begin{dingli}
+对拓扑空间$(X,\mcf),(Y,\mcg)$\\
+则映射$f:X\to Y$为连续映射当且仅当对任意$V\subset Y,V\in \mcg$,有$f^{-1}(V)\in \mcf$\\
+则映射$f:X\to Y$为连续映射当且仅当对任意$V\subset Y,V^{c}\in \mcg$,有$f^{-1}(V)^{c}\in \mcf$
+\end{dingli}
+
+\begin{dingli}
+对拓扑空间$(X,\mcf),(Y,\mcg)$\\
+若对映射$f:X\to Y$,有$f$为双射且$f,f^{-1}$均为连续映射\\
+则称$f$为$X\to Y$的同胚映射,则称$X,Y$同胚,记为$X\cong Y$\\
+在同胚下保持不变的概念/性质/量称为拓扑概念/拓扑性质/拓扑不变量\\
+则同胚是拓扑空间的等价关系$($反身性,对称性,传递性$)$
+\end{dingli}
+
+\begin{zhu}
+以下为常见的同胚映射:\\
+对$1$维Euclidean空间$\R^1$和$(-1,1)$\\
+有同胚映射$f:\R^1\mapsto (-1,1),x\mapsto \frac{x}{1+|x|}$\\
+对圆周$S^{1}=\{x\in\R^2\Big||x|=1\}$和方形$X=(\{\pm 1\}\times[-1,1])\cup([-1,1]\times\{\pm 1\})$\\
+有同胚映射$f:X\to S^1,x=(x_1,x_2)\mapsto(\frac{x_1}{|x|},\frac{x_2}{|x|})$\\
+对球面$S^{n}=\{x\in \R^{n+1}\Big||x|=1\}$和$P=(0,,\cdots,0,1)\in \R^{n+1}$\\
+有同胚映射$f:S^{n}\backslash\{P\}\to \R^n,x=(x_1,\cdots,x_{n+1})\mapsto (\frac{x_1}{1-x_{n+1}},\cdots,\frac{x_n}{1-x_{n+1}})$\\
+对环面$T^2=\{((2+\cos\theta)\cos\varphi,(2+\cos\theta)\sin\varphi,\sin\theta)|\theta,\varphi\in\R\}$和$S^{1}\times S^1$\\
+有同胚映射$f:T^2\to S^{1}\times S^{1},(x_1,x_2,x_3)\mapsto ((\sqrt{x_1^2+x_2^2}-2,x_3),(\frac{x_1}{\sqrt{x_1^2+x_2^2}},\frac{x_2}{\sqrt{x_1^2+x_2^2}}))$
+\end{zhu}
+
+\begin{dingyi}
+对集合$X$和指标集$I$\\
+对任意$i\in I$,有拓扑空间$(X_i,\mcf_i)$和映射$f_i:X\to X_i$\\
+若$\mcf$为$X$上满足对任意$i\in I$,有$f_i:(X,\mcf)\to (X_i,\mcf_i)$为连续映射的最小拓扑\\
+则称$\mcf$为$\mcf_i$决定的弱拓扑
+\end{dingyi}
+
+\begin{dingli}
+对集合$X$和指标集$I$\\
+对任意$i\in I$,有拓扑空间$(X_i,\mcf_i)$和映射$f_i:X\to X_i$\\
+若取$M(x)=\{f_i^{-1}(U_i)|i\in I,f_i(x)\in U_i\in \mcf_i\}$\\
+则有$N(x)=\{\bigcap\limits_{j\in J}M_j|M_j\in M(x),|J|<\infty\}$为$X$上的基准开邻域结构\\
+则在$X$上由$N$生成的拓扑$\mcf$为$\mcf_i$决定的弱拓扑
+\end{dingli}
+
+\begin{dingyi}
+对拓扑空间$(X,\mcf),(Y,\mcg)$\\
+考虑$X\times Y$上的拓扑$\tau=\{\bigcup\limits_{i\in I}(U_{i}\times V_i)|U_i\in \mcf,V_i\in \mcg\}$\\
+则称$\tau$为$\mcf$和$\mcg$的乘积拓扑,则称$(X\times Y,\tau)$为乘积空间,记为$X\times Y$
+\end{dingyi}
+
+\begin{dingli}
+对拓扑空间$(X,\mcf),(Y,\mcg)$\\
+考虑$X\times Y$上的投射$p_{X}:X\times Y\to X,p_{Y}:X\times Y\to Y$\\
+则在$X\times Y$上由$p_{X},p_{Y}$决定的弱拓扑为$\mcf$和$\mcg$的乘积拓扑
+\end{dingli}
+
+\begin{dingyi}
+对拓扑空间$(X,\mcf),(Y,\mcg)$\\
+若有拓扑空间$(Z,\mcl)$和映射$f:Z\to X\times Y$\\
+则称$f_{X}=p_{X}\circ f,f_{Y}=p_{Y}\circ f$为$f$的分量
+\end{dingyi}
+
+\begin{dingli}
+对拓扑空间$(X,\mcf),(Y,\mcg)$\\
+若有拓扑空间$(Z,\mcl)$和映射$f:Z\to X\times Y$\\
+则$f$为连续映射当且仅当$f_{X},f_{Y}$均为连续映射
+\end{dingli}
+
+\begin{dingyi}
+对拓扑空间$(X,\mcf)$和其子集$X_0\subset X$\\
+令$\mcf|_{X_0}=\{U\cap X_0|U\in \mcf\}$,则$\mcf|_{X_0}$为$X_0$上的拓扑\\
+则称$\mcf|_{X_0}$为$X_0\subset X$上的子空间拓扑,则称$(X_0,\mcf|_{X_0})$为$(X,\mcf)$的子空间
+\end{dingyi}
+
+\begin{dingli}
+对拓扑空间$(X,\mcf)$和其子集$X_0\subset X$\\
+考虑$i_{X_0}:X_0\to X$为含入映射,则在$X_0$上由$i$决定的弱拓扑为子空间拓扑
+\end{dingli}
+
+\begin{dingli}
+对拓扑空间$(X,\mcf)$和其子集$X_0\subset X$\\
+若有子集$X_1\subset X_2\subset X$,则有$\mcf|_{X_1}=(\mcf|_{X_2})|_{X_1}$\\
+则有$U_0$为$(X_0,\mcf|_{X_0})$的开集当且仅当存在$(X,\mcf)$的开集$U$且$U\cap X_0=U_0$\\
+则有$U_0$为$(X_0,\mcf|_{X_0})$的闭集当且仅当存在$(X,\mcf)$的闭集$U$且$U\cap X_0=U_0$
+\end{dingli}
+
+\begin{dingli}
+Pasting Lemma:\\
+对拓扑空间$(X,\mcf),(Y,\mcg)$\\
+有映射$f:X\to Y$且$(X,\mcf)$有闭覆盖$\{X_1,\cdots,X_n\}$\\
+若对任意$i\in\{1,\cdots,n\}$,有限制映射$f_i=f\circ i_{X_i}$为连续映射,则$f$为连续映射
+\end{dingli}
+
+\begin{dingyi}
+对拓扑空间$(X,\mcf),(Y,\mcg)$\\
+有$f:X\to Y$为连续映射且为单射,考虑$f(X)$在$Y$上的子空间拓扑\\
+若$g:X\to f(X),x\mapsto f(x)$为同胚映射,则称$f$为嵌入映射
+\end{dingyi}
+
+\begin{dingyi}
+对集合$X$和指标集$I$\\
+对任意$i\in I$,有拓扑空间$(X_i,\mcf_i)$和映射$f_i:X_i\to X$\\
+若$\mcf$为$X$上满足对任意$i\in I$,有$f_i:(X_i,\mcf_i)\to (X,\mcf)$为连续映射的最大拓扑\\
+则称$\mcf$为$\mcf_i$决定的强拓扑
+\end{dingyi}
+
+\begin{dingli}
+对集合$X$和指标集$I$\\
+对任意$i\in I$,有拓扑空间$(X_i,\mcf_i)$和映射$f_i:X_i\to X$\\
+则在$X$上由$\mcf_i$决定的强拓扑为$\mcf=\{U\subset X|\text{对任意}i\in I,\text{有}f^{-1}(U_i)\in \mcf_{i}\}$
+\end{dingli}
+
+\begin{dingyi}
+对拓扑空间$(X,\mcf),(Y,\mcg)$\\
+若对映射$f:X\to Y$,对任意$U\subset X$为开集,有$f(U)$为开集,则称$f$为开映射\\
+若对映射$f:X\to Y$,对任意$U\subset X$为闭集,有$f(U)$为闭集,则称$f$为闭映射\\
+若对映射$f:X\to Y$为满射且$\mcg$为$f$决定的强拓扑,则称$f$为商映射
+\end{dingyi}
+
+\begin{dingli}
+对拓扑空间$(X,\mcf),(Y,\mcg)$\\
+则满射$f:X\to Y$为商映射当且仅当$U\subset Y$为开集当且仅当$f^{-1}(U)\subset X$为开集\\
+则满射$f:X\to Y$为商映射当且仅当$U\subset Y$为开集当且仅当$f^{-1}(U)\subset X$为开集\\
+则若连续满射$f:X\to Y$为开映射,则$f$为商映射\\
+则若连续满射$f:X\to Y$为闭映射,则$f$为商映射
+\end{dingli}
+
+\begin{dingli}
+对拓扑空间$(X,\mcf),(Y,\mcg),(Z,\mcl)$\\
+若有映射$f:X\to Y$为商映射和任意映射$g:Y\to Z$\\
+则$g$为连续映射当且仅当$g\circ f$为连续映射\\
+若有映射$f:X\to Y,g:X\to Z$均为商映射且$f(x_1)=f(x_2)$当且仅当$g(x_1)=g(x_2)$\\
+则有$Y,Z$同胚
+\end{dingli}
+
+\begin{zhu}
+考虑映射$h:Y\to Z,y=f(x)\mapsto h(y)=g(x)$,则有下图交换:
+\begin{center}
+    $\begin{tikzcd}[column sep=small,row sep=small]
+     & X \ar[dl,"f"'] \ar[dr,"g"] & \\
+    Y \ar[rr,"h"] & & Z \ar[ll,"h^{-1}"]
+    \end{tikzcd}$
+\end{center}
+\end{zhu}
+
+\begin{dingyi}
+对拓扑空间$(X,\mcf)$\\
+若有等价关系$\sim$,则称等价类构成的集合为$X$关于$\sim$的商集,记为$X/{\sim}$\\
+则称映射$g:X\to X/{\sim},x\mapsto [x]$为粘合映射\\
+则称在$X/{\sim}$上$g$决定的强拓扑为商拓扑,记为$\mcf/{\sim}$\\
+则称$(X/{\sim},\mcf/{\sim})$为$(X,\mcf)$的商空间,记为$(X,\mcf)/{\sim}$
+\end{dingyi}
+
+\begin{dingli}
+对拓扑空间$(X,\mcf)$\\
+若有$\sca\subset\mcp(X)$,对任意$x\in X$,存在唯一$A\in\sca$,有$x\in A$\\
+则存在唯一等价关系$\sim$,有$X/{\sim} \cong \sca$\\
+若有等价关系$\sim$,则粘合映射$g:X\to X/{\sim}$为商映射\\
+即对任意$U_{\sim}\subset X/{\sim}$为开集当且仅当$g^{-1}(U_{\sim})\subset X$为开集
+\end{dingli}
+
+\begin{dingli}
+对拓扑空间$(X,\mcf),(Y,\mcg)$\\
+若有映射$f:X\to Y$为商映射,记$x_1\sim x_2$当且仅当$f(x_1)=f(x_2)$\\
+则商空间$X/{\sim},Y$同胚
+\end{dingli}
+
+\begin{dingyi}
+对拓扑空间$(X,\mcf),(Y,\mcg)$\\
+若有子集$U\subset X$,则有$\sca=\{U\}\cup\{\{x\}|x\in X\backslash U\}\subset \mcp(X)$\\
+则有$\mcm$决定的等价关系的商空间$\sca\cong X/{\sim}$,记为$X/U$\\
+记$\mcl=\{(U\times \{0\})\cup(V\times \{1\})|U\in \mcf,V\in \mcg\}$\\
+则称$X\sqcup Y=(X\times \{0\})\cup(Y\times \{1\})$为$X$和$Y$的无交并\\
+则称$\mcl$为$X\sqcup Y$上的无交并拓扑\\
+若有映射$f:U\subset X\to Y$为连续映射,则对任意$x\in X\backslash U$,记等价类$[x]=\{(x,1)\}$\\
+同时,则对任意$y\in Y$,记等价类$[y]=(f^{-1}(y)\times \{1\})\cup\{(y,0)\}$\\
+则称商空间$Y\sqcup X/{\sim} =\{[y]|y\in Y\}\cup\{[x]|x\in X\backslash U\}$为$f$的贴空间,记为$Y\bigcup\limits_{f}X$
+\end{dingyi}
+
+\begin{zhu}
+以下为常见的商空间:\\
+考虑$\mcp([0,1]\times[0,1])$的子集$\mcm$\\
+若$\mcm=\{\{(0,y),(1,y)\}|y\in [0,1]\}\cup\{\{(x,y)\}|x\in(0,1),y\in [0,1]\}$\\
+则$\mcm$决定的等价关系的商空间$\mcm\cong [0,1]\times[0,1]/{\sim}\cong S^{1}\times [0,1]$称为Annulus\\
+若$\mcm=\{\{(0,y),(1,1-y)\}|y\in [0,1]\}\cup\{\{(x,y)\}|x\in(0,1),y\in [0,1]\}$\\
+则$\mcm$决定的等价关系的商空间$\mcm\cong [0,1]\times[0,1]/{\sim}$称为Möbius带\\
+若$f:[0,1]\times[0,1]\to M\subset \R^3,(a,b)\mapsto ((2+b\cos(\pi a))\cos(2\pi a),(2+b\cos(\pi a))\sin(2\pi a),b\sin(\pi a))$\\
+则$x\sim y$当且仅当$f(x)=f(y)$诱导商空间$[0,1]\times[0,1]/{\sim}$为Möbius带\\
+考虑$\mcp(\R^n\backslash\{0\})$的子集$\mcn$\\
+若$\mcn=\{l_{x}\backslash \{0\}|x\in\R^n\backslash\{0\},l_{x}=\{tx|t\in\R\}\}$\\
+则$\mcn$决定的等价关系的商空间$\mcn\cong (\R^n\backslash\{0\})/{\sim}=\RP^n$称为实射影空间\\
+特别地,则称$\RP^2$为射影平面\\
+若$g:S^2\to\RP^2,x\mapsto l_x\backslash\{0\}$\\
+则$x\sim y$当且仅当$g(x)=g(y)$诱导商空间$S^2/{\sim}$同胚于$\RP^2$\\
+即射影平面同胚于球面粘合对径点\\
+若$h:D^2\to S^2_{+},x=(x_1,x_2)\mapsto (x_1,x_2,\sqrt{1-x_1^2-x_2^2})$\\
+则$x\sim y$当且仅当$g\circ h(x)=g\circ h(y)$诱导商空间$D^2/{\sim}$同胚于$\RP^2$\\
+即射影平面同胚于圆盘粘合边界圆周对径点\\
+考虑拓扑空间$(X,\mcf)$\\
+则$(X\times[0,1])/(X\times\{1\})$称为$X$上的拓扑锥,记为$CX$\\
+则$CA/B$称为$X$上的双角锥,其中$B=\{[(a,0)]\in CX|a\in X\}$\\
+考虑拓扑空间$(X,\mcf),(Y,\mcg)$\\
+若$f:X\to Y$为连续映射,有$g:X\times\{0\}\to Y,(x,0)\mapsto f(x)$为连续映射\\
+则$Y\bigcup\limits_{g}(X\times [0,1])$称为$f$的映射柱\\
+同时,有$h:\{[(x,0)]\in CX|x\in X\}\to Y,[(x,0)]\mapsto f(x)$为连续映射\\
+则$Y\bigcup\limits_{h}CX$称为$f$的映射锥\\
+考虑$n$维Euclidean空间$\R^n$\\
+若$D^n$为$n$维闭球,$S^{n-1}$为$n$维球面,则$D^n/S^{n-1}\cong S^n$且$CS^n\cong D^{n+1}$\\
+若$\id:S^1\to D^2,x\mapsto x$,则$D^2\bigcup\limits_{\id}D^2\cong S^2$
+\end{zhu}
+
+\begin{dingyi}
+对拓扑空间$(X,\mcf)$\\
+对任意$x\in X$,若有子集族$N_{x}\subset\{U\subset X|U\text{为}x\text{的邻域}\}$\\
+有对任意$N$为$x$的邻域,存在$U\in N_{x}$,有$N\subset U$,则称$N_{x}$为$x\in X$的邻域基\\
+则称对任意$x\in X$,存在$N_{x}$,有$|N_{x}|\leq\aleph_0$为第一可数公理\\
+则称满足第一可数公理的拓扑空间为第一可数空间
+\end{dingyi}
+
+\begin{dingli}
+对拓扑空间$(X,\mcf),(Y,\mcg)$\\
+若对映射$f:X\to Y$,有$f(x)=y$\\
+则有$f$在$x$处连续当且仅当对任意$V\in N_{y}$,有$f^{-1}(V)\in N_{x}$
+\end{dingli}
+
+\begin{dingli}
+对拓扑空间$(X,\mcf)$\\
+若对$x\in X$,存在$N_{x}$,有$|N_{x}|\leq\aleph_{0}$\\
+则存在$N_{x}=\{U_{i}|i\in \N^*\}$,有$U_{1}\subset U_2\subset\cdots\subset U_{n}\subset\cdots$
+\end{dingli}
+
+\begin{dingyi}
+对拓扑空间$(X,\mcf)$\\
+若有子集族$\mcb\subset \mcp(X)$,则称$\overline{\mcb}=\{U=\bigcup\limits_{i\in I}|U_{i}\in \mcb\}$为$\mcb$生成的子集族\\
+若$\mcf=\overline{\mcb}$,则称$\mcb$为拓扑基\\
+则称存在$\mcb$,有$|\mcb|\leq\aleph_0$且$\mcb$为拓扑基为第二可数公理\\
+则称满足第二可数公理的拓扑空间为第二可数空间
+\end{dingyi}
+
+\begin{dingli}
+对拓扑空间$(X,\mcf)$\\
+若有子集族$\mcb\subset \mcp(X)$且$\mcf$未定\\
+则$\mcb$为拓扑基当且仅当$\bigcup\limits_{U\in\mcb}U=X$且对任意$U_1,U_2\in \mcb$,有$U_1\cap U_2=\overline{\mcb}$
+\end{dingli}
+
+\begin{dingli}
+对拓扑空间$(X,\mcf)$\\
+若$X$为第二可数空间,则$X$为第一可数空间且为可分的
+\end{dingli}
+
+\begin{dingyi}
+对拓扑空间$(X,\mcf)$\\
+若对任意$x_1,x_2\in X,x_1\neq x_2$,存在$U\in\mcf$,有$|U\cap\{x_1,x_2\}|=1$\\
+则称$X$满足T0公理\\
+若对任意$x\in X$,有$\{x\}^{c}\in\mcf$\\
+则称$X$满足T1公理\\
+若对任意$x_1,x_2\in X,x_1\neq x_2$,存在$U,V\in\mcf$,有$x_1\in U,x_2\in V$且$U\cap V=\varnothing$\\
+则称$X$满足T2公理,则称$X$为Hausdorff空间\\
+若对任意$x\in X,U^{c}\in\mcf$且$x\notin U$,存在$V\in\mcf$,有$x\notin V,U\cap V=U$或$x\in V,U\cap V=\varnothing$\\
+则称$X$满足T3公理\\
+若对任意$U_1^{c},U_2^{c}\in\mcf$且$U_1\cap U_2=\varnothing$,存在$V_1,V_2\in\mcf$,有$U_1\subset V_1,U_2\subset V_2$且$V_1\cap V_2=\varnothing$\\
+则称$X$满足T4公理,则称$X$为正规空间\\
+若$X$满足T2公理和T4公理,则称$X$为正规Hausdorff空间
+\end{dingyi}
+
+\begin{zhu}
+若对任意$x\in X,U^{c}\in\mcf$且$x\notin U$,存在$N_{x}\in\mcf$为$x$的邻域,有$\overline{N_{x}}\subset U^{c}$\\
+则称$X$为正则空间\\
+Lindel\H{o}f:若$X$为第二可数空间,则$X$为正则空间当且仅当$X$为正规空间
+\end{zhu}
+
+\begin{dingli}
+对拓扑空间$(X,\mcf)$\\
+若$X$为Hausdorff空间,则对任意$x\in X$,有$\{x\}^{c}$为开集\\
+若$X$为度量空间,则$X$为正规Hausdorff空间
+\end{dingli}
+
+\begin{dingyi}
+对拓扑空间$(X,\mcf)$\\
+若对$\{x_n\}\subset X$,存在$x\in X$,对任意$x$的邻域$N$,存在$n_0\in\N^*$,若$n\geq n_0$,则$x_n\in N$\\
+则称$x$为$\{x_n\}$的极限,记为$\lim\limits_{n\to\infty}x_n=x$
+\end{dingyi}
+
+\begin{zhu}
+Hausdorff空间的极限存在即唯一
+\end{zhu}
+
+\begin{dingli}
+Urysohn:\\
+对拓扑空间$(X,\mcf)$\\
+则$X$为正规空间当且仅当\\
+对任意$U^{c},V^{c}\in\mcf$,存在连续映射$f:X\to[0,1]$,有$f(U)=\{0\},f(V)=\{1\}$
+\end{dingli}
+
+\begin{dingli}
+Tietze:\\
+对拓扑空间$(X,\mcf)$\\
+若$X$为正规空间且$U^{c}\in\mcf$\\
+则对任意连续映射$f:U\to[0,1]$,存在连续映射$\widetilde{f}:X\to[0,1]$,有$\widetilde{f}|_{U}=f$
+\end{dingli}
+
+\begin{dingli}
+Urysohn:\\
+对拓扑空间$(X,\mcf)$\\
+则$X$为第二可数空间且$\mcf$为度量诱导拓扑当且仅当$X$为正规Hausdorff空间
+\end{dingli}
+
+\begin{dingyi}
+对拓扑空间$(X,\mcf)$\\
+若存在子集族$\mcc\subset\mcp(X)$,对任意$x\in X$,存在$x$的邻域$N$,有$|\{C\in\mcc|C\cap N\neq\varnothing\}|<\infty$\\
+则称$\mcc$为局部有限的\\
+若存在子集族$\mcc\subset\mcp(X)$,有$\mcc=\bigcup\limits_{i=1}^{\infty}\mcc_{i}$且$\mcc_{i}$为局部有限的\\
+则称$\mcc$为$\sigma$-局部有限的
+\end{dingyi}
+
+\begin{dingli}
+Nagata-Smironov:\\
+对拓扑空间$(X,\mcf)$,则$\mcf$为度量诱导拓扑当且仅当\\
+有$X$为正规Hausdorff空间且$X$有拓扑基$\mcb$为$\sigma$-局部有限的
+\end{dingli}
+
+\begin{dingyi}
+对拓扑空间$(X,\mcf)$\\
+若存在子集族$\mcc\subset\mcp(X)$,对任意$x\in X$,存在$x$的邻域$N$,有$|\{C\in\mcc|C\cap N\neq\varnothing\}|\leq1$\\
+则称$\mcc$为局部离散的\\
+若存在子集族$\mcc\subset\mcp(X)$,有$\mcc=\bigcup\limits_{i=1}^{\infty}\mcc_{i}$且$\mcc_{i}$为局部离散的\\
+则称$\mcc$为$\sigma$-局部离散的
+\end{dingyi}
+
+\begin{dingli}
+Bing:\\
+对拓扑空间$(X,\mcf)$,则$\mcf$为度量诱导拓扑当且仅当\\
+有$X$为正规Hausdorff空间且$X$有拓扑基$\mcb$为$\sigma$-局部离散的
+\end{dingli}
+
+\begin{dingyi}
+对拓扑空间$(X,\mcf)$\\
+若$X\neq\varnothing$且不存在开集$U,V\subset X$,有$U\neq\varnothing,V\neq\varnothing,U\cap V=\varnothing,U\cup V=X$\\
+则称$X$为连通的\\
+若$X_0\subset X$且在子空间拓扑$(X_0,\mcf|_{X_0})$下有$X_0$为连通的\\
+则称$X_0$为$X$的连通子集\\
+若$\mcc\subset\mcp(X)$且任意$C\in\mcc$为$X$的连通子集且有$\bigcup\limits_{C\in\mcc}C=X$\\
+则称$\mcc$为$X$的连通覆盖\\
+若$X_0\subset X$为$X$的连通子集且若$U\supset X_0$为$X$的连通子集,则$U=X_0$\\
+则称$X_0$为$X$的连通分支
+\end{dingyi}
+
+\begin{dingli}
+对拓扑空间$(X,\mcf)$\\
+则$X$连通当且仅当不存在闭集$U,V\subset X$,有$U\neq\varnothing,V\neq\varnothing,U\cap V=\varnothing,U\cup V=X$\\
+则$X$连通当且仅当不存在$U\subsetneq X$,有$U\neq \varnothing$为开集且为闭集\\
+则$X$连通当且仅当若$U\subset X$为开集且为闭集,则$U=\varnothing$或$U=X$
+\end{dingli}
+
+\begin{dingli}
+对拓扑空间$(X,\mcf)$\\
+若$X_0\subset X$为开集且为闭集且$U$为$X$的连通子集,则$X_0\cap U=\varnothing$或$U\subset X_0$
+\end{dingli}
+
+\begin{dingli}
+对拓扑空间$(X,\mcf)$\\
+若$\mcc$为$X$的连通覆盖且存在$U$为$X$的连通子集,对任意$C\in\mcc$,有$C\cap U\neq\varnothing$\\
+则$X$为连通的
+\end{dingli}
+
+\begin{dingli}
+对拓扑空间$(X,\mcf)$\\
+若存在$A$在$X$中稠密且$A$为$X$的连通子集,则$X$为连通的
+\end{dingli}
+
+\begin{dingli}
+对拓扑空间$(X,\mcf),(Y,\mcg)$\\
+若$X$为连通的且有连续映射$f:X\to Y$,则$f(X)$为$Y$的连通子集
+\end{dingli}
+
+\begin{dingli}
+对拓扑空间$(X,\mcf),(Y,\mcg)$\\
+若$X$为连通的且$Y$为连通的,则乘积空间$X\times Y$为连通的
+\end{dingli}
+
+\begin{dingli}
+对拓扑空间$(X,\mcf)$\\
+若$U$为$X$的连通子集,则存在唯一$X$的连通分支$X_0$,有$U\subset X_0$\\
+则存在$\mcc\subset\mcp(X)$,有任意$C\in\mcc$为$X$的连通分支且$\bigcup\limits_{C\in\mcc}C=X$
+\end{dingli}
+
+\begin{dingli}
+对拓扑空间$(X,\mcf)$\\
+若对任意$x\in X$,存在$N$为$x$的邻域,有$N$为$X$的连通子集\\
+则对任意$X_0$为$X$的连通分支,有$X_0$为开集
+\end{dingli}
+
+\begin{dingyi}
+对拓扑空间$(X,\mcf)$\\
+若对任意$x\in X$,存在$N_{x}$为$x$的邻域基,有任意$N\in N_{x}$为$X$的连通子集\\
+则称$X$为局部连通的
+\end{dingyi}
+
+\begin{dingyi}
+对拓扑空间$(X,\mcf)$\\
+若有$f:[0,1]\to X$为连续映射,则称$f$为$X$上从$f(0)$到$f(1)$的道路\\
+若有$e_{x_0}$为$X$上的道路且$e_{x_0}([0,1])=\{x_0\}$,则称$e_{x_0}$为点道路\\
+若有$f$为$X$上的道路,则称$\overline{f}(t)=f(1-t)$为$f$的逆道路\\
+若有$f,g$为$X$上的道路且$f(1)=g(0)$\\
+则称$fg(t)=\1_{[0,0.5]}f(2t)+\1_{(0.5,1]}g(2t-1)$为$f$和$g$的乘积道路
+\end{dingyi}
+
+\begin{dingyi}
+对拓扑空间$(X,\mcf)$\\
+若$X\neq\varnothing$且存在$f$为$X$上从$x$到$y$的道路,则称$x$道路等价于$y$,记为$x\sim y$\\
+则称$\sim$为道路等价关系,则称$\langle x\rangle$为道路连通分支\\
+若存在$x\in X$,有$\langle x\rangle=X$,则称$X$为道路连通的\\
+若$X_0\subset X$且在子空间拓扑$(X_0,\mcf|_{X_0})$下有$X_0$为道路连通的\\
+则称$X_0$为$X$的道路连通子集\\
+若$\mcc\subset\mcp(X)$且任意$C\in\mcc$为$X$的道路连通子集且有$\bigcup\limits_{C\in\mcc}C=X$\\
+则称$\mcc$为$X$的道路连通覆盖
+\end{dingyi}
+
+\begin{dingli}
+对拓扑空间$(X,\mcf),(Y,\mcg)$\\
+若$X$为道路连通的且有连续映射$f:X\to Y$,则$f(X)$为$Y$的道路连通子集
+\end{dingli}
+
+\begin{dingli}
+对拓扑空间$(X,\mcf),(Y,\mcg)$\\
+若$X$为道路连通的且$Y$为道路连通的,则乘积空间$X\times Y$为道路连通的
+\end{dingli}
+
+\begin{dingli}
+对拓扑空间$(X,\mcf)$\\
+若$U$为$X$的道路连通子集,则存在唯一$X$的道路连通分支$X_0$,有$U\subset X_0$\\
+则存在$\mcc\subset\mcp(X)$,有任意$C\in\mcc$为$X$的道路连通分支且$\bigcup\limits_{C\in\mcc}C=X$
+\end{dingli}
+
+\begin{dingli}
+对拓扑空间$(X,\mcf)$\\
+若$X$为道路连通的,则$X$为连通的
+\end{dingli}
+
+\begin{zhu}
+当$X=\{(x,\sin(\frac{1}{x}))|x>0\},Y=\overline{X}$时,则$X$道路连通且$Y$连通但不道路连通
+\end{zhu}
+
+\begin{dingli}
+对拓扑空间$(X,\mcf)$\\
+若对任意$x\in X$,存在$N$为$x$的邻域,有$N$为$X$的道路连通子集\\
+则对任意$X_0$为$X$的道路连通分支,有$X_0$为开集且为闭集
+\end{dingli}
+
+\begin{dingyi}
+对拓扑空间$(X,\mcf)$\\
+若对任意$x\in X$,存在$N_{x}$为$x$的邻域基,有任意$N\in N_{x}$为$X$的道路连通子集\\
+则称$X$为局部道路连通的
+\end{dingyi}
+
+\begin{dingyi}
+对拓扑空间$(X,\mcf)$\\
+若对子集族$\mcc\subset\mcf$,有$X\subset\bigcup\limits_{C\in\mcc}C$\\
+则称$\mcc$为$X$的开覆盖\\
+若对任意$\mcc$为$X$的开覆盖,存在$\mcc_{1}\subset\mcc$为$X$的开覆盖且$|\mcc_{1}|<\infty$\\
+则称$X$为紧致的\\
+若$X_0\subset X$且在子空间拓扑$(X_0,\mcf|_{X_0})$下有$X_0$为紧致的\\
+则称$X_0$为$X$的紧致子集
+\end{dingyi}
+
+\begin{dingli}
+对拓扑空间$(X,\mcf)$\\
+则$X_0$为$X$的紧致子集当且仅当\\
+对任意$\mcc\subset\mcf$为$X_0$的开覆盖,存在$\mcc_{1}\subset\mcc$为$X$的开覆盖且$|\mcc_{1}|<\infty$
+\end{dingli}
+
+\begin{dingli}
+对拓扑空间$(X,\mcf)$\\
+若$U$为$X$的紧致子集且$V\subset U$为闭集,则$V$为$X$的紧致子集
+\end{dingli}
+
+\begin{dingli}
+对拓扑空间$(X,\mcf),(Y,\mcg)$\\
+若$X$为紧致的的且有连续映射$f:X\to Y$,则$f(X)$为$Y$的紧致子集
+\end{dingli}
+
+\begin{dingli}
+对拓扑空间$(X,\mcf),(Y,\mcg)$\\
+若$Y$为紧致的且$W\subset X\times Y$为开集且$\{x_0\}\times Y\subset W$\\
+则存在$x$的邻域$N_{x}$,有$N_{x}\times Y\subset W$
+\end{dingli}
+
+\begin{dingli}
+对拓扑空间$(X,\mcf),(Y,\mcg)$\\
+若$X$为紧致的且$Y$为紧致的,则乘积空间$X\times Y$为紧致的
+\end{dingli}
+
+\begin{dingli}
+对拓扑空间$(X,\mcf)$\\
+若$U$为$X$的紧致子集且$X$为Hausdorff空间,则$U$为闭集
+\end{dingli}
+
+\begin{dingli}
+对拓扑空间$(X,\mcf),(Y,\mcg)$\\
+若$X$为紧致的且$Y$为Hausdorff空间且有连续映射$f:X\to Y$\\
+则若$f$为满射,则$f$为商映射;则若$f$为双射,则$f$为同胚映射
+\end{dingli}
+
+\begin{dingyi}
+对拓扑空间$(X,\mcf)$\\
+若$\mcc,\mcd$为$X$的开覆盖且对任意$V\in\mcd$,存在$U\in\mcc$,有$V\subset U$\\
+则称$\mcd$为$\mcc$的开加细\\
+若对任意$\mcc$为$X$的开覆盖,存在$\mcd$为$\mcc$的开加细且$\mcd$为局部有限的\\
+则称$X$为仿紧的
+若对任意$x\in X$,存在$x$的邻域$N$为$X$的紧致子集\\
+则称$X$为局部紧致的
+\end{dingyi}
+
+\begin{dingli}
+Lebesgue:\\
+对拓扑空间$(X,\mcf)$\\
+则对$\mcc$为$X$的开覆盖,记$N^{c}_{\mcc}=\max\{n|\mcd\subset\mcc,\bigcap\limits_{D\in\mcd}D\neq\varnothing\}$\\
+对Euclidean空间$\R^n$\\
+则任意$\mcc$为$\R^n$的开覆盖,存在$\mcd$为$\mcc$的开加细,有$N^{c}_{\mcd}\leq n+1$
+\end{dingli}
+
+\begin{dingyi}
+对拓扑空间$(X,\mcf)$\\
+若存在$n\in\N$,对任意$\mcc$为$X$的开覆盖,存在$\mcd$为$\mcc$的开加细,有$N^{c}_{\mcd}\leq n+1$\\
+则称$X$为有限维的\\
+若存在最小的$n\in\N$,对任意$\mcc$为$X$的开覆盖,存在$\mcd$为$\mcc$的开加细,有$N^{c}_{\mcd}\leq n+1$\\
+则称$n$为$X$的拓扑维数,记为$\dim X=n$
+\end{dingyi}
+
+\begin{dingli}
+对拓扑空间$(X,\mcf)$\\
+若$X_0\subset X$为闭集且$X$为有限维的\\
+则在子空间拓扑$(X_0,\mcf|_{X_0})$下$X_0$为有限维的且$\dim X_0\leq \dim X$\\
+若$X_1\subset X$为闭集且$X_2\subset X$为闭集且$X=X_1\cup X_2$为有限维的\\
+则$\dim X=\max\{\dim X_1,\dim X_2\}$
+\end{dingli}
+
+\begin{dingli}
+Menger-N\H{o}beling:\\
+对拓扑空间$(X,\mcf)$\\
+若$X$为紧致的且$\dim X=n$,则存在$f:X\to \R^{2n+1}$为嵌入映射
+\end{dingli}
+
+\chapter{代数}
+
+\begin{dingyi}
+对拓扑空间$(M,\mcf)$\\ 
+若$M$为Hausdorff空间且对任意$x\in M$,存在$U$为$x$的开邻域\\
+有$U\cong \R^n(\text{同胚于}\R^n_+\text{的开子集})$或$U\cong \R^n_+=\{(x_1,\cdots,x_n)\in\R^n|x_n\geq 0\}$\\
+则称$M$为拓扑流形,则称$M$的维数为$n$,记为$\dim M=n$\\
+若$\varphi:U\to \varphi(U)$为同胚映射且$U\subset M$为开集且$\varphi(U)\subset\R^n_+$为开集\\
+则称$(U,\varphi)$为$M$的局部坐标\\
+若$(U,\varphi),(V,\psi)$为$M$的局部坐标,记$f_{UV}:\varphi(U\cap V)\to \psi(U\cap V), x\mapsto \psi(\varphi^{-1}(x))$\\
+则称$f_{UV}$为从$(U,\varphi)$到$(V,\psi)$的坐标变换
+\end{dingyi}
+
+\begin{zhu}
+若$M$为拓扑流形,则$M$为正则空间\\
+若$M$为拓扑流形且$M$为紧致的,则$M$为第二可数空间
+\end{zhu}
+
+\begin{dingyi}
+对$n$维拓扑流形$M$\\
+若对$x\in M$,存在$U$为$x$的开邻域,有同胚映射$\varphi:U\to\R^n$且$\varphi(x)=(0,\cdots,0)$\\
+则称$x$为$M$的内部点\\
+若对$x\in M$,存在$U$为$x$的开邻域,有同胚映射$\varphi:U\to\R^n_+$且$\varphi(x)=(0,\cdots,0)$\\
+则称$x$为$M$的边界点,记$\partial M=\{x\in M|x\text{为}M\text{的边界点}\}$
+\end{dingyi}
+
+\begin{dingli}
+对$n$维拓扑流形$M$\\
+则$M\backslash\partial M=\{x\in M|x\text{为}M\text{的内部点}\}$\\
+若$n=1$,则$\partial M$为离散点集\\
+若$n>1$,则$\partial M$为$n-1$维拓扑流形且$\partial(\partial M)=\varnothing$
+\end{dingli}
+
+\begin{dingyi}
+对$n$维拓扑流形$M$\\
+若$M$为拓扑流形且$M$为紧致的且$\partial M=\varnothing$\\
+则称$M$为闭流形\\
+若$n=1$且$M$为连通的,则称$M$为曲线\\
+若$M$为闭流形且$M$为曲线,则称$M$为闭曲线\\
+若$n=2$且$M$为连通的,则称$M$为曲面\\
+若$M$为闭流形且$M$为曲面,则称$M$为闭曲面
+\end{dingyi}
+
+\begin{dingyi}
+对抽象集合论\\
+若$\sigma$为有限集,则称$\sigma$为抽象单形\\
+则称$P\in\sigma$为$\sigma$的顶点,则称$|\sigma|-1$为$\sigma$的维数,记为$\dim\sigma=|\sigma|-1$\\
+若$\sigma,\tau$为抽象单形且$\sigma\subset\tau$,则称$\sigma$为$\tau$的面,记为$\sigma\preceq\tau$
+\end{dingyi}
+
+\begin{dingyi}
+对抽象集合论\\
+若对$\c$,有任意$\sigma\in\c$为抽象单形且对任意$\pi\preceq\sigma$,有$\pi\in\c$\\
+则称$\c$为抽象复形,则称$\max\limits_{\sigma\in\c}\dim\sigma$为$\c$的维数,记为$\dim\c=\max\limits_{\sigma\in\c}\dim\sigma$\\
+则称$\{P|P\text{为}\sigma\text{的顶点},\sigma\in\c\}$为$\c$的顶点\\
+若对$\c,\d$为抽象复形,有$\d\subset\c$,则称$\d$为$\c$的子抽象复形
+\end{dingyi}
+
+\begin{dingyi}
+对抽象集合论\\
+若对$\c$为抽象复形且$\dim\c=n$且$n_i=|\{\sigma\in\c|\dim\sigma=i\}|$\\
+则称$euler(\c)=\sum\limits_{i=0}^{n}(-1)^{i}n_{i}$为$\c$的Euler示性数
+\end{dingyi}
+
+\begin{dingyi}
+对抽象集合论\\
+若$\sigma$为抽象单形且$\dim\sigma=n$,记$\sigma$的排列为$A^{\sigma}$\\
+若存在双射$f:A^{\sigma}_{1}\to A^{\sigma}_{2}$为偶置换,则称$A^{\sigma}_{1},A^{\sigma}_{2}$等价,记为$A^{\sigma}_{1}\sim A^{\sigma}_{2}$\\
+则称$\langle A^{\sigma}\rangle$为$\sigma$的定向,记为$[A^{\sigma}]=[P_0\cdots P_n]$\\
+若$\sigma$为抽象单形且有定向$\vec{\eta}=[P_0\cdots P_n]$且$\tau=\sigma\backslash\{P_i\}$为抽象单形\\
+则称$(-1)^{i}[P_0\cdots P_{i-1}P_{i+1}\cdots P_n]$为$\tau$的由$\vec{\eta}$诱导的定向\\
+若$\sigma_1,\sigma_2$为抽象单形且有定向$\eta_1,\eta_2$且不存在$\tau=\sigma_1\backslash\{P\}=\sigma_2\backslash\{P'\}$\\
+或存在唯一$\tau=\sigma_1\backslash\{P\}=\sigma_2\backslash\{P'\}$且由$\eta_1,\eta_2$诱导的定向不同,则称$\eta_1,\eta_2$相容\\
+若对$\c$为抽象复形且$\dim\c=n$且对$\{\sigma\in\c|\dim\sigma=n\}=\{\sigma_1,\cdots,\sigma_m\}$\\
+存在定向$\{\eta_1,\cdots,\eta_m\}$,有任意$\eta_i,\eta_j$相容\\
+则称$\c$为可定向的,否则,则称$\c$为不可定向的
+\end{dingyi}
+
+\begin{zhu}
+若$\dim\sigma>0$,则$\sigma$上有且仅有两种定向,记为$\vec{\eta},-\vec{\eta}$
+\end{zhu}
+
+\begin{dingyi}
+对$n$维Euclidean空间$\R^n$\\
+若对$P_0,\cdots,P_m\in\R^n,m\in\N$,有$\overrightarrow{P_1P_0},\cdots,\overrightarrow{P_mP_0}$线性无关\\
+则称$P_0,\cdots,P_m$几何无关\\
+若对$P_0,\cdots,P_m\in\R^n,m\in\N$几何无关,记$\sigma=\{P\in\R^n|P=\sum\limits_{i=0}^{m}t_iP_i,\sum\limits_{i=0}^{m}t_i=1,t_i>0\}$\\
+则称$\sigma$为几何开单形,则称$\overline{\sigma}$为几何闭单形\\
+则称$P_0,\cdots,P_m$为$\sigma$的顶点,则称$m$为$\sigma$的维数,记为$\dim \sigma=m$
+\end{dingyi}
+
+\begin{zhu}
+若$\sigma$为几何开单形\\
+若$\dim\sigma=0$,则$\sigma$为单点集;若$\dim\sigma=1$,则$\sigma$为开线段\\
+若$\dim\sigma=2$,则$\sigma$为开三角形;若$\dim\sigma=3$,则$\sigma$为开四面体
+\end{zhu}
+
+\begin{dingyi}
+对$n$维Euclidean空间$\R^n$\\
+若$\sigma,\tau$为几何开单形且$\{P\in\R^n|P\text{为}\sigma\text{的顶点}\}\subset\{P\in\R^n|P\text{为}\tau\text{的顶点}\}$\\
+则称$\sigma$为$\tau$的面,记为$\sigma\preceq\tau$,若$\sigma\preceq\tau,\sigma\neq\tau$,则称$\sigma$为$\tau$的真面
+\end{dingyi}
+
+\begin{dingyi}
+对$n$维Euclidean空间$\R^n$\\
+若对$\c$,有任意$\sigma,\tau\in\c$为几何开单形且$\sigma\cap\tau=\varnothing$且对任意$\pi\preceq\sigma$,有$\pi\in\c$\\
+则称$\c$为几何复形,则称$\max\limits_{\sigma\in\c}\dim\sigma$为$\c$的维数,记为$\dim\c=\max\limits_{\sigma\in\c}\dim\sigma$\\
+则称$\{P\in\R^n|P\text{为}\sigma\text{的顶点},\sigma\in\c\}$为$\c$的顶点\\
+则称$\bigcup\limits_{\sigma\in\c}\sigma$为$\c$的多面体,记为$|\c|=\bigcup\limits_{\sigma\in\c}\sigma$
+\end{dingyi}
+
+\begin{zhu}
+对几何复形$\c$,则$\P=\{\{P\in\R^n|P\text{为}\sigma\text{的顶点}\}|\sigma\in\c\}$为抽象复形
+\end{zhu}
+
+\begin{dingyi}
+对$n$维Euclidean空间$\R^n$\\
+若$\c$为几何复形且$\P$为抽象复形\\
+存在$f:\{P\in\R^n|P\text{为}\sigma\text{的顶点},\sigma\in\c\}\to \{P|P\text{为}\sigma\text{的顶点},\sigma\in\c\}$\\
+有$V=\{P\in\R^n|P\text{为}\sigma\text{的顶点}\},\sigma\in\c$当且仅当$f(V)\in\P$\\
+则称$\c$为$\P$的几何实现,则称$\c$的多面体为$\P$的多面体,记为$|\P|=\bigcup\limits_{\sigma\in\c}\sigma$
+\end{dingyi}
+
+\begin{dingli}
+对$n$维Euclidean空间$\R^n$\\
+若$\P$为抽象复形且$|\{P|P\text{为}\sigma\text{的顶点},\sigma\in\c\}|<\infty$\\
+则存在$\c$为$\P$的几何实现且对任意$\d$为$\P$的几何实现,有$\c\cong\d$
+\end{dingli}
+
+\begin{dingyi}
+对拓扑空间$(M,\mcf)$\\ 
+若存在$\P$为抽象复形,有$M\cong|\P|$,则称$M$为可剖分的\\
+则称$\P$为$\c$的单纯剖分/三角剖分
+\end{dingyi}
+
+\begin{zhu}
+环面$T^2$为可剖分的
+\end{zhu}
+
+\begin{dingli}
+对拓扑空间$(M,\mcf)$\\
+若存在$\P_1,\P_2$为抽象复形,有$M\cong|\P_1|\cong|\P_2|$,则$euler(\P_1)=euler(\P_2)$
+\end{dingli}
+
+\begin{dingli}
+对拓扑空间$(M,\mcf)$\\
+若存在$\P_1,\P_2$为抽象复形,有$M\cong|\P_1|\cong|\P_2|$\\
+则$\P_1$为可定向的当且仅当$\P_2$为可定向的
+\end{dingli}
+
+\begin{dingli}
+对$n$维拓扑流形$M$\\
+若$M$为曲面且$M$为紧致的,则$M$为可剖分的\\
+则存在$\P$为抽象复形,有$M\cong|\P|$且$\dim\P=2$\\
+即$M$可由有限多三角形将边配对粘合得到,未配对粘合的边即为曲面边界
+\end{dingli}
+
+\begin{dingyi}
+对$n$维拓扑流形$M$\\
+若对正多边形,取某对边$AB,CD$,有线性同胚$f:AB\to CD$诱导粘合映射\\
+若$\overrightarrow{AB}$与$\overrightarrow{CD}$绕行同向,则粘合对边标记为$a$和$a$\\
+若$\overrightarrow{AB}$与$\overrightarrow{CD}$绕行反向,则粘合对边标记为$b$和$b^{-1}$\\
+若对正$2m$边形,取$n$对边,用$a_i$或$a_{i}^{-1}$标记,粘合$n$对边后得到闭曲面$M$\\
+则称带标记的正$2m$边形为$M$的多边形表示,记为$a_{i}\cdots a_{i}\cdots$或$a_{j}\cdots a_{j}^{-1}\cdots$
+\end{dingyi}
+
+\begin{zhu}
+$S^2$的多边形表示为$aa^{-1}$; $\RP^2$的多边形表示为$aa$
+\end{zhu}
+
+\begin{dingyi}
+对$n$维拓扑流形$M,N$\\
+若$M,N$为闭曲面且有多边形表示$a_{i_{1}}^{\varepsilon_{1}}\cdots a_{i_{m}}^{\varepsilon_{m}},b_{j_{1}}^{\delta_{1}}\cdots b_{j_{k}}^{\delta_{k}}$\\
+则称$M\#N$为$M,N$的连通和,有多边形表示$a_{i_{1}}^{\varepsilon_{1}}\cdots a_{i_{m}}^{\varepsilon_{m}}b_{j_{1}}^{\delta_{1}}\cdots b_{j_{k}}^{\delta_{k}}$
+\end{dingyi}
+
+\begin{zhu}
+连通和的几何直观为对两闭曲面打洞后粘合洞的边界,特别地$S^2\#M\cong M$
+\end{zhu}
+
+\begin{dingyi}
+对$n$维拓扑流形$M$\\
+若$M$为闭曲面且有多边形表示$a_{1}a_{1}\cdots a_{g}a_{g},g\in\N^*$\\
+则称$M$为不可定向闭曲面,亏格为$g$,记为$gP^2$\\
+若$M$为闭曲面且有多边形表示$a_{1}a_{2}a_{1}^{-1}a_{2}^{-1}\cdots a_{2g-1}a_{2g}a_{2g-1}^{-1}a_{2g}^{-1},g\in\N$\\
+则称$M$为可定向闭曲面,亏格为$g$,记为$gT^2$
+\end{dingyi}
+
+\begin{zhu}
+$1P^2\cong\RP^2$且$1T^2\cong T^2$且$0T^2=S^2$\\
+若$g\in\N^*,g\neq 1$,则$gP^2\cong(g-1)P^2\#\RP^2$且$gT^2\cong(g-1)T^2\#T^2$\\
+多边形表示为$aa\cdots$且$\cdots$粘合为边界圆周的紧致带边曲面称为交叉帽\\
+多边形表示为$aba^{-1}b^{-1}\cdots$且$\cdots$粘合为边界圆周的紧致带边曲面称为环柄\\
+多边形表示为$aba^{-1}b$的闭曲面称为Klein瓶$\cong 2P^2\cong \RP^2\#\RP^2$
+\end{zhu}
+
+\begin{dingli}
+对$n$维拓扑流形$M$\\
+若$M$为闭曲面且存在$f$个正多边形和$2e$条边\\
+边配对粘合后得到闭曲面$M$和$v$个顶点\\
+则$euler(M)=v-e+f$
+\end{dingli}
+
+\begin{dingli}
+对$n$维拓扑流形$M$\\
+若不可定向紧致带边曲面$M$有$m$个边界连通分支和$g$个亏格,则$euler(M)=2-g-m$\\
+若可定向紧致带边曲面$M$有$m$个边界连通分支和$g$个亏格,则$euler(M)=2-2g-m$\\
+若紧致带边曲面$M$且$\partial M\neq\varnothing$,则$euler(M)\leq 1$且取等当且仅当$M\cong D^2$
+\end{dingli}
+
+\begin{dingli}
+对$n$维拓扑流形$M$\\
+若$M$为闭曲面,则$M$为不可定向的当且仅当有多边形表示$\cdots a\cdots a\cdots$
+\end{dingli}
+
+\begin{dingli}
+对$n$维拓扑流形$M$\\
+若$M$为闭曲面,则在同胚的意义下,$M$由其可定向性和Euler示性数完全决定\\
+若$M$为不可定向的,则$M\cong gP^2$且$euler(M)=2-g$\\
+若$M$为可定向的,则$M\cong gT^2$且$euler(M)=2-2g$
+\end{dingli}
+
+\begin{zhu}
+$kP^2\#lP^2\cong(k+l)P^2, gT^2\#hT^2\cong(g+h)T^2, kP^2\#gT^2\cong(k+2g)P^2$
+\end{zhu}
+
+\begin{dingli}
+Closed Surfaces:\\
+对$n$维拓扑流形$M$\\
+若$M$为闭曲面,则在同胚的意义下,$M$由其可定向性和亏格数完全决定\\
+即$gP^2,g\in\N^*$和$gT^2,g\in\N$不重复地列出了闭曲面的所有同胚意义下的种类
+\end{dingli}
+
+$\begin{tikzcd}[column sep=large,row sep=large]
+\text{拓扑范畴:} &  & \text{拓扑空间} \ar[dr,"\text{连续映射}"] \ar[dd,dashed] &  \\
+& \text{拓扑空间} \ar[ur,"\text{连续映射}"] \ar[rr,"\text{复合\ 映射}"] \ar[dd,dashed] &  & \text{拓扑空间} \ar[dd,dashed] \\
+\text{代数范畴:} &  & \text{群} \ar[dr,"\text{同态}"] &  \\
+& \text{群} \ar[ur,"\text{同态}"] \ar[rr,"\text{复合同态}"] &  &  \text{群}
+\end{tikzcd}$
+
+\begin{zhu}
+从道路连通性"连接两个点的道路"出发:\\
+基本群考虑"闭道路构成的空间的道路连通性";同调群考虑"连接两个闭道路的曲面"
+\end{zhu}
+
+\begin{dingyi}
+对拓扑空间$(X,\mcf),(Y,\mcg)$\\
+记$C(X,Y)=\{f|f:X\to Y\text{为}连续映射\}$\\
+若对$f,g\in C(X,Y)$,存在连续映射$H:X\times[0,1]\to Y$,有$H(x,0)=f(x),H(x,1)=g(x)$\\
+则称$H$为从$f$到$g$的伦移,则称$f,g$为同伦的,记为$f\simeq g$\\
+则称$h_t:X\to Y,x\mapsto H(x,t)$为$H$在$t$的切片\\
+则称$\eta_x:[0,1]\to Y,t\mapsto H(x,t)$为$H$在$x$的踪迹
+\end{dingyi}
+
+\begin{dingyi}
+对拓扑空间$(X,\mcf),(Y,\mcg)$\\
+同伦$f\simeq g$为$C(X,Y)$上的等价关系\\
+则称$\langle f\rangle$为$C(X,Y)$中的映射类,记$C[X,Y]=\{\langle f\rangle|f\in C(X,Y)\}$\\
+若$\langle f\rangle=\langle \text{常值映射}\rangle$,则称$f$为零伦的
+\end{dingyi}
+
+\begin{zhu}
+若$Y$为道路连通的,则任意常值映射$f,g$有$f\simeq g$
+\end{zhu}
+
+\begin{dingli}
+对拓扑空间$(X,\mcf),(Y,\mcg)$\\
+若$p:X\to X',q:Y\to Y'$为商映射且$H:X\times[0,1]\to Y$为伦移\\
+若对任意$x_1,x_2\in X,t\in[0,1]$,有$p(x_1)=p(x_2)$,则$q(H(x_1,t))=q(H(x_2,t))$\\
+则存在$H':X'\times[0,1]\to Y'$为伦移,有$q(H(x,t))=H'(p(x),t)$,即下面图表交换:
+\begin{center}
+    $\begin{tikzcd}[column sep=small,row sep=small]
+    X\times I \ar[r,"H"] \ar[d,"p\times\id"'] & Y \ar[d,"q"] \\
+    X'\times I \ar[r,dashed,"H'"] & Y'
+\end{tikzcd}$
+\end{center}
+\end{dingli}
+
+\begin{dingli}
+对拓扑空间$(X,\mcf),(Y,\mcg),(Z,\mcl)$\\
+若$f_1,f_2\in C(X,Y),g_1,g_2\in C(Y,Z)$且$f_1\simeq f_2,g_1\simeq g_2$\\
+则$g_1\circ f_1,g_2\circ f_2\in C(X,Z)$且$g_1\circ f_1\simeq g_2\circ f_2$,即$\langle f\rangle\circ\langle g\rangle=\langle f\circ g\rangle$
+\end{dingli}
+
+\begin{dingyi}
+对拓扑空间$(X,\mcf),(Y,\mcg)$\\
+若对$A\subset X,f,g\in C(X,Y)$,存在连续映射$H:X\times[0,1]\to Y$\\
+有$H(x,0)=f(x),H(x,1)=g(x)$且对任意$a\in A$,有$H(a,t)=f(a)=g(a)$\\
+则称$H$为关于$A$从$f$到$g$的伦移,则称$f,g$关于$A$为同伦的,记为$f\mathop{\simeq}\limits^{A}g$
+\end{dingyi}
+
+\begin{dingli}
+对拓扑空间$(X,\mcf),(Y,\mcg),(Z,\mcl)$\\
+若$f_1,f_2\in C(X,Y),g_1,g_2\in C(Y,Z)$且$f_1f_2,g_1\mathop{\simeq}\limits^{B}g_2$且$f_1(A)\subset B$\\
+则$g_1\circ f_1,g_2\circ f_2\in C(X,Z)$且$g_1\circ f_1\mathop{\simeq}\limits^{A}g_2\circ f_2$
+\end{dingli}
+
+\begin{dingyi}
+对拓扑空间$(X,\mcf),(Y,\mcg)$\\
+若存在$f:X\to Y$和$g:Y\to X$为连续映射,有$f\circ g\simeq \id_{X}$且$g\circ f\simeq \id_{Y}$\\
+则称$f$为同伦映射且$f,g$互为同伦逆,则称$X,Y$同伦,记为$X\simeq Y$
+\end{dingyi}
+
+\begin{zhu}
+若$X,Y$同胚,则$X,Y$同伦;若$X,Y$同伦,则$X,Y$不一定同胚
+\end{zhu}
+
+\begin{dingyi}
+对拓扑空间$(X,\mcf)$\\
+若对$A\subset X,i:A\hookrightarrow X$\\
+若$r:X\to A$有$r\circ i=r|_{A}=\id_{A}$\\
+则称$r$为收缩映射,则称$A$为$X$关于$r$的收缩核\\
+若$r:X\to A$为收缩映射且$i\circ r\simeq \id_{X}$\\
+则称$r$为形变收缩,则称$A$为$X$关于$r$的形变收缩核\\
+若$r:X\to A$为收缩映射且$i\circ r\mathop{\simeq}\limits^{A} \id_{X}$\\
+则称$r$为强形变收缩,则称$A$为$X$关于$r$的强形变收缩核\\
+若$r:X\to \{x_0\}$为形变收缩,则称$X$为可缩的,即$X\simeq \{x_0\}$
+\end{dingyi}
+
+\begin{zhu}
+形变收缩$r$诱导的伦移$H_{r}$关于$t$变化时存在$a\in A$有$H_{r}(a,t)$可变;
+强形变收缩$r$诱导的伦移$H_{r}$关于$t$变化时任意$a\in A$有$H_{r}(a,t)=a$;
+\end{zhu}
+
+\begin{dingli}
+对拓扑空间$(X,\mcf)$\\
+若$X\simeq \{x_0\}$,则$X$为道路连通的且对任意$x\in X$,有$\{x\}$为$X$的形变收缩核
+\end{dingli}
+
+\begin{zhu}
+以下为常见的形变收缩:\\
+考虑$n$维Euclidean空间$\R^n$\\
+若$U\subset\R^n$为凸集,则存在$r:U\to\{u_0\}$为强形变收缩\\
+若$T_0=T^2\backslash\{t_0\}$,则存在$r:T_0\to S^{1}\vee S^{1}$为强形变收缩\\
+若$TONG=D^{n}\times[0,1]\backslash\{d_0\}$\\
+则存在$r:TONG\to (S^{n-1}\times[0,1])\cup(D^{n}\times{0})$为强形变收缩\\
+若$BING\  HOUSE=D^{n}\times[0,1]\backslash(\text{上洞}\cup\text{下洞})$\\
+则存在$r:BING\ HOUSE\to \{b_0\}$为形变收缩\\
+若$COMB=\{(0,1)\}\cup([0,1]\times\{0\})\cup\bigcup_{n=1}^{\infty}(\{\frac{1}{n}\}\times[0,1])$\\
+则存在$r:COMB\to \{(0,0)\}$为形变收缩$($不强$)$
+\end{zhu}
+
+\begin{dingyi}
+对拓扑空间$(X,\mcf)$\\
+若$a,b$为$X$上从$x$到$y$的道路且$a\simeq b$且$H$为从$a$到$b$的伦移\\
+若对任意$t\in[0,1]$,有$h_t:[0,1]\to X, s\mapsto H(s,t)$为$X$上从$x$到$y$的道路\\
+则称$H$为从$a$到$b$的道路伦移,则称$a,b$为道路同伦,记为$a\simeq b$
+\end{dingyi}
+
+\begin{dingyi}
+对拓扑空间$(X,\mcf)$\\
+道路同伦$a\simeq b$为$X$上从$x$到$y$的道路的等价关系\\
+则称$\langle a\rangle$为$X$上从$x$到$y$的道路类\\
+则称$X$上从$x_0$到$x_0$的道路为以$x_0$为基点的闭道路\\
+则称闭道路所在的道路类为闭道路类\\
+记$\pi_1(X,x_0)=\{\langle l_{x_0}\rangle|l_{x_0}\text{为}X\text{上从}x_0\text{到}x_0\text{的闭道路}\}$
+\end{dingyi}
+
+\begin{dingli}
+对拓扑空间$(X,\mcf)$\\
+若$a_1,a_2$为$X$上从$x$到$y$的道路且$b_1,b_2$为$X$上$X$上从$y$到$z$的道路\\
+若$a_1\simeq a_2$且$b_1\simeq b_2$,则$a_1b_2\simeq a_2b_2$,即$\langle a\rangle\langle b\rangle =\langle ab\rangle$
+\end{dingli}
+
+\begin{dingli}
+Fundamental Group:\\
+对拓扑空间$(X,\mcf)$\\
+对任意$x_0\in X$,以闭道路类的乘积为$\pi_1(X,x_0)$上的运算构成群\\
+则称$\pi_1(X,x_0)$为$X$上以$x_0$为基点的基本群
+\end{dingli}
+
+\begin{zhu}
+道路伦移表达式:\\
+\footnotesize{
+$H(s,t)=\begin{cases} a(\frac{4s}{1+t})&0 \leq s\leq\frac{1+t}{4}\\ b(s-1-t)&\frac{1+t}{4}\leq s\leq\frac{2+t}{4}\\ c(\frac{4s-2-t}{2-t})&\frac{2+t}{4}\leq s\leq1\end{cases}$
+$or=\begin{cases} a(\frac{2s}{1+t})&0 \leq s\leq\frac{1+t}{2}\\ x_0&\frac{1+t}{2}\leq s\leq1\end{cases}$
+$or=\begin{cases} a(2s)&0 \leq s\leq\frac{1-t}{2}\\ a(1-t)&\frac{1-t}{2}\leq s\leq\frac{1+t}{2}\\ a(2-2s)&\frac{1+t}{2}\leq s\leq1\end{cases}$}
+\end{zhu}
+
+\begin{dingyi}
+对拓扑空间$(X,\mcf)$\\
+若$a:[0,1]^n\to X$为连续映射且对任意$t\in\partial([0,1]^n)$,有$a(t)=x_0$\\
+则称$a$为$X$上以$x_0$为基点的$n$维闭道路\\
+若$a,b$为$X$上以$x_0$为基点的$n$维闭道路且$a\simeq b$且$H$为从$a$到$b$的伦移\\
+若对任意$t\in[0,1]$,有$h_t:[0,1]^n\to X, s\mapsto H(s,t)$为$X$上以$x_0$为基点的$n$维闭道路\\
+则称$H$为从$a$到$b$的$n$维道路伦移,则称$a,b$为$n$维道路同伦,记为$a\simeq_n b$\\
+$n$维道路同伦$a\simeq_n b$为$X$上的以$x_0$为基点的$n$维闭道路等价关系\\
+则称$\langle a\rangle$为$X$上以$x_0$为基点的$n$维闭道路类\\
+记$\pi_n(X,x_0)=\{\langle l_{x_0}\rangle|l_{x_0}\text{为}X\text{上从}x_0\text{到}x_0\text{的}n\text{维闭道路}\}$\\
+若$X$为道路连通的且$\pi_1(X,x_0)\cong\{0\}$,则称$X$为单连通的
+\end{dingyi}
+
+\begin{dingli}
+对拓扑空间$(X,\mcf)$\\
+若$a,b$为$X$上以$x_0$为基点的$n$维闭道路,定义$ab(t,\cdots)=\begin{cases}a(2t,\cdots)&0\leq t\leq \frac{1}{2}\\ b(2t-1,\cdots)&\frac{1}{2}\leq t\leq 1\end{cases}$\\
+则有$\langle a\rangle\langle b\rangle=\langle ab\rangle$,以$n$维闭道路类的乘积为$\pi_n(X,x_0)$上的运算构成群\\
+则称$\pi_n(X,x_0)$为$X$上以$x_0$为基点的$n$维同伦群
+\end{dingli}
+
+\begin{dingli}
+对拓扑空间$(X,\mcf)$\\
+若$\langle a\rangle$为$X$上从$x_0$到$x_1$的道路类,记$\langle a\rangle_{\#}:\pi_1(X,x_0)\to\pi_1(X,x_1),\alpha\mapsto \langle a\rangle^{-1}\alpha\langle a\rangle$\\
+则$\langle a\rangle_{\#}$为$X$上从基点$x_0$到基点$x_1$的推送同构
+\end{dingli}
+
+\begin{zhu}
+若$X$为道路连通的,对任意$x_0,x_1\in X$,有$\pi_1(X,x_0)\cong \pi_1(X,x_1)$
+\end{zhu}
+
+\begin{dingli}
+对$n$维Euclidean空间$\R^n$\\
+若$n=1$,则$\pi_1(S^1,x_0)\cong \Z$,即有同构$\pi_1(S^1,x_0)\to \Z,\langle\text{逆时针绕}n\text{圈}\rangle\mapsto n$\\
+若$n>1$,则$\pi_1(S^n,x_0)\cong\{0\}$,即对任意球面上的绳套均可取下
+\end{dingli}
+
+\begin{dingyi}
+对拓扑空间$(X,\mcf),(Y,\mcg)$\\
+若$f:X\to Y$为连续映射,记$f_{\pi}:\pi_1(X,x_0)\to \pi_1(X,f(x_0)),\langle a\rangle\mapsto \langle f\circ a\rangle$\\
+则$f_{\pi}$为$f$诱导的基本群同态
+\end{dingyi}
+
+\begin{zhu}
+对$i:U\hookrightarrow V$,则$i_{\pi}:\pi_1(U,x_0)\to\pi_1(V,x_0),\langle a\rangle_{U}\mapsto\langle a\rangle_{V}$
+\end{zhu}
+
+\begin{dingli}
+对拓扑空间$(X,\mcf),(Y,\mcg),(Z,\mcl)$\\
+若对$\pi_1(X,x_0)$,则$(\id_{X})_{\pi}=\id_{\pi_1(X,x_0)}$\\
+若$f:X\to Y,g:Y\to Z$为连续映射,则$(g\circ f)_{\pi}=g_{\pi}\circ f_{\pi}$
+\end{dingli}
+
+\begin{dingli}
+对拓扑空间$(X,\mcf),(Y,\mcg)$\\
+若$f,g:X\to Y$为连续映射且$f\simeq g$且$H$为从$f$到$g$的伦移\\
+记$a:[0,1]\to X,t\mapsto H(x_0,t)$为道路,则$g_{\pi}=\langle a\rangle_{\#}\circ f_{\pi}:\pi_1(X,x_0)\to \pi_1(Y,g(x_0))$\\
+且若$f\mathop{\simeq}\limits^{\{x_0\}}g$,则$f_{\pi}=g_{\pi}$
+\end{dingli}
+
+\begin{dingli}
+Homotopy Invariance:\\
+对拓扑空间$(X,\mcf),(Y,\mcg)$\\
+若$X\simeq Y$且$f:X\to Y$为同伦映射,则$f_{\pi}:\pi_{1}(X,x_0)\to\pi_1(Y,f(x_0))$为同构
+\end{dingli}
+
+\begin{dingli}
+对拓扑空间$(X,\mcf),(Y,\mcg)$\\
+若$X\simeq Y$且$X,Y$为道路连通的,则对任意$x_0\in X,y_0\in Y$,有$\pi_1(X,x_0)\cong \pi_1(Y,y_0)$\\
+若$A\subset X$为形变收缩核且$i:A\hookrightarrow X$,则$i_{\pi}:\pi_{1}(A,a_0)\to\pi_1(X,a_0)$为同构\\
+若$X$为可缩的,则$X$为单连通的,则$\pi_1(X,x_0)\cong\{0\}$
+\end{dingli}
+
+\begin{dingli}
+van Kampen:\\
+对拓扑空间$(X,\mcf),(Y,\mcg)$\\
+若$X\cap Y\neq\varnothing$且$X,Y$为$X\cup Y$的开子集且$X,Y$为道路连通的\\
+对任意群$H$和$x_0\in X\cap Y$,若有同态$\xi_{X}:\pi_1(X,x_0)\to H,\xi_{Y}:\pi_1(Y,x_0)\to H$\\
+若有$(i_{X\cup Y}^{X})_{\pi}\circ(i_{X}^{X\cap Y})_{\pi}=(i_{X\cup Y}^{Y})_{\pi}\circ(i_{Y}^{X\cap Y})_{\pi}$且$\xi_{X}\circ(i_{X}^{X\cap Y})_{\pi}=\xi_{Y}\circ(i_{Y}^{X\cap Y})_{\pi}$\\
+则存在唯一同态$\eta:\pi_1(X\cup Y,x_0)\to H$,有$\xi_{X}=\eta\circ(i_{X\cup Y}^{X})_{\pi}$且$\xi_{Y}=\eta\circ(i_{X\cup Y}^{Y})_{\pi}$\\
+即下面图表交换:
+\begin{center}
+    $\begin{tikzcd}
+     & \pi_1(X,x_0) \ar[dr,"(i_{X\cup Y}^{X})_{\pi}"'] \ar[drr,"\xi_{X}"] & & \\
+    \pi_1(X\cap Y,x_0) \ar[ur,"(i_{X}^{X\cap Y})_{\pi}"] \ar[dr,"(i_{Y}^{X\cap Y})_{\pi}"'] & & \pi_1(X\cup Y,x_0) \ar[r,dashed,"\eta"{overlay,fill=white,yshift=-5.5pt,pos=0.4}] & H \\
+     & \pi_1(Y,x_0) \ar[ur,"(i_{X\cup Y}^{Y})_{\pi}"] \ar[urr,"\xi_{Y}"'] & & 
+    \end{tikzcd}$
+\end{center}
+\end{dingli}
+
+\begin{zhu}
+以下为生成元和关系的定理叙述:\\
+对$X,Y$为开子集且$X\cap Y\neq\varnothing$,有$X\cup Y,X\cap Y$为道路连通的\\
+记$i:X\cap Y\hookrightarrow X,j:X\cap Y\hookrightarrow Y,p:X\hookrightarrow X\cup Y,q:Y\hookrightarrow X\cup Y$\\
+对$x_0\in X\cap Y$,若$\pi_1(X,x_0)$有表出$<C\mid R>$且$\pi_1(Y,x_0)$有表出$<D\mid S>$\\
+对$\pi_1(X\cap Y,x_0)$有表出$<E\mid T>$,对任意$e\in E$\\
+取$e_{C}\in C$,有$\pi_1(X,x_0)$中计算得$i_{\pi}(e)$;取$e_{D}\in D$,有$\pi_1(Y,x_0)$中计算得$j_{\pi}(e)$\\
+记$\widetilde{E}=\{p_{\pi}(e_C)^{-1}q_{\pi}(e_D)|e\in E\}$\\
+则$\pi_1(X\cup Y,x_0)$有表出$<C_{p_{\pi}}\cup D_{q_{\pi}}\mid R_{p_{\pi}}\cup S_{q_{\pi}}\cup \widetilde{E}>$\\
+即$\pi_1(X\cup Y,x_0)\cong (\pi_1(X,x_0)*\pi_1(Y,x_0))/N$\\
+其中$N$为自由积中包含所有$i_{\pi}(e)^{-1}j_{\pi}(e)\ (e\in\pi_1(X\cap Y,x_0))$的字的最小正规子群\\
+特别地,若$X\cap Y$为单连通的,则$\widetilde{E}=\varnothing$\\
+特别地,若$X$为单连通的,则$\widetilde{E}=\{q_{\pi}(e_{D})|e\in E\}$且$C_{p_{\pi}}=R_{p_{\pi}}=\varnothing$
+\end{zhu}
+
+\begin{dingli}
+对$n$维拓扑流形$M$\\
+对亏格为$g$的不可定向闭曲面$gP^2$\\
+则$\pi_1(gP^2,x_0)$有表出$<\alpha_1,\cdots,\alpha_g\mid \alpha_1\alpha_1\cdots\alpha_g\alpha_g>$\\
+对亏格为$g$的可定向闭曲面$gT^2$\\
+则$\pi_1(gT^2,x_0)$有表出$<\alpha_1,\beta_1,\cdots,\alpha_g,\beta_g\mid \alpha_1\beta_1\alpha_1^{-1}\beta_1^{-1}\cdots\alpha_g\beta_g\alpha_g^{-1}\beta_g^{-1}>$
+\end{dingli}
+
+\begin{zhu}
+以下为常见的基本群表出:\\
+当$n=1$时,则$\pi_1(S^{1})$有表出$<c\mid\varnothing>$\\
+当$n>1$时,则$\pi_1(S^{n})$有表出$<\varnothing\mid\varnothing>$\\
+对$2$个相切圆周的并$S^{1}\vee S^{1}$,取$X,Y$为强形变收缩后的开子集且$X\cup Y=S^{1}\vee S^{1}$\\
+则$\pi(X,x_0)$有表出$<\langle a\rangle_{X}\mid\varnothing>$且$\pi(Y,x_0)$有表出$<\langle a\rangle_{Y}\mid\varnothing>$且$X\cap Y$为可缩的\\
+则$\pi(S^{1}\vee S^{1})$有表出$<\langle a\rangle_{X\cup Y},\langle b\rangle_{X\cup Y}\mid\varnothing>$\\
+对$n$个相切圆周的并$S^{1}\vee\cdots\vee S^{1}$,即每个圆周取一点后粘合得到商空间\\
+则$\pi(S^{1}\vee\cdots\vee S^{1})$有表出$<\gamma_1,\cdots,\gamma_n\mid\varnothing>$\\
+对环面$T^2$,考虑粘合得到环面的正方形$aba^{-1}b^{-1}$的分解$X\cup Y$\\
+其中$X$为开圆盘且$Y$为方环面且$X\cap Y$为开圆环\\
+由$Y$可强形变收缩为正方形四边粘合的空间同胚于$S^{1}\vee S^{1}$且$x_0$为正方形顶点\\
+由$X\cap Y$可形变收缩为圆周且$y_0$为圆周上一点\\
+则$\pi_1(Y,x_0)$有表出$<\langle a\rangle_{Y},\langle b\rangle_{Y}\mid\varnothing>$且$\pi_1(X\cap Y,y_0)$有表出$<\langle c\rangle_{X\cap Y}\mid\varnothing>$\\
+由$Y$上从$x_0$到$y_0$的道路$w$,有$w_{\#}:\pi_1(Y,x_0)\to\pi_1(Y,y_0)$且$\langle c\rangle_{Y}=\alpha\beta\alpha^{-1}\beta^{-1}$\\
+则$\pi_1(Y,y_0)$有表出$<\alpha,\beta\mid\varnothing>=<w_{\#}(\langle a\rangle_{Y}),w_{\#}(\langle b\rangle_{Y})\mid\varnothing>$\\
+由van Kampen定理:则$\pi_1(T^2)$有表出$<\alpha,\beta\mid\alpha\beta\alpha^{-1}\beta^{-1}>$\\
+对$X=\bigcup\limits_{n=1}^{\infty}\{(x,y)\in\R^2|(x-\frac{1}{n})^2+y^2=\frac{1}{n^2}\}$\\
+则$X$为道路连通的且$S^{1}\subset X\subset\R^2\backslash\{(0,)\}$,则$\pi(X)\neq\{0\}$\\
+但$X$不为单连通的且$Y=(\R^2\backslash X)\cup\{(0,0)\}$不为单连通的\\
+且$X\cap Y=\{(0,0)\}$为单连通的且$X\cup Y=R^2$为单连通的\\
+则van Kampen定理无法运用于Hawaiian earring
+\end{zhu}
+
+\begin{dingyi}
+对拓扑空间$X$\\
+有$E,B$为拓扑空间且$p:E\to B$为连续映射\\
+若$f:X\to B$为连续映射且$f^{\uparrow}:X\to E$为连续映射且$f=p\circ f^{\uparrow}$,即下面图表交换:
+\begin{center}
+    $\begin{tikzcd}
+     & E \ar[d,"p"] \\
+    X \ar[ur,dashed,"f^{\uparrow}"] \ar[r,"f"'] & B 
+    \end{tikzcd}$
+\end{center}
+则称$f^{\uparrow}$为$f$关于$p$的提升\\
+若对任意$f:X\to B$和$f$关于$p$的提升$f^{\uparrow}$\\
+则对任意伦移$F:X\times[0,1]\to B,F(x,0)=f(x)$\\
+存在$F^{\uparrow}:X\times[0,1]\to E,F^{\uparrow}(x,0)=f^{\uparrow}(x)$为$F$关于$p$的伦移,即下面图表交换:
+\begin{center}
+    $\begin{tikzcd}
+     & & & E \ar[dd,"p"] \\
+    X \ar[drrr,"f"'] \ar[urrr,"f^{\uparrow}"] \ar[rr,"\id\times0"{overlay,fill=white,yshift=-5.5pt}] & & X\times[0,1] \ar[dr,"F"] \ar[ur,dashed,"F^{\uparrow}"'] & \\
+     & & & B 
+    \end{tikzcd}$
+\end{center}
+则称$X$为关于$p$可同伦提升的\\
+若对任意$X$关于$p$可同伦提升的,则称$p$为Hurewicz纤维化\\
+若对任意$[0,1]^{n}$关于$p$课同伦提升的,则称$p$为Serre纤维化\\
+则称$E$为全空间,则称$B$为底空间,则称$p^{-1}(b)$为$b\in B$上的纤维
+\end{dingyi}
+
+\begin{dingli}
+对拓扑空间$X$\\
+有$E,B$为拓扑空间且$p:E\to B$为连续映射\\
+若有$a^{\uparrow}$为$a$关于$p$的提升且$b^{\uparrow}$为$b$关于$p$的提升\\
+若$a\simeq b$且$a^{\uparrow}(0)=b^{\uparrow}(0)$,则$a^{\uparrow}\simeq b^{\uparrow}$
+\end{dingli}
+
+\begin{dingli}
+对拓扑空间$X$\\
+有$E,B$为拓扑空间且$p:E\to B$为连续映射且$p$为满射\\
+若对任意$b\in B$,存在$U_{b}\subset B$为$b$的开邻域和互不相交的开集族$\{V_{b,\lambda}|\lambda\in\Lambda\}\subset \mcp(E)$\\
+有$p^{-1}(U_{b})=\bigcup\limits_{\lambda\in\Lambda}V_{b,\lambda}$且对任意$\lambda\in\Lambda$,有$p|_{V_{b,\lambda}}:V_{b,\lambda}\to U_{b}$为同胚映射\\
+则称$(E,p)$为$B$上的复迭空间,则称$p$为复迭映射\\
+则称$E$为全空间,则称$B$为底空间,则称$p^{-1}(b)$为$b\in B$上的纤维\\
+若$p$为复迭映射且$E$为单连通的,则称$(E,p)$为$B$上的泛复迭空间或万有复迭空间
+\end{dingli}
+
+\begin{dingli}
+对拓扑空间$X$\\
+有$E,B$为拓扑空间且$p:E\to B$为复迭映射且$f:X\to B$为连续映射\\
+若$F:X\times[0,1]\to B,F(x,0)=f(x)$为伦移且$f^{\uparrow}$为$f$关于$p$的提升\\
+则存在唯一伦移$F^{\uparrow}:X\times[0,1]\to E,F^{\uparrow}(x,0)=f^{\uparrow}(x)$为$F$关于$p$的提升
+\end{dingli}
+
+\begin{dingli}
+对拓扑空间$X$\\
+有$E,B$为拓扑空间且$p:E\to B$为复迭映射且$X=\{x_0\}\subset B$\\
+若$b:[0,1]\to B$为$B$上的道路且$e\in p^{-1}(b(0))$\\
+则存在唯一$E$上的道路$b^{\uparrow}:[0,1]\to E,b^{\uparrow}(0)=e$为$b$关于$p$的提升
+\end{dingli}
+
+\begin{zhu}
+一般地,任何纤维化上的道路都总是可以提升的\\
+特别地,同伦的提升和道路的提升在复迭映射上有唯一性
+\end{zhu}
+
+\begin{dingli}
+对拓扑空间$X$\\
+有$E,B$为拓扑空间且$p:E\to B$为复迭映射且$X$为道路连通的\\
+若$f_1^{\uparrow}:X\to E,f_2^{\uparrow}:X\to E$均为$f:X\to B$关于$p$的提升\\
+且存在$x_0\in X$,有$f_1^{\uparrow}(x_0)=f_2^{\uparrow}(x_0)$,则对任意$x\in X$,有$f_1^{\uparrow}(x)=f_2^{\uparrow}(x)$
+\end{dingli}
+
+\begin{zhu}
+复迭空间的纤维都是离散空间\\
+对于复迭空间,若底空间为道路连通的,则全空间的任意两根纤维都是相互同胚的\\
+一般的纤维化,若底空间为道路连通的,则全空间的任意两根纤维都为同伦等价的
+\end{zhu}
+
+\begin{dingyi}
+对拓扑空间$X$\\
+有$E,B$为拓扑空间且$p:E\to B$为复迭映射且$B$为道路连通的\\
+若对任意$b\in B$,有$|p^{-1}(b)|=n$,则称$p$为有限复迭映射$(\ n$层复迭映射$)$\\
+若对任意$b\in B$,有$|p^{-1}(b)|=\infty$,则称$p$为有限复迭映射
+\end{dingyi}
+
+\begin{dingli}
+对拓扑空间$X$\\
+有$E,B$为拓扑空间且$p:E\to B$为复迭映射\\
+则对任意$e\in E$,有$p_{\pi}:\pi_1(E,e)\to\pi_1(B,p(e))$为单射
+\end{dingli}
+
+\begin{dingli}
+对拓扑空间$X$\\
+有$E,B$为拓扑空间且$p:E\to B$为复迭映射且$b\in B,e\in p^{-1}(b)$\\
+则对任意$G\leq\pi_1(B,b)$,存在$e'\in p^{-1}(b)$,有$G=p_{\pi}(\pi_1(E,e'))$\\
+当且仅当存在$\alpha\in\pi_1(B,b)$,有$G=\alpha^{-1}p_{\pi}(\pi_1(E,e'))\alpha$
+\end{dingli}
+
+\begin{dingli}
+对拓扑空间$X$\\
+有$E,B$为拓扑空间且$p:E\to B$为复迭映射\\
+则对任意$b\in B$,有双射$\tau_{b}:\{ap_{\pi}(\pi_1(E,e))|a\in\pi_1(B,b)\}\to p^{-1}(b)$\\
+若$(E,p)$为泛复迭空间,则有双射$\tau:\pi_1(B,b)\to p^{-1}(b)$
+\end{dingli}
+
+\begin{dingyi}
+对拓扑空间$X$\\
+若对任意$x\in X$,存在$U_{x}$为$x$的邻域且$U_{x}$为道路连通的\\
+对$i:U_{x}\hookrightarrow X$,有$i_{\pi}:\pi_1(U_{x},x)\to \pi_1(X,x)$为平凡同态\\
+则称$X$为半局部单连通的
+\end{dingyi}
+
+\begin{dingli}
+对拓扑空间$B$\\
+若$B$为道路连通的且$B$为局部道路连通的\\
+则存在$B$上的泛复迭空间当且仅当$B$为半局部单连通的
+\end{dingli}
+
+\begin{dingli}
+对拓扑空间$B$\\
+若$B$为道路连通的且$B$为局部道路连通的且$B$为半局部单连通的\\
+则对任意$b\in B$且$G\leq \pi_1(B,b)$,存在拓扑空间$E$和$p:E\to B$为复迭映射\\
+存在$e\in p^{-1}(b)$,有$p_{\pi}(\pi_1(E,e))=G$
+\end{dingli}
+
+\begin{dingli}
+Lifting Criterion:\\
+对拓扑空间$X$\\
+有$E,B$为拓扑空间且$p:E\to B$为复迭映射且$(E,p)$为泛复迭空间\\
+若$X$为道路连通的且$X$为局部道路连通的且$f:X\to B$为连续映射\\
+对$x\in X,b=f(x),e\in p^{-1}(b)$\\
+则存在$f^{\uparrow}$为$f$关于$p$的提升且$f^{\uparrow}(x)=e$当且仅当$f_{\pi}(\pi_1(X,x))\subset p_{\pi}(\pi(E,e))$
+\[\text{即}
+\begin{tikzcd}
+ & (E,e) \ar[d,"p"]\\
+(X,x) \ar[ur,dashed,"f^{\uparrow}"] \ar[r,"f"'] & (B,b)
+\end{tikzcd}
+\Longleftrightarrow
+\begin{tikzcd}
+ & \pi_1(E,e) \ar[d,"p_{\pi}"]\\
+\pi_1(X,x) \ar[ur,dashed,"f^{\uparrow}_{\pi}"] \ar[r,"f_{\pi}"'] & \pi_1(B,b)
+\end{tikzcd}
+\]
+\end{dingli}
+
+\begin{dingli}
+对拓扑空间$X$\\
+有$E,B$为拓扑空间且$p:E\to B$为复迭映射且$(E,p)$为泛复迭空间\\
+则对任意$q:X\to B$为复迭映射,存在$p^{\uparrow}$为$p$关于$q$的提升
+\end{dingli}
+
+\begin{dingyi}
+对拓扑空间$B$\\
+若对$(E_1,p_1),(E_2,p_2)$为$B$上的复迭空间,存在$h:E_1\to E_2$为连续映射且$p_1=p_2\circ h$\\
+则称$h$为$B$上的复迭空间的同态\\
+若对$(E_1,p_1),(E_2,p_2)$为$B$上的复迭空间,存在$h:E_1\to E_2$为同胚映射且$p_1=p_2\circ h$\\
+则称$h$为$B$上的复迭空间的同构,则称$(E_1,p_1),(E_2,p_2)$为复迭等价的
+\end{dingyi}
+
+\begin{dingli}
+对拓扑空间$B$\\
+若$E_1,E_2$为道路连通的且$E_1,E_2$为局部道路连通的\\
+则$(E_1,p_1),(E_2,p_2)$为复迭等价的\\
+当且仅当$(E_1,p_1),(E_2,p_2)$决定的$G_1,G_2\leq \pi_1(B,b)$的共轭类相同
+\end{dingli}
+
+\begin{dingyi}
+对拓扑空间$B$\\
+若对$(E,p)$为$B$上的复迭空间,存在$h:E\to E$为同胚映射且$p=p\circ h$\\
+则称$h$为$(E,p)$的复迭变换\\
+记$G=\{h|h\text{为}(E,p)\text{上的复迭变换}\}$,定义自然的乘法为映射复合\\
+则称$G$为$(E,p)$的复迭变换群,记为$\scd(E,p)$\\
+若对$(E,p)$为$B$上的复迭空间,有$p_{\pi}(\pi_1(E,e))\lhd\pi_1(B,b)$\\
+则称$p$为正则的复迭映射
+\end{dingyi}
+
+\begin{dingli}
+对拓扑空间$B$\\
+若对$(E,p)$为$B$上的复迭空间且$h_1,h_2\in\scd(E,p)$,存在$e_0\in E$,有$h_1(e_0)=h_2(e_0)$\\
+则对任意$e\in E$,有$h_1(e)=h_2(e)$
+\end{dingli}
+
+\begin{dingli}
+对拓扑空间$B$\\
+若对$(E,p)$为$B$上的复迭空间且$e_1,e_2\in E$\\
+则存在$h\in\scd(E,p),h(e_1)=e_2$当且仅当$p(e_1)=p(e_2)$且$p_{\pi}(\pi_1(E,e_1))=p_{\pi}(\pi_1(E,e_2))$\\
+若对$(E,p)$为$B$上的泛复迭空间且$e_1,e_2\in E$\\
+则存在$h\in\scd(E,p),h(e_1)=e_2$当且仅当$p(e_1)=p(e_2)$
+\[\text{即}
+\begin{tikzcd}
+(E,e_1) \ar[r,dashed,"h"] \ar[d,"p"'] & (E,e_2) \ar[d,"p"]\\
+(B,b) \ar[r,"\id"'] & (B,b)
+\end{tikzcd}
+\Longleftrightarrow
+\begin{tikzcd}
+\pi_1(E,e_1) \ar[r,dashed,"h_{\pi}"] \ar[d,"p_{\pi}"'] & \pi_1(E,e_2) \ar[d,"p_{\pi}"]\\
+\pi_1(B,b) \ar[r,"\id_{\pi}"'] & \pi_1(B,b)
+\end{tikzcd}
+\]
+\end{dingli}
+
+\begin{dingli}
+对拓扑空间$B$\\
+若对$(E,p)$为$B$上的复迭空间且$b\in B$,则$p$为正则的复迭映射\\
+当且仅当对任意$e_1,e_2\in p^{-1}(b)$,有$p_{\pi}(\pi_1(E,e_1))=p_{\pi}(\pi_1(E,e_2))$\\
+当且仅当对任意$e_1,e_2\in p^{-1}(b)$,存在唯一$h\in\scd(E,p)$,有$h(e_1)=e_2$
+\end{dingli}
+
+\begin{dingli}
+对拓扑空间$B$\\
+若对$(E,p)$为$B$上的复迭空间且$p$为正则的复迭映射\\
+对任意$e\in E,b=p(e)$,记$q_{e}:\pi_1(B,b)\to\scd(E,p),\alpha\mapsto h$\\
+其中$a\in\alpha,a(0)=e,a^{\uparrow}(0)=e',h(e)=e'$,则$q_{e}$为满射\\
+对任意$b\in B,e\in p^{-1}(b)$,则$\scd(E,p)\cong \pi_1(B,b)/p_{\pi}(\pi_1(E,e))$\\
+特别地,若$(E,p)$为$B$上泛复迭空间,则$\scd(E,p)\cong \pi_1(B,b)$
+\end{dingli}
+
+
+%\end{document}

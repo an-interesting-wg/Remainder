@@ -1,0 +1,353 @@
+%\documentclass[12pt,oneside,a4paper]{book}
+
+%\usepackage{amsmath}
+%\usepackage{mathtools}
+%\usepackage{amsfonts}
+%\usepackage{unicode-math}
+%\usepackage{geometry}
+%\usepackage{ctex}
+
+%\begin{document}
+
+%\setcounter{chapter}{0}
+\setcounter{section}{0}
+\setcounter{subsection}{0}
+
+\chapter{基本概念}
+
+\begin{dingyi}$\\ $
+    常微分方程:只含有$1$个自变量的微分方程\\
+    偏微分方程:含有$2$个及以上自变量的微分方程\\
+    方程的阶数:方程内未知函数的最高阶导数
+\end{dingyi}
+
+\begin{dingyi}对于$F\left(x,y,\frac{\d y}{\d x},...,\frac{d^n y}{d x^n}\right)=0$\\ 
+    线性常微分方程:$F$为关于各个变元的一次有理整式\\
+    非线性常微分方程:$F$不为关于各个变元的一次有理整式
+\end{dingyi}
+
+\begin{dingyi}对于$F\left(x,y,\frac{\d y}{\d x},...,\frac{d^n y}{d x^n}\right)=0$\\
+    方程的解: $y=\varphi(x)$（显式解）/ $\varphi(x,y)=0$（隐式解）满足方程\\
+    方程的通解: $y=\varphi(x,c_1,...,c_n)$（显式解）/ $\varphi(x,y,c_1,...,)=0$（隐式解）满足方程\\
+    积分曲线:解在$Oxy$平面上描绘出的曲线（通解则为一族曲线）
+\end{dingyi}
+
+\begin{dingyi}对于$F\left(x,y,\frac{\d y}{\d x},...,\frac{d^n y}{d x^n}\right)=0$\\
+    给定了初值条件: $y(x_0)=y_0,\frac{\d y}{\d x}|_{x_0}=y_0^{(1)},...,\frac{\d^{n-1} y}{\d x^{n-1}}|_{x_0}=y_0^{(n-1)}$\\
+    此问题称为定解问题（初值问题）,所求得的解称为满足方程初值条件的解
+\end{dingyi}
+
+\begin{dingyi}$\\$
+    微分方程组:多个自变量与因变量之间的多个关系式\\
+    相空间:不含自变量,由因变量（未知函数）构成的空间\\
+    轨线:积分曲线在相空间的投影
+\end{dingyi}
+
+\begin{dingyi}对于$\frac{\d (Y)}{\d t}=f\left(Y,t\right)\quad Y\in D\subset \R^n$\\
+    驻定: $f\left(Y,t\right)$与$t$无关\\
+    非驻定: $f\left(Y,t\right)$与$t$有关,此时可做变换:
+    $\begin{cases*} \frac{\d (Y)}{\d \tau}=f\left(Y,t\right)\\ \frac{\d t}{\d \tau}=1 \end{cases*}$变为驻定\\
+    平衡解（驻定解/奇点）:对驻定而言，$f(Y)=0$所解得的相空间中的点$Y*$
+\end{dingyi}
+
+\begin{dingyi}对驻定微分方程组\\
+    记过$Y$的解为$\varphi(t;Y)$,记$\varphi_t(Y)=\varphi(t;Y)$为含参数$t$关于$Y$的映射（视$t$为参数）\\
+    动力系统:此映射满足$\varphi_0(Y)=Y$,$\varphi_{t_1+t_2}(Y)=\varphi_{t_1}(\varphi_{t_2}(Y))$
+\end{dingyi}
+
+\begin{dingyi}Jacobi行列式\\
+    对$n$个变元的$m$个函数$y_i=f_i(x_1,...,x_n)\quad (i=1,2,...m)$\\
+    \[J=\frac{\partial (y_1,...,y_m)}{\partial (x_1,...,x_n)}=
+    \begin{bmatrix*}
+        \frac{\partial y_1}{\partial x_1}&\frac{\partial y_1}{\partial x_2}&\cdots&\frac{\partial y_1}{\partial x_n}\\
+        \frac{\partial y_2}{\partial x_1}&\frac{\partial y_2}{\partial x_2}&\cdots&\frac{\partial y_1}{\partial x_n}\\
+        \vdots&\vdots&\ddots&\vdots\\
+        \frac{\partial y_m}{\partial x_1}&\frac{\partial y_m}{\partial x_2}&\cdots&\frac{\partial y_m}{\partial x_n}
+    \end{bmatrix*}\]
+    当$m=n$时\\若$det J=0$,则$y_1,...,y_n$线性相关\\ 若$det J\neq 0$,则$y_1,...,y_n$线性无关
+\end{dingyi}
+
+\begin{dingyi}Wronsky行列式$($对常微分方程/方程组的解而言$)$\\
+    对$x_i(t)\in \C^n[a,b]\, (i=1,2,...,n)$\\
+    \[W[x_1,x_2,...,x_n]=W(t)=
+    \begin{vmatrix*}
+        x_1&x_2&\cdots&x_n\\
+        x_1'&x_2'&\cdots&x_n'\\
+        \vdots&\vdots&\ddots&\vdots\\
+        x_1^{(n-1)}&x_2^{(n-1)}&\cdots&x_n^{(n-1)}
+    \end{vmatrix*}\]
+    则$x_1,x_2,...,x_n$线性相关$\Leftrightarrow W(t)\equiv0 \quad t\in [a,b]$\\
+    则$x_1,x_2,...,x_n$线性无关$\Leftrightarrow W(t)\neq0 \quad t\in [a,b]$\\
+    对$X_i(t)=\begin{bmatrix*} x_{1i}(t)\\x_{2i}(t)\\ \vdots\\x_{ni}(t)\end{bmatrix*}\,(i=1,2,...,n)\,x_{ij}\in \C[a,b]$\\
+    \[W[X_1,X_2,...,X_n]=W(t)=
+    \begin{vmatrix*}
+        x_{11}&x_{12}&\cdots&x_{1n}\\
+        x_{21}&x_{22}&\cdots&x_{2n}\\
+        \vdots&\vdots&\ddots&\vdots\\
+        x_{n1}&x_{n2}&\cdots&x_{nn}
+    \end{vmatrix*}\]
+    当$X_1,X_2,...,X_n$线性相关时, $W(t)\equiv0 \quad t\in [a,b]$\\
+    当$X_1,X_2,...,X_n$线性无关时, $W(t)\neq0 \quad t\in [a,b]$
+\end{dingyi}
+
+\chapter{基本解法}
+
+变量分离方程$\rm{I}$:\[ \frac{\d y}{\d x}=f(x)g(y)\]
+
+\begin{jie}$\\$
+    \[\frac{1}{g(y)}\d y=f(x)\d x\]
+    \[\int \frac{1}{g(y)}=\int f(x)\]
+\end{jie}
+
+变量分离方程$\rm{II}$:\[\frac{\d y}{\d x}=\varphi(\frac{y}{x})\]
+
+\begin{jie}$\\$
+    \[\frac{\d \left(\frac{y}{x}\right)}{x}=\frac{\varphi \left(\frac{y}{x}\right)-\frac{y}{x}}{x}\]
+\end{jie}
+
+变量分离方程$\rm{III}$:\[\frac{\d y}{\d x}=\frac{a_1x+b_1y+c_1}{a_2x+b_2y+c_2}\]
+
+\begin{jie}$\\$
+    \[\frac{a_1}{a_2}=\frac{b_1}{b_2} \Rightarrow \frac{\d (a_2x+b_2y)}{\d x}=a_2+b_2\frac{k(a_2x+b_2y)+c_1}{(a_2x+b_2y)+c_2}\]
+    \[\frac{a_1}{a_2}\neq \frac{b_1}{b_2} \Rightarrow \text{求交点} \alpha,\beta,\frac{\d (y-\beta)}{\d (x-\alpha)}=\frac{a_1+b_1\frac{y-\beta}{x-\alpha}}{a_2+b_2\frac{y-\beta}{x-\alpha}}\]
+\end{jie}
+
+\[ \frac{\d y}{\d x}=f(ax+by+c)\] 
+\[ yf(xy)\d x+xg(xy)\d y=0\]
+\[ x^2\frac{\d y}{\d x }=f(xy)\]
+\[ \frac{\d y}{\d x}=xf\left(\frac{y}{x^2}\right)\]
+\[ M(x,y)(x\d x+y\d y)+N(x,y)(x\d y +y\d x)=0\] 
+
+\begin{center}以上形式的方程均可通过适当变量代换化为变量分离方程\end{center}
+
+常数变易法:\[\frac{\d y}{\d x}=P(x)y+Q(x)\]
+
+\begin{jie}$\\$
+    对于$\frac{\d y }{\d x}=P(x)y$,由变量分离可解得$y=C\e^{\int P(x)\d x}$\\
+    常数变易得$y=C(x)\e^{\int P(x)\d x}$,带入可知$\frac{\d C(x)}{\d x}\e ^{\int P(x)\d x}=Q(x)$\\
+    则原方程通解为\[y=\e^{\int P(x)\d x}\left(\int Q(x)\e^{-\int P(x)\d x}+\tilde{C}\right)\]
+\end{jie}
+
+Bernoulli方程:\[\frac{\d y }{\d x}=P(x)y+Q(x)y^n\quad (n\neq0,1)\]
+
+\begin{jie}$\\$
+    由原方程可得$\frac{\d y^{1-n}}{\d x}=(1-n)y^{-n}\frac{\d y}{\d x}=(1-n)P(x)y^{1-n}+(1-n)Q(x)$
+    则由常数变易可知通解为\[y^{1-n}=\e^{\int (1-n)P(x)\d x}\left(\int (1-n)Q(x)\e^{-\int (1-n)P(x)\d x +\tilde{c}} \right)\]
+\end{jie}
+
+恰当微分方程:\[M(x,y)\d x+N,(x,y)\d y=0=\d u(x,y)\]
+
+充要条件:\[\frac{\partial M}{\partial y}=\frac{\partial N}{\partial x}\]
+\begin{center}$M,N$连续且有一阶连续偏导\end{center}
+
+\begin{zhu}
+    必要性:对$u$求偏导\ 充分性:对$M$积分（视$y$为参数）后对$y$求导,验证全微分
+\end{zhu}
+
+通解:
+\[\int M(x,y)\d x+\int\left[\int N(x,y)-\frac{\partial \int M \d x}{\partial y}\right]\d y=0\]
+
+积分因子:
+\[\mu (x,y)\text{使得}\mu M\d x+\mu N\d y=0\text{恰当微分方程}\] 
+
+充要条件:
+\[N\frac{\partial \mu}{\partial x}-M\frac{\partial \mu}{\partial y}=\left(\frac{\partial M}{\partial y}-\frac{\partial N}{\partial x}\right)\mu\] 
+
+\begin{zhu}当$\mu=\mu(x)$时,有$\frac{\d \mu}{\d x}=\frac{\frac{\partial M}{\partial y}-\frac{\partial N}{\partial x}}{N}\d x$;当$\mu=\mu(y)$时,有$\frac{\d \mu}{\d y}=\frac{\frac{\partial M}{\partial y}-\frac{\partial N}{\partial x}}{-M}\d y$
+\end{zhu}
+
+一阶隐式微分方程$\rm{I}$:
+\[y=f(x,y') \quad or \quad x=f(y,y')\] 
+
+\begin{jie}对第一种情况:\\
+    引入参数$p=y'$
+    \[p=\frac{\partial f}{\partial x}+\frac{\partial f}{\partial p}\frac{\d p}{\d x}\]
+    解一阶微分方程得$p=\varphi(x,c)$或$x=\psi(p,c)$
+    \[y=f\left(x,\varphi(x,c)\right)\ \text{或}\ y=f\left(\psi(p,c),p\right)\]
+\end{jie}
+
+一阶隐式微分方程$\rm{II}$:
+\[F(x,y')=0 \quad or \quad F(y,y')=0\] 
+
+\begin{jie}对第一种情况:\\
+    记$p=y'=\frac{\d p}{\d x}$,$F(x,p)$表示$Oxp$上的曲线\\
+    取参数$t$表示曲线为$\begin{cases*}x=\varphi (t)\\y=\psi(t)\end{cases*}$则$\d y=\psi(t)\varphi'(t)\d t$\\
+    则原方程通解为$\begin{cases*}x=\varphi (t)\\y=\int \psi(t)\varphi'(t)\d t+c \end{cases*}$注意第二种情况$\begin{cases*}x=\int \frac{\varphi'(t)}{\psi(t)}\d t+c\\y=\varphi(t)\end{cases*}$
+\end{jie}
+
+Riccati方程:
+
+\[\frac{\d y}{\d x }=P(x)y^2+Q(x)y+R(x)\]
+
+\begin{zhu}
+    \center{若能找到特解$y_0$,令$y=y_0+\tilde{y}$,方程变为伯努利方程}
+\end{zhu}
+
+\chapter{进阶解法}
+
+齐次线性微分方程:
+\[\frac{\d^{n} y}{\d x^{n}}+a_1(x)\frac{\d^{n-1} y}{\d x^{n-1}}+\cdots+a_n(x)y=0\]
+
+\begin{jie}$\\$
+    对解$y_1,\cdots,y_n$,有叠加原理,即$C_1y_1+\cdots+C_ny_n$为解\\
+    记$Y(x)=\begin{bmatrix*} y(x)&y'(x)&\cdots&y^{(n-1)}(x)\end{bmatrix*}^{T}$\\
+    考虑初值条件为$Y(x_0)=e_{i},i=1,\cdots,n$的$n$个解$y_1,\cdots,y_n$\\
+    则$W[y_1,\cdots,y_n]=W(x_0)\neq 0$,即$y_1,\cdots,y_n$线性无关\\
+    由解空间的维数可知:通解为$y(x)=C_1y_1(x)+\cdots+C_{n}y_n(x)$
+\end{jie}
+
+一般线性微分方程:
+\[\frac{\d^{n} y}{\d x^{n}}+a_1(x)\frac{\d^{n-1} y}{\d x^{n-1}}+\cdots+a_n(x)y=f(x)\]
+
+\begin{jie}$\\$
+    考虑齐次线性微分方程的通解: $y_0(x)=C_1y_1(x)+\cdots+C_{n}y_n(x)$\\
+    若有特解$\widetilde{y}$,由叠加原理,则通解为$y(x)=\widetilde{y}(x)+y_0(x)$\\
+    对于特解的一般求法,可考虑常数变易法:令$\widetilde{y}(x)=C_1(x)y_1(x)+\cdots+C_n(x)y_n(x)$\\
+    赋予特殊的条件$C_1'y_1^{(i)}+\cdots+C_n'y_n^{(i)}=0,i=0,1,\cdots,n-1$\\
+    则可特殊的求出$C_1(x),\cdots,C_n(x)$和其对应的特解$\widetilde{y}(x)$
+\end{jie}
+
+常系数齐次线性微分方程:
+\[L[y]=\frac{\d^{n}y}{\d x^{n}}+a_1\frac{\d^{n-1}y}{\d x^{n-1}}+\cdots+a_ny=0\]
+
+\begin{jie}$\\$
+    令$y=\e^{\lambda x}$,则$L[\e^{\lambda x}]=\e^{\lambda x}(\lambda^n+a_1\lambda^{n-1}+\cdots+a_n)=0$\\
+    记特征方程为$F(\lambda)=\lambda^n+a_1\lambda^{n-1}+\cdots+a_n=0$\\
+    记特征方程的解$\lambda$为特征根\\
+    若特征根$\lambda$重数为$1$\\
+    则当$\lambda\in\R$时,有$\e^{\lambda x}$为解\\
+    则当$\lambda\in\C\backslash\R$时,有$\e^{\re \lambda x}\cos(\im\lambda x),\e^{\re \lambda x}\sin(\im\lambda x)$为解\\
+    若特征根$\lambda$重数为$k>1,k\in\N^*$\\
+    则当$\lambda=0$时,有$1,x,\cdots,x^{k-1}$为解\\
+    则当$\lambda\C\backslash\{0\}$时,有$L[z\e^{\lambda x}]=\e^{\lambda x}L_{1}[z]$,则$F(\mu+\lambda)\e^{(\mu+\lambda)x}=F_1(\mu)\e^{(\mu+\lambda)x}$\\
+    即$F(\mu+\lambda)=F_{1}(\mu)$,有$\e^{\lambda x},x\e^{\lambda x},\cdots,x^{k-1}\e^{\lambda x}$为解\\
+    或有$\e^{\re \lambda x}\cos(\im\lambda x),\e^{\re \lambda x}\sin(\im\lambda x),\cdots,x^{k-1}\e^{\re \lambda x}\cos(\im\lambda x),x^{k-1}\e^{\re \lambda x}\sin(\im\lambda x)$为解
+\end{jie}
+
+Euler方程:
+\[x^{n}\frac{\d^{n}y}{\d x^{n}}+a_1x^{n-1}\frac{\d^{n-1}y}{\d x^{n-1}}+\cdots+a_ny=0\]
+
+\begin{jie}$\\$
+    令$x=\e^{t}$,则$L[t]=\frac{\d^{n}y}{\d t^{n}}+b_1\frac{\d^{n-1}y}{\d t^{n-1}}+\cdots+b_ny=0$\\
+    则特征方程为$F(\lambda)=\lambda\cdots(\lambda-n+1)+a_1\lambda\cdots(\lambda-n+2)+\cdots+a_n=0$\\
+    若特征根$\lambda$重数为$1$\\
+    则当$\lambda\in\R$时,有$x^{\lambda}$为解\\
+    则当$\lambda\in\C\backslash\R$时,有$x^{\re\lambda}\cos(\im\lambda\ln|x|),x^{\re\lambda}\sin(\im\lambda\ln|x|)$为解\\
+    若特征根$\lambda$重数为$k>1,k\in\N^*$\\
+    则当$\lambda\in\C$时,有$x^{\lambda},x^{\lambda}\ln|x|,\cdots,x^{\lambda}\ln^{k-1}|x|$为解\\
+    或有$x^{\re\lambda}\cos(\im\lambda\ln|x|),\cdots,x^{\re\lambda}\ln^{k-1}|x|\sin(\im\lambda\ln|x|)$为解
+\end{jie}
+
+常系数一般线性微分方程:
+\[L[y]=\frac{\d^{n}y}{\d x^{n}}+a_1\frac{\d^{n-1}y}{\d x^{n-1}}+\cdots+a_ny=f(x)\]
+
+\begin{jie}$\\$
+    若$f(x)=\e^{\lambda x}P(x)$,其中特征根$\lambda$重数为$k$且$P(x)$为多项式且$\deg P=m$\\
+    则有待定系数解$\widetilde{y}(x)=p(x)x^{k}\e^{\lambda x}$,其中$p(x)$为多项式且$\deg p=m$\\
+    若$f(x)=\e^{\re\lambda x}(P(x)\cos(\im\lambda x)+Q(x)\sin(\im\lambda x))$\\
+    其中特征根$\lambda$重数为$k$且$P(x),Q(x)$为多项式\\
+    则有待定系数解$\widetilde{y}(x)=(p(x)\cos(\im\lambda x)+q(x)\sin(\im\lambda x))x^{k}\e^{\re\lambda x}$,其中$p,q$为多项式\\
+    特别地,若$P(x)=0$或$Q(x)=0$\\
+    则有待定系数解$\widetilde{y}(x)=p(x)\e^{\lambda x}$,求出后分离实部虚部即可
+\end{jie}
+
+\begin{zhu}
+Laplace变换:$\scl[f(t)]=\int_{0}^{\infty}\e^{-st}f(t)\d t$对方程Laplace变换求解Laplace逆变换得解\\
+\[\scl[1]=\frac{1}{s},\scl[t]=\frac{1}{s^{2}},\scl[t^{n}]=\frac{n!}{s^{n+1}}\] 
+\[\scl[\e^{zt}]=\frac{1}{s-z},\scl[t\e^{zt}]=\frac{1}{(s-z)^{2}},\scl[t^n\e^{zt}]=\frac{n!}{(s-z)^{n+1}}\]
+\[\scl[\sin wt]=\frac{w}{s^2+w^2},\scl[\cos wt]=\frac{s}{s^2+w^2}\]
+\end{zhu}
+
+线性微分方程组:
+\[X'=AX+F\]
+\[\text{其中}A(t)=\begin{bmatrix*}a_{11}(t)&\cdots&a_{1n}(t)\\ \vdots&\ddots&\vdots\\ a_{n1}(t)&\cdots&a_{nn}(t) \end{bmatrix*},X(t)=\begin{bmatrix*}x_1(t)\\ \vdots\\ x_n(t)\end{bmatrix*},F(t)=\begin{bmatrix*}f_1(t)\\ \vdots\\ f_n(t)\end{bmatrix*}\]
+\[\text{其中求导为对各变元函数的求导,有}(A+B)'=A'+B',(AX)'=A'X+AX'\]
+
+\begin{jie}$\\$
+    记基解矩阵$\Phi(t)=\begin{bmatrix*}X_1(t)&\cdots&X_n(t)\end{bmatrix*}$,其中$X_1,\cdots,X_n$线性无关且$\Phi'=A\Phi$\\
+    若存在$t_0$,有$\det\Phi(t)\neq 0$,则对任意$t$,有$\det \Phi(t)\neq0$\\
+    若$\Phi(t)$为基解矩阵且$C$为常数矩阵且$\det C\neq0$,则$\Phi(t)C$为基解矩阵\\
+    若$A(t)$为常数矩阵有$v_1,\cdots,v_n$个线性无关的特征向量和对应的特征值$\lambda_1,\cdots,\lambda_n$\\
+    则有基解矩阵$\Phi(t)=\begin{bmatrix*}\e^{\lambda_1t}v_1,\cdots,\e^{\lambda_nt}v_n\end{bmatrix*}$
+    若有初值条件$X(t_0)$和基解矩阵$\Phi(t)$\\
+    则\[X(t)=\Phi(t)\Phi^{-1}(t_0)X(t_0)+\Phi(t)\int_{t_0}^{t}\Phi^{-1}(s)f(s)\d s\]
+    若有初值条件$X(t_0)$和基解矩阵$\e^{At}=\Phi(t)\Phi^{-1}(0)$\\
+    则\[X(t)=\e^{A(t-t_0)}X(t_0)+\int_{t_0}^{t}\e^{A(t-t_0)}f(s)\d s\]
+\end{jie}
+
+\chapter{存在唯一}
+
+以下区域$\Omega=[x_0-a,x_0+a]\times[y_0-b,y_0+b]$
+
+\begin{dingli}
+    对$\frac{\d y}{\d x}=f(x,y)$,有$f$在闭区域$\Omega$连续且关于$y$满足Lipschitz条件,即
+    \[ \exists L>0,|f(x,y_1)-f(x,y_2)|\leqslant L|y_1-y_2|\]
+    则存在唯一的解$y=\varphi(x)$定义在$|x-x_0|\leqslant h$连续且满足初值条件$\varphi(x_0)=y_0$\\
+    其中$h=\min\{a,\frac{b}{M}\},M=\max\limits_{(x,y)\in\Omega}|f(x,y)|$
+\end{dingli}
+
+\begin{zhu}
+    Picard迭代:\\
+    令$\varphi_0=y_0,\varphi_{n}=y_0+\int_{x_0}^{x}f(z,\varphi_{n-1}(z))\d z,n\in\N^*$\\
+    则$|\varphi_{n+1}(x)-y_0|\leq M|x-x_0|$,则$|\varphi_{n+1}(x)-\varphi_{n}(x)|\leq\frac{ML^n}{(n+1)!}|x-x_0|^{n+1}$\\
+    由Weierstrass判别法可知:$\{\varphi_n\}$在$\Omega$上一致收敛,则$\lim\limits_{n\to\infty}\varphi_n=\varphi$为方程的连续解\\
+    若还有连续解$\psi$,则$|\psi(x)-\varphi_{n}(x)|\leq\frac{ML^n}{(n+1)!}|x-x_0|^{n+1}$,则$\psi=\lim\limits_{n\to\infty}\varphi_n=\varphi$
+\end{zhu}
+
+\begin{dingli}
+    对$\frac{\d y}{\d x}=f(x,y)$,有$f$在闭区域$\Omega$连续且关于$y$满足Lipschitz条件,即
+    \[ \exists L>0,|f(x,y_1)-f(x,y_2)|\leqslant L|y_1-y_2|\]
+    则解可延拓至$\Omega^{c}$的部分区域且满足方程
+\end{dingli}
+
+\begin{zhu}
+    对$x_0\pm h$运用解的存在唯一性即可延拓$($积分曲线的延伸$)$\\
+    则$y=\varphi(x)$可延拓至无界区间或$y=\varphi(x)$可延拓至有界开区间且$(x,y)$在开区间边界领域内无界
+\end{zhu}
+
+\begin{dingli}
+    对$\frac{\d y}{\d x}=f(x,y)$,有$f$在闭区域$\Omega_1\cup\Omega_2\subset\Omega$连续且关于$y$满足Lipschitz条件,即
+    \[ \exists L>0,|f(x,y_1)-f(x,y_2)|\leqslant L|y_1-y_2|\]
+    若有两解$\varphi(x),(x_0,y_0)\in\Omega_1$和$\psi(x),(\widetilde{x}_0,\widetilde{y}_0)\in\Omega_2$,则在$\Omega_1\cap\Omega_2$上
+    \[|\varphi(x)-\psi(x)|\leq|\varphi(x_0)-\psi(x_0)|\e^{L|x-x_0|}\]
+\end{dingli}
+
+\begin{zhu}
+    令$V(x)=(\varphi(x)-\psi(x))^2,W(x)=(\varphi(-x)-\psi(-x))^2$\\
+    则$V'(x)\leq 2L\cdot V(x), W'(x)\geq -2L\cdot W(x)$,则$\frac{\d V(x)\e^{-2Lx}}{\d x}\leq 0\leq \frac{\d W(x)\e^{2Lx}}{\d x}$\\
+    则$V(x)\leq V(x_0)\e^{2L(x-x_0)},x_0\leq x$且$ W(x)\leq W(x_0)\e^{2L(x_0-x)},x\leq x_0$
+\end{zhu}
+
+\begin{dingli}
+    对$\frac{\d y}{\d x}=f(x,y)$,有$f$在闭区域$\Omega_1\cup\Omega_2\subset\Omega$连续且关于$y$满足Lipschitz条件,即
+    \[ \exists L>0,|f(x,y_1)-f(x,y_2)|\leqslant L|y_1-y_2|\]
+    对任意$\varepsilon>0$,则存在$\delta>$,若$(x_0-\widetilde{x}_0)^2+(y_0-\widetilde{y}_0)^2\leq \delta^2$\\
+    若有两解$\varphi(x,x_0,y_0),\in\Omega_1$和$\varphi(x,\widetilde{x}_0,\widetilde{y}_0),(\widetilde{x}_0,\widetilde{y}_0)\in\Omega_2$\\
+    则有$|\varphi(x,x_0,y_0)-\varphi(x,\widetilde{x}_0,\widetilde{y}_0)|<\varepsilon$
+\end{dingli}
+
+\begin{zhu}
+    由积分曲线为有界闭集,则考虑开方体覆盖$\bigcup\limits_{i}B_{\delta_i}(x_{0i},y_{0i})$\\
+    记每个开方体$B_{\delta_i}(x_{0i},y_{0i})$的Lipschitz常数为$L_i$,记$M=\sup\limits_{(x,y)\in\Omega}|f(x,y)|,\delta=\min\limits_{i}\delta_i$\\
+    则$\bigcup\limits_{i}B_{\delta_i}(x_{0i},y_{0i})$的Lipschitz常数为$L=\max\{\frac{4M}{\delta},\max\limits_{i}L_i\}$
+\end{zhu}
+
+\begin{dingli}
+    对$\frac{\d y}{\d x}=f(x,y)$,有$f$在闭区域$\Omega_1\cup\Omega_2\subset\Omega$连续且关于$y$满足Lipschitz条件,即
+    \[ \exists L>0,|f(x,y_1)-f(x,y_2)|\leqslant L|y_1-y_2|\]
+    若$\frac{\partial f}{\partial y}$在$\Omega$上连续,则$y=\varphi(x,x_0,y_0)$在$|x-x_0|\leqslant h$内连续可微
+\end{dingli}
+
+\begin{zhu}
+    由原方程可得\[\frac{\partial \varphi}{\partial x}=f(x,\varphi(x,x_0,y_0))\]
+    考虑$\varphi(x)=\varphi(x,x_0,y_0)$和$\psi(x)=\varphi(x,x_0+\Delta x,y_0)$\\
+    则$\psi(x)-\varphi(x)=-\int_{x_0}^{x_0+\Delta x}f(x,\psi)\d x+\int_{x_0}^{x}\frac{\partial f(x,\varphi+\theta(\varphi-\psi))}{\partial y}(\psi-\varphi)\d x$\\
+    则$\Delta x\to 0$,有$\psi(x)-\varphi(x)\to -f(x_0,y_0)\Delta x+\int_{x_0}^{x}\frac{\partial f(x,\varphi)}{\partial y}(\psi-\varphi)\d x$\\
+    则\[\frac{\partial \varphi}{\partial x_0}=-f(x_0,y_0)\e^{\int_{x_0}^{x}\frac{\partial f(x,\varphi)}{\partial y}\d x}\]
+    考虑$\varphi(x)=\varphi(x,x_0,y_0)$和$\psi(x)=\varphi(x,x_0,y_0+\Delta y)$\\
+    则$\psi(x)-\varphi(x)=\Delta y+\int_{x_0}^{x}\frac{\partial f(x,\varphi+\theta(\varphi-\psi))}{\partial y}(\psi-\varphi)\d x$\\
+    则$\Delta y\to 0$,有$\psi(x)-\varphi(x)\to \Delta y+\int_{x_0}^{x}\frac{\partial f(x,\varphi)}{\partial y}(\psi-\varphi)\d x$\\
+    则\[frac{\partial \varphi}{\partial y_0}=\e^{\int_{x_0}^{x}\frac{\partial f(x,\varphi)}{\partial y}\d x}\]
+\end{zhu}
+
+%\end{document}

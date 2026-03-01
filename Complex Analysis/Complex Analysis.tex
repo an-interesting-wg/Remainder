@@ -1,0 +1,819 @@
+%\documentclass[12pt,oneside,a4paper]{book}
+
+%\usepackage{amsmath}
+%\usepackage{mathtools}
+%\usepackage{amsfonts}
+%\usepackage{unicode-math}
+%\usepackage{geometry}
+%\usepackage{ctex}
+
+%\begin{document}
+
+%\setcounter{chapter}{0}
+\setcounter{section}{0}
+\setcounter{subsection}{0}
+
+\chapter{解析函数}
+
+\begin{dingyi}
+对复平面$\C$上点集$E$,有对应法则$f$\\
+对任意$z=x+\i y\in E,x,y\in\R$\\
+存在$\omega=f(z)=u(x,y)+\i v(x,y)\in \C$,其中$u(x,y),v(x,y)$为实二元函数\\
+则称$\omega=f(z)$为复变函数
+\end{dingyi}
+
+\begin{dingyi}
+对$E\subset \C$上复变函数$\omega=f(z)$和$E$的聚点$z_0$\\
+若存在$\alpha\in \C$,对任意$\varepsilon>0$,存在$\delta>0$\\
+当$z\in E$且$0<|z-z_0|<\delta$时,有$|f(z)-\alpha|<\varepsilon$\\
+则称$\omega=f(z)$在$z_0$处有极限,记为$\lim\limits_{z\to z_0}f(z)=\alpha$
+\end{dingyi}
+
+\begin{dingyi}
+对$E\subset \C$上复变函数$\omega=f(z)$和$E$的聚点$z_0\in E$\\
+若$\omega=f(z)$在$z_0$处有极限且$\lim\limits_{z\to z_0}f(z)=f(z_0)$\\
+则称$\omega=f(z)$在$z_0$处连续\\
+$\Leftrightarrow$对$z_0=x_0+\i y_0\in E,x_0,y_0\in \R$实二元函数$u(x,y),v(x,y)$在$(x_0,y_0)$连续
+\end{dingyi}
+
+\begin{dingyi}
+对$E\subset \C$上复变函数$\omega=f(z)$和$z_0\in E$\\
+若$f'(z)=\lim\limits_{z\to z_0}\frac{f(z)-f(z_0)}{z-z_0}$存在,则称$\omega=f(z)$在$z_0$处可导\\
+若$\omega=f(z)$在任意$z_0\in E$处可导,则称$\omega=f(z)$在$E$内解析\\
+若$\omega=f(z)$在$z_0\in E$的一个邻域内解析,则称$\omega=f(z)$在$z_0$处解析
+\end{dingyi}
+
+\begin{dingli}
+Cauchy-Riemann条件:\\
+对$E\subset \C$上复变函数$\omega=f(z)=u(x,y)+\i v(x,y)$和$z=x+\i y\in E$\\
+则$f(z)$在$z$处可导\\
+$\Leftrightarrow$在$(x,y)$处,$u(x,y),v(x,y)$可导且$\frac{\partial u}{\partial x}=\frac{\partial v}{\partial y},\frac{\partial u}{\partial y}+\frac{\partial v}{\partial x}=0$\\
+则$f(z)$在$E$内解析\\
+$\Leftrightarrow$在$E$内,$u(x,y),v(x,y)$可导且$\frac{\partial u}{\partial x}=\frac{\partial v}{\partial y},\frac{\partial u}{\partial y}+\frac{\partial v}{\partial x}=0$
+\end{dingli}
+
+\begin{tuilun}
+$f(z)=u(x,y)+\i v(x,y)$在$z=x+\i y$处导数为\\
+$f'(z)=\frac{\partial u}{\partial x}+\i\frac{\partial v}{\partial x}=\frac{\partial v}{\partial y}-\i\frac{\partial u}{\partial y}$
+\end{tuilun}
+
+\begin{dingyi}
+对$E\subset \C$上复变函数$\omega=f(z)=u(x,y)+\i v(x,y)$和$E$内简单曲线$C$\\
+则称$f(z)$沿$C$的积分为$\int_{C}u(x,y)\d x-v(x,y)\d y+\i\int_{C}v(x,y)\d x+u(x,y)\d y$的极限\\
+记$\int_{C}f(z)\d z=\int_{C}u(x,y)\d x-v(x,y)\d y+\i\int_{C}v(x,y)\d x+u(x,y)\d y$\\
+若$z=z(t)=x+\i y=\varphi(t)+\i \psi(t),t\in [a,b]\subset \R$可表示简单光滑曲线$C$的路径\\
+则$\int_{C}f(z)\d z=\int_{a}^{b}f(z(t))z'(t)\d z$
+\end{dingyi}
+
+\begin{dingli}
+Cauchy定理:\\
+对$E\subset \C$上复变函数$\omega=f(z)=u(x,y)+\i v(x,y)$和$z=x+\i y\in E$\\
+考虑有界连通区域$D\subset E$和它的由有限条简单闭合曲线组成的边界$C$\\
+其中路径方向取正向:$\ z$变化时$D$恒在路径左侧\\
+当$f(z)$在$\overline{D}$上解析时,有$\int_{C}f(z)\d z=0$
+\end{dingli}
+
+\begin{dingli}
+Cauchy公式:\\
+对$E\subset \C$上复变函数$\omega=f(z)=u(x,y)+\i v(x,y)$和$z=x+\i y\in E$\\
+考虑有界连通区域$D\subset E$和它的由有限条简单闭合曲线组成的边界$C$\\
+其中路径方向取正向:$\ z$变化时$D$恒在路径左侧\\
+当$f(z)$在$\overline{D}$上解析时,对任意$z_0=x_0+\i y_0\in \overline{D}\backslash C$,有$f(z_0)=\frac{1}{2\pi\i}\int_{C}\frac{f(z)}{z-z_0}\d z$
+\end{dingli}
+
+\begin{tuilun}
+在以上定理条件下\\
+有$f(z)$在$D$上有任意阶导数,即$f^{(n)}(z_0)=\frac{n!}{2\pi\i}\int_{C}\frac{f(z)}{(z-z_0)^{n+1}}\d z$\\
+若$\overline{D}$为$\{z\Big| |z-z_0|\leq r\}\subset E$,则有$|f^{(n)}(z_0)|\leq \frac{n!}{r^n}\max_{|z-z_0|=r}|f(z)|$
+\end{tuilun}
+
+\begin{dingli}
+Liouville定理:\\
+若$f(z)$在$\C$上解析,称$f(z)$为整函数\\
+有界整函数一定恒为常数
+\end{dingli}
+
+\begin{dingli}
+Morera定理:\\
+若$f(z)$在区域$D$上解析,对任意简单闭曲线$C\subset D$,有$\int_{C}f(z)\d z=0$\\
+则$f(z)$在$D$内解析
+\end{dingli}
+
+\chapter{复变级数}
+
+\begin{dingyi}
+对复数序列$\{z_n=x_n+\i y_n\}$和复数$z_0=x_0+\i y_0$\\
+若对于任意$\varepsilon>0$,存在$N\in \N^*$,当$n>N$时,有$|z_n-z_0|<\varepsilon$\\
+则称$\{z_n\}$收敛,记为$\lim\limits_{n\to \infty}z_n=z_0$\\
+$\Leftrightarrow$对于任意$z_0$的一个邻域$U$,存在$N\in \N^*$,当$n>N$时,有$z_n\in U$\\
+$\Leftrightarrow$序列$\{x_n\}\subset \R$收敛于$x_0$且序列$\{y_n\}\subset \R$收敛于$y_0$\\
+若复数级数$\sum\limits_{i=1}^{\infty}z_n$和其部分和$\sum\limits_{i=1}^{N}z_n$,有$\{\sum\limits_{i=1}^{N}z_n|N\in \N^*\}$收敛且$\lim\limits_{N\to \infty}\sum\limits_{i=1}^{N}z_n=C$\\
+则称$\sum\limits_{i=1}^{\infty}z_n$收敛,记为$\sum\limits_{i=1}^{\infty}z_n=C$\\
+若复数级数$\sum\limits_{i=1}^{\infty}|z_n|$收敛,则称$\sum\limits_{i=1}^{\infty}z_n$绝对收敛\\
+$\Leftrightarrow$级数$\sum\limits_{i=1}^{\infty}\re z_n$和$\sum\limits_{i=1}^{\infty}\im z_n$绝对收敛
+\end{dingyi}
+
+\begin{dingyi}
+对$E\subset \C$上复变函数序列$\{f_n(z)\}$和复变函数$f(z)$\\
+若对任意$z\in E$,有$\lim\limits_{n\to \infty}f_n(z)=f(z)$\\
+则称$\{f_n(z)\}$在$E$上收敛,记为$\lim\limits_{n\to \infty}f_n(z)=f(z)$\\
+若对任意$\varepsilon>0$,存在$N_0\in \N^*$,对任意$z\in E$,当$N>N_0$时,有$|f_n(z)-f(z)|<\varepsilon$\\
+则称$\{f_n(z)\}$在$E$上一致收敛于$f(z)$\\
+若$\{f_n(z)\}$在区域$E\subset \C$内解析且在任意有界闭区域$D\subset E$一致收敛于$f(z)$\\
+则称$\{f_n(z)\}$在$E$上内闭一致收敛于$f(z)$\\
+若$\sum\limits_{n=1}^{\infty}f_n(z)$,部分和序列$\{\sum\limits_{n=1}^{N}f_n(z),N\in \N^*\}$在$E$上收敛于$f(z)$\\
+则称$\sum\limits_{n=1}^{\infty}f_n(z)$在$E$上收敛,记为$\sum\limits_{n=1}^{\infty}f_n(z)=f(z)$\\
+若对任意$\varepsilon>0$,存在$N_0\in \N^*$,对任意$z\in E$,当$N>N_0$时,有$|\sum\limits_{n=1}^{N}f_n(z)-f(z)|<\varepsilon$\\
+则称$\sum\limits_{n=1}^{\infty}f_n(z)$在$E$上一致收敛\\
+若$\sum\limits_{n=1}^{\infty}f_n(z)$在区域$E\subset \C$内解析且在任意有界闭区域$D\subset E$一致收敛于$f(z)$\\
+则称$\sum\limits_{n=1}^{\infty}f_n(z)$在$E$上内闭一致收敛于$f(z)$
+\end{dingyi}
+
+\begin{dingli}
+Weierstrass定理:\\
+对$E\subset \C$上复变函数序列$\{f_n(z)\}$和复变函数$f(z)$\\
+有$\{f_n(z)\}$在$E$上解析且$\{f_n(z)\}$在$E$上内闭一致收敛于$f(z)$\\
+则$f(z)$在$E$上解析且$f^{(k)}(z)=\lim\limits_{n\to \infty}f_n^{(k)}(z)$\\
+有$\sum\limits_{n=1}^{\infty}f_n(z)$在$E$上解析且$\sum\limits_{n=1}^{\infty}f_n(z)$在$E$上内闭一致收敛于$f(z)$\\
+则$f(z)$在$E$上解析且$f^{(k)}(z)=\sum\limits_{n=1}^{\infty}f_n^{(k)}(z)$
+\end{dingli}
+
+\begin{dingyi}
+对任意$z_0\in \Z$和$\{\alpha_n\}\subset \C$,幂级数为$\sum\limits_{n=0}^{\infty}\alpha_n(z-z_0)^n$\\
+若幂级数$\sum\limits_{n=0}^{\infty}\alpha_n(z-z_0)^n$在$E$上收敛,记$\sum\limits_{n=0}^{\infty}\alpha_n(z-z_0)^n=f(z)$为和函数\\
+此幂级数的收敛半径$|z-z_0|=R$与实幂级数$\sum\limits_{n=0}^{\infty}|\alpha_n|x^n$相同\\
+对$|z-z_0|<R$上解析函数$f(z)$,泰勒展式$f(z)=\sum\limits_{n=0}^{\infty}\frac{f^{(n)}(z_0)}{n!}(z-z_0)^n$
+\end{dingyi}
+
+\begin{dingli}
+对幂级数$\sum\limits_{n=0}^{\infty}\alpha_n(z-z_0)^n$\\
+若幂级数在$z_1\in \C,z_1\neq z_0$收敛\\
+则对任意$|z-z_0|<|z_1-z_0|$,有$\sum\limits_{n=0}^{\infty}\alpha_n(z-z_0)^n$绝对收敛
+\end{dingli}
+
+\begin{dingli}
+对幂级数$\sum\limits_{n=0}^{\infty}\alpha_n(z-z_0)^n$\\
+若$l=\lim\limits_{n\to\infty}|\frac{\alpha_{n+1}}{\alpha_n}|$或$l=\lim\limits_{n\to\infty}\sqrt[n]{|\alpha_n|}$或$l=\overline{\lim\limits_{n\to\infty}}\sqrt[n]{|\alpha_n|}$\\
+则幂级数$\sum\limits_{n=0}^{\infty}\alpha_n(z-z_0)^n$的收敛半径$R=\frac{1}{l}$
+\end{dingli}
+
+\begin{dingli}
+对幂级数$\sum\limits_{n=0}^{\infty}\alpha_n(z-z_0)^n$\\
+若幂级数有收敛半径$R$,则$\sum\limits_{n=0}^{\infty}\alpha_n(z-z_0)^n$在$|z-z_0|<R$内闭一致收敛\\
+和函数$f(z)=\sum\limits_{n=0}^{\infty}\alpha_n(z-z_0)^n$在$|z-z_0|<R$内解析且$f^{(k)}(z)=\sum\limits_{n=k}^{\infty}\frac{n!}{(n-k)!}\alpha_n(z-z_0)^{n-k}$
+\end{dingli}
+
+\begin{dingli}
+复变函数$f(z)$在$z_0\in \C$内解析\\
+$\Leftrightarrow$复变函数$f(z)$在$z_0\in \C$的某个邻域内有幂级数展式$f(z)=\sum\limits_{n=0}^{\infty}\alpha_n(z-z_0)^n$
+\end{dingli}
+
+\begin{tuilun}
+解析函数的幂级数展式具有唯一性,即为泰勒展式
+\end{tuilun}
+
+\begin{dingyi}
+对复变函数$f(z)$在$z_0$解析且$f(z_0)=0$,则称$f(z)$的零点\\
+对$f(z)$在$z_0$的邻域内的泰勒展式为$f(z)=\sum\limits_{n=0}^{\infty}\alpha_n(z-z_0)^n$\\
+若有正整数$m\in\N^*$,对任意$n\in \N,n<m$,有$\alpha_n=0$且$\alpha_m\neq0$\\
+则称$z_0$为$f(z)$的$m$阶零点,此时$f(z)=(z-z_0)\cdot \varphi(z)$,其中$\varphi(z_0)\neq 0$
+\end{dingyi}
+
+\begin{dingli}
+解析函数零点孤立性\\
+对复变函数$f(z)$在$z_0$解析且$f(z_0)=0$\\
+则$f(z)$在$z_0$的邻域内恒为$0$或$f(z)$在$z_0$的某个邻域内只有唯一零点$z_0$
+\end{dingli}
+
+\begin{tuilun}
+对复变函数$f(z)$在区域$E$内解析且$f(z)$不恒为$0$\\
+则$f(z)$在每个零点有邻域,有$f(z)$在对应的邻域均有唯一零点
+\end{tuilun}
+
+\begin{dingli}
+对复变函数$f(z)$在区域$E$内解析\\
+若$f(z)$在$E$内某个圆盘内恒为$0$,则$f(z)$在$E$上恒为$0$
+\end{dingli}
+
+\begin{dingli}
+解析函数唯一性定理\\
+对复变函数$f(z)$和$g(z)$在区域$E$内解析\\
+对点列$\{z_n\}\subset E$,有$\lim\limits_{n\to \infty}z_n=z_0\in E$且对任意$n_1\neq n_2$,有$z_{n_1}\neq z_{n_2}$\\
+若$f(z_n)=g(z_n)$,则在区域$E$内$f(z)=g(z)$
+\end{dingli}
+
+\begin{dingyi}
+对$\{\beta_n\}\subset\C$和$z_0\in \C$\\
+则称$\sum\limits_{n=-\infty}^{\infty}\beta_n(z-z_0)^n$为Laurent级数\\
+则称$\sum\limits_{n=0}^{\infty}\beta_n(z-z_0)^n$为Laurent级数的解析部分\\ 
+则称$\sum\limits_{n=-\infty}^{-1}\beta_n(z-z_0)^n$为Laurent级数的主要部分
+\end{dingyi}
+
+\begin{dingli}
+对复变函数$f(z)$在圆环$R_1<|z-z_0|<R_2$内解析\\
+那么在圆环内$f(z)$有Laurent展式$f(z)=\sum\limits_{n=-\infty}^{\infty}\beta_n(z-z_0)^n$\\
+其中$\beta_n=\frac{z}{2\pi\i}\int_{\Gamma}\frac{f(z)}{(z-z_0)^{n+1}}\d z$,有$\Gamma$为$|z-z_0|=\rho\in (R_1,R_2)$
+\end{dingli}
+
+\begin{dingli}
+对Laurent级数$\sum\limits_{n=-\infty}^{\infty}\beta_n(z-z_0)^n$\\
+若在圆环$R_1<|z-z_0|<R_2$内Laurent级数内闭一致收敛于和函数$f(z)$\\
+则$f(z)$在圆环$R_1<|z-z_0|<R_2$内Laurent展式即为$\sum\limits_{n=-\infty}^{\infty}\beta_n(z-z_0)^n$
+\end{dingli}
+
+\begin{tuilun}
+解析函数在圆环内Laurent展式唯一
+\end{tuilun}
+
+\begin{dingyi}
+对复变函数$f(z)$\\
+若$f(z)$在圆盘$0<|z-z_0|<R$内解析但在$z_0$不解析\\
+则称$z_0$为$f(z)$的孤立奇点\\
+在圆盘$0<|z-z_0|<R$内$f(z)$的Laurent展式为$f(z)=\sum\limits_{n=0}^{\infty}\beta_n(z-z_0)^n$\\
+则称$z_0$为$f(z)$的可去奇点\\
+若存在正整数$m\in\N^*$,对任意$n\in\Z,n<-m$,有$\beta_n=0$且$\beta_{-m}\neq 0$\\
+则称$z_0$为$f(z)$的$m$阶极点\\
+若不存在正整数$m\in\N^*$满足上述条件\\
+则称$z_0$为$f(z)$的本质奇点
+\end{dingyi}
+
+\begin{dingli}
+对复变函数$f(z)$在圆盘$0<|z-z_0|<R$内解析且$z_0$为$f(z)$的孤立奇点\\
+则$z_0$为$f(z)$的可去奇点\\
+$\Leftrightarrow$极限$\lim\limits_{z\to z_0}f(z)$存在且$\lim\limits_{z\to z_0}f(z)=\beta_0\in\C$\\
+$\Leftrightarrow$存在$\rho\in(0,R]$,有$f(z)$在圆盘$0<|z-z_0|<\rho$内有界\\
+则$z_0$为$f(z)$的极点\\
+$\Leftrightarrow$极限$\lim\limits_{z\to z_0}f(z)$存在且$\lim\limits_{z\to z_0}f(z)=\infty$\\
+则$z_0$为$f(z)$的$m$阶极点\\
+$\Leftrightarrow$极限$\lim\limits_{z\to z_0}(z-z_0)^{m}f(z)$存在且$\lim\limits_{z\to z_0}(z-z_0)^{m}f(z)=\beta_{-m}$\\
+则$z_0$为$f(z)$的本质奇点\\
+$\Leftrightarrow$极限$\lim\limits_{z\to z_0}f(z)$不存在\\
+$\Leftrightarrow$Weierstrass:对任意$c\in\C_{\infty}$,存在圆盘中点列$\{z_n\}$,有$\lim\limits_{n\to \infty}z_n=z_0$且$\lim\limits_{n\to\infty}f(z_n)=c$
+\end{dingli}
+
+\begin{dingyi}
+对复变函数$f(z)$\\
+若$f(z)$在圆环$R<|z|<\infty$内解析\\
+则称$\infty$为$f(z)$的孤立奇点\\
+令$\omega=\frac{1}{z}$,则$g(\omega)=f(z)=f(\frac{1}{\omega})$在圆盘$0<|z|<\frac{1}{R}$内解析\\
+有在圆盘$0<|z|<\frac{1}{R}$内,$g(\omega)$有Laurent展式$\sum\limits_{n=-\infty}^{\infty}\beta_n\omega^n$\\
+则在圆环$R<|z|<\infty$内,$f(z)$有Laurent展式$\sum\limits_{n=-\infty}^{\infty}\alpha_nz^n=\sum\limits_{n=-\infty}^{\infty}\beta_{-n}z^n$\\
+则称$\sum\limits_{n=-\infty}^{0}\alpha_nz^n$为Laurent级数的解析部分\\
+则称$\sum\limits_{n=1}^{\infty}\alpha_nz^n$为Laurent级数的主要部分\\
+若$\alpha_n=0,n=1,2,\cdots$,则称$\infty$为$f(z)$的可去奇点\\
+若存在正整数$m\in\N^*$,对任意$n\in\Z,n>m$,有$\alpha_n=0$且$\beta_{m}\neq 0$\\
+则称$\infty$为$f(z)$的$m$阶极点\\
+若不存在正整数$m\in\N^*$满足上述条件\\
+则称$\infty$为$f(z)$的本质奇点\\
+$($以上定理均可转化为$\infty$的形式$)$
+\end{dingyi}
+
+\begin{dingyi}
+对复变函数$f(z)$\\
+若$f(z)$在$\C$上解析,则称$f(z)$为整函数\\
+若$f(z)$在$\C$上除极点外解析,则称$f(z)$为亚纯函数
+\end{dingyi}
+
+\begin{dingli}
+对整函数$f(z)$\\
+在$\C$上,$f(z)$围绕$\infty$有Laurent展式$\sum\limits_{n=0}^{\infty}\alpha_nz^n$\\
+则$f(z)$恒为常数$\Leftrightarrow$$\infty$为$f(z)$的可去奇点\\
+则$f(z)$为$n\in\N^*$次多项式$\Leftrightarrow$$\infty$为$f(z)$的$n$阶极点\\
+则$f(z)$为无穷次多项式$($超越整函数$)$$\Leftrightarrow$$\infty$为$f(z)$的本质奇点
+\end{dingli}
+
+\begin{dingli}
+对亚纯函数$f(z)$\\
+若$\infty$为$f(z)$的可去奇点或极点\\
+则$f(z)$为有理函数,即$f(z)=\frac{\alpha_0+\alpha_1 z^1+\cdots+\alpha_n z^n}{\beta_0+\beta_1 z^1+\cdots+\beta_m z^m}$,其中$\alpha_n\neq0,\beta_m\neq0$
+\end{dingli}
+
+\begin{dingli}
+代数基本定理:任何$n\in \N^*$次方程至少有$1$个根
+\end{dingli}
+
+\begin{dingyi}
+对复变函数$f(z)$,有$z_0$为$f(z)$的孤立奇点\\
+则存在$R>0$,有$f(z)$在$0<|z-z_0|<R$内解析\\
+则$f(z)$在$z_0$的留数为$\Res(f,z_0)=\frac{1}{2\pi\i}\int_{C}f(z)\d z$,其中$C$为$|z-z_0|=r<R$\\
+考虑$f(z)$在$z_0$处的Laurent展式$f(z)=\sum\limits_{n=-\infty}^{\infty}\beta_n(z-z_0)^n$,此展式在$\C$上一致收敛\\
+则$\Res(f,z_0)=\frac{1}{2\pi\i}\int_{C}\sum\limits_{n=-\infty}^{\infty}\beta_n(z-z_0)^n\d z=\sum\limits_{n=-\infty}^{\infty}\frac{1}{2\pi\i}\int_{C}\beta_n(z-z_0)^n\d z=\beta_{-1}$
+\end{dingyi}
+
+\begin{dingyi}
+对复变函数$f(z)$,有$\infty$为$f(z)$的孤立奇点\\
+则存在$R>0$,有$f(z)$在$R<|z|<\infty$内解析\\
+则$f(z)$在$\infty$的留数为$\Res(f,\infty)=\frac{1}{2\pi\i}\int_{C^{-}}f(z)\d z$,其中$C$为$|z-z_0|=r>R$\\
+在圆环$R<|z|<\infty$内,$f(z)$有Laurent展式$\sum\limits_{n=-\infty}^{\infty}\alpha_nz^n$\\
+则$f(z)$在$\infty$的留数为$\Res(f,\infty)=-\alpha_{-1}$
+\end{dingyi}
+
+\begin{dingli}
+对复变函数$f(z)$,有$z_0$为$f(z)$的孤立奇点\\
+当$z_0$为$f(z)$的$1$阶极点时\\
+留数$\Res(f,z_0)=\lim\limits_{z\to z_0}(z-z_0)f(z)$\\
+若$f(z)=\frac{P(z)}{Q(z)}$,其中$P(z)$在$z_0$解析且$Q(z)$在$z_0$为$1$阶零点\\
+留数$\Res(f,z_0)=\frac{P(z_0)}{Q'(z_0)}$\\
+当$z_0$为$f(z)$的$n$阶极点时\\
+留数$\Res(f,z_0)=\frac{1}{(n-1)!}\lim\limits_{z\to z_0}\frac{\d^{n-1}(z-z_0)^nf(z)}{\d z^{n-1}}$
+\end{dingli}
+
+\begin{dingli}
+对复变函数$f(z)$\\
+在有界区域$E$上$f(z)$除去孤立奇点$z_1,z_2,\cdots,z_m$解析且$E$的边界为简单闭合曲线$C$\\
+则$\int_{C}f(z)\d z=2\pi\i\sum\limits_{n=1}^{m}\Res(f,z_n)$
+\end{dingli}
+
+\begin{dingli}
+Jordan引理:\\
+对复变函数$f(z)$在闭区域$0\leq\theta_1\leq \arg z\leq \theta_2\leq \pi,0\leq R\leq |z|<\infty$上连续\\
+有$\Gamma_r$为$|z|=r>R$在闭区域上的圆弧\\
+若$\lim\limits_{z\to\infty}f(z)=0$,则$\lim\limits_{r\to\infty}\int_{\Gamma_r}f(z)\e^{iz}\d z=0$
+\end{dingli}
+
+\begin{dingli}
+对亚纯函数$f(z)$\\
+有有界区域$E\subset \C$且$E$的边界为$C$,有$f(z)$在$C$上处处解析无零点\\
+则$f(z)$在$E$内至多有有限个零点和极点\\
+考虑$f(z)=(z-z_0)^n\varphi(z)$,其中$z_0$为$f(z)$的零点或极点\\
+有$n\in\Z$且$\varphi(z)$在$z_0$某领域解析无零点\\
+则$\Res(\frac{f'}{f},z_0)=\Res(\frac{n}{z-z_0}+\frac{\varphi'}{\varphi},z_0)=n$\\
+则$\frac{1}{2\pi\i}\int_{C}\frac{f'(z)}{f(z)}\d z=N-P$,其中$N$为零点带阶总数且$P$为极点带阶总数\\
+考虑多值函数$\Ln f(z)$,其导数为$\frac{f'(z)}{f(z)}$\\
+考虑$C$的有限圆盘覆盖$\{O_k\}_{k=1}^{N}$且不含$E$中$f(z)$的零点极点\\
+取$\Ln f(z)$在各个$O_k$的解析分支,在$O_{k}\cap O_{k+1}$上相同,取定$z_k\in O_{k}\cap O_{k+1}$\\
+则$\frac{1}{2\pi\i}\int_{C}\frac{f'(z)}{f(z)}\d z=\frac{1}{2\pi\i}\sum\limits_{k=1}^{N}(\Ln(z_{k+1})-\Ln (z_{k}))=\frac{1}{2\pi}\Delta_C \arg f(z)$
+\end{dingli}
+
+\begin{dingli}
+Rouché定理:\\
+对复变函数$f(z)$和$g(z)$\\
+有有界区域$E\subset\C$且$E$的边界为简单闭合曲线$C$\\
+$f(z)$和$g(z)$在$D$和$C$组成的闭区域$\overline{D}$上解析\\
+若在$C$上$|f(z)|>|g(z)|$,则在$D$上$f(z)$与$f(z)+g(z)$的零点个数相同
+\end{dingli}
+
+\begin{dingli}
+对复变函数$f(z)$\\
+若$f(z)$在圆盘$0<|z-z_0|<R$上解析且存在$M>0$,有$|f(z)|<M$\\
+则存在$\widetilde{f}(z)$在$|z-z_0|<R$上解析且在圆盘$0<|z-z_0|<R$上有$\widetilde{f}(z)=f(z)$
+\end{dingli}
+
+\begin{dingli}
+Hurwitz:\\
+对复变函数$f(z)$\\
+若$\{f_n\}$在区域$E\subset\C$上解析且$\{f_n\}$收敛且内紧一致收敛于$f$\\
+若$\{f_n\}$均无零点,则$f$无零点或$f\equiv0$
+\end{dingli}
+
+\begin{dingli}
+Casorati-Weierstrass:\\
+对复变函数$f(z)$\\
+若$f(z)$在圆盘$0<|z-z_0|<R$上解析且$z_0$为$f(z)$的本质奇点\\
+则对任意$0<r<R$,有$\overline{\{f(z)|0<|z-z_0|<r\}}=\C$\\
+若$f(z)$在$\C$上解析且$\infty$为$f(z)$的可去奇点\\
+则存在$C\in\C$,有$f(z)=C$\\
+若$f(z)$在$\C$上解析且$\infty$为$f(z)$的$n$阶极点\\
+则存在$a_0,\cdots,a_n\in\C$,有$f(z)=\sum\limits_{i=0}^{n}a_iz^i$
+\end{dingli}
+
+\begin{dingli}
+Picard little:\\
+对复变函数$f(z)$\\
+若$f(z)$在$\C$上解析且$f(z)$不为常值函数,则有$|\C\backslash f(\C)|\leq 1$
+\end{dingli}
+
+\begin{dingli}
+Picard great:\\
+对复变函数$f(z)$\\
+若$f(z)$在$0<|z-z_0|<R$上解析且$z_0$为$f(z)$的本质奇点\\
+则对任意$0<r<R$,有$|\C\backslash\{f(z)|0<|z-z_0|<r\}|\leq 1$
+\end{dingli}
+
+\chapter{共形映射}
+
+\begin{dingyi}
+对复变函数$f(z)$\\
+在区域$E\subset\C$解析,对任意$z_1,z_2\in E,z_1\neq z_2$,有$f(z_1)\neq f(z_2)$\\
+则称$f(z)$为单叶解析函数\\
+单叶解析函数作映射具有保角性$($曲线间的夹角大小及方向不变$)$\\
+则把单叶解析函数所确定的双射称为共形映射
+\end{dingyi}
+
+\begin{dingli}
+对复变函数$f(z)$在$z_0$解析\\
+有$\omega_0=f(z_0)$且$f'(z_0)=f''(z_0)=\cdots=f^{(n)}(z_0)=0$,则$z_0$为$f(z)-\omega_0$的$n$阶极点\\
+对充分小正数$\varepsilon>0$,存在$\mu>0$\\
+当$0<|\omega-\omega_0|<\mu$时,有$f(z)-\omega$在$0<|z-z_0|<\varepsilon$内有$n$个$1$阶零点
+\end{dingli}
+
+\begin{dingli}
+对复变函数$f(z)$在区域$E\subset\C$单叶解析\\
+则$f(z)$在$E$内任一点$f'(z)\neq0$
+\end{dingli}
+
+\begin{dingli}
+对复变函数$f(z)$在$z_0$解析\\
+若$f'(z_0)\neq 0$,则$f(z)$在$z_0$的某个邻域单叶解析
+\end{dingli}
+
+\begin{dingli}
+对复变函数$f(z)$在区域$E\subset\C$解析\\
+则$f(E)$为一个区域,记为$E_1=f(E)$\\
+则对$\omega=f(z)$,存在一个在$E_1$上单叶解析的反函数$z=\varphi(\omega)$\\
+且当$\omega_0=f(z_0)$时,有$f'(z_0)\cdot\varphi'(\omega_0)=1$
+\end{dingli}
+
+\begin{dingyi}
+分式线性函数$\omega=\frac{\alpha z+\beta}{\gamma z+\delta}$且$\alpha\delta-\beta\gamma=0$\\
+有反函数$z=\frac{-\delta \omega+\beta}{\gamma \omega-\alpha}$\\
+分式线性函数可由$\omega=z+\alpha,\omega=\e^{\i\theta}z,\omega=rz,\omega=\frac{1}{z}$复合而成\\
+对圆$|z-z_0|=R$,若$z_1,z_2$满足$|z_1-z_0|\cdot|z_2-z_0|=R^2$,则称$z_1,z_2$为关于圆的对称点
+\end{dingyi}
+
+\begin{dingli}
+在$\C_{\infty}$上\\
+分式线性函数把圆映射成圆$($保圆性$)$\\
+任意不同的三个点$z_1,z_2,z_3$映射到任意不同的三个点$\omega_1,\omega_2,\omega_3$的分式线性函数唯一\\
+分式线性函数所确定的映射交比$(\frac{\frac{z_1-z_3}{z_1-z_4}}{\frac{z_2-z_3}{z_2-z_4}})$不变\\
+分式线性函数把圆映射为圆,把圆的对称点映射为圆的对称点
+\end{dingli}
+
+\begin{dingli}
+特殊的分式线性函数:\\
+把上半平面$\Im z>0$共形映射为圆盘$|\omega|<1$:$\omega=\e^{\i\theta}\frac{z-z_0}{z-\overline{z_0}}$\\
+把圆盘$|z|<1$共形映射为圆盘$|\omega|<1$:$\omega=\e^{\i\theta}\frac{z-z_0}{1-\overline{z_0}z}$
+\end{dingli}
+
+\begin{dingli}
+最大模原理:\\
+复变函数$f(z)$在区域$E\subset\C$内解析且$|f(z)|$在$E$内某点达到最大值\\
+则$f(z)$在$E$内恒为常数
+\end{dingli}
+
+\begin{tuilun}
+复变函数$f(z)$在区域$E\subset\C$内解析且$E$的边界为简单闭合曲线$C$\\
+若$f(z)$在$E$和$C$组成的闭区域$\overline{E}$上连续且不恒为常数\\
+则在$\overline{E}$上$|f(z)|$的最大值仅在$C$上取到
+\end{tuilun}
+
+\begin{dingli}
+Schwarz引理:\\
+复变函数$f(z)$在圆盘$|z|<1$解析有$|f(z)|<1$且$f(0)=0$\\
+则在圆盘$|z|<1$内,有$|f(z)|\leq |z|$且$|f'(0)|\leq 1$\\
+若对于$z_0\in\C,0<|z_0|<1$,有$|f(z_0)|=|z_0|$或若$|f'(0)|=1$\\
+则在圆盘$|z|<1$内,有$f(z)=\e^{\i\theta}z$
+\end{dingli}
+
+\begin{dingli}
+Schwarz-Pick引理:\\
+复变函数$f(z)$在圆盘$|z|<1$解析且$|f(z)|<1$且$f(z_1)=w_1,f(z_2)=w_2$\\
+则$|\frac{w_1-w_2}{1-w_1\overline{w}_2}|\leq|\frac{z_1-z_2}{1-z_1\overline{z}_2}|$且$|f'(z_1)|\leq\frac{1-|w_1|^2}{1-|z_1|^2}$\\
+若对$z_1\neq z_2$,有$|\frac{w_1-w_2}{1-w_1\overline{w}_2}|=|\frac{z_1-z_2}{1-z_1\overline{z}_2}|$或$|f'(z_1)|=\frac{1-|w_1|^2}{1-|z_1|^2}$,则$f$为共形映射
+\end{dingli}
+
+\begin{dingli}
+Montel定理:\\
+复变函数族$\{f(z)\}$在区域$E\subset\C$内解析且存在$M>0$,有$|f(z)|<M$\\
+则对任意$\{f_n\}\subset\{f(z)\}$,有子列$\{f_{n_i}\}$内紧一致收敛
+\end{dingli}
+
+\begin{dingli}
+Riemann定理:\\
+对单连通区域$E\subsetneq \C$且$z_0\in E$\\
+则有且仅有一个在$E$上的单叶解析函数$f(z)$\\
+有$f(z_0)=0,f'(z_0)> 0$且将$E$共形映射到$|\omega|<1$
+\end{dingli}
+
+\begin{dingli}
+边界对应定理:\\
+对有界单连通区域$E\subset \C$和其边界简单分段光滑曲线$C$,两者构成闭区域$\overline{E}$\\
+若复变函数$f(z)$在$\overline{E}$上解析且将$C$双射为$|\omega|=1$\\
+则$f(z)$将$E$共形映射到$|\omega|<1$且保持边界对区域的正向性
+\end{dingli}
+
+\begin{dingli}
+对称原理:\\
+对在实轴一侧的区域$E\subset \C$和边界简单分段光滑曲线$C$,其中$C$含一段实轴开区间$I$\\
+若复变函数$f(z)$在$E$内解析且在$E$和$I$上连续,有$f(I)\subset\R$\\
+则在$E$关于实轴对称的区域$E^*$和$I$上扩充定义的$f(z)=\overline{f(\overline{z})}$解析
+\end{dingli}
+
+\chapter{不变度量}
+
+\begin{dingyi}
+对区域$\Omega\subset\C$\\
+若复变函数$\rho:\Omega\to\R$为$\Omega$上连续函数且$\rho(z)\geq 0$\\
+且$\rho$在$\{z\in\Omega|\rho(z)>0\}$上$2$阶连续可微\\
+则称$\rho$为$\Omega$上的度量\\
+若$\rho$为$\Omega$上的度量且$z\in\Omega$且$\xi\in\C$\\
+则称$\|\xi\|_{\rho,z}=\rho(z)|\xi|$为$\xi$在$\rho$上关于$z$的长度\\
+若$\rho$为$\Omega$上的度量且$\gamma:[a,b]\to\Omega$为连续可微曲线\\
+则称$l_{\rho}(\gamma)=\int_{a}^{b}\|\gamma'(t)\|_{\rho,\gamma(t)}\d t=\int_{a}^{b}\rho(\gamma(t))|\gamma'(t)|\d t$为$\gamma$在$\rho$上的长度\\
+若$z_1,z_2\in\Omega$,记$C_{\Omega}(z_1,z_2)=\{\gamma:[0,1]\to\Omega\text{为连续可微曲线}|\gamma(0)=z_1,\gamma(1)=z_2\}$\\
+则称$d_{\rho}(z_1,z_2)=\inf\{l_{\rho}(\gamma)|\gamma\in C_{\Omega}(z_1,z_2)\}$为$z_1,z_2$在$\rho$上的距离
+\end{dingyi}
+
+\begin{dingyi}
+对区域$\Omega_1,\Omega_2\subset\C$\\
+若复变函数$f:\Omega_1\to\Omega_2$为连续可微且$\{z\in\Omega_1|f(z)=0\}$为孤立点集\\
+若$\rho$为$\Omega_2$上的度量,记$f^*\rho(z)=\rho(f(z))|\frac{\partial f}{\partial z}|$为$\Omega_1$上的度量\\
+则称$f^*\rho$为$\rho$关于$f$的拉回度量\\
+若复变函数$f:\Omega_1\to\Omega_2$为连续可微且$\gamma:[a,b]\to\Omega$为连续可微曲线\\
+则称$f_*\gamma=f\circ\gamma$为$\gamma$关于$f$的推进曲线\\
+若复变函数$f:\Omega_1\to\Omega_2$为解析函数且为满射\\
+若对$\rho_1$为$\Omega_1$上的度量且$\rho_2$为$\Omega_2$上的度量且$f^*\rho_2=\rho_1$\\
+则称$f$为$(\Omega_1,\rho_1),(\Omega_2,\rho_2)$的同构
+\end{dingyi}
+
+\begin{dingli}
+对区域$\Omega_1,\Omega_2\subset\C$\\
+若$f$为$(\Omega_1,\rho_1),(\Omega_2,\rho_2)$的同构,即$f^*\rho_2=\rho_1$\\
+则对$\gamma:[a,b]\to\Omega$为连续可微曲线,有$l_{\rho_1}(\gamma)=l_{f^*\rho_2}(\gamma)=l_{\rho_2}(f_*\gamma)$\\
+则对$z_1,z_2\in\Omega_1$,有$d_{\rho_1}(z_1,z_2)=d_{f^*\rho_1}(z_1,z_2)=d_{\rho_2}(f(z_1),f(z_2))$\\
+则对$f^{-1}:\Omega_2\to\Omega_1$,有$f^{-1}$为$(\Omega_2,\rho_2),(\Omega_1,\rho_1)$的同构,即$(f^{-1})^*\rho_1=\rho_2$
+\end{dingli}
+
+\begin{dingli}
+对区域$\Omega_1,\Omega_2,\Omega_3\subset\C$\\
+若$f$为$(\Omega_1,\rho_1),(\Omega_2,\rho_2)$的同构且$g$为$(\Omega_2,\rho_2),(\Omega_3,\rho_3)$的同构\\
+则$g\circ f$为$(\Omega_1,\rho_1),(\Omega_3,\rho_3)$的同构
+\end{dingli}
+
+\noindent 记$D=\{z\in\C|\ |z|<1\}\subset\C$为单位圆盘
+
+\begin{dingyi}
+对区域$D\subset\C$\\
+则称$\rho(z)=\frac{1}{1-|z|^2}$为$D$上的Poincaré度量
+\end{dingyi}
+
+\begin{dingli}
+对区域$D\subset \C$\\
+若$\rho$为$D$上的Poincaré度量且$f:D\to D$为共形映射\\
+则$f$为$(D,\rho),(D,\rho)$的同构\\
+若$\rho$为$D$上的Poincaré度量且$z_1,z_2\in D$\\
+则$(D,\rho)$上的距离$d_{\rho}(z_1,z_2)=\frac{1}{2}\ln(\frac{1+|\frac{z_1-z_2}{1-\overline{z_1}z_2}|}{{1-|\frac{z_1-z_2}{1-\overline{z_1}z_2}|}})$\\
+则$(D,\rho)$上的圆盘$\{z\in D|d_{\rho}(0,z)<R\}=\{z\in D|\ |z|<\frac{\e^{2R}-1}{\e^{2R}+1}\}$\\
+则$(D,\rho)$上的线段$\gamma_{z_1,z_2}(t)=\frac{z_1+\frac{z_2-z_1}{1-\overline{z_1}z_2}t}{1+\overline{z_1}\frac{z_2-z_1}{1-\overline{z_1}z_2}t}$\\
+则$(D,\rho)$为完备的度量空间
+\end{dingli}
+
+\begin{dingli}
+对区域$D\subset \C$\\
+若$\widetilde{\rho}$为$D$上的度量且任意共形映射$f:D\to D$为$(D,\widetilde{\rho}),(D,\widetilde{\rho})$的同构\\
+则存在$C\in\C$,有$\widetilde{\rho}(z)=C\rho(z)$,其中$\rho$为$D$上的Poincaré度量\\
+若$\rho$为$D$上的Poincaré度量且复变函数$f:D\to D$为连续可微且$f^*\rho=\rho$\\
+则$f$为解析函数且为双射,存在$z_0\in D,\theta\in[0,2\pi]$,有$f(z)=\e^{\theta\i}\frac{z-z_0}{1-\overline{z_0}z}$
+\end{dingli}
+
+\begin{dingli}
+对区域$D\subset \C$\\
+若$\rho$为$D$上的Poincaré度量且$f,g$为$(D,\rho),(D,\rho)$的同构\\
+则若$f(0)=0,\frac{\partial f}{\partial z}|_{z=0}=1$,则$f(z)=z$\\
+则若$f(z_0)=g(z_0),\frac{\partial f}{\partial z}|_{z=z_0}=\frac{\partial g}{\partial z}|_{z=z_0}$,则$f=g$
+\end{dingli}
+
+\begin{dingli}
+对区域$D\subset \C$\\
+若$\rho$为$D$上的Poincaré度量且复变函数$f:D\to D$为解析函数\\
+则对任意$z\in D$,有$f^*\rho(z)\leq\rho(z)$\\
+即对任意$\gamma:[0,1]\to D$为连续可微曲线,有$l_{\rho}(f_*\gamma)\leq l_{\rho}(\gamma)$\\
+即对任意$z_1,z_2\in D$,有$d_{\rho}(f(z_1),f(z_2))\leq d_{\rho}(z_1,z_2)$
+\end{dingli}
+
+\begin{dingli}
+Farkas-Ritt:\\
+对区域$D\subset \C$\\
+若复变函数$f:D\to D$为解析函数且$f(D)$为$D$上闭紧集\\
+则存在唯一$z_0\in D$,有$f(z_0)=z_0$,则$\{f_i(z)=f(\cdots f(z))\}$内紧一致收敛于常数函数$z_0$
+\end{dingli}
+
+\begin{dingyi}
+对区域$\C\subset \C$\\
+考虑单位球面$\widehat{\C}$到复平面$\C$的球极投影$p:\widehat{\C}\to\C$\\
+则对任意$z_1,z_2\in\C$,有$\wideparen{p^{-1}(z_1)p^{-1}(z_2)}_{great\ circular}=2\arctan(|\frac{z_1-z_2}{1+z_1\overline{z_2}}|)$\\
+则对任意$z\in\C$,有$\wideparen{p^{-1}(z_1)p^{-1}(0)}_{great\ circular}=2\arctan|z|$\\
+则称$\sigma(z)=\frac{\partial\ 2\arctan|z|}{\partial |z|}=\frac{2}{1+|z|^2}$为$\C$上的Spherical度量
+\end{dingyi}
+
+\begin{dingyi}
+对区域$\Omega\subset \C$\\
+若$\rho$为$\Omega$上的度量且$z\in \Omega$\\
+则称$\kappa_{\Omega,\rho}(z)=-\frac{\Delta\ln\rho(z)}{\rho(z)^2}=-\frac{4\frac{\partial}{\partial z}\frac{\partial}{\partial \overline{z}}\ln\rho(z)}{\rho(z)^2}$为$\rho$在$z$处的曲率
+\end{dingyi}
+
+\begin{zhu}
+以下为常见度量的曲率:\\
+对$\Omega\subset\C$上的Euclidean度量$e$,有$\kappa_{\Omega,e}(z)=0$\\
+对$D\subset\C$上的Poincaré度量$\rho$,有$\kappa_{D,\rho}(z)=-4$\\
+对$\C\subset\C$上的Spherical度量$\sigma$,有$\kappa_{\C,\sigma}(z)=1$\\
+对$\{z\in\C|\ |z|<R\}\subset\C$上的度量$\rho_{R}^{C}(z)=\frac{2R}{\sqrt{C}(R^2-|z|^2)}$,有$\kappa_{B_R(0),\rho_{R}^{C}}=-C$
+\end{zhu}
+
+\begin{dingli}
+对区域$\Omega_1,\Omega_2\subset\C$\\
+若$\rho$为$\Omega_2$上的度量且复变函数$f:\Omega_1\to\Omega_2$为共形映射且$f'(z)\neq 0$\\
+则对任意$z\in \Omega_1$,有$\kappa_{\Omega_1,f^*\rho}(z)=\kappa_{\Omega_2,\rho}(f(z))$
+\end{dingli}
+
+\begin{dingli}
+对区域$\Omega\subset \C$\\
+若$\rho$为$D$上的Poincaré度量且$\sigma$为$\Omega$上的度量\\
+若复变函数$f:D\to \Omega$为解析函数且$\kappa_{\Omega,\sigma}(z)\leq -4$,则$f^*\sigma(z)\leq\rho(z)$\\
+若$\rho_{R}^{A}$为$B_{R}(0)$上的度量且$\sigma$为$\Omega$上的度量\\
+若复变函数$f:B_{R}(0)\to \Omega$为解析函数且$\kappa_{\Omega,\sigma}(z)\leq -B$,则$f^*\sigma(z)\leq\frac{\sqrt{A}}{\sqrt{B}}\rho_{R}^{A}(z)$
+\end{dingli}
+
+\begin{dingli}
+对区域$\Omega\subset \C$\\
+若$\Omega$为开集且$\sigma$为$\Omega$上的度量且$\kappa_{\Omega,\sigma}(z)\leq -B<0$\\
+则对任意解析函数$f:\C\to \Omega$,存在$C\in\Omega$,有$f(z)=C$
+\end{dingli}
+
+\begin{zhu}
+Liouville定理即为推论
+\end{zhu}
+
+\begin{dingli}
+对区域$\Omega\subset \C$\\
+若$\Omega$为开集且$|\C\backslash \Omega|\geq 2$\\
+则存在$\sigma$为$\Omega$上的度量,有$\kappa_{\Omega,\sigma}(z)\leq -B<0$
+\end{dingli}
+
+\begin{zhu}
+Picard little定理即为推论
+\end{zhu}
+
+\begin{dingyi}
+对区域$\Omega\subset \C$\\
+若对复变函数列$\{f_n\}$,存在复变函数$f$,对任意$\varepsilon>0$和任意紧集$U\subset\Omega$\\
+存在$N\in\N^*$,对任意$n>N$,有$|f_n(z)-f(z)|<\varepsilon$\\
+则称$\{f_n\}$在$\Omega$上内紧一致收敛\\
+若对复变函数列$\{f_n\}$,对任意紧集$U\subset\Omega$和任意紧集$V\subset\C$\\
+存在$N\in\N^*$,对任意$n>N,z\in U$,有$f_n(z)\notin V$\\
+则称$\{f_n\}$在$\Omega$上内紧一致发散\\
+若对复变函数族$\{f(z)\}$,对任意$\{f_n\}\subset\{f(z)\}$\\
+存在子列$\{f_{n_i}\}$内紧一致收敛或内紧一致发散\\
+则称$\{f(z)\}$为正规的
+\end{dingyi}
+
+\begin{dingli}
+对区域$\Omega\subset \C$\\
+若对复变函数族$\{f(z)\}$为解析函数,对任意紧集$U\subset\Omega$,存在$M_{U}>0$\\
+对任意$f\in\{f(z)\},z\in U$,有$|f(z)|\leq M_{U}$\\
+则$\{f(z)\}$为正规的
+\end{dingli}
+
+\begin{zhu}
+Montel定理即为推论
+\end{zhu}
+
+\begin{dingli}
+对区域$\Omega\subset \C$\\
+若对复变函数族$\{f(z)\}$为亚纯函数,对$\sigma$为$\C$上的Spherical度量\\
+则$\{f(z)\}$为正规的当且仅当对任意紧集$U\subset\Omega$,有$\{f^*\sigma|f\in\{f(z)\}\}$在$U$上一致有界\\
+即对任意紧集$U\subset\Omega$,存在$M_{U}>0$,对任意$f\in\{f(z)\},z\in U$,有$\frac{2|f'(z)|}{1+|f(z)|^2}\leq M_{U}$
+\end{dingli}
+
+\begin{dingyi}
+对区域$\Omega\subset \C$\\
+若对复变函数族$\{f(z)\}$为广义复变函数$\Omega\to\widehat{\C}$\\
+对任意紧集$U\subset\Omega$,对任意$\{f_n\}\subset\{f(z)\}$\\
+存在子列$\{f_{n_i}\}$在$U$上一致收敛于广义复变函数\\
+则称$\{f(z)\}$为正规的'
+\end{dingyi}
+
+\begin{zhu}
+若$\{f(z)\}$为解析函数且$\{f(z)\}$为正规的',则$\{f(z)\}$为正规的
+\end{zhu}
+
+\begin{dingli}
+对区域$\Omega\subset \C$\\
+若对复变函数族$\{f(z)\}$为广义解析函数,对任意$f\in\{f(z)\}$,有$|\widehat{\C}\backslash f(\Omega)|=3$\\
+则$\{f(z)\}$为正规的'\\
+若对复变函数族$\{f(z)\}$为解析函数,对任意$f\in\{f(z)\}$,有$|\C\backslash f(\Omega)|=2$\\
+则$\{f(z)\}$为正规的
+\end{dingli}
+
+\begin{zhu}
+Picard great定理即为推论
+\end{zhu}
+
+\begin{dingyi}
+对区域$\Omega\subset \C$\\
+若$z_0\in\Omega$,记$(D,\Omega)_{z_0}=\{f:\Omega\to D|f\text{为解析函数且}f(z_0)=0\}$\\
+则称$F_{C}^{\Omega}(z)=\sup\limits_{f\in(D,\Omega)_{z}}|f'(z)|$为$\Omega$上的Carathéodory度量\\
+若$z_0\in\Omega$,记$(\Omega,D)^{z_0}=\{f:D\to \Omega|f\text{为解析函数且}f(0)=z_0\}$\\
+则称$F_{K}^{\Omega}(z)=\inf\limits_{f\in(\Omega,D)^{z}}\frac{1}{|f'(0)|}$为$\Omega$上的Kobayashi度量
+\end{dingyi}
+
+\begin{zhu}
+对任意$z\in\Omega$,有$F_{C}^{\Omega}(z)\leq F_{K}^{\Omega}(z)$
+\end{zhu}
+
+\begin{dingli}
+对区域$\Omega_1,\Omega_2\subset \C$\\
+若$\rho_1,\rho_2$为$\Omega_1,\Omega_2$上的Carathéodory度量且复变函数$f:\Omega_1\to\Omega_2$为解析函数\\
+则对任意$z\in\Omega_1$,有$f^*\rho_2(z)\leq \rho_1(z)$\\
+则对任意$\gamma:[0,1]\to\Omega_1$为连续可微曲线,有$l_{\rho_2}(f_*\gamma)\leq l_{\rho_1}(\gamma)$\\
+则对任意$z_1,z_2\in\Omega_1$,有$d_{\rho_2}(f(z_1),f(z_2))\leq d_{\rho_1}(z_1,z_2)$\\
+特别地,若$f:\Omega_1\to\Omega_2$为共形映射,则$f$为$(\Omega_1,\rho_1),(\Omega_2,\rho_2)$的同构
+\end{dingli}
+
+\begin{dingli}
+对区域$\Omega\subset\C$\\
+若$\Omega=D$,则$\Omega$上的Carathéodory度量为$D$上的Poincaré度量
+\end{dingli}
+
+\begin{dingli}
+对区域$\Omega_1,\Omega_2\subset \C$\\
+若$\rho_1,\rho_2$为$\Omega_1,\Omega_2$上的Kobayashi度量且复变函数$f:\Omega_1\to\Omega_2$为解析函数\\
+则对任意$z\in\Omega_1$,有$f^*\rho_2(z)\leq \rho_1(z)$\\
+则对任意$\gamma:[0,1]\to\Omega_1$为连续可微曲线,有$l_{\rho_2}(f_*\gamma)\leq l_{\rho_1}(\gamma)$\\
+则对任意$z_1,z_2\in\Omega_1$,有$d_{\rho_2}(f(z_1),f(z_2))\leq d_{\rho_1}(z_1,z_2)$\\
+特别地,若$f:\Omega_1\to\Omega_2$为共形映射,则$f$为$(\Omega_1,\rho_1),(\Omega_2,\rho_2)$的同构
+\end{dingli}
+
+\begin{dingli}
+对区域$\Omega\subset\C$\\
+若$\Omega=D$,则$\Omega$上的Kobayashi度量为$D$上的Poincaré度量
+\end{dingli}
+
+\begin{dingli}
+对区域$\Omega\subset\C$\\
+则存在复变函数$f:\Omega\to D$为共形映射当且仅当存在$z_0\in\Omega$,有$F_{C}^{\Omega}(z_0)=F_{K}^{\Omega}(z_0)\neq 0$
+\end{dingli}
+
+\begin{zhu}
+若$\Omega=\C\backslash\{0\}$,则$F_{C}^{\Omega}(z)=F_{K}^{\Omega}(z)\equiv 0$
+\end{zhu}
+
+\begin{dingli}
+对区域$\Omega\subset\C$\\
+若$F_{K}^{\Omega}(z)$非退化且复变函数$f:\Omega\to\Omega$为解析函数且存在$z_0\in\Omega$,有$f(z_0)=z_0$\\
+则若$f^*F_{C}^{\Omega}(z_0)=F_{C}^{\Omega}(z_0)\neq0$或$f^*F_{K}^{\Omega}(z_0)=F_{K}^{\Omega}(z_0)\neq 0$,则$f$为共形映射
+\end{dingli}
+
+\begin{dingli}
+对区域$\Omega\subset\C$\\
+若$\Omega$为有界区域且$U\subset\Omega$为紧集\\
+则存在$C_1,C_2,C_3,C_4\in\C$,对任意$z\in U$有$C_1\leq\frac{F_{C}^{\Omega}(z)}{|z|}\leq C_2, C_3\leq\frac{F_{K}^{\Omega}(z)}{|z|}\leq C_4$
+\end{dingli}
+
+\begin{zhu}
+对有界区域,则Carathéodory度量,Kobayashi度量,Euclidean度量诱导的拓扑等价
+\end{zhu}
+
+\begin{dingli}
+对区域$\Omega\subset\C$\\
+若$\partial\Omega$为$C^2$闭曲线,则存在$\partial\Omega$的开邻域$U$\\
+有对任意$z\in\Omega\cap U$,存在唯一$z_0\in\partial\Omega$,有$|z_0-z|=\inf\limits_{z'\in\partial\Omega}|z'-z|$\\
+若$\partial\Omega$为$C^2$闭曲线,则存在$R_0>0$\\
+有对任意$z\in\partial\Omega$,存在$z_1\in\Omega,z_2\in\Omega^{c}$,有$\partial B_{z_1}(R_0)\cap\partial\Omega=\partial B_{z_2}(R_0)\cap\Omega=\{z\}$
+\end{dingli}
+
+\begin{dingli}
+对区域$\Omega\subset\C$\\
+若$\partial\Omega$为$C^2$闭曲线,则$(\Omega,F_{C}^{\Omega})$为完备的度量空间\\
+若$\partial\Omega$为$C^2$闭曲线,则$(\Omega,F_{K}^{\Omega})$为完备的度量空间
+\end{dingli}
+
+\begin{zhu}
+若$\Omega$为多连通区域且每个连通分支边界均为Jordan曲线,则完备性依旧成立
+\end{zhu}
+
+\endinput
+
+\iffalse
+
+\begin{dingyi}
+调和函数$u(x,y)$\\
+定义为满足Laplace方程$\Delta u=\frac{\partial^2 u}{\partial x^2}+\frac{\partial^2 u}{\partial y^2}=0$\\
+若对调和函数$u(x,y)$和$v(x,y)$满足Cauchy-Riemann条件$\frac{\partial u}{\partial x}=\frac{\partial v}{\partial y},\frac{\partial u}{\partial y}+\frac{\partial v}{\partial x}=0$\\
+则称$u(x,y)$和$v(x,y)$互为共轭调和函数
+\end{dingyi}
+
+\begin{dingli}
+复变函数$f(z)=u(x,y)+\i v(x,y)$\\
+若$f(z)$在区域$E\subset \C$上解析,则$u(x,y)$和$v(x,y)$均为调和函数\\
+$f(z)$在单连通区域$E\subset \C$上解析$\Leftrightarrow$$u(x,y)$和$v(x,y)$互为共轭调和函数
+\end{dingli}
+
+\begin{dingli}
+中值公式:\\
+闭圆盘$|z-z_0|\leq R$上调和函数$u(z)=u(x,y)$,有$u(z_0)=\frac{1}{2\pi}\int_{0}^{2\pi}u(z_0+R\e^{\i\theta})\d \theta$
+\end{dingli}
+
+\begin{dingli}
+Poisson公式:\\
+闭圆盘$|z|\leq R$上调和函数$u(z)=u(x,y)$\\
+对任意$0\leq r<R$,有$u(r\e^{\i\theta_0})=\frac{1}{2\pi}\int_{0}^{2\pi}u(R\e^{\i\theta})\frac{R^2-r^2}{R^2-2Rr\cos(\theta-\theta_0)+r^2 }\d \theta$
+\end{dingli}
+
+\begin{dingli}
+极值原理:\\
+区域内不为常数的调和函数不可能在区域内点达到最值
+\end{dingli}
+
+\fi
+%\end{document}

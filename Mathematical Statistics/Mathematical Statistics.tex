@@ -1,0 +1,476 @@
+%\documentclass[12pt,oneside,a4paper]{book}
+
+%\usepackage{amsmath}
+%\usepackage{mathtools}
+%\usepackage{amsfonts}
+%\usepackage{unicode-math}
+%\usepackage{geometry}
+%\usepackage{ctex}
+
+%\begin{document}
+
+%\setcounter{chapter}{0}
+\setcounter{section}{0}
+\setcounter{subsection}{0}
+
+\chapter{随变}
+
+\begin{dingyi}
+对定义在样本空间$\mathcal{C}$上的函数$X$\\
+若对任意$c_0\in \mathcal{C}$,存在唯一$x_0\in \R$,有$X(c_0)=x_0$,则称$X$为随机变量\\
+对定义在样本空间$\mathcal{C}$上的概率$P$\\
+累计分布函数$\mathrm{cdf}$为$F(x)=P(\{c\in\mathcal{C}|X(c)\leq x\})$\\
+当$X$为离散随机变量,即$\{X(c)\in\R|c\in\mathcal{C}\}$为可数集合\\
+概率质量函数$\mathrm{pmf}$为$p(x)=P(\{c\in\mathcal{C}|X(c)=x\})$\\
+当$X$为连续随机变量,即$\{X(c)\in\R|c\in\mathcal{C}\}$为实数区间\\
+概率密度函数$\mathrm{pdf}$为$f(x)=F'(x)$\\
+对随机变量$X$和函数$u$\\
+随机变量$u(X)$的期望为$E(u(X))=\int_{-\infty}^{\infty}u(x)f(x)\d x$或$\sum\limits_{x}u(x)p(x)$\\
+随机变量$X$的数学期望为$E(X)$,方差为$D(X)=E((X-E(X))^2)=E(X^2)-(E(X))^2$\\
+矩母函数$\mathrm{mgf}$为$M(t)=E(\e^{tX})$,其中$-h<t<h,h>0$
+\end{dingyi}
+
+\begin{dingli}
+对随机变量$X_i$,累计分布函数$F$,期望$E$,方差$D$,函数$u_i$\\
+有$\lim_{x\to-\infty}F(x)=0,\lim_{x\to\infty}F(x)=1$且$F(x)$右连续,即$\lim_{x\to x_0^{+}}F(x)=F(x_0)$\\
+对任意$a_i\in \R$,有$E(\sum\limits_{i}a_iu_i(X_i))=\sum\limits_{i}a_iE(u_i(X_i))$\\
+对任意$a,b\in \R$,有$D(aX+b)=a^2D(X)$\\
+对任意$k\in \N^*$,有$E(X^k)=M^{(k)}(0)$\\
+矩母函数的唯一性:\\
+对任意$t\in (-h,h)$,有$M_{X_1}(t)=M_{X_2}(t)\Leftrightarrow$对任意$x\in \R$,有$F_{X_1}(x)=F_{X_2}(x)$
+\end{dingli}
+
+\begin{dingli}
+随机变量$X$,非负函数$u$,常数$c\in \R,c>0$\\
+凸函数$\varphi$:对任意$a,b\in\R,\theta\in [0,1]$,有$\varphi(\theta a+(1-\theta)b)\leq\theta \varphi(a)+(1-\theta)\varphi(b)$\\
+Markov不等式:\\
+$P(u(X)\geq c)\leq \frac{E(u(X))}{c}$\\
+Chebyshev不等式:\\
+$P(|X-E(X)|\geq cD(X))\leq \frac{1}{c^2}$\\
+Jensen不等式:\\
+$\varphi(E(X))\leq E(\varphi(X))$
+\end{dingli}
+
+\begin{dingyi}
+对定义在样本空间$\mathcal{C}$上的随机变量$X_1,X_2,\cdots,X_n$,$n$元函数$u$,概率$P$\\
+累计分布函数$\mathrm{cdf}$\\
+$F_{X_1,X_2\cdots,X_n}(x_1,x_2,\cdots,x_n)=P(\{X_1\leq x_1,X_2\leq x_2,\cdots,X_n\leq x_n\})$\\
+边缘分布函数$\mathrm{mcdf}$\\
+$F_{X_i}(x_i)=P(\{X_i\leq x_i,-\infty<X_j<\infty,j\neq i\})$\\
+边缘质量函数$\mathrm{mpmf}$和边缘密度函数$\mathrm{mpdf}$定义与单变量情况相同\\
+当$X_1,X_2,\cdots,X_n$为离散随机变量\\
+概率质量函数$\mathrm{pmf}$\\
+$p_{X_1,X_2,\cdots,X_n}(x_1,x_2,\cdots,x_n)=P(\{X_1=x_1,X_2=x_2,\cdots,X_n=x_n\})$\\
+当$X_1,X_2,\cdots,X_n$为连续随机变量\\
+概率密度函数$\mathrm{pdf}$\\
+$f_{X_1,X_2,\cdots,X_n}(x_1,x_2,\cdots,x_n)=\frac{\partial^{n}F_{X_1,X_2,\cdots,X_n}(x_1,x_2,\cdots,x_n)}{\partial x_1\partial x_2\cdots\partial x_n}$\\
+随机变量$\mathbf{X} =(X_1,X_2,\cdots,X_n)$的期望\\
+$E(\mathbf{X})=(E(X_1),E(X_2),\cdots,E(X_n))$\\
+随机变量$u(X_1,X_2,\cdots,X_n)$的期望\\
+$E(u(X_1,X_2,\cdots,X_n))=\int_{-\infty}^{\infty}\cdots\int_{-\infty}^{\infty}u(x_1,x_2,\cdots,x_n)f(x_1,x_2,\cdots,x_n)\d x_1\d x_2\cdots \d x_n$\\
+$E(u(X_1,X_2,\cdots,X_n))=\sum\limits_{x_1}\cdots\sum\limits_{x_n}u(x_1,x_2,\cdots,x_n)p(x_1,x_2,\cdots,x_n)$\\
+条件概率密度函数$\mathrm{jcpdf}$\\
+$f_{X_2,\cdots,X_n|X_1}(x_2,\cdots,x_n|x_1)\frac{f_{X_1,X_2,\cdots,X_n}(x_1,x_2,\cdots,x_n)}{f_{X_1}(x_1)}$\\
+条件期望定义与上述定义相同\\
+随机变量$\mathbf{X} =(X_1,X_2,\cdots,X_n)$的矩母函数\\
+$M_{X_1,X_2,\cdots,X_n}(t_1,t_2,\cdots,t_n)=E(\e^{t_1X_1+t_2X_2+\cdots+t_nX_n})=E(\e^{\mathbf{t}X^T})$
+\end{dingyi}
+
+\begin{dingyi}
+对定义在样本空间$\mathcal{C}$上的随机变量$X_1,X_2,\cdots,X_n$\\
+$X_i,X_j$的协方差定义为$\mathrm{Cov}(X_i,X_j)=E((X_i-E(X_i))(X_j-E(X_j)))=E(X_iX_j)-E(X_i)E(X_j)$\\
+$X_i,X_j$的相关系数定义为$\rho=\frac{\mathrm{Cov}(X_i,X_j)}{\sqrt{D(X_i)D(X_j)}}$\\
+$X_1,X_2,\cdots,X_n$相互独立\\
+$\Leftrightarrow$$f_{X_1,X_2,\cdots,X_n}(x_1,x_2,\cdots,x_n)=f_{X_1}(x_1)f_{X_2}(x_2)\cdots f_{X_n}(x_n)$或$p_{X_1,X_2,\cdots,X_n}(x_1,x_2,\cdots,x_n)=p_{X_1}(x_1)p_{X_2}(x_2)\cdots p_{X_n}(x_n)$
+$\Leftrightarrow$$M_{X_1,X_2,\cdots,X_n}(t_1,t_2,\cdots,t_n)=\prod\limits_{i=1}^{n}M_{X_1,X_2,\cdots,X_n}(0,\cdots,0,t_i,0,\cdots,0)$\\
+$\Rightarrow$对$Y=\sum\limits_{i=1}^{n}k_iX_i$,有$M_Y{t}=\prod\limits_{i=1}^{n}M_{X_i}(k_it)$\\
+$\Rightarrow$$\mathrm{Cov}(X_i,X_j)=0,\rho=0$
+\end{dingyi}
+
+\begin{dingli}
+对定义在样本空间$\mathcal{C}$上的随机变量$X_1,X_2,\cdots,X_n$且$D(X_i)<\infty$\\
+有$E(E(X_i|X_j))=E(X_i)$且$D(E(X_i|X_j))\leq D(X_i)$\\
+对$Y=\sum\limits_{i=1}^{n}a_iX_i,Z=\sum\limits_{i=1}^{n}b_iX_i$\\
+有$\mathrm{Cov}(Y,Z)=\sum\limits_{i=1}^{n}\sum\limits_{j=1}^{n}a_ib_j\mathrm{Cov}(X_i,X_j)$
+\end{dingli}
+
+\chapter{分布}
+
+伯努利分布:$X\backsim$ B$(p)$,其中$0<p<1$\\
+概率质量函数$\mathrm{pmf}$为$p(x)=p^x(1-p)^{1-x},x=0,1$\\
+均值$E(X)=p$,方差$D(X)=p(1-p)$\\
+矩母函数$\mathrm{mgf}$为$M(t)=p\e^t+1-p,-\infty<t<\infty$\\
+
+二项分布分布:$X\backsim$ B$(n,p)$\\
+概率质量函数$\mathrm{pmf}$为$p(x)=C_n^xp^x(1-p)^{n-x},x=0,1,\cdots,n$\\
+均值$E(X)=np$,方差$D(X)=np(1-p)$\\
+矩母函数$\mathrm{mgf}$为$M(t)=(p\e^t+1-p)^n,-\infty<t<\infty$\\
+
+泊松分布:$X\backsim$ Poi$(\lambda)$,其中$\lambda>0$\\
+概率质量函数$\mathrm{pmf}$为$p(x)=\frac{\lambda^x}{x!}\e^{-\lambda},x=0,1,2\cdots$\\
+均值$E(X)=\lambda$,方差$D(X)=\lambda$\\
+矩母函数$\mathrm{mgf}$为$M(t)=\e^{\lambda(\e^t-1)},-\infty<t<\infty$\\
+
+均匀分布:$X\backsim$ U$(a,b)$,其中$-\infty<a<b<\infty$\\
+概率密度函数$\mathrm{pdf}$为$f(x)=\frac{1}{b-a},a\leq x\leq b$\\
+均值$E(X)=\frac{a+b}{2}$,方差$D(X)=\frac{(b-a)^2}{12}$\\
+矩母函数$\mathrm{mgf}$为$M(t)=\frac{\e^{bt}-\e^{at}}{bt-at},-\infty<t<\infty$\\
+
+正态分布:$X\backsim$ N$(\mu,\sigma^2)$,其中$-\infty<\mu<\infty,\sigma>0$\\
+概率密度函数$\mathrm{pdf}$为$f(x)=\frac{1}{\sqrt{2\pi\sigma^2}}\e^{-\frac{(x-\mu)^2}{2\sigma^2}},x>0$\\
+均值$E(X)=\mu$,方差$D(X)=\sigma^2$\\
+矩母函数$\mathrm{mgf}$为$M(t)=\e^{\mu t+\frac{1}{2}\sigma^2 t^2},-\infty<t<\infty$\\
+
+伽马分布:$X\backsim$ $\Gamma(\alpha,\beta)$,其中$\alpha>0,\beta>0$\\
+概率密度函数$\mathrm{pdf}$为$f(x)=\frac{1}{\Gamma(\alpha)\beta^{\alpha}}x^{\alpha-1}\e^{-\frac{x}{\beta}},x>0$\\
+均值$E(X)=\alpha\beta$,方差$D(X)=\alpha\beta^2$\\
+矩母函数$\mathrm{mgf}$为$M(t)=(1-\beta t)^{-\alpha},t<\frac{1}{\beta}$\\
+
+贝塔分布:$X\backsim$ Beta$(\alpha,\beta)$,其中$\alpha>0,\beta>0$\\
+概率密度函数$\mathrm{pdf}$为$f(x)=\frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)}x^{\alpha-1}(1-x)^{\beta-1},0<x<1$\\
+均值$E(X)=\frac{\alpha}{\alpha+\beta}$,方差$D(X)=\frac{\alpha\beta}{(\alpha+\beta+1)(\alpha+\beta)^2}$\\
+矩母函数$\mathrm{mgf}$为$M(t)=1+\sum\limits_{i=1}^{\infty}(\prod\limits_{j=0}^{i-1}\frac{\alpha+j}{\alpha+\beta+j})\frac{t^i}{i!},-\infty<t<\infty$\\
+
+卡方分布:$X\backsim$ $\chi^2(r)=\Gamma(\frac{r}{2},2)$,其中$r>0$\\
+概率密度函数$\mathrm{pdf}$为$f(x)=\frac{1}{\Gamma(\frac{r}{2})2^{\frac{r}{2}}}x^{\frac{r}{2}-1}\e^{-\frac{x}{2}},x>0$\\
+均值$E(X)=r$,方差$D(X)=2r$\\
+矩母函数$\mathrm{mgf}$为$M(t)=(1-2t)^{-\frac{r}{2}},t<\frac{1}{2}$\\
+
+指数分布:$X\backsim$ Exp$(\theta)=\Gamma(1,\theta)$,其中$\theta>0$\\
+概率密度函数$\mathrm{pdf}$为$f(x)=\frac{1}{\theta}\e^{-\frac{x}{\theta}},x>0$\\
+均值$E(X)=\theta$,方差$D(X)=\theta^2$\\
+矩母函数$\mathrm{mgf}$为$M(t)=\frac{1}{1-\theta t},t<\frac{1}{\theta}$\\
+
+学生分布:$X\backsim$ t$(r)$,其中$r>0$\\
+概率密度函数$\mathrm{pdf}$为$f(x)=\frac{\Gamma(\frac{r+1}{2})}{\Gamma(\frac{r}{2})}\frac{1}{\sqrt{\pi r}(1+\frac{x^2}{r})^{\frac{r+1}{2}}},-\infty<x<\infty$\\
+均值$E(X)=0,r>1$,方差$D(X)=\frac{r}{r-2},r>2$\\
+矩母函数$\mathrm{mgf}$不存在\\
+
+艾符分布:$X\backsim$ F$(r_1,r_2)$,其中$r_1>0,r_2>0$\\
+概率密度函数$\mathrm{pdf}$为$f(x)=\frac{\Gamma(\frac{r_1+r_2}{2})}{\Gamma(\frac{r_1}{2})\Gamma(\frac{r_2}{2})}\frac{(\frac{r_1}{r_2})^{\frac{r_1}{2}}}{\frac{r_1+r_2}{2}}\frac{x^{\frac{r_1}{2}-1}}{1+\frac{r_1}{r_2}x},x>0$\\
+均值$E(X)=\frac{r_2}{r_2-2},r_2>2$,方差$D(X)=2\frac{r_2^2}{(r_2-2)^2}\frac{r_1+r_2-1}{r_1(r_2-4)},r_2>4$\\
+矩母函数$\mathrm{mgf}$不存在\\
+
+\begin{dingli}
+对定义在样本空间$\mathcal{C}$上的连续随机变量$X$,有函数$u$和随机变量$Y=u(X)$\\
+若$u$为双射且可微,有反函数$u^{-1}$,即$X=u^{-1}(Y)$,则对$X$的概率密度函数$f_X(x)$\\
+则$Y$的概率密度函数$f_Y(y)=f_X(u^{-1}(y))\cdot |\frac{\d u^{-1}(y)}{\d y}|$
+\end{dingli}
+
+\begin{dingli}
+学生定理:\\
+对独立同分布随机变量$X_1,X_2,\cdots,X_n$服从N$(\mu,\sigma^2)$\\
+令样本均值$\overline{X}=\frac{1}{n}\sum\limits_{i=1}^{n}X_i$,样本方差$S^2=\frac{1}{n-1}\sum\limits_{i=1}^{n}(X_i-\overline{X})^2$\\
+则随机变量$\overline{X}$服从N$(\mu,\frac{\sigma^2}{n})$,随机变量$\frac{n-1}{\sigma^2}S^2$服从$\chi^2(n-1)$\\
+有$\overline{x}$与$S^2$相互独立,则$\frac{\overline{X}-\mu}{\frac{S}{\sqrt{n}}}$服从t$(n-1)$
+\end{dingli}
+
+\begin{dingli}
+各相互独立分布具有如下加性和乘性:\\
+$\sum\limits_{i=1}^{N}$B$(p)\sim$B$(N,p)$\\
+$\sum\limits_{i=1}^{N}$B$(n_i,p)\sim$B$(\sum\limits_{i=1}^{N}n_i,p)$\\
+$\sum\limits_{i=1}^{N}$Poi$(\lambda_i)\sim$Poi$(\sum\limits_{i=1}^{N}\lambda_i,p)$\\
+$\sum\limits_{i=1}^{N}\Gamma(\alpha_i,\beta)\sim\Gamma(\sum\limits_{i=1}^{N}\alpha_i,\beta)$\\
+$\sum\limits_{i=1}^{N}\chi^2(r_i)\sim\chi^2(\sum\limits_{i=1}^{N}r_i)$\\
+$\sum\limits_{i=1}^{N}$N$(\mu_i,\sigma_i^2)\sim$N$(\sum\limits_{i=1}^{N}\mu_i,\sum\limits_{i=1}^{N}\sigma_i^2)$\\
+$k\cdot \Gamma(\alpha,\beta)\sim\Gamma(\alpha,k\cdot \beta)$\\
+$k\cdot$N$(\mu,\sigma^2)\sim$N$(k\cdot\mu,k^2\cdot\sigma^2)$
+\end{dingli}
+
+\begin{dingli}
+各相互独立分布可进行如下转化:\\
+\[\frac{(\text{N}(\mu,\sigma^2)-\mu)^2}{\sigma^2}\sim \chi^2(1)\]
+\[\frac{\Gamma(\alpha,\lambda)}{\Gamma(\alpha,\lambda)+\Gamma(\beta,\lambda)}\sim\text{Beta}(\alpha,\beta)\]
+\[\frac{\text{N}(0,1)}{\sqrt{\frac{\chi^2(r)}{r}}}\sim \text{t}(r)\]
+\[\frac{\frac{\chi^2(r_2)}{r_1}}{\frac{\chi^2(r_2)}{r_2}}\sim\text{F}(r_1,r_2)\]
+\[(\text{t}(r))^2\sim\text{F}(1,r)\]
+\end{dingli}
+
+\chapter{估计}
+
+\begin{dingyi}
+对随机变量$X_1,X_2,\cdots,X_n$\\
+若$X_1,X_2,\cdots,X_n$独立同分布,称$X_1,X_2,\cdots,X_n$为样本量为$n$的随机样本\\
+若随机样本有$n$元函数$T(X_1,X_2,\cdots,X_n)$,称$T(X_1,X_2,\cdots,X_n)$为统计量\\
+称样布均值$\overline{X}=\frac{1}{n}\sum\limits_{i=1}^{n}X_i$,称样本方差$S^2=\frac{1}{n-1}\sum\limits_{i=1}^{n}(X_i-\overline{X})^2$
+\end{dingyi}
+
+\begin{dingyi}
+收敛性:\\
+对随机变量$X_1,X_2,\cdots,X_n,\cdots$和$X$\\
+若对任意$\varepsilon>0$,有$\lim\limits_{n\to\infty}P(|X_n-X|\geq \varepsilon)=0$\\
+则称$X_n$依概率收敛于$X$,记为$X_n\stackrel{P}{\rightarrow}X$\\
+若对累积分布函数,有$\lim\limits_{n\to\infty}F_{X_n}(x)=F_{X}(x)$\\
+则称$X_n$依分布收敛于$X$,记为$X_n\stackrel{D}{\rightarrow}X$\\
+\end{dingyi}
+
+\begin{dingli}
+弱大数定律:\\
+对随机样本$X_1,X_2,\cdots,X_n,\cdots$,有$E(X_i)=\mu,D(X_i)=\sigma^2$\\
+则随机变量$\overline{X_N}=\frac{1}{n}\sum\limits_{n=1}^{N}X_n$依概率收敛于$\mu$
+\end{dingli}
+
+\begin{dingli}
+收敛的加性和乘性:\\
+$X_n\stackrel{P}{\rightarrow}X,Y_n\stackrel{P}{\rightarrow}Y\Rightarrow aX_n+bY_n\stackrel{P}{\rightarrow}aX+bY$\\
+$X_n\stackrel{P}{\rightarrow}X,Y_n\stackrel{P}{\rightarrow}Y\Rightarrow X_n\cdot Y_n\stackrel{P}{\rightarrow}X\cdot Y$\\
+$X_n\stackrel{P}{\rightarrow}x_0$且$f(x)$在$x_0$连续$\Rightarrow f(X_n)\stackrel{P}{\rightarrow}f(x_0)$\\
+$X_n\stackrel{P}{\rightarrow}X\Rightarrow X_n\stackrel{D}{\rightarrow}X$\\
+$X_n\stackrel{D}{\rightarrow}x_0\Rightarrow X_n\stackrel{P}{\rightarrow}x_0$\\
+$X_n\stackrel{D}{\rightarrow}X,Y_n\stackrel{P}{\rightarrow}0\Rightarrow X_n+Y_n\stackrel{D}{\rightarrow}X$\\
+$X_n\stackrel{D}{\rightarrow}x_0$且$f(x)$在$X$支集连续$\Rightarrow f(X_n)\stackrel{D}{\rightarrow}f(x_0)$\\
+$X_n\stackrel{D}{\rightarrow}X,A_n\stackrel{P}{\rightarrow}a,B_n\stackrel{P}{\rightarrow}b\Rightarrow A_nX_n+B_n\stackrel{D}{\rightarrow}aX+b$\\
+\end{dingli}
+
+\begin{dingli}
+德尔塔方法:\\
+对随机变量$X_1,X_2,\cdots,X_n,\cdots$,有$\sqrt{n}(X_n-\theta)$依分布收敛于N$(0,\sigma^2)$\\
+若函数$f(x)$在$\theta$可微且$f'(\theta)\neq 0$\\
+则有$\sqrt{n}(f(X_n)-f(\theta))$依分布收敛于N$(0,\sigma^2\cdot(f'(\theta))^2)$
+\end{dingli}
+
+\begin{dingli}
+矩母函数法:\\
+对随机变量$X_1,X_2,\cdots,X_n,\cdots$\\
+若对矩母函数,有$\lim\limits_{n\to\infty}M_{X_n}(t)=M_{X}(t)$\\
+则有$X_n$依分布收敛于$X$
+\end{dingli}
+
+\begin{dingli}
+Central Limit定理:\\
+对随机变量$X_1,X_2,\cdots,X_n,\cdots$,若$E(X_i)=\mu$且$D(X_i)=\sigma^2$\\
+则有$\frac{\overline{X}-\mu}{\frac{\sigma}{\sqrt{n}}}$依分布收敛于N$(0,1)$
+\end{dingli}
+
+\begin{dingyi}
+对随机样本$X_1,X_2,\cdots,X_n$,有概率密度函数$f(x;\theta)$,其中$\theta\in\Omega$\\
+若有统计量$T(X_1,X_2,\cdots,X_n)$\\
+若$E(T)=\theta$,则称$T$为$\theta$的无偏估计量\\
+若$T$依概率收敛于$\theta$,则称$T$为$\theta$的相合估计量\\
+若$E(T)=\theta$且$D(T)$达到Rao-Cramér下界,则称$T$为$\theta$的有效估计量
+\end{dingyi}
+
+\begin{dingyi}
+对随机样本$X_1,X_2,\cdots,X_n$,考虑其有序排列$Y_1<Y_2<\cdots<Y_n$\\
+则称$Y_1<Y_2<\cdots<Y_n$为随机样本$X_1,X_2,\cdots,X_n$的次序统计量\\
+若$X_i$有概率密度函数$f(x_i)$\\
+则$Y_1<Y_2<\cdots<Y_n$有联合密度函数$g(y_1,y_2,\cdots,y_n)=n!f(y_1)f(y_2)\cdots f(y_n)$,其中$y_1<y_2<\cdots<y_n$
+\end{dingyi}
+
+\begin{dingyi}
+极大似然估计:\\
+对随机样本$X_1,X_2,\cdots,X_n$,有概率密度函数$f(x;\theta)$,其中$\theta\in\Omega$\\
+称似然函数$L(\theta)=\prod\limits_{i=1}^{n}f(X_i;\theta)$,称对数似然函数$l(\theta)=\ln L(\theta)=\sum\limits_{i=1}^{n}\ln f(X_i;\theta)$\\
+称$\theta$的极大似然估计为$\hat{\theta}$为使$L(\theta)$取得极大值的$\theta$的取值\\
+若$\hat{\theta}$为$\theta$的极大似然估计,则$f(\hat{\theta})$为$f(\theta)$的极大似然估计\\
+若$f(x;\theta)$关于$\theta$可微,则似然方程$\frac{\partial L(\theta)}{\partial \theta}=0$的解$\hat{\theta}$为$\theta$的相合估计量
+\end{dingyi}
+
+\begin{dingyi}
+Fisher信息:\\
+对随机变量$X$,有概率密度函数$f(x;\theta)$,其中$\theta\in\Omega$\\
+由$\int_{-\infty}^{\infty}\frac{\partial \ln f(x;\theta)}{\partial\theta}f(x;\theta)\d x=\int_{-\infty}^{\infty}\frac{\partial f(x;\theta)}{\partial\theta}\d x=0$可知:\\
+有$\int_{-\infty}^{\infty}\frac{\partial^2 \ln f(x;\theta)}{\partial\theta^2}f(x;\theta)\d x+\int_{-\infty}^{\infty}\frac{\partial \ln f(x;\theta)}{\partial\theta}\frac{\partial \ln f(x;\theta)}{\partial\theta}f(x;\theta)\d x=0$\\
+称Fisher信息为$I(\theta)=\int_{-\infty}^{\infty}\frac{\partial \ln f(x;\theta)}{\partial\theta}\frac{\partial \ln f(x;\theta)}{\partial\theta}f(x;\theta)\d x=-\int_{-\infty}^{\infty}\frac{\partial^2 \ln f(x;\theta)}{\partial\theta^2}f(x;\theta)\d x$\\
+即$I(\theta)=E((\frac{\partial \ln f(x;\theta)}{\partial\theta})^2)=-E(\frac{\partial^2 \ln f(x;\theta)}{\partial\theta^2})=D(\frac{\partial \ln f(x;\theta)}{\partial\theta})$
+称得分函数为$\frac{\partial \ln f(x;\theta)}{\partial\theta}$
+\end{dingyi}
+
+\begin{dingyi}
+Rao-Cramér下界:\\
+对随机样本$X_1,X_2,\cdots,X_n$,有概率密度函数$f(x;\theta)$,其中$\theta\in\Omega$\\
+对$k(\theta)$的无偏统计量$T(X_1,X_2,\cdots,X_n)$,有$D(T)\geq \frac{(k(\theta))^2}{nI(\theta)}$\\
+方差大于等于Rao-Cramér下界\\
+则称$T$的有效性为$\frac{\frac{(k(\theta))^2}{nI(\theta)}}{D(T)}$
+\end{dingyi}
+
+\begin{dingyi}
+MVUE:\\
+对随机样本$X_1,X_2,\cdots,X_n$,有概率密度函数$f(x;\theta)$,其中$\theta\in\Omega$\\
+若统计量$T(X_1,X_2,\cdots,X_n)$为$\theta$的无偏估计量\\
+且$T(X_1,X_2,\cdots,X_n)$的方差小于等于任意$\theta$的无偏估计量的方差\\
+则称$T$为$\theta$的极小方差无偏估计量MVUE
+\end{dingyi}
+
+\begin{dingyi}
+对随机样本$X_1,X_2,\cdots,X_n$,有概率密度函数$f(x;\theta)$,其中$\theta\in\Omega$\\
+若对统计量$T(X_1,X_2,\cdots,X_n)$\\
+有$\prod\limits_{i=1}^{n}f(X_i;\theta)=f_{T}(t;\theta)\cdot g(X_1,X_2,\cdots,X_n)$,其中$g$不依赖于$\theta$\\
+则称$T$为$\theta$的充分统计量\\
+若对统计量$T(X_1,X_2,\cdots,X_n)$的概率密度函数族$\{f_T(t;\theta)|\theta\in\Omega\}$\\
+若对任意函数$u$,由$E(u(T))=0$,有$u(t)=0$,则称函数族$\{f_T(t;\theta)|\theta\in\Omega\}$为完备族\\
+则称$T$为$\theta$的完备统计量
+\end{dingyi}
+
+\begin{dingli}
+Neyman因子分解定理:\\
+对随机样本$X_1,X_2,\cdots,X_n$,有概率密度函数$f(x;\theta)$,其中$\theta\in\Omega$\\
+若统计量$T(X_1,X_2,\cdots,X_n)$,有$\prod\limits_{i=1}^{n}f(X_i;\theta)=k_1(t;\theta)\cdot k_2(X_1,X_2,\cdots,X_n)$\\
+其中$k_1(t;\theta)$非负,$k_2(X_1,X_2,\cdots,X_n)$非负且不依赖于$\theta$\\
+则$T$为$\theta$的充分统计量
+\end{dingli}
+
+\begin{dingli}
+Rao-Blackwell定理:\\
+对随机样本$X_1,X_2,\cdots,X_n$,有概率密度函数$f(x;\theta)$,其中$\theta\in\Omega$\\
+若统计量$Y_1(X_1,X_2,\cdots,X_n)$为$\theta$的充分统计量\\
+且统计量$Y_2(X_1,X_2,\cdots,X_n)$为$\theta$的无偏统计量\\
+则条件期望$E(Y_2|Y_1)=g(Y_1)$定义了一个统计量,有$D(g(Y_1))\leq D(Y_2)$
+\end{dingli}
+
+\begin{dingli}
+对随机样本$X_1,X_2,\cdots,X_n$,有概率密度函数$f(x;\theta)$,其中$\theta\in\Omega$\\
+若$\theta$的极大似然估计$\hat{\theta}$存在且唯一,有$T(X_1,X_2,\cdots,X_n)$为$\theta$的充分统计量\\
+则$\hat{\theta}$为$T$的函数
+\end{dingli}
+
+\begin{dingli}
+正则指数类:\\
+对随机样本$X_1,X_2,\cdots,X_n$,有概率密度函数$f(x;\theta)=\e^{p(\theta)k(x)+h(x)+q(\theta)},x\in \mathcal{S},\theta\in\Omega$\\
+其中$p(\theta)$为$\theta\in\Omega$的非平凡连续函数,支集$\mathcal{S}$不依赖于$\theta$\\
+若$X_i$为连续随机变量,则$k'(x)\not\equiv 0$且$h(x)$为$x\in\mathcal{S}$上连续函数\\
+若$X_i$为离散随机变量,则$k(x)$为$x\in\mathcal{S}$上非平凡函数\\
+则称函数族$\{f(x;\theta)|\theta\in\Omega\}$为正则指数类\\
+则统计量$T=\sum\limits_{i=1}^{n}k(X_i)$为$\theta$的完备充分统计量\\
+有概率密度函数$f_{T}(t;\theta)=u(t)\cdot\e^{p(\theta)t+n\cdot q(\theta)},t\in\mathcal{T}$,其中$\mathcal{T}$和$u(t)$均不依赖于$\theta$\\
+有$E(T)=-n\frac{q'(\theta)}{p'(\theta)},D(T)=\frac{n}{(p'''(\theta))^3}(p''(\theta)q'(\theta)-q''(\theta)p'(\theta))$
+\end{dingli}
+
+\begin{dingli}
+Lehmann-Scheffé定理:\\
+对随机样本$X_1,X_2,\cdots,X_n$,有概率密度函数$f(x;\theta)$,其中$\theta\in\Omega$\\
+若统计量$T$为$\theta$的完备充分统计量且存在函数$g$,有$E(g(T))=\theta$\\
+则$T$为$\theta$的极小方差无偏估计量MVUE
+\end{dingli}
+
+\begin{dingyi}
+对随机样本$X_1,X_2,\cdots,X_n$,有概率密度函数$f(x;\theta)$,其中$\theta\in\Omega$\\
+若统计量$T$为$\theta$的充分统计量且无法化简得到更简化的充分统计量\\
+则称$T$为最小充分统计量\\
+若$\theta$的极大似然估计$\hat{\theta}$为充分统计量,则必为最小充分统计量
+\end{dingyi}
+
+\begin{dingyi}
+对随机样本$X_1,X_2,\cdots,X_n$,有概率密度函数$f(x;\theta)$,其中$\theta\in\Omega$\\
+若统计量$T$服从与$\theta$无关的分布,则称$T$为$\theta$的从属统计量\\
+若有随机样本的位置模型:$X_i=\theta+W_i$,其中$W_1,W_2,\cdots,W_n$服从与$\theta$无关的分布\\
+若有函数$u$,有$u(x_1+d,x_2+d,\cdots,x_n+d)=u(x_1,x_2,\cdots,x_n)$\\
+则统计量$u(X_1,X_2,\cdots,X_n)$为$\theta$的位置不变统计量,即为从属统计量\\
+若有随机样本的尺度模型:$X_i=\theta\cdot W_i$,其中$W_1,W_2,\cdots,W_n$服从与$\theta$无关的分布\\
+若有函数$u$,有$u(cx_1,cx_2,\cdots,cx_n)=u(x_1,x_2,\cdots,x_n)$\\
+则统计量$u(X_1,X_2,\cdots,X_n)$为$\theta$的尺度不变统计量,即为从属统计量
+\end{dingyi}
+
+\begin{dingli}
+Basu定理:\\
+对随机样本$X_1,X_2,\cdots,X_n$,有概率密度函数$f(x;\theta)$,其中$\theta\in\Omega$\\
+若统计量$Y_1$为$\theta$的完备充分统计量且$Y_2$为$\theta$的从属统计量\\
+则$Y_1$与$Y_2$相互独立
+\end{dingli}
+
+\chapter{检验}
+
+\begin{dingyi}
+对随机变量$X$,有概率密度函数$\mathrm{pdf}\ f(x;\theta)$,其中$\theta\in\Omega$为参数\\
+称简单假设$H:\theta\in \omega$将分布确定,称复合假设$H:\theta\in \omega$未确定分布,即由若干简单假设构成\\
+称零假设$H_0:\theta\in\omega_0\subset\Omega$,称备择假设$H_1:\theta\in\omega_1\subset\Omega$,其中$\omega_0\cup\omega_1=\Omega,\omega_0\cap\omega_1=\varnothing$\\
+对随机样本$X_1,X_2,\cdots,X_n$,有样本空间$\mathcal{D}=\{(X_1,X_2,\cdots,X_n)\}$\\
+对$H_0$vs$H_1$进行假设检验要求考虑拒绝域$\mathcal{C}\subset\mathcal{D}$,有决策规则:\\
+当$(X_1,X_2,\cdots,X_n)\in\mathcal{C}$时,拒绝$H_0$,接受$H_1$\\
+当$(X_1,X_2,\cdots,X_n)\in\mathcal{C}^{c}$时,接受$H_0$,拒绝$H_1$\\
+第I类错误:当$H_0$实际成立时,通过决策规则拒绝了$H_0$,即$\theta\in\omega_0$且$(X_1,X_2,\cdots,X_n)\in\mathcal{C}$\\
+第II类错误:当$H_1$实际成立时,通过决策规则接受了$H_0$,即$\theta\in\omega_1$且$(X_1,X_2,\cdots,X_n)\in\mathcal{C}^{c}$\\
+显著性水平$\alpha=\max\limits_{\theta\in\omega_0}P_{\theta}((X_1,X_2,\cdots,X_n)\in\mathcal{C})$\\
+检验功效函数:$\gamma(\theta)=P_{\theta\in\omega_1}((X_1,X_2,\cdots,X_n)\in\mathcal{C})=1-P_{\theta\in\omega_1}((X_1,X_2,\cdots,X_n)\in\mathcal{C}^{c})$\\
+p值:在$H_0$成立时,对随机样本$(X_1,X_2,\cdots,X_n)$观测值更极端化$($相较于$H_0$$)$情形的概率值$($一般考虑某个可确定分布的统计量$)$\\
+若$\gamma(\theta)\geq\alpha$,则称检验为无偏检验
+\end{dingyi}
+
+\begin{dingyi}
+卡方检验:\\
+对随机变量$X_1,X_2,\cdots,X_n$服从多项分布,有参数$n$和$p_1,p_2\cdots,p_n$\\
+有零假设$H_0:p_1=p_{10},p_2=p_{20},\cdots,p_n=p_{n0}$\\
+有随机变量$Q_{n-1}=\sum\limits_{i=1}^{n}\frac{(X_i-N\cdot p_{i0})^2}{N\cdot p_{i0}}$近似服从$\chi^2(n-1)$\\
+则当显著性水平为$\alpha$时,有决策规则:\\
+当$Q_{n-1}\geq \chi_{n-1,\text{上}\alpha\text{分位数}}$时,拒绝$H_0$\\
+$($若分布有未知参数,则卡方分布自由度须再减去未知参数数量$)$\\
+对两组随机变量$X_{k1},X_{k2},\cdots,X_{kn}$服从多项分布,有参数$n_k$和$p_{k1},p_{k2},\cdots,p_{kn}$\\
+有零假设$H_0:p_{11}=p_{21},p_{12}=p_{22},\cdots,p_{1n}=p_{2n}$\\
+有随机变量$Q_{2n-2}=\sum\limits_{k=1}^{2}\sum\limits_{i=1}^{n}\frac{(X_{ki}-N_k\cdot p_{ki})^2}{N_k\cdot p_{ki}}$近似服从$\chi^2(2n-2)$\\
+有随机变量$Q_{n-1}=\sum\limits_{k=1}^{2}\sum\limits_{i=1}^{n}\frac{(X_{ki}-N_k\cdot \frac{X_{1i}+X_{2i}}{N_1+N_2})^2}{N_k\cdot \frac{X_{1i}+X_{2i}}{N_1+N_2}}$近似服从$\chi^2(n-1)=\chi^2((2n-2)-(n-1))$\\
+则当显著性水平为$\alpha$时,有决策规则:\\
+当$Q_{n-1}\geq \chi_{n-1,\text{上}\alpha\text{分位数}}$时,拒绝$H_0$\\
+对两种互斥性随机变量$X_1,X_2,\cdots,X_n$和$Y_1,Y_2,\cdots,Y_m$,有列联表$[Z_{ij}]=[X_i\cap Y_j]$\\
+记$N=\sum\limits_{i=1}^{n}X_i=\sum\limits_{j=1}^{m}Y_j$为样本总量,记$E_{ij}=\frac{X_i\cdot Y_j}{N}$为形式期望\\
+有零假设$H_0:$两种属性相互独立\\
+有随机变量$Q_{n-1}=\sum\limits_{j=1}^{m}\sum\limits_{i=1}^{n}\frac{(Z_{ij}-N\cdot p_{ij})^2}{N\cdot p_{ij}}$近似服从$\chi^2(nm-1)$\\
+有随机变量$Q_{(n-1)\cdot(m-1)}=\sum\limits_{j=1}^{m}\sum\limits_{i=1}^{n}\frac{(Z_{ij}-E_{ij})^2}{E_{ij}}$近似服从$\chi^2((n-1)\cdot(m-1))$\\
+则当显著性水平为$\alpha$时,有决策规则:\\
+当$Q_{(n-1)\cdot(m-1)}\geq \chi_{(n-1)\cdot(m-1),\text{上}\alpha\text{分位数}}$时,拒绝$H_0$
+\end{dingyi}
+
+\begin{dingyi}
+似然比检验:\\
+对随机样本$X_1,X_2,\cdots,X_n$\\
+有零假设$H_0:\theta\in\omega_0\subset\Omega$,备择假设$H_1:\theta\in\omega_1\subset\Omega$\\
+则似然比检验统计量为$\Lambda=\frac{\max\limits_{\theta\in\omega_0}L(\theta)}{\max\limits_{\theta\in\Omega}L(\theta)}$\\
+则当显著性水平为$\alpha$时,有决策规则:\\
+当$\Lambda\leq C$时,拒绝$H_0$,接受$H_1$,其中$\alpha=\max_{\theta\in\omega_0}P_{\theta}(\Lambda\leq C)$
+\end{dingyi}
+
+\begin{dingyi}
+最优假设检验:\\
+对随机样本$X_1,X_2,\cdots,X_n$,有样本空间$\mathcal{D}=\{(X_1,X_2,\cdots,X_n)\}$\\
+有零假设$H_0:\theta=\theta'$,备择假设$H_1:\theta=\theta''$\\
+当显著性水平为$\alpha$时\\
+若对子集$\mathcal{C}\subset\mathcal{D}$,有$P_{\theta=\theta'}(X\in \mathcal{C})=\alpha$\\
+对任意子集$\mathcal{A}\subset\mathcal{D}$,有$P_{\theta=\theta'}(X\in \mathcal{A})=\alpha\Rightarrow P_{\theta=\theta''}(X\in \mathcal{C})\geq P_{\theta=\theta''}(X\in \mathcal{A})$\\
+即同样显著性水平下,功效$\gamma_{\mathcal{C}}(\theta)\geq\gamma_{\mathcal{A}}(\theta)$\\
+则称$\mathcal{C}$为检验$H_0\ $vs$\ H_1$的最优拒绝域
+\end{dingyi}
+
+\begin{dingli}
+Neymann-Pearson定理:\\
+对随机样本$X_1,X_2,\cdots,X_n$,有样本空间$\mathcal{D}=\{(X_1,X_2,\cdots,X_n)\}$\\
+有零假设$H_0:\theta=\theta'$,备择假设$H_1:\theta=\theta''$\\
+有似然函数$L(\theta;X)=\prod\limits_{i=1}^{n}f(X_i;\theta)$,其中$X\in\mathcal{D}$\\
+当显著性水平为$\alpha$时,若存在子集$\mathcal{C}\subset\mathcal{D}$\\
+有$P_{\theta=\theta'}(X\in\mathcal{C})=\alpha$\\
+当$X\in\mathcal{C}$时,有$\frac{L(\theta';X)}{L(\theta'';X)}\leq k$;当$X\in\mathcal{C}^{c}$时,有$\frac{L(\theta';X)}{L(\theta'';X)}\geq k$\\
+则$\mathcal{C}$为检验$H_0\ $vs$\ H_1$的最优拒绝域,其中此检验亦为无偏检验
+\end{dingli}
+
+\begin{dingyi}
+一致最大功效检验:\\
+对随机样本$X_1,X_2,\cdots,X_n$,有样本空间$\mathcal{D}=\{(X_1,X_2,\cdots,X_n)\}$\\
+有零假设$H_0:\theta\in\omega_0$为简单假设,备择假设$H_1:\theta\in\omega_1$为复合假设\\
+若有子集$\mathcal{C}\subset\mathcal{D}$为检验$H_0\ $vs$\ H_1$中任一简单假设的最优拒绝域\\
+则称$\mathcal{C}$为检验$H_0\ $vs$\ H_1$的最大一致功效临界区域\\
+则称检验$H_0\ $vs$\ H_1$在拒绝域$\mathcal{C}$下为一致最大功效检验
+\end{dingyi}
+
+\begin{dingyi}
+单调似然比检验:\\
+对随机样本$X_1,X_2,\cdots,X_n$\\
+考虑$\theta_1<\theta_2$,有$\frac{L(\theta_1;X)}{L(\theta_2;X)}$为关于$u(X)$的单调函数\\
+则称似然函数$L(\theta;X)$具有关于统计量$u(X)$的单调似然比\\
+有零假设$H_0:\theta\leq \theta'$,备择假设$H_1:\theta> \theta'$\\
+则当显著性水平为$\alpha$时,若有单调递减似然比,则有决策规则:\\
+当$u(X)\geq C$时,拒绝$H_0$,接受$H_1$,其中$\alpha=P_{\theta=\theta'}(u(X)\geq C)$\\
+此检验为一致最大功效检验
+\end{dingyi}
+
+\begin{dingli}
+ANOVA:\\
+对$m$组随机样本$X_{1j},X_{2,j},\cdots,X_{n_jj}$服从N$(\mu_{j},\sigma^2)$\\
+记样本总量为$n=\sum\limits_{j=1}^{m}n_{j}$,记总均值$\overline{X}_{..}=\frac{1}{n}\sum\limits_{j=1}^{m}\sum\limits_{i=1}^{n_{j}}X_{ij}$,记分组均值$\overline{X}_{.j}=\frac{1}{n_j}\sum\limits_{i=1}^{n_{j}}X_{ij}$\\
+有零假设$H_0:\mu_{1}=\mu_{2}=\cdots=\mu_{m}$,备择假设$H_1:\exists i,j,i\neq j,s.t.\mu_{i}\neq\mu_{j}$\\
+有统计量$Q_{m-1}=\sum\limits_{j=1}^{m}n_j\cdot(\overline{X}_{.j}-\overline{X}_{..})^2$在$H_0$下服从$\chi^2(m-1)$\\
+有统计量$Q_{n-m}=\sum\limits_{j=1}^{m}\sum\limits_{i=1}^{n_j}(\overline{X}_{ij}-\overline{X}_{.j})^2$在$H_0$下服从$\chi^2(n-m)$\\
+则有统计量$F=\frac{\frac{Q_{m-1}}{m-1}}{\frac{Q_{n-m}}{n-m}}$在$H_0$下服从F$(m-1,n-m)$\\
+则当显著性水平为$\alpha$时,有决策规则:\\
+当$F\geq C$时,拒绝$H_0$,接受$H_1$,其中$\alpha=P_{\mu\in\omega_0}(F\geq C)$
+\end{dingli}
+
+\endinput
+%\end{document}

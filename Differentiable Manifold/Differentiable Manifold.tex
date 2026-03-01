@@ -1,0 +1,69 @@
+%\documentclass[12pt,oneside,a4paper]{book}
+
+%\usepackage{amsmath}
+%\usepackage{mathtools}
+%\usepackage{amsfonts}
+%\usepackage{unicode-math}
+%\usepackage{geometry}
+%\usepackage{ctex}
+
+%\begin{document}
+
+%\setcounter{chapter}{0}
+\setcounter{section}{0}
+\setcounter{subsection}{0}
+
+\begin{dingyi}
+对映射$f=(f_1,\cdots,f_m):U\to\R^n$,其中$U\subset \R^m$为开集\\
+记$\partial_{j}=\frac{\partial}{\partial x_{j}}$,其中$j\in \{1,\cdots,m\}$\\
+若$f$为连续映射,则称$f\in C^{0}(U)$\\
+若对任意$i\in \{1,\cdots,n\},j\in\{1,\cdots,m\}$,有$\partial_{j}f_{i}$存在且$k-1$次连续可微\\
+则称$f$为$k$次连续可微函数,则称$f\in C^{k}(U)$\\
+则称$f\in C^{\infty}(U)=\bigcap_{i=0}^{\infty}C^{k}(U)$为光滑函数\\
+若$f\in C^{\infty}(U)$且Taylor展式收敛于$f$\\
+则称$f$为实解析函数,则称$f\in C^{\omega}(U)$\\
+则称$f$的Jacobi矩阵为$J_{f}=(\partial_{j}f_{i})\in M_{n\times m}(\R)$
+\end{dingyi}
+
+\begin{dingyi}
+对拓扑空间$X$和其开集$U\subset X$\\
+若对连续映射$x:U\to\R^n$,有同胚$x:U\to x(U)$\\
+则称$(U,x)$为图卡\\
+则称$\sca=\{(U,x)\text{为图卡}\}$为图册\\
+若图卡$(U,x)$和$(V,y)$,有$y\circ x^{-1}\in C^{k}(x(U))$和$x\circ y^{-1}\in C^{k}(y(U))$\\
+则称$(U,x)$和$(V,y)$为$C^{k}$相容的\\
+若对图册$\sca$,任意$(U,x),(V,y)\in\sca$为$C^{k}$相容的\\
+则称$\sca$为$C^{k}$相容的
+\end{dingyi}
+
+\begin{dingyi}
+对拓扑空间$X$\\
+若存在图册$\sca=\{(U_i,x_i)|i=1,\cdots,n\}$,有$X=\bigcup\limits_{i=1}^{n}U_i$\\
+若拓扑空间$X$为Hausdorff空间,即对任意$x,y\in X$,存在开集$U,V\subset X$,有$x\in U,y\in V$且$U\cap V=\varnothing$
+若拓扑空间$X$为第二可数空间,即存在$\{U_i\subset X|U_i\text{为开集},i\in\N\}$为拓扑基\\
+则称$X$为拓扑流形\\
+若$X$为拓扑流形且图册$\sca$为$C^{k}$相容的,则称$X$为$C^{k}$微分流形\\
+若$X$为拓扑流形且图册$\sca$为$C^{\infty}$相容的,则称$X$为光滑流形\\
+以上$C^{k}$微分流形和光滑流形统称微分流形\\
+若微分流形$M$的图册$\sca$中映射为$X\to \R^n$,即$M$同胚于$\R^n$\\
+则称$n=\dim M$为微分流形的维数
+\end{dingyi}
+
+\begin{dingyi}
+对微分流形$M$和其上点$p\in M$\\
+记$C^{\infty}_{p}=\{\text{定义在拓扑流形上}p\text{附近的光滑函数}\}$\\
+若有函数$v:C^{\infty}_{p}\to \R$,对任意$f,g\in C^{\infty}_{p}$和$a,b\in \R$\\
+有$v(af+bg)=av(f)+bv(g)$且$v(fg)=g(p)v(g)+f(p)v(g)$\\
+则称$v$为$p\in M$处切向量\\
+若$T_{p}M=\{v:C^{\infty}_{p}\to \R|v\text{为}p\in M\text{处切向量}\}$\\
+则称$T_{p}M$为$p\in M$处切空间
+\end{dingyi}
+
+\begin{dingli}
+对微分流形$M$和其上点$p\in M$\\
+有$\{\partial_i|_{p}\ \Big|\ \partial_i|_{p}(f)=\frac{\partial(f\circ\varphi^{-1})}{\partial x_i}(\varphi(p)),i=1,\cdots,\dim M\}$为$T_{p}M$的一组基\\
+有$T_{p}M$为$\dim M$维线性空间,有$T_{p}M\cong M$
+\end{dingli}
+
+
+%\end{document}

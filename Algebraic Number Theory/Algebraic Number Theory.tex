@@ -1,0 +1,963 @@
+%\documentclass[12pt,oneside,a4paper]{book}
+
+%\usepackage{amsmath}
+%\usepackage{mathtools}
+%\usepackage{amsfonts}
+%\usepackage{unicode-math}
+%\usepackage{geometry}
+%\usepackage{ctex}
+
+%\begin{document}
+
+%\setcounter{chapter}{0}
+\setcounter{section}{0}
+\setcounter{subsection}{0}
+
+\chapter{整数}
+
+\begin{zhu}
+代数数论研究的均为$\Q$的有限扩张域上的扩张,称为数域扩张
+\end{zhu}
+
+\begin{dingli}
+对数域扩张$L/K$\\
+有$\char L=\char K=\char \Q=0$,则$L/K$为可分扩张\\
+又数域扩张$L/K$为有限扩张,则$L/K$为单扩张
+\end{dingli}
+
+\begin{dingli}
+对数域扩张$L/K$,其中$[L:K]=n$\\
+对任意嵌入$\sigma:K\to \C$均有$n$种方式可以扩充到$L$上\\
+特别地,若$\sigma=\id$,则有$n$个$L\to \C$的$K$-嵌入
+\end{dingli}
+
+\begin{dingli}
+对数域扩张$K/\Q$,存在$[K:\Q]$个$K\to \C$的嵌入\\
+有$K\to \C$嵌入$\sigma_1,\cdots,\sigma_{r_1},\sigma_{r_1+1},\cdots,\sigma_{r_1+r_2}$,此嵌入组已极大化,否则与下条件矛盾\\
+其中$\sigma_1,\cdots,\sigma_{r_1}$为两两不同的实嵌入且$\sigma_{r_1+1},\cdots,\sigma_{r_1+r_2}$为两两不同且不共轭的复嵌入\\
+则$r_1+2r_2=[K:\Q]$
+\end{dingli}
+
+\begin{tuilun}
+对数域扩张$K/\Q$,其中$[K:\Q]=r_1+2r_2$\\
+有$K\to \C$嵌入$\sigma_1,\cdots,\sigma_{r_1},\sigma_{r_1+1},\cdots,\sigma_{r_1+r_2}$\\
+其中$\sigma_1,\cdots,\sigma_{r_1}$为两两不同的实嵌入且$\sigma_{r_1+1},\cdots,\sigma_{r_1+r_2}$为两两不同且不共轭的复嵌入\\
+则有映射$K\to \R^{r_1}\times\C^{r_2},x\mapsto(\sigma_1(x),\cdots,\sigma_{r_1}(x),\sigma_{r_1+1}(x),\cdots,\sigma_{r_1+r_2}(x))$
+\end{tuilun}
+
+\begin{dingyi}
+对数域扩张$L/K$,其中$[L:K]=n$\\
+则$L$可视为$K$上$n$维线性空间,记$\sigma_1,\cdots,\sigma_n$为$L\to \C$的$K$-嵌入\\
+对任意$\alpha\in L$,有线性映射$f_{\alpha}:x\to \alpha x$,类比线性代数知识:\\
+则称$\alpha$关于域扩张$L/K$的迹为$\Tr_{L/K}(\alpha)=\sum\limits_{i=1}^{n}\sigma_{i}(\alpha)$\\
+则称$\alpha$关于域扩张$L/K$的范为$\Norm_{L/K}(\alpha)=\prod\limits_{i=1}^{n}\sigma_{i}(\alpha)$\\
+则称$\alpha_1,\cdots,\alpha_n\in L$的判别式为$\disc (\alpha_1,\cdots,\alpha_n)=|(\Tr_{L/K}(\alpha_i\alpha_j))|=|(\sigma_{i}(\alpha_j))|^2$
+\end{dingyi}
+
+\begin{dingli}
+对数域扩张$L/M$和$M/K$,其中$\alpha\in L$\\
+有$\Tr_{L/K}(\alpha)=\Tr_{M/K}(\Tr_{L/M}(\alpha))$且$\Norm_{L/K}(\alpha)=\Norm_{M/K}(\Norm_{L/M}(\alpha))$
+\end{dingli}
+
+\begin{dingli}
+对数域扩张$L/K$和$\alpha_1,\cdots,\alpha_n\in L$,其中$[L:K]=n$\\
+有$\alpha_1,\cdots,\alpha_n$构成$K$上线性空间$L$的一组基当且仅当$\disc (\alpha_1,\cdots,\alpha_n)\neq 0$
+\end{dingli}
+
+\begin{dingli}
+对数域扩张$L/K$和$\alpha\in L$,其中$[L:K]=n$\\
+若$\alpha$的极小多项式为$f(x)\in K[x]$\\
+若$\deg f(x)<n$,有$\disc(1,\alpha,\cdots,\alpha^{n-1})=0$\\
+若$\deg f(x)=n$,有$\disc(1,\alpha,\cdots,\alpha^{n-1})=(-1)^{\frac{n(n-1)}{2}}\Norm_{L/K}(f'(\alpha))$
+\end{dingli}
+
+\begin{dingyi}
+对数域扩张$K/\Q$\\
+对$\alpha\in K$,若存在首一多项式$f(x)\in \Z[x]$,有$f(\alpha)=0$\\
+则称$\alpha$为$K$中的代数整数$($此概念与环中整性概念相契合$)$\\
+则称$\O_{K}=\{\alpha\in K|\alpha\text{为}K\text{中的代数整数}\}$为数域$K$的代数整数环,即$\Z$在$K$中整闭包
+\end{dingyi}
+
+\begin{dingli}
+对数域扩张$K/\Q$和$\alpha\in K$\\
+则$\alpha$为$K$中代数整数\\
+$\Leftrightarrow$环$\Z[\alpha]$作为加法群为有限生成\\
+$\Leftrightarrow$存在环$R\subset \C$作为加法群为有限生成且$R\neq \{0\},\alpha\in R$\\
+$\Leftrightarrow$存在环$R\subset \C$作为加法群为有限生成且$R\neq \{0\},\alpha R\subset R$
+\end{dingli}
+
+\begin{dingli}
+对数域扩张$K/\Q$和$\alpha,\beta\in K$\\
+若$\alpha,\beta$均为$K$中代数整数,则环$K[\alpha,\beta]$作为加法群为有限生成\\
+则$\alpha\pm\beta,\alpha\beta\in K[\alpha,\beta]$均为$K$中代数整数
+\end{dingli}
+
+\begin{dingyi}
+对数域扩张$K/\Q$\\
+若存在$\alpha_1,\cdots,\alpha_{n}\in \O_{K}$,有$\O_{K}=\Z\alpha_{1}\oplus\cdots\oplus\Z\alpha_{n}$\\
+则称$\alpha_1,\cdots,\alpha_{n}$为$K$的一组整基
+\end{dingyi}
+
+\begin{dingli}
+对数域扩张$K/\Q$,其中$[K:\Q]=n$\\
+有$\O_{K}$为秩为$n$的自由Abel群,即存在$\alpha_1,\cdots,\alpha_{n}\in \O_{K}$,有$\O_{K}=\Z\alpha_{1}\oplus\cdots\oplus\Z\alpha_{n}$
+\end{dingli}
+
+\begin{dingli}
+对数域$F$和其代数整数环$\O_{F}$,其中$[F:\Q]=n$\\
+则任意$\O_{F}$的理想$I$为秩为$n$的自由Abel群\\
+$\Leftrightarrow$存在$\omega_1,\cdots,\omega_n\in \O_{F}$,任取$a\in I\backslash\{0\}$和$t=\Norm_{F}(a)$,有$I=\Z t\omega_1\oplus\cdots\oplus\Z t\omega_n$\\
+则任意分式理想$\a$为秩为$n$的自由Abel群\\
+$\Leftrightarrow$存在$d,\mu_1,\cdots,\mu_n\in \O_{F}$,有$\a=\frac{1}{d}I=\Z \frac{\mu_1}{d}\oplus\cdots\oplus\Z \frac{\mu_n}{d}$
+\end{dingli}
+
+\begin{dingli}
+对数域扩张$K/\Q$,有$\O_{K}$为Dedekind整环
+\end{dingli}
+
+\begin{dingyi}
+对$\R^n$和其加法子群$H$\\
+若存在$\alpha_1,\cdots,\alpha_n$为一组基,有$H=\Z\alpha_1\oplus\cdots\oplus\Z\alpha_n$\\
+则称$H$为$\R^n$的格\\
+取标准正交基$e_1,\cdots,e_n$,有$\alpha_i=\sum\limits_{j=1}^{n}r_{ij}e_j$,其中$r_{ij}\in \R$\\
+则称$\Vol H=|\det(r_{ij})_{n\times n}|$为格$H$的体积
+\end{dingyi}
+
+\begin{dingli}
+对$\R^n$和其格$H$和$H'$\\
+若$H\subset H'$,有加法商群$H'/H$为有限群且$|H'/H|=\frac{\Vol H'}{\Vol H\ }$\\
+对任意有界子集$M$,有$H\cap M$为有限集,即$H$为$\R^n$的离散子群
+\end{dingli}
+
+\begin{dingyi}
+对数域$F$和其代数整数环$\O_{F}$\\
+则称$\O_{F}^{\times}$为单位群,即乘法可逆元全体构成的群\\
+则称$W_{F}=\{x\in \O_{F}^{\times}|x\text{的乘法阶有限}\}$为单位群的扭子群
+\end{dingyi}
+
+\begin{dingli}
+对数域$F$和其代数整数环$\O_{F}$\\
+则有$x\in\O_{F}^{\times}$当且仅当$\Norm_{F/\Q}x=\pm 1$
+\end{dingli}
+
+\begin{dingli}
+Dirichlet定理:\\
+对数域$F$和其代数整数环$\O_{F}$,其中$[F:\Q]=r_1+2r_2$\\
+则$\O_{F}$为有限生成Abel群且秩为$r_1+r_2-1$\\
+即$\O_{F}=W_{F}\times V_{F}$,其中$V_{F}$为秩为$r_1+r_2-1$的自由Abel群
+\end{dingli}
+
+\begin{dingyi}
+对数域$F$和其代数整数环$\O_{F}$,有单位群$\O_{F}^{\times}$\\
+有映射$f:\O_{F}^{\times}\to\R^{r_1+r_2},x\mapsto(\ln |\sigma_1(x)|,\cdots,\ln|\sigma_{r_1}(x)|,2\ln|\sigma_{r_1+1}(x)|,\cdots,2\ln|\sigma_{r_1+r_2}(x)|)$
+有$\Ker f=W_{F}$且$\Im f\subset\sum=\{(x_1,\cdots,x_{r_1+r_2})\in\R^{r_1+r_2}|\sum\limits_{i=1}^{r_1+r_2}x_i=0\} $为离散子群\\
+则称$R_{F}=\Vol\sum/\O_{F}^{\times}$为正则化子,即为$\O_{F}^{\times}$在$\sum$中基本区域的体积
+\end{dingyi}
+
+\begin{dingyi}
+对数域$F$和其代数整数环$\O_{F}$\\
+若$\O_{F}$的分式理想视由一个元素生成,则称此分式理想为主分式理想\\
+$\Leftrightarrow$主分式理想$\a=\frac{1}{d}\a_1$,其中$\a_1$为环$\O_{F}$的主理想且$d\in \O_{F}\backslash\{0\}$\\
+所有主分式理想构成的集合为$P_F$,其为$I_{F}$的子群\\
+则称理想类群为$\Cl(F)=I_F/P_F$\\
+$\Leftrightarrow$有等价关系$\a\sim\b$当且仅当$\a^{-1}\b$为主分式理想,分式理想等价类构成群$\Cl(F)$
+\end{dingyi}
+
+\begin{dingyi}
+对数域$F$和其代数整数环$\O_{F}$\\
+则环$\O_{F}$的分式域即为$F$且$\O_{F}$为Dedekind整环\\
+考虑$\O_{F}$的理想$I$,则称理想的范数为$\Norm_{F}(I)=|\O_{F}/I|$\\
+对分式理想$\a=A/B$,其中$A,B$为理想,则称分式理想的范数为$\Norm_{F}(\a)=\frac{\Norm_{F}(A)}{\Norm_{F}(B)}$
+\end{dingyi}
+
+\begin{dingli}
+对数域$F$和其代数整数环$\O_{F}$\\
+考虑$\O_{F}$的理想$I,J$,存在素理想$\p_1,\cdots,\p_m$和$e_1,\cdots,e_n\in \Z^{+}$,有$I=\p_1^{e_1}\cdots\p_m^{e_m}$\\
+有$\Norm_{F}(I)=\Norm_{F}(\p_1)^{e_1}\cdots\Norm_{F}(\p_m)^{e_m}$,有$\Norm_{F}(IJ)=\Norm_{F}(I)\Norm_{F}(J)$\\
+若在$\Z$模下理想$I$有基$\{a_1,\cdots,a_n\}$,有$\Norm_{F}(I)^2=\frac{\disc(a_1,\cdots,a_n)}{\disc(F)}$\\
+若理想$I$为主理想,即存在$a\in\O_{F}$,有$I=(a)$,有$\Norm_{F}(I)=|\Norm_{F/\Q}(a)|$\\
+考虑分式理想$\a,\b$,有$\Norm_{F}(\a\b)=\Norm_{F}(\a)\Norm_{F}(\b)$\\
+若在$\Z$模下分式理想$\a$有基$\{\alpha_1,\cdots,\alpha_n\}$,有$\Norm_{F}(\a)^2=\frac{\disc(a_1,\cdots,a_n)}{\disc(F)}$\\
+若理想$I$为主分式理想,即存在$\alpha\in F$,有$I=\O_{F}\alpha$,有$\Norm_{F}(\a)=|\Norm_{F/\Q}(\alpha)|$
+\end{dingli}
+
+\begin{dingli}
+对数域$F$和其代数整数环$\O_{F}$\\
+对任意$M>0$,只存在有限多个$\O_{F}$的理想$I$满足$\Norm_{F}(I)<M$\\
+存在只和$F$相关的常数$M$,对任意分式理想$\a$,存在$x\in \a^{-1}\backslash\{0\}$,有$\Norm_{F}(\a x)<M$
+\end{dingli}
+
+\begin{dingyi}
+对数域$F$和其代数整数环$\O_{F}$\\
+有分式理想$\mfd^{-1}=\{x\in F|\text{对任意}y\in \O_{F},\text{有}\Tr_{F/\Q}(xy)\in \Z\}$\\
+则有$\O_{F}\subset \mcd^{-1}$,则存在$\O_{F}$的理想$\mfd$,有$\mfd\mfd^{-1}=\O_{F}$\\
+则称$\mfd$为差分理想
+\end{dingyi}
+
+\begin{dingli}
+对数域$F$和其代数整数环$\O_{F}$\\
+对差分理想$\mfd$,有$\Norm_{F}(\mfd)=[\mfd^{-1}:\O_{F}]=|\disc(F)|$
+\end{dingli}
+
+\begin{dingyi}
+对数域$F$,其中$[F:\Q]=r_1+2r_2$\\
+有$K\to \C$嵌入$\sigma_1,\cdots,\sigma_{r_1},\sigma_{r_1+1},\cdots,\sigma_{r_1+r_2}$\\
+其中$\sigma_1,\cdots,\sigma_{r_1}$为两两不同的实嵌入且$\sigma_{r_1+1},\cdots,\sigma_{r_1+r_2}$为两两不同且不共轭的复嵌入\\
+则有嵌入$\varsigma:F\to \R^{[F:\Q]}$\\
+有$x\mapsto (\sigma_{1}(x),\cdots,\sigma_{r_1}(x),\re(\sigma_{r_1+1}(x)),\cdots,\re(\sigma_{r_1+r_2}(x)),\im(\sigma_{r_1+1}(x)),\cdots,\im(\sigma_{r_1+r_2}(x)))$
+则称为$\varsigma:F\to \R^{[F:\Q]}$的正则嵌入
+\end{dingyi}
+
+\begin{dingli}
+对数域$F$,其中$[F:\Q]=r_1+2r_2$\\
+若$\a$为代数整数环$\O_{F}$的理想,则$\varsigma(\a)$为$\R^{[F:\Q]}$的格\\
+有$\Vol(\varsigma(\a))=2^{-r_2}\Norm_{F}(\a)\sqrt{\disc(F)}$\\
+特别地,有$\Vol(\varsigma(\O_{F}))=2^{-r_2}\sqrt{\disc(F)}$
+\end{dingli}
+
+\begin{zhu}
+记$V=\R^{[F:\Q]}$,则有$\Vol V/\a=\Vol(\varsigma(\a))=2^{-r_2}\Norm_{F}(\a)\sqrt{\disc(F)}$\\
+且$\Vol V/\O_{F}=\Vol(\varsigma(\O_{F}))=2^{-r_2}\sqrt{\disc(F)}$
+\end{zhu}
+
+\begin{tuilun}
+Minkowski上界:\\
+对数域$F$,有$[F:\Q]=r_1+2r_2$\\
+若$\a$为代数整数环$\O_{F}$的理想,存在$x\in\a,x\neq 0$,有$|\Norm_{F}(x)|\leq (\frac{4}{\pi})^{r_2}\frac{n!}{n^n}\sqrt{\disc(F)}\Norm_{F}(\a)$
+在$\Cl(F)$的任意等价类中,存在理想$\a$,有$\Norm_{F}(\a)\leq (\frac{4}{\pi})^{r_2}\frac{n!}{n^n}\sqrt{\disc(F)}$\\
+有$\disc(F)>1$,即至少有一个素数$p\in \N^*$在$\O_{F}$中分歧
+\end{tuilun}
+
+\begin{dingli}
+对数域$F$,理想类群$\Cl(F)$为有限群,记理想类数为$h_{F}=|\Cl(F)|$
+\end{dingli}
+
+\clearpage
+
+\begin{dingli}
+对数域扩张$L/K$和其代数整数环$\O_{L}$和$\O_{K}$\\
+若$\P$为$\O_{L}$的素理想,则$\P\cap\O_{K}$为$\O_{K}$的素理想\\
+有$\P\cap\O_{L}=\p$当且仅当$\P|\p\O_{L}$\\
+若$\P$为$\O_{L}$的素理想且$\P\cap\O_{K}=\p$\\
+则有域$\O_{L}/\P,\O_{K}/\p$和域扩张$(\O_{L}/\P)/(\O_{K}/\p)$
+\end{dingli}
+
+\begin{dingyi}
+对数域扩张$L/K$和其代数整数环$\O_{L}$和$\O_{K}$\\
+对任意$\O_{K}$中素理想$\p$,有$\p\O_{L}\subsetneq\O_{L}$为$\O_{L}$的理想\\
+则存在$\O_{L}$中素理想$\P_1,\cdots,\P_g$和$e_1\cdots,e_g\in \N^*$,有$\p\O_{L}=\P_1^{e_1}\cdots\P_g^{e_g}$\\
+则称$e_i$为$\P_i$的分歧指数,记为$e_i=e(\P_i/\p)$\\
+则称$f_i$为$\P_i$的剩余类域次数,记为$f_i=f(\P_i/\p)=[\O_{L}/\P_i:\O_{K}/\p]$\\
+则称$g$为素理想分解的分裂次数\\
+若$e_i=1$,则称$\P_i$为不分歧的,否则称$\P_i$为分歧素理想\\
+若$e_i=[L:K]$,则称$\p$在$\O_{L}$中完全分歧,有$f_i=g=1$\\
+若$g=[L:K]$,则称$\p$在$\O_{L}$中完全分裂,有$e_i=f_i=1$\\
+若$f_i=n$,则称$\p$在$\O_{L}$中为惯性的,有$e_i=g=1$且$\p\O_{L}$为$\O_{L}$的素理想
+\end{dingyi}
+
+\begin{dingli}
+对数域扩张$L/K$和其代数整数环$\O_{L}$和$\O_{K}$\\
+对任意$\O_{K}$中素理想$\p$,存在$\O_{L}$中素理想$\P_1,\cdots,\P_g$和$e_1\cdots,e_g,f_1,\cdots,f_g\in \N^*$\\
+有$\p\O_{L}=\P_1^{e_1}\cdots\P_g^{e_g}$,则$\sum\limits_{i=1}^{g}e_if_i=1$
+\end{dingli}
+
+\begin{dingli}
+对数域扩张$L/M$和$M/K$\\
+有代数整数环$\O_{L}$和$\O_{M}$和$\O_{K}$上的素理想$\P$和$P$和$\p$\\
+若$\P|P\O_{L}$且$P|\p\O_{M}$,则有$\P|\p\O_{L}$\\
+则有$e(\P|\p)=e(\P|P)\cdot e(P|\p)$且$f(\P|\p)=f(\P|P)\cdot f(P|\p)$
+\end{dingli}
+
+\begin{dingli}
+对数域扩张$L/K$,其中$L=K(\alpha),\alpha\in \O_{L},n=[L:K]$\\
+有$\alpha$在$K$上极小多项式$f(x)=x^n+a_{n-1}x^{n-1}+\cdots+a_{0}\in \O_{K}[x]$\\
+则$\O_{K}[\alpha]$为$\O_{L}$的子环且加法商群$\O_{L}/\O_{K}[\alpha]$为有限群\\
+对$p\in N^*$且$p$为素数和$\O_{K}$中素理想$\p$\\
+若$\p|p\O{K}$,则$\O_{K}/\p$为有限域且$\char \O_{K}/\p=p$\\
+若$p\nmid |\O_{L}/\O_{K}[\alpha]|$,考虑$f(x)=\overline{p_1(x)}^{e_1}\cdots \overline{p_g(x)}^{e_g}\mod \p$\\
+其中$p_1(x),\cdots,p_g(x)\in \O_{K}[x]$为首一多项式\\
+且在$\O_{K}/\p$中的像$\overline{p_1(x)},\cdots,\overline{p_g(x)}$为两两不同不可约多项式\\
+则$\P_i=(\p,p_i(\alpha)),e_i=e(\P/\p),f_i=f(\P_i/\p)=\deg p_i(x)$\\
+则$\p\O_{L}=\P_1^{e_1}\cdots\P_g^{e_g}$
+\end{dingli}
+
+\begin{dingyi}
+对$p\in N^*$且$p$为素数,对$d\in \Z$\\
+若存在$a\in \Z$,有$a^2\equiv d\mod p$,则$(\frac{d}{p})=1$\\
+若不存在$a\in \Z$,有$a^2\equiv d\mod p$,则$(\frac{d}{p})=-1$
+\end{dingyi}
+
+\begin{dingyi}
+对数域扩张$K/\Q$,其中$K=\Q(\sqrt{d})$\\
+若$p\mid \disc(K)$,则$p\O_{K}=\p^2$且$\Norm_{K}(\p)=p$,即$p$在$\O_{K}$中完全分歧\\
+若$p=2$且$p\nmid \disc(K)$,则$d\equiv 1\mod 4$\\
+若$d\equiv 1\mod 8$,则$p=2$在$\O_{K}$中完全分裂\\
+若$d\equiv 5\mod 8$,则$p=2$在$\O_{K}$中为惯性的\\
+若$p\geq 3$且$p\nmid \disc(K)$\\
+若$(\frac{d}{p})=1$,则$p\O_{K}=\P_1\P_2,\Norm_{K}(\P_1)=\Norm_{K}(\P_2)=p,\P_1\neq\P_2$,即$p$在$\O_{K}$中完全分裂\\
+若$(\frac{d}{p})=-1$,则$p\O_{K}=\P^2,\Norm_{K}(\P)=p^2$,即$p$在$\O_{K}$中为惯性的
+\end{dingyi}
+
+\begin{dingyi}
+对数域扩张$K/\Q$和其代数整数环$\O_{K}$和$p\in \N^*$为素数\\
+若$\O_{K}=\Z\alpha_{1}\oplus\cdots\oplus\Z\alpha_{n}$,在模$p\O_{K}$下\\
+则$\O_{K}/p\O_{K}=\F_{p}\overline{\alpha_{1}}\oplus\cdots\oplus\F_{p}\overline{\alpha_{n}}$\\
+对任意$k\in O_{K}$,有$\overline{\Tr_{K/\Q}(k)}=\Tr_{(\O_{K}/p\O_{K})/\F_{p}}(\overline{k})$且$\disc(K)=\disc_{(\O_{K}/p\O_{K})/\F_{p}}(\overline{\alpha_{1}},\cdots,\overline{\alpha_{n}})$
+\end{dingyi}
+
+\begin{dingli}
+对数域扩张$K/\Q$和其代数整数环$\O_{K}$和$p\in \N^*$为素数\\
+由$|\O_{K}/\P_i^{e_i}|=\Norm_{K}(\P_i^{e_i})=p^{e_if_i}$,有$\O_{K}/\P_i^{e_i}$为$\F_{p}$-代数且$\dim_{\F_{p}}(\O_{K}/\P_i^{e_i})=e_if_i$\\
+若$\alpha_1,\cdots,\alpha_{e_if_i}$为$\O_{K}/\P_i^{e_i}$的$\F_{p}$-基\\
+有$e_i\geq 2$当且仅当$\disc_{(\O_{K}/\P_i^{e_i})/\F_{p}}=0$
+\end{dingli}
+
+\begin{dingli}
+Dedekind判别式定理:\\
+对数域扩张$K/\Q$和$p\in \N^*$为素数,有$p$在$\O_{K}$分歧当且仅当$p|\disc(K)$
+\end{dingli}
+
+\begin{tuilun}
+对数域扩张$K/\Q$,只有有限多个素数$p\in \N^*$在$\O_{K}$中分歧
+\end{tuilun}
+
+\begin{dingyi}
+对数域扩张$L/K$,有$L$中素理想$\P,\P_i$和分式理想$\a$和$K$中素理想$\p$\\
+若$\P|\p\O_{L}$,则称$\Norm_{L/K}(\P)=\p^{f}$,其中$f=f(\P/\p)$\\
+若$\a=\P_1^{e_1}\cdots\P_g^{e_g}$,则称$\Norm_{L/K}=\prod\limits_{i=1}^{g}\Norm_{L/K}(\P_i)^{e_i}$
+\end{dingyi}
+
+\begin{dingli}
+对数域扩张$L/K,K/M$,有$L$中理想$\a,\b$和$\alpha\in L^{\times}$\\
+有$\Norm_{L/K}(\a\b)=\Norm_{L/K}(\a)\Norm_{L/K}(\b)$\\
+有$\Norm_{L/K}(\alpha\O_{L})=\Norm_{L/K}(\alpha)\O_{K}$\\
+有$\Norm_{L/M}(\a)=\Norm_{K/M}(\Norm_{L/K}(\a))$
+\end{dingli}
+
+\begin{dingli}
+对数域扩张$L/K$为Galois扩张\\
+对$\O_{K}$中素理想$\p$,存在$\O_{L}$中素理想$\P_1,\cdots,\P_{g}$,有$\p\O_{L}=\P_1^{e_1}\cdots\P_{g}^{e_g}$\\
+有$\Gal(L/K)$在$\{\P_1,\cdots,P_{g}\}$上作用是可迁的,即对任意$\P_i,\P_j$,存在$\sigma\in \Gal(L/K)$,有$\sigma(P_i)=P_j$\\
+有$e=e_1=\cdots=e_g,f=f_1=\cdots=f_g$且$[L:K]=efg$\\
+对任意$\O_{L}$中理想$\a$,有$\Norm_{L/K}(\a)\O_{L}=\prod\limits_{\sigma\in\Gal(L/K)}\sigma(\a)$
+\end{dingli}
+
+\begin{dingli}
+对数域扩张$K/\Q$,其中$K=\Q(\sqrt{d})$且$d\in \Z$无平方因子\\
+则有$K\subset L=\Q(\zeta_{|\disc(K)|})$且$L$为包含$K$的最小分圆域
+\end{dingli}
+
+\begin{dingli}
+Kronecker-Weber定理:\\
+每个Abel数域均为某个分圆域的子域
+\end{dingli}
+
+\chapter{完备}
+
+\begin{dingyi}
+对有理数域$\Q$,有素数$p\in \Z=\O_{\Q}$\\
+对任意$x\in \Q^{\times}$,存在$a,b\in \Z,p\nmid ab$,有$x=p^n\frac{a}{b}$\\
+则称$v_p(x)=n$为$x$的$p$-进赋值\\
+则称$|x|_p=p^{-n}$为$x$的$p$-进绝对值\\
+特别地,记$v_p(0)=\infty,|0|_p=0$
+\end{dingyi}
+
+\begin{dingli}
+对有理数域$\Q$,有素数$p\in \Z=\O_{\Q}$\\
+对任意$x,y\in \Q^{\times}$,有$v_p(xy)=v_p(x)+v_p(y)$且$|xy|_p=|x|_p+|y|_p$\\
+有$v_p(x+y)\geq \min\{v_p(x),v_p(y)\}$且$|x+y|_p\leq \max\{|x|_p,|y|_p\}$\\
+特别地,若$|x|_p>|y|_p$,则$v_p(x+y)=v_p(x)|$且$|x+y|_p=|x|_p$
+\end{dingli}
+
+\begin{dingyi}
+对有理数域$\Q$,有素数$p\in \Z=\O_{\Q}$\\
+则在$p$-进绝对值下$\Q$构成度量空间$\ (\Q$在$|\ |$下也构成度量空间$)$\\
+则在$p$-进绝对值下$\Q$的完备化空间为$\Q_p$$\ (\Q$在$|\ |$下完备化空间为$\R)$
+\end{dingyi}
+
+\begin{zhu}
+此时$\Q_p=\{\cdots+a_{-m}p^{-m}+\cdots+a_0+\cdots+a_{n}p^{n}+\cdots|a_i\in N^*,0\leq a_i\leq p-1\}$
+\end{zhu}
+
+\begin{dingyi}
+对$\Q_p$\\
+有单位圆盘$\Z_p=\{x\in \Q_p|\ |x|_p\leq 1\}=\{x\in \Q_p|v_p(x)\geq 0\}$为环\\
+则对任意$n\in \Z$,有圆盘$p^n\Z_p=\{x\in \Q_p|\ |x|_p\leq p^{-n}\}$\\
+有$\cdots \subset p^n\Z_p \subset \cdots \subset p\Z_p \subset \Z_p \subset p^{-1}\Z_p \subset \cdots \subset p^{-m}\Z_p \subset \cdots$\\
+若$n \in \N$,则$p^n\Z_p$为$\Z_p$的理想,其中$p\Z_p$为$\Z_p$的极大理想
+\end{dingyi}
+
+\begin{dingli}
+对$\Q_p$\\
+对任意$n\in \Z$,有$p^n\Z_p$为$\Q$的加法子群\\
+对任意$n\in \N^*$,有$p^n\Z_p$为$\Z_p$的理想
+\end{dingli}
+
+\begin{dingli}
+对$\Q_p$,考虑$p$-进绝对值诱导的拓扑\\
+对任意$n\in \Z$,有$p^n\Z_p$为开集闭集\\
+有$\{a+p^n\Z_p|a\in \Q_p,n\in \Z\}$构成拓扑空间$\Q_p$的一组开集基\\
+对任意$a\in \Q_p,n\in \Z$,有$a+p^n\Z_p$为紧集,特别地,有$\Z_p$为紧集\\
+对$\Q_p$中,每个连通子集均为单点集,即$\Q_p$为完全不连通空间
+\end{dingli}
+
+\begin{dingli}
+对$\Q_p$,考虑乘法群$\Q_p^{\times}$\\
+若$p\neq 2$,则$\Q_p^{\times}\cong p^{\Z}\times (\Z/p\Z)^\times \times (1+p\Z_p)$\\
+若$p=2$,则$\Q_2^{\times}\cong 2^{\Z}\times \{\pm 1\} \times (1+4\Z_2)$
+\end{dingli}
+
+\begin{dingyi}
+对数域$K$和对运算$f$\\
+有$f(xy)=f(x)f(y)$且$f(x)\geq 0$取等当且仅当$x=0$\\
+存在$a>0$,有$f(x+y)^{a}\leq f(x)^{a}+f(y)^{a}$\\
+则称$f$为绝对值
+\end{dingyi}
+
+\begin{dingli}
+对有理数域$\Q$\\
+其上绝对值有且仅有$|\ |,|\ |_p$,其中$p$为素数
+\end{dingli}
+
+\begin{dingli}
+对有理数域$\Q$\\
+若$x\in Q^{\times}$,则$|x|\cdot\prod\limits_{p\text{为素数}}|x|_p=1$
+\end{dingli} 
+
+\begin{dingyi}
+对数域扩张$K/\Q$,有代数整数环$\O_{K}$和素理想$\p\neq \{0\}$\\
+对$x\in K^{\times}$,存在$n\in \N^*$和分解不含$\p$的分式理想$\a$,有$x\O_{K}=\p^n\a$\\
+则称$v_{\p}(x)=n$为$x$的$\p$-进赋值\\
+则称$|x|_{\p}=\Norm_{K}(\p)^{-n}$为$x$的$\p$-进绝对值\\
+特别地,记$v_{\p}(0)=\infty,|0|_{\p}=0$
+\end{dingyi}
+
+\begin{dingli}
+对数域扩张$K/\Q$,有代数整数环$\O_{K}$和素理想$\p\neq \{0\}$\\
+对任意$x,y\in K^{\times}$,有$v_{\p}(xy)=v_{\p}(x)+v_{\p}(y)$且$|xy|_{\p}=|x|_{\p}+|y|_{\p}$\\
+有$v_{\p}(x+y)\geq \min\{v_{\p}(x),v_{\p}(y)\}$且$|x+y|_{\p}\leq \max\{|x|_{\p},|y|_{\p}\}$\\
+特别地,若$|x|_{\p}>|y|_{\p}$,则$v_{\p}(x+y)=v_{\p}(x)|$且$|x+y|_{\p}=|x|_{\p}$
+\end{dingli}
+
+\begin{dingyi}
+对数域扩张$K/\Q$,有代数整数环$\O_{K}$和素理想$\p\neq \{0\}$\\
+则在$\p$-进绝对值下$K$构成度量空间,此度量下的完备化空间为$K_{\p}$
+\end{dingyi}
+
+\begin{dingyi}
+对$K_{\p}$\\
+有单位圆盘$\O_{\p}=\{x\in K_{\p}|\ |x|_{\p}\leq 1\}=\{x\in K_{\p}|v_{\p}(x)\geq 0\}$为环\\
+则对任意$n\in \Z$,有圆盘$\p^n\O_{\p}=\{x\in K_{\p}|\ |x|_{\p}\leq p^{-n}\}$\\
+有$\cdots \subset p^n\O_{\p} \subset \cdots \subset p\O_{\p} \subset \O_{\p} \subset p^{-1}\O_{\p} \subset \cdots \subset p^{-m}\O_{\p} \subset \cdots$\\
+若$n\in\N$,则$\p^n\O_{\p}$为环$\O_{\p}$的理想,其中$\p\O_{\p}$为$\O_{\p}$的极大理想
+\end{dingyi}
+
+\begin{dingli}
+对$K_{\p}$\\
+对任意$n\in \Z$,有$p^n\O_{\p}$为$K$的加法子群\\
+对任意$n\in \N^*$,有$p^n\O_{\p}$为$\O_{\p}$的理想
+\end{dingli}
+
+\begin{dingli}
+对$K_{\p}$,考虑$p$-进绝对值诱导的拓扑\\
+对任意$n\in \Z$,有$p^n\O_{\p}$为开集闭集\\
+有$\{a+p^n\O_{\p}|a\in K_{\p},n\in \Z\}$构成拓扑空间$K_{\p}$的一组开集基\\
+对任意$a\in K,n\in \Z$,有$a+\p^n\O_{\p}$为紧集,特别地,有$\O_{\p}$为紧集\\
+对$K_{\p}$中,每个连通子集均为单点集,即$K_{\p}$为完全不连通空间
+\end{dingli}
+
+\begin{dingyi}
+对数域扩张$K/\Q$\\
+对任意嵌入$\sigma:K\to \C$\\
+可定义$K$上绝对值$|x|_{\sigma}=|\sigma(x)|$\\
+则有$F$为度量空间和完备化空间\\
+若$\sigma$为实嵌入,则完备化空间为$\R$\\
+若$\sigma$为复嵌入,则完备化空间为$\C$
+\end{dingyi}
+
+\begin{zhu}
+一般地,若$\sigma$为复嵌入,则定义绝对值为$|x|_{\sigma}=|\sigma(x)|^2$
+\end{zhu}
+
+\begin{dingli}
+对数域扩张$K/\Q$,有代数整数环$\O_{K}$\\
+有$\O_{K}$的所有素理想$\p\neq \{0\},\cdots$,有$K\to \C$嵌入$\sigma_1,\cdots,\sigma_{r_1},\sigma_{r_1+1},\cdots,\sigma_{r_1+r_2}$\\
+其中$\sigma_1,\cdots,\sigma_{r_1}$为两两不同的实嵌入且$\sigma_{r_1+1},\cdots,\sigma_{r_1+r_2}$为两两不同且不共轭的复嵌入\\
+则数域$K$上的绝对值有且仅有$|\ |_{\sigma_{1}},\cdots,|\ |_{\sigma_{r_1+r_2}},|\ |_{\p},\cdots$
+\end{dingli}
+
+\begin{zhu}
+一般地,\\
+记嵌入诱导的绝对值为$|\ |_{v},v|\infty$,称为archimedean位\\
+记素理想诱导的绝对值为$|\ |_{v},v<\infty$,称为nonarchimedean位
+\end{zhu}
+
+\begin{dingli}
+对数域扩张$K/\Q$,对其上所有绝对值$|\ |_{v}$和任意$x\in K^{\times}$,有$\prod\limits_{v}|x|_{v}=1$
+\end{dingli}
+
+\begin{dingyi}
+对$\Q$上完备化后的数域扩张\\
+则称$\R$和$\C$为archimedean局部域\\
+则称$\Q_{p}$的有限扩张为nonarchimedean局部域
+\end{dingyi}
+
+\begin{dingyi}
+对数域扩张$F/\Q_{p}$\\
+存在唯一$\widetilde{v}_{F}:F^{\times}\to\R$\\
+有$\widetilde{v}_{F}|_{\Q_{p}}=v_{p}$且对任意$x\in F^{\times}$,有$\widetilde{v}_{F}(x)=\frac{1}{[F:\Q_{p}]}v_{p}(\Norm_{F/\Q_{p}}(x))$\\
+则称$\widetilde{v}_{F}$为$F$上的离散赋值\\
+对任意$0<\lambda<1$,有$|x|_{F}=\lambda^{v_{F}(x)}$,则$|\ |_{F}\Big|_{\Q_{p}}$等价于$|\ |_{p}$\\
+则称$|\ |_{F}$为$F$上的绝对值
+\end{dingyi}
+
+\begin{dingli}
+对数域扩张$F/\Q_{p}$\\
+有$F$上的绝对值$|\ |_{F}$在$F$上构成度量空间且为完备化空间
+\end{dingli}
+
+\begin{dingyi}
+对数域扩张$F/\Q_{p}$\\
+则称$\O_{F}=\{x\in F|\ |x|_{F}\leq 1\}$为$F$上代数整数环\\
+则称$\p=\{x\in F|\ |x|_{F}<1\}$为$F$上极大理想\\
+则称$\p$的所有生成元$\varpi$为$F$上的素元\\
+则称$k=\O_{F}/\p$为$F$上剩余类域\\
+有$p\O_{F}=\p^e,[k:\F_{p}]=f$\\
+若$e=1$,有$p$为$F$中素元,则称数域扩张$F/\Q_{p}$非分歧\\
+若$e>1$,则称数域扩张$F/\Q_{p}$分歧\\
+若$e=[F:\Q_{p}]$,则称数域扩张$F/\Q_{p}$完全分歧
+\end{dingyi}
+
+\begin{zhu}
+此时$\{\widetilde{v}_{F}(x)|x\in F\}=\frac{1}{e}\Z$且$\widetilde{v}_{F}(\varpi)=\frac{1}{e}$\\
+有正则化离散赋值$v_{F}:F^{\times}\to \Z$,有$v_{F}(x)=e\widetilde{v}_{F}$\\
+有正则化绝对值$|\ |_{F}=\Norm_{F/\Q_{p}}(\p)^{-v_{F}(x)}$
+\end{zhu}
+
+\begin{dingli}
+对数域扩张$F/\Q_{p}$\\
+若$F/\Q_{p}$非分歧,则存在$\zeta^n=1,(p,n)=1$,有$F=\Q_{p}(\zeta)$
+\end{dingli}
+
+\begin{dingyi}
+对数域扩张$F/\Q$\\
+考虑赋值完备化后乘积空间$\prod\limits_{v}F_{v}$\\
+则称$\A_{F}=\{(x_v)\in \prod\limits_{v}F_{v}|\text{存在至多有限个}x_{v},\text{有}x_v\notin \O_{F_v}\}$为阿代尔环\\
+则称$\A_{F}^{\times}=\{(x_v)\in \prod\limits_{v}F_{v}|\text{存在至多有限个}x_{v},\text{有}x_v\notin \O_{F_v}^{\times}\}$为伊代尔群
+\end{dingyi}
+
+\begin{dingli}
+对数域扩张$F/\Q$和其阿代尔环$\A_{F}$\\
+定义其在$0$点处的一族开集基$\prod\limits_{v\notin S}\O_{F_v}\times\prod\limits_{v\in S}U_{v}$\\
+其中$S\supset \{\text{archimedean位}\},|S|<\infty$且$U_{v}\subset F_{v}$为$0$的开邻域\\
+则在拓扑下,有$F$为$\A_{F}$的离散子群且商群$\A_{F}/F$为紧的
+\end{dingli}
+
+\begin{dingli}
+对数域扩张$F/\Q$和伊代尔环$\A_{F}^{\times}$\\
+定义其在$0$点处的一族开集基$\prod\limits_{v\notin S}\O_{F_v}^{\times}\times\prod\limits_{v\in S}U_v^{\times}$\\
+其中$S\supset \{\text{archimedean位}\},|S|<\infty$且$U_{v}^{\times}\subset F_{v}^{\times}$为$1$的开邻域\\
+则此$\A_{F}^{\times}$上拓扑比$\A_{F}$上拓扑更加精细\\
+则在拓扑下,有$F^{\times}$为$\A_{F}^{\times}$的离散子群\\
+定义绝对值$||(x_v)||=\prod\limits_{v}|x_v|_v$,有闭集$\A_{F}^{\times,1}=\{(x_v)\in\A_{F}^{\times}|\ ||(x_v)||=1\}$\\
+则在$\A_{F}^{\times}$在$\A_{F}^{\times,1}$诱导拓扑下,有商群$\A_{F}^{\times,1}/F^{\times}$为紧的
+\end{dingli}
+
+\chapter{测度}
+
+\begin{dingyi}
+对测度空间$(X,\d \mu)$和可测集$U\subset X$\\
+则称$\Vol(U,\d \mu)=\int \chi_{U}\d\mu$为$U$的体积\\
+若$X$为拓扑群\\
+若对任意$g\in X$,有$\Vol(gU,\d\mu)=\Vol(U,\d\mu)$,则称$\d\mu$为左不变测度\\
+若对任意$g\in X$,有$\Vol(Ug,\d\mu)=\Vol(U,\d\mu)$,则称$\d\mu$为右不变测度
+\end{dingyi}
+
+\begin{dingli}
+Haar定理:\\
+对群$G$为局部紧Hausdorff拓扑群\\
+在尺度等价意义下,存在唯一$(G,\d_{L}\mu)$为左不变测度\\
+对任意开集$U\subset G$,对任意$g\in G$,有$\Vol(U,\d_{L}\mu)=\Vol(gU,\d_{L}\mu)$\\
+在尺度等价意义下,存在唯一$(G,\d_{R}\mu)$为右不变测度\\
+对任意开集$U\subset G$,对任意$g\in G$,有$\Vol(U,\d_{R}\mu)=\Vol(gU,\d_{R}\mu)$
+\end{dingli}
+
+\begin{dingli}
+对数域扩张$F/\Q_{p}$和其代数整数环$\O_{F}$\\
+有离散赋值$v_{F}$和绝对值$|\ |_{F}$和诱导的拓扑\\
+在尺度等价意义下,存在唯一$(F,\d\mu)$为不变测度\\
+对任意开集$U\subset F$,对任意$a\in F$,有$\Vol(U,\d\mu)=\Vol(a+U,\d\mu)=\Vol(U+a,\d\mu)$
+\end{dingli}
+
+\begin{dingyi}
+对数域$\Q_{p}$\\
+有拓扑基$\{U_{an}=a+p^n\Z_{p}|a\in\Q_{p},n\in \Z\}$\\
+若有$\Vol(U_{an},\d\mu)=\frac{1}{p^n}$,则$(\Q_{p},\d\mu)$为不变测度\\
+对$\Z_{p}=\bigcup\limits_{i=0}^{p-1}(i+p\Z_{p})=\bigcup\limits_{i=0}^{n}U_{i1}$\\
+有$\Vol(U_{i1},\d\mu)=\frac{1}{p}$,有$\Vol(\Z_{p},\d\mu)=\sum\limits_{i=0}^{n}\Vol(U_{i1},\d\mu)=p\cdot\frac{1}{p}=1$
+\end{dingyi}
+
+\begin{dingli}
+对数域扩张$F/\Q_{p}$\\
+若$(F,\d\mu)$为不变测度,则对任意开集$U\subset F$,对任意$a\in F^{\times}$\\
+有$\Vol(aU,\d\mu)=|a|_{F}\cdot\Vol(U,\d\mu)$
+\end{dingli}
+
+\begin{zhu}
+对数域扩张$F/\R$和$F/\C$也成立
+\end{zhu}
+
+\begin{dingli}
+对数域扩张$F/\Q$\\
+若$(F,\d\mu)$为不变测度,则$(F^{\times},\frac{\d\mu}{|x|})$为不变测度
+\end{dingli}
+
+\begin{dingli}
+Tate定理:\\
+对数域扩张$F/\Q$\\
+存在不变测度$(\A_{F},\d x)$,对任意$U=\prod\limits_{v}U_{v}$,其中$U_{v}\subset F_{v}$为紧开集\\
+且对至多有限个$v\nmid \infty$,有$U_{v}\neq\O_{F_v}$,记$(F_{v},\d x_{v})$为不变测度且$\Vol(\O_{F_{v}},\d x_{v})$\\
+有$\Vol(U,\d x)=\prod\limits_{v}\Vol(U_{v},\d x_{v})$\\
+存在不变测度$(\A_{F}^{\times},\d x^{\times})$,对任意$U=\prod\limits_{v}U_{v}$,其中$U_{v}\subset F_{v}^{\times}$为紧开集\\
+且对至多有限个$v\neq \infty$,有$U_{v}\neq \O_{F_{v}}^{\times}$,记$(F_{v}^{\times},\d x_{v}^{\times})$为不变测度且$\Vol(\O_{F_{v}^{\times}},\d x_{v}^{\times})=1$\\
+有$\Vol(U,\d x^{\times})=\prod\limits_{v}\Vol(U_{v},\d x_{v}^{\times})$
+\end{dingli}
+
+\begin{dingli}
+对数域扩张$F/\Q$\\
+有$\chi:F^{\times}\to\C^{\times}$为非分歧特征\\
+即对$F^{\times}=\pi^{\Z}\times\O_{F}^{\times}$且$\pi\O_{F}=\p$为$\O_{F}$唯一极大理想,有$\O_{F}^{\times}\subset \Ker(\chi)$\\
+则对$s\in \C$,有$\int_{F^{\times}}\1_{\O_{F}}(x)\chi(x)|x|^{s}\d x^{\times}=\frac{1}{1-\chi(\p)\Norm\p^{-s}}$
+\end{dingli}
+
+\begin{dingyi}
+对$F$上线性空间$V$,有自然的加法运算\\
+则称$V$中离散的加法子群为格\\
+取定$V$的格$L$的一组基$\{v_i\in V|i=1,\cdots,n\}$\\
+则称$\{\sum\limits_{i=1}^{n}x_iv_i|0\leq x_i< 1\}$为$L$在$V$中的基本区域
+\end{dingyi}
+
+\begin{dingli}
+数域的基本区域如下:\\
+对数域扩张$\A/\Q$,有基本区域$\prod\limits_{p\text{为素数}}\Z_{p}\times [0,1)$\\
+对数域扩张$F/\Q$和其代数整数环$\O_{F}$\\
+对$\prod\limits_{v| \infty}F_{v}/\O_{F}$,有基本区域$\Lambda_{F}$\\
+对阿代尔环$\A_{F}/F$,有基本区域$\prod\limits_{v\nmid \infty}\O_{F_v}\times \Lambda_F$\\
+对$(\prod\limits_{v\mid\infty}F_{v}^{\times})^{1}/\O_{F}^{\times}$,有基本区域$\Omega_{F}$\\
+对伊代尔群$\A_{F}^{\times}$,有$\A_{F}^{\times,1}/F^{\times}$和满同态$f:\A_{F}^{\times,1}/F^{\times}\to \Cl (F)$\\
+有$\Ker f=(\prod\limits_{v\nmid\infty}\O_{F_{v}}^{\times}\times(\prod\limits_{v\mid\infty}F_{v}^{\times})^{1})/\O_{F}^{\times}$,有基本区域$\prod\limits_{v\nmid\infty}\O_{F_{v}}^{\times}\times \Omega_{F}$
+\end{dingli}
+
+\begin{dingyi}
+对数域扩张$F/\Q$和其阿代尔环$\A_{F}$\\
+若$F_{v}=\R$,则不变测度$\d x_{v}$为Lebesgue测度\\
+若$F_{v}=\C$,则不变测度$\d x_{v}$为Lebesgue测度的$2$倍,即$2\d x\d y=i\d z\d\overline{z}$\\
+若$F_{v}/\Q_{p}$,则不变测度$\d x_{v}$为测度,有$\Vol(\O_{F_{v}},\d x_{v})=\sqrt{\Norm \mfd_{v}}$
+\end{dingyi}
+
+\begin{dingli}
+对数域扩张$F/\Q$和其阿代尔环$\A_{F}$\\
+有$\A_{F}/F$基本区域的体积为$\Vol(\prod\limits_{v\nmid \infty}\O_{F_v}\times \Lambda_F,\d x)=1$
+\end{dingli}
+
+\begin{dingyi}
+对数域扩张$F/\Q$和其伊代尔群$\A_{F}^{\times}$\\
+若$F_{v}^{\times}=\R^{\times}$,则不变测度$\d x_{v}^{\times}$为$\frac{\d x}{|x|}$\\
+若$F_{v}^{\times}=\C^{\times}$,则不变测度$\d x_{v}^{\times}$为$\frac{2\d x\d y}{x^2+y^2}=\frac{\i\d z\d \overline{z}}{|z|^2}=\frac{2\d r\d \theta}{r}$\\
+若$F_{v}/\Q_{p}$,则不变测度$\d x_{v}^{\times}$,有$\Vol(\O_{F_v}^{\times},\d x_{v}^{\times})=1$
+\end{dingyi}
+
+\begin{zhu}
+对$\A_{F}^{\times}\simeq\A_{F}^{\times,1}\times\R^{+}$\\
+有$\A_{F}^{\times}$的测度$\d x^{\times}$自然诱导的$\A_{F}^{\times,1}$的测度$\d x^{\times,1}$\\
+有$\Vol(U\times [1,\e],\d x^{\times})=\Vol(U,\d x^{\times,1})$,其中$U\subset \A_{F}^{\times,1},||x||=\prod\limits_{v}|x|_{v}$\\
+对$u\mid\infty$,有$\varphi:\A_{F}^{\times}\to\A_{F}^{\times,1},(x_v)\to(x_v)_{v\neq u}\times(\frac{x_u}{||x_u||})$\\
+有$U\times [1,\e]=\{(x_v)\in \A_{F}^{\times}|\varphi((x_v))\in \A_{F}^{\times,1},0\leq \ln ||x||\leq 1\}$
+\end{zhu}
+
+\begin{dingli}
+对数域扩张$F/\Q$和其伊代尔群$\A_{F}^{\times}$\\
+有$\Vol(\prod\limits_{v\nmid\infty}\O_{F_{v}}^{\times}\times \Omega_{F},\d x^{\times,1})=\frac{2^{r_1}(2\pi)^{r_2}R_{F}}{w_{F}}$\\
+则由$\A_{F}^{\times,1}/F^{\times}\to \Cl (F)$为满同态\\
+有$\A_{F}^{\times,1}/F^{\times}$基本区域体积为$\frac{2^{r_1}(2\pi)^{r_2}h_{F}R_{F}}{w_{F}}$
+\end{dingli}
+
+\begin{dingyi}
+Schwartz函数:\\
+对$\R^n$上函数空间,记$\partial_{i}=\frac{\partial}{\partial x_{i}}$\\
+记$S(\R^n)=\{f\in C^{\infty}(\R^n)|\text{对任意多项式}p\text{和}r_i\in\N,\text{若}x\to\infty,\text{有}(p\cdot\partial_{1}^{r_1}\cdots\partial_{n}^{r_n}f)(x)\to 0\}$\\
+则称$f\in S(\R^n)$为速降函数
+\end{dingyi}
+
+\begin{dingyi}
+对数域扩张$F/\Q_{p}$\\
+有$F$为完全不连通空间,有$S(F)=LC(F)$为局部常值函数空间\\
+即$S(F)=LC(F)=\{f=\sum\limits_{i=1}^{n}c_i\chi_{U_i}|\ c_i\in F\text{且}U_{i}\subset F\text{为紧开集}\}$
+\end{dingyi}
+
+\begin{dingli}
+对数域扩张$F/\Q_{p}$,有非平凡加法特征$\psi:F\to \C^{\times}$\\
+则存在最小的$N\in\Z$,有$\psi|_{\varpi^n\O_{F}}=1$\\
+则称$\varpi^N\O_{F}$为$\psi$的导子\\
+则对任意$n\in \N^*$,有$\int_{\varpi^{-n}(\varpi^{N}\O_{F})}\psi(x)\d x=\sum\limits_{x\in \varpi^{-n+N}\O_{F}/\varpi^{N}\O_{F} }\psi(x)=0$
+\end{dingli}
+
+\begin{dingyi}
+对数域扩张$F/\Q$,考虑其非平凡加法特征$\psi:F\to \C^{\times}$\\
+若$F=\R$,则$\psi(x)=\e^{-2\pi\sqrt{-1}x}$\\
+若$F=\C$,则$\psi(x)=\e^{-2\pi\sqrt{-1}(x+\overline{x})}$\\
+若$F=\Q_{p}$,则$\psi(x)=\e^{2\pi\sqrt{-1}\{x\}}$,其中对$x=\sum\limits_{i}a_ip^i$,有$\{x\}=\sum\limits_{i<0}a_ip^i$\\
+此时,有$\psi$的导子为$\mfd^{-1}$
+\end{dingyi}
+
+\begin{dingyi}
+对数域扩张$F/\Q$和函数$f\in S(F)$\\
+则称$\widehat{f}(y)=\mathscr{F}_{\psi}(f)(y)=\int_{F}f(x)\psi(xy)\d x$为$f$的Fourier变换
+\end{dingyi}
+
+\begin{dingli}
+对数域扩张$F/\Q$和函数$f\in S(F)$,则有$\widehat{f}\in S(F)$,有$\widehat{\widehat{f}}(y)=f(-y)$
+\end{dingli}
+
+\begin{zhu}
+此前定义的测度使Fourier变换复合后无相差常数,则称$\d x$为$\psi$的自对偶测度\\
+对任意$f\in S(F)$,其中$F/\Q_{p}$,则有$f=\sum\limits_{i=1}^{n}c_i\1_{a+\varpi^n\O_{F}}$\\
+有$\widehat{\1}_{a+\varpi^n\O_{F}}(y)=\int_{\a+\varpi^n\O_{F}}\psi(xy)\d x=\psi(ay)\int_{\varpi^n\O_{F}}\psi(xy)\d x=|\varpi|_{p}^n\psi(ay)\int_{\O_{F}}\psi(\varpi^nxy)\d x$\\
+若$y\in \varpi^{-n}\mfd^{-1}$,有$\int_{\O_{F}}\psi(\varpi^nxy)\d x=\sqrt{\Norm\mfd^{-1}}$\\
+若$y\notin \varpi^{-n}\mfd^{-1}$,有$\int_{\O_{F}}\psi(\varpi^nxy)\d x=0$\\
+则$\widehat{\1}_{a+\varpi^n\O_{F}}(y)=|\varpi|_{p}^n\psi(ay)\sqrt{\Norm \mfd^{-1}}\1_{\varpi^{-n}\mfd^{-1}}(y)$\\
+则$\widehat{\widehat{\1}}_{a+\varpi^n\O_{F}}(y)=|\varpi|_{p}^n\sqrt{\Norm \mfd^{-1}}\int_{\varpi^{-n}\mfd^{-1}}\psi(ax)\psi(xy)\d x=|\varpi|_{p}^{n}\sqrt{\Norm\mfd^{-1}}\int_{\varpi^{-n}\mfd^{-1}}\psi((a+y)x)\d x$
+若$a+y\in \varpi^{n}\O_{F}$\\
+则$\int_{\varpi^{-n}\mfd^{-1}}\psi((a+y)x)\d x=\Vol(\varpi^{-n}\mfd^{-1},\d x)=|\varpi|_{p}^{-n}[\mfd^{-1}:\O_{F}]\Norm\O_{F}=|\varpi|_{p}^{-n}\sqrt{\Norm\mfd^{-1}}$\\
+若$a+y\notin \varpi^{n}\O_{F}$\\
+则$\int_{\varpi^{-n}\mfd^{-1}}\psi((a+y)x)\d x=0$,则$\widehat{\widehat{\1}}_{a+\varpi^{n}\O_{F}}(y)=\1_{-a+\varpi^{n}\O_{F}}(y)=\1_{a+\varpi^{n}\O_{F}}(-y)$
+\end{zhu}
+
+\begin{dingli}
+对数域扩张$F/\Q_{p}$和函数$f\in S(F)$\\
+若$\mfd=\O_{F}$,即$F/\Q_{p}$非分歧,则$\widehat{\1}_{\O_{F}}=\1_{\O_{F}}$
+\end{dingli}
+
+\begin{dingyi}
+对数域扩张$F/\Q$\\
+记$S_{0}(\A_{F})=\{\prod\limits_{v}f_{v}|f_{v}\in S(F_{v})\text{且对至多有限个}v\text{有}f_v\neq\1_{\O_{F_v}}\}$\\
+则称$S(\A_{F})=\{f=\sum\limits_{i=1}^{n}c_if_i|\ f_i\in S_{0}(\A_F)\}$为$\A_{F}$上Schwartz函数$($Schwartz-Bruhat$)$\\
+对$F_v$上的非平凡加法特征$\psi_{v}$和自对偶测度$\d x_{v}$\\
+则有$\psi(x)=\psi((x_v))=\prod\limits_{v}\psi_{v}(x_v)$为$\A_{F}$上特征
+\end{dingyi}
+
+\begin{dingli}
+对数域扩张$F/\Q$,对任意$x\in F$,有$x=(x_v)\in \A_{F}$,有$\psi(x)=1$
+\end{dingli}
+
+\begin{dingyi}
+对数域扩张$F/\Q$和函数$f\in S(\A_{F})$\\
+则称$\widehat{f}(y)=\mathscr{F}_{\psi}(f)(y)=\int_{\A_{F}}f(x)\psi(xy)\d x$为$f$的Fourier变换\\
+即对$f=\prod\limits_{v}f_v$,有$\widehat{f}=\prod\limits_{v}\widehat{f}_v$
+\end{dingyi}
+
+\begin{dingli}
+对数域扩张$F/\Q$和函数$f\in S(\A_{F})$,则有$\widehat{f}\in S(\A_{F})$
+\end{dingli}
+
+\begin{dingli}
+Poisson求和公式:\\
+对数域扩张$F/\Q$和函数$f\in S(\A_{F})$\\
+则有$\sum\limits_{x\in F}f(x)=\sum\limits_{x\in F}\widehat{f}(x)$\\
+则对任意$\alpha\in \A_{F}^{\times}$,有$||\alpha||\sum\limits_{x\in F}f(\alpha x)=\sum\limits_{x\in F}\widehat{f}(\alpha^{-1}x)$
+\end{dingli}
+
+\begin{zhu}
+特别地,若$F=\R,f\in S(\R)$,则$\sum\limits_{n\in \Z}f(n)=\sum\limits_{n\in \Z}\widehat{f}(n)$\\
+一般地,考虑$\varphi(x)=\sum\limits_{y\in F}f(x+y)$,其中$x\in \A_{F}$\\
+则对任意$z\in \A_{F}$,有$\varphi(x)=\varphi(x+z)$,由调和分析可知$\varphi(y)=\sum\limits_{a\in F}C_a\psi(-ay)$\\
+则$C_a=\int_{\A_{F}/F}\varphi(x)\psi(ax)\d x=\int_{\A_{F}/F}\sum\limits_{y\in F}f(x+y)\psi(ax+ay)\d x=\int_{\A_{F}}f(x)\psi(ax)\d x=\widehat{f}(a)$\\
+令$y=0$,则$\sum\limits_{x\in F}f(x)=\sum\limits_{x\in F}f(x+y)=\sum\limits_{a\in F}\widehat{f}(a)\psi(-ay)=\sum\limits_{x\in F}\widehat{f}(x)$
+\end{zhu}
+
+\begin{dingli}
+对数域扩张$F/\Q$和函数$f\in S(\A_{F})$和$\alpha\in \A_{F}^{\times}$\\
+则有$||\alpha||\sum\limits_{x\in F}f(\alpha x)=\sum\limits_{x\in F}\widehat{f}(\alpha^{-1}x)$
+\end{dingli}
+
+\begin{dingyi}
+对群$G$为局部紧Abel群\\
+记$\widehat{G}=\{\chi:G\to \C^{\times}|\chi\text{为连续特征且}\Im\chi\leq S^{1}\}$\\
+则$\widehat{G}$上有紧开拓扑,即有拓扑基$\{\chi\in \widehat{G}|\text{对紧集}N\subset G,\text{存在开集}U\subset S^{1},\text{有}\chi(N)\subset U\}$
+\end{dingyi}
+
+\begin{zhu}
+特别地,有$\widehat{\R/\Z}\simeq \Z$且$\Z_{p}\simeq \Q_{p}/\Z_{p}$且$\widehat{\Q_{p}}\simeq\Q_{p}$且$\widehat{\A_{F}}\simeq\A_{F}$且$\widehat{\A_{F}/F}\simeq\F$
+\end{zhu}
+
+\begin{dingli}
+对群$G$为局部紧Abel群和$\widehat{G}$\\
+则$G$为紧的当且仅当$\widehat{G}$为离散的\\
+则$\widehat{G}$为紧的当且仅当$G$为离散的\\
+则存在自然的同构$G\simeq \widehat{\widehat{G}},g\to \varphi:\widehat{G}\to \C^{\times},\chi\mapsto \chi(g)$
+\end{dingli}
+
+\begin{dingli}
+对群$G$为局部紧Abel群和$\widehat{G}$\\
+对$G$上的测度$\d g$,存在唯一$\widehat{G}$上测度$\d \chi$\\
+对$G$上好的函数$f$,若定义$\widehat{f}(\chi)=\int_{G}f(g)\chi(g)\d g$,则有$\int_{\widehat{G}}\widehat{f}(\chi)\chi(g)\d \chi=f(g^{-1})$
+\end{dingli}
+
+\begin{zhu}
+此时,则称$\d \chi$为$\d g$的对偶测度\\
+特别地,对$G=\A_{F}/F$上测度,若$\Vol(\prod\limits_{p\nmid \infty}\O_{F_v}\times \Lambda_F,\d x)=1$,则$\d \chi$为$F$上计数测度
+\end{zhu}
+
+\chapter{解析}
+
+\begin{dingyi}
+Riemann$\zeta$函数:\\
+对$s\in \C,\re s>1$,有$\zeta(s)=\sum\limits_{n=1}^{\infty}\frac{1}{n^s}=\prod\limits_{p\text{为素数}}\frac{1}{1-\frac{1}{p^{s}}}$有意义\\
+此函数可解析延拓至$\C$上,有唯一极点$s=1$\\
+对$s\in \C$,有$\zeta(s)=2^s\pi^{s-1}\sin\frac{\pi s}{2}\Gamma(1-s)\zeta(1-s)$
+\end{dingyi}
+
+\begin{dingyi}
+Dedekind$\zeta$函数:\\
+对数域扩张$F/\Q$,有$\zeta_{F}(s)=\sum\limits_{\a\text{为}\O_{F}\text{的理想}}\frac{1}{\Norm \a ^s}=\prod\limits_{\p\text{为}\O_{F}\text{的素理想}}\frac{1}{1-\frac{1}{\p^{s}}}$有意义\\
+此函数可解析延拓至$\C$上,有唯二极点$s=0,1$\\
+定义$\Lambda_{F}(s)=|\disc(F)|^{\frac{s}{2}}(\pi^{-\frac{s}{2}}\Gamma(\frac{s}{2}))^{r_1}(2(2\pi)^{-s}\Gamma(s))^{r_2}\zeta_{F}(s)$\\
+对$s\in \C$,有$\Lambda_{F}(s)=\Lambda_{F}(1-s)$
+\end{dingyi}
+
+\begin{dingli}
+解析类数公式:\\
+在$s=0$处为$r_1+r_2-1$阶极点,有$\lim\limits_{s\to 0}\zeta_{F}(s)s^{r_1+r_2-1}=-\frac{h_F R_F}{w_F}$\\
+在$s=1$处为$1$阶极点,有$\Res(s=1,\zeta_{F}(s))=\frac{2^{r_1}(2\pi)^{r_2}h_F R_F}{\sqrt{|\disc(F)|}w_{F}}$\\
+其中,有类数$h_{F}=|\Cl(F)|$,正则化子$R_{F}=\Vol \sum/\O_{F}^{\times}$,单位根数$w_{F}=|W_{F}|$
+\end{dingli}
+
+\begin{dingyi}
+Dirichlet特征函数:\\
+对有理数域$\Q$,有特征$\chi:(\Z/n\Z)^{\times}\to \C^{\times}$,其中$\chi$为群同态
+\end{dingyi}
+
+\begin{dingyi}
+Hecke特征函数:\\
+对数域扩张$F/\Q$,有特征$\chi=\prod\limits_{v}\chi_v:\A_{F}^{\times}\to \C^{\times}$\\
+其中$\chi_v:F_v^{\times}\to \C^{\times}$且仅有至多有限个nonarchimedean位的$\chi_v$有$\chi_v(\O_{F_v}^{\times})\neq 1$
+\end{dingyi}
+
+\begin{dingyi}
+Dirichlet$L$函数:\\
+对有理数域$\Q$,有$L(s,\chi)=\prod\limits_{p\nmid n}\frac{1}{1-\chi(p)p^{-s}}$
+\end{dingyi}
+
+\begin{dingyi}
+Hecke$L$函数:\\
+对数域扩张$F/\Q$,有$L^{S}(s,\chi)=\prod\limits_{v\notin S}\frac{1}{1-\chi(\p_v)\Norm \p_v^{-s}}$\\
+其中,对$v$,有$\p_v$为对应素理想,对位的子集$S$有$|S|<\infty$\\
+对$v\notin S$,有$v$为nonarchimedean位且$\chi_v$非分歧
+\end{dingyi}
+
+\begin{dingyi}
+对数域扩张$F/\Q$\\
+若有群同态$\chi:F^{\times}\to\C^{\times}$为连续的,则称$\chi$为拟特征\\
+若有拟特征$\chi:F^{\times}\to\C^{\times}$,有$\Im(\chi)\leq S^{1}$,则称$\chi$为特征
+\end{dingyi}
+
+\begin{zhu}
+常见的拟特征如下:\\
+若$F=\R$,则$\chi(x)=(\frac{x}{|x|})^{\epsilon}|x|^{s}$,其中$\epsilon\in \Z,s\in \C$\\
+若$F=\C$,则$\chi(x)=(\frac{x}{|x|})^{\epsilon}|x|^{2s}$,其中$\epsilon\in \Z,s\in \C$\\
+若$F/\Q_{p}$,则$\chi(x)=|x|_{F}^{s}\chi_{0}(x)$,其中$s\in \Z,\chi_{0}:\O_{F}^{\times}\to\C^{\times}$为连续同态\\
+若上述拟特征为特征,则$s\in \sqrt{-1}\R$
+\end{zhu}
+
+\begin{dingli}
+对有理数域$\Q$,有$\chi:(\Z/n\Z)^{\times}\to \C^{\times}$\\
+若$n=p_1^{e_1}\cdots p_r^{e_r},e_i\geq 1$,则$(\Z/n\Z)^{\times}\cong(\Z/p_1^{e_1}\Z)^{\times}\times\cdots\times(\Z/p_r^{e_r})^{\times}$且$\chi=\chi_1\cdots\chi_r$\\
+对数域扩张$\Q_{p}/\Q$,有$\chi_{p}^{(i)}:\Q_{p}^{\times}\cong p^{\Z}\times\Z_{p}^{\times}\to \C^{\times}$\\
+若$p\neq p_i$,则$\chi_{p}^{(i)}(\Z_{p}^\times)=1$;若$p=p_i$,由$\Z_p^{\times}\cong(\Z/p^e\Z)^{\times}\times(1+p^e\Z_{p})$\\
+则$\chi_{p}^{(i)}(p^{\Z})=\chi_{p}^{(i)}(1+p^e\Z_{p})=1$\\
+若$\chi_i(-1)=1$,则$\chi_{\infty}^{(i)}(\R^{\times})=1$;若$\chi_i(-1)=-1$,则$\chi_{\infty}^{(i)}(\R^{\times})=\frac{\R^{\times}}{|\R^{\times}|}$\\
+有$\widetilde{\chi^{(i)}}=\prod\limits_{v}\chi_{v}^{(i)}:\A_{\Q}^{\times}\to \C^{\times},x\mapsto\prod\limits_{v}\chi_v^{(i)}(x_v)$\\
+有特征$\widetilde{\chi}=\prod\limits_{i=1}^{r}\widetilde{\chi^{(i)}}:\A_{\Q}^{\times}/\Q^{\times}\to \C^{\times}$\\
+其中,对素数$p\nmid n$,记$\widetilde{p}=(\cdots,1,p,1,\cdots)$,则$\widetilde{\chi}(\widetilde{p})=\chi(p)$
+\end{dingli}
+
+\begin{dingli}
+对数域扩张$F/\Q$\\
+若有Hecke特征$\chi=\prod\limits_{v}\chi_{v}$和$\psi=\prod\limits_{v}\psi_{v}$且仅对至多有限的位,有$\chi_{v}\neq \psi_{v}$,则$\chi=\psi$
+\end{dingli}
+
+\begin{dingli}
+对数域扩张$F/\Q$\\
+有Hecke$L$函数$L^{S}(s,\chi)$和其对应的位的子集$S$\\
+其中$S$包含了所有archimedean位和所有nonarchimedean分歧位且$|S|<\infty$\\
+对$v\notin S$,有$L(s,\chi_{v})=\int_{F_{v}^{\times}}\1_{\O_{F_{v}}}(x_v)\chi_{v}(x_v)|x_v|_{v}^{s}\d^{\times}x_v=\frac{1}{1-\chi_{v}(\p_{v})\Norm\p_{v}^{-s}}$\\
+则有$L^{S}(s,\chi)=\prod\limits_{v\notin S}L(s,\chi_{v})$
+\end{dingli}
+
+\begin{dingyi}
+对数域扩张$F/\Q$\\
+有Hecke$L$函数$L^{S}(s,\chi)$和其对应的位的子集$S$\\
+有$f=\prod\limits_{v}f_v\in S(\A_{F})$,其中对$v\notin S$,有$f_v=\1_{\O_{F_{v}}}$\\
+对任意位$v$,记$Z_{v}(s,f_{v},\chi_{v})=\int_{F_{v}^{\times}}f_{v}(x)\chi_{v}(x)|x|_{v}^{s}\d^{\times}x_{v}$\\
+记$Z(s,f,\chi)=\int_{\A_{F}^{\times}}f(x)\chi(x)||x||^{s}\d^{\times}x=\prod\limits_{v}\int_{F_{v}^{\times}}f_{v}(x)\chi_{v}(x)|x|_{v}^{s}\d^{\times}x_{v}=\prod\limits_{v}Z_{v}(s,f_{v},\chi_{v})$
+\end{dingyi}
+
+\begin{dingli}
+对数域扩张$F/\Q$\\
+有Hecke$L$函数$L^{S}(s,\chi)$和其对应的位的子集$S$和$Z_{v}(s,f_{v},\chi_{v})$\\
+则对任意$v\notin S$,有$Z_{v}(s,f_{v},\chi_{v})=\frac{1}{1-\chi_{v}\p_{v}\Norm\p^{-s}}=L(s,\chi_{v})$
+则$Z_{v}(s,f_{v},\chi_{v})$在$\re s>0$上绝对收敛且$Z(s,f,\chi)$在$\re s>1$上收敛\\
+则$Z_{v}(s,f_{v},\chi_{v})$可解析延拓为$\C$上亚纯函数当且仅当存在亚纯函数$\gamma_{v}(s,\chi_{v},\psi_{v})$\\
+有$\gamma_{v}(s,f_{v},\chi_{v})$与$f_{v}$无关且$Z_{v}(1-s,\widehat{f}_{v},\chi_{v}^{-1})=\gamma_{v}(s,\chi_{v},\psi_{v})Z_{v}(s,f_{v},\chi_{v})$
+\end{dingli}
+
+\begin{zhu}
+后一结论推解析延拓是trivial的\\
+若$Z_{v}(s,f_{v},\chi_{v})$可解析延拓,利用Fourier积分换元,对任意$f_{v},g_{v}\in S(F_{v})$\\
+有$Z_{v}(s,f_{v},\chi_{v})Z_{v}(1-s,\widehat{g}_{v},\chi_{v}^{-1})=Z_{v}(s,g_{v},\chi_{v})Z_{v}(1-s,\widehat{f}_{v},\chi_{v}^{-1})$\\
+即$\gamma_{v}(s,f_{v},\chi_{v})$与$f_{v}$无关,再选取$f_{v}\in S(F_{v})$说明存在性\\
+若$F_{v}=\R$,有特征$\chi_{v}(x)=(\frac{x}{|x|})^{\epsilon}$,其中$\epsilon=0,1$\\
+若$\epsilon=0$,则$f_{v}(x)=\e^{-\pi x^2}$,则$\gamma_{v}(s,f_{v},\chi_{v})=\frac{\pi^{-\frac{1-s}{2}}\Gamma(\frac{1-s}{2})}{\pi^{-\frac{s}{2}}\Gamma(\frac{s}{2})}$\\
+若$\epsilon=1$,则$f_{v}(x)=x\e^{-\pi x^2}$,则$\gamma_{v}(s,f_{v},\chi_{v})=-\sqrt{-1}\frac{\pi^{-\frac{(1-s)+1}{2}}\Gamma(\frac{(1-s)+1}{2})}{\pi^{-\frac{1+s}{2}}\Gamma(\frac{1+s}{2})}$\\
+若$F_{v}=\C$,有特征$\chi_{v}(x)=(\frac{x}{\sqrt{x\overline{x}}})^{\epsilon}$,其中$\epsilon\in \Z$\\
+则$f_{v}(x)=\e^{-2\pi x\overline{x}}(\frac{\overline{x}+x}{2}+\sgn(\epsilon)\frac{\overline{x}-x}{2})^{|\epsilon|}$,则$\gamma_{v}(s,f_{v},\chi_{v})=\sqrt{-1}^{|\epsilon|}\frac{(2\pi)^{-(1-s)}\Gamma((1-s)+\frac{|\epsilon|}{2})}{(2\pi)^{-s}\Gamma(s+\frac{|\epsilon|}{2})}$\\
+若$F_{v}/\Q_{p}$,则$f_{v}(x)=\widehat{\1}_{-1+\pi^{n}\O_{F}}$可得$\re s>0$,有$\gamma_{v}(s,f_{v},\chi_{v})$解析,则$f_{v}(x)=\widehat{\1}_{1+\pi^{n}\O_{F}}$可得$\re s<1$,有$\gamma_{v}(s,f_{v},\chi_{v})$解析
+\end{zhu}
+
+\begin{dingli}
+对数域扩张$F/\Q$\\
+有Hecke$L$函数$L^{S}(s,\chi)$和其对应的位的子集$S$和$Z(s,f,\chi)$\\
+则$Z(s,f,\chi)$可解析延拓为$\C$上亚纯函数,有$Z(s,f,\chi)=Z(1-s,\widehat{f},\chi^{-1})$\\
+若不存在$\lambda\in \sqrt{-1}\R$,有$\chi(x)\neq ||x||^{\lambda}$,则$Z(s,f,\chi)$为全纯函数\\
+若存在$\lambda\in \sqrt{-1}\R$,有$\chi(x)= ||x||^{\lambda}$,则$Z(s,f,\chi)$为亚纯函数\\
+则有$1$阶极点$1-\lambda,-\lambda$\\
+且$\Res(1-\lambda,Z)=\widehat{f}(0)\Vol(\A_{F}^{\times,1}/F^{\times})$且$\Res(-\lambda,Z)=-f(0)\Vol(\A_{F}^{\times,1}/F^{\times})$
+\end{dingli}
+
+\begin{zhu}
+记$\A_{F}^{\times,<1}=\{x\in\A_{F}^{\times}|\ ||x||<1\},\A_{F}^{\times,>1}=\{x\in\A_{F}^{\times}|\ ||x||>1\}$有$\Vol(\A_{F}^{\times,1},\d^{\times}x)=0$\\
+记$\Omega^{<1}$为$F^{\times}$在$\A_{F}^{\times,<1}$的基本区域,且$\Omega^{1}$为$F^{\times}$在$\A_{F}^{\times,1}$上的基本区域\\
+有$\Omega^{<1}=\Omega^{1}\times (0,1)$\\
+则$Z(s,f,\chi)=Z^{<1}(s)+Z^{>1}(s)=\int_{\A_{F}^{\times,<1}}f(x)\chi(x)||x||^{s}\d^{\times}x+\int_{\A_{F}^{\times,>1}}f(x)\chi(x)||x||^{s}\d^{\times}x$\\
+则$Z^{>1}(s)$为全纯函数且$Z^{<1}(s)$在$\re S>1$收敛\\
+由$\sum\limits_{\alpha\in F}f(\alpha x)=||x||^{-1}\sum\limits_{\alpha\in F}\widehat{f}(\alpha x^{-1})$\\
+则$Z^{<1}(s)=\int_{\A_{F}^{\times,>1}}\widehat{f}(x)\chi(x)^{-1}||x||^{1-s}\d^{\times}x+\widehat{f}(0)\int_{\Omega}\chi(x)||x||^{s-1}\d^{\times}x-f(0)\int_{\Omega}\chi(x)||x||^{s}\d^{\times}x$\\
+则$\int_{\A_{F}^{\times,>1}}\widehat{f}(x)\chi(x)^{-1}||x||^{1-s}\d^{\times}x$为全纯函数\\
+若$\chi|_{\A_{F}^{\times,1}}=1$,即不存在$\lambda\in \sqrt{-1}\R$,有$\chi(x)\neq ||x||^{\lambda}$\\
+则$\int_{\Omega}\chi(x)||x||^{s-1}\d^{\times}x=\int_{\Omega}\chi(x)||x||^{s}\d^{\times}x=0$\\
+若$\chi|_{\A_{F}^{\times,1}}\neq1$,即存在$\lambda\in \sqrt{-1}\R$,有$\chi(x)\neq ||x||^{\lambda}$\\
+则有:\\
+$Z(s,f,\chi)=\int_{\A_{F}^{\times,>1}}f(x)\chi(x)||x||^{s}\d^{\times}x+\int_{\A_{F}^{\times,>1}}\widehat{f}(x)\chi(x)^{-1}||x||^{1-s}\d^{\times}x+\frac{\widehat{f}(0)\Vol(\Omega^{1})}{s-1+\lambda}-\frac{f(0)\Vol(\Omega^{1})}{s+\lambda}$
+\end{zhu}
+
+\begin{dingli}
+对数域扩张$F/\Q$\\
+有Hecke$L$函数$L^{S}(s,\chi)$和其对应的位的子集$S$\\
+则$L^{S}(s,\chi)$在$\re s>1$上绝对收敛\\
+则$L^{S}(s,\chi)$可解析延拓为$\C$上亚纯函数\\
+则存在$C(\chi,S)$,有$L^{S}(s,\chi)=C(\chi,S)L^{S}(1-s,\chi)$
+\end{dingli}
+
+
+
+%\end{document}

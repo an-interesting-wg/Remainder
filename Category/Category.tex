@@ -1,0 +1,193 @@
+%\documentclass[12pt,oneside,a4paper]{book}
+
+%\usepackage{amsmath}
+%\usepackage{mathtools}
+%\usepackage{amsfonts}
+%\usepackage{unicode-math}
+%\usepackage{geometry}
+%\usepackage{ctex}
+
+%\begin{document}
+
+%\setcounter{chapter}{0}
+\setcounter{section}{0}
+\setcounter{subsection}{0}
+
+\begin{dingyi}
+对一个集合和集合上的关系$\mcc$\\
+记其包含的元素集为$\Obj(\mcc)$,对任意$X,Y\in \Obj(\mcc)$,有态射集$\Hom_{\mcc}(X,Y)\in\mcc$\\
+有$\id_{X}\in \Hom_{\mcc}(X,X)$且$\Hom_{\mcc}(X,Y)\times\Hom_{\mcc}(Y,Z)\to \Hom_{\mcc}(X,Z),(f,g)\mapsto g\circ f$\\
+则称$\mcc$为一个范畴
+\end{dingyi}
+
+\begin{dingyi}
+对范畴$\mcc$\\
+对$f\in\Hom_{\mcc}(X,Y),g\in\Hom_{\mcc}(Y,X)$,有$f\circ g=\id_{Y}$且$g\circ f=\id_{X}$\\
+则称$f,g$互为逆态射,记为$g=f^{-1}$\\
+对$f\in\Hom_{\mcc}(X,Y)$,存在$g\in\Hom_{\mcc}(Y,X)$,有$g=f^{-1}$\\
+则称$f$为同构态射\\
+对$X,Y\in\Obj(\mcc)$,存在$f\in\Hom_{\mcc}(X,Y)$为同构态射\\
+则称$X,Y$互为同构,记为$X\cong_{\mcc} Y$
+\end{dingyi}
+
+\begin{dingyi}
+对范畴$\mcc$和$\mcd$\\
+考虑一个态射$F:\mcc\to\mcd$\\
+对任意$X\in\Obj(\mcc),\Hom_{\mcc}(X_1,X_2)\in\mcc$\\
+有$F(X)\in\Obj(\mcd),\Hom_{\mcd}(F(X_1),F(X_2))\in \mcd$且$F(\id_{X})=\id_{F(X)}$\\
+对任意$f\in \Hom_{\mcc}(X_1,X_2),g\in \Hom_{\mcc}(X_2,X_3)$,有$F(g)\circ F(f)=F(g\circ f)\in \Hom_{\mcd}(F(X_1),F(X_3))$\\
+则称$F$为$\mcc\to\mcd$的函子,记为$F:\mcc\to\mcd$\\
+对任意$X\in\Obj(\mcc),\Hom_{\mcc}(X_1,X_2)\in\mcc$\\
+有$F(X)\in\Obj(\mcd),\Hom_{\mcd}(F(X_2),F(X_1))\in \mcd$且$F(\id_{X})=\id_{F(X)}$\\
+对任意$f\in \Hom_{\mcc}(X_1,X_2),g\in \Hom_{\mcc}(X_2,X_3)$,有$F(f)\circ F(g)=F(g\circ f)\in \Hom_{\mcd}(F(X_3),F(X_1))$\\
+则称$F$为$\mcc\to\mcd$的反变函子,记为$F:\mcc^{op}\to\mcd$
+\end{dingyi}
+
+\begin{dingli}
+对范畴$\mcc$和$\mcd$和函子$F:\mcc\to\mcd$\\
+对$X,Y\in\Obj(\mcc)$,若$X\cong_{\mcc}Y$,则$F(X)\cong_{\mcd}F(Y)$
+\end{dingli}
+
+\begin{dingyi}
+对范畴$\mcc$和$\mcd$和函子$F:\mcc\to\mcd$\\
+对任意$X,Y\in \mcc$,有$\Hom_{\mcc}(X,Y)\to\Hom_{\mcd}(F(X),F(Y)),f\mapsto F(f)$为满射\\
+则称$F$为全的\\
+对任意$X,Y\in \mcc$,有$\Hom_{\mcc}(X,Y)\to\Hom_{\mcd}(F(X),F(Y)),f\mapsto F(f)$为单射\\
+则称$F$为忠实的\\
+对任意$X,Y\in \mcc$,若$F(f)\in\Hom_{\mcd}(F(X),F(Y))$为同构态射,有$f\in\Hom_{\mcc}(X,Y)$为同构态射\\
+则称$F$为保守的\\
+对任意$X,Y\in \mcc$,若$F(X)=F(Y)$,则$X=Y$\\
+则称$F$为单的\\
+对任意$X'\in \mcd$,存在$X\in \mcc$,有$F(X)=X'$\\
+则称$F$为满的\\
+对任意$X'\in \mcd$,存在$X\in \mcc$,有$F(X)\cong_{\mcd} X'$\\
+则称$F$为本质满的
+\end{dingyi}
+
+\begin{dingyi}
+对范畴$\mcc$和$\mcd$\\
+对$F,G:\mcc\to\mcd$为函子,若有$\eta:F\to G$,对任意$X\in\mcc,f\in\Hom_{\mcc}(X_1,X_2)$\\
+有$\eta_{X}\in\Hom_{\mcd}(F(X),G(X))$且$\eta_{X_2}\circ F(f)=G(f)\circ\eta_{X_1}$\\
+则称$\eta$为$F\to G$的自然变换\\
+考虑一个范畴$\Fun(\mcc,\mcd)$\\
+有任意$F\in\Obj(\Fun(\mcc,\mcd))$为$\mcc\to\mcd$的函子\\
+对任意$F,G\in\Obj(\Fun(\mcc,\mcd))$,有任意$\eta\in\Hom(F,G)$为$F\to G$的自然变换\\
+则称$\Fun(\mcc,\mcd)$为$\mcc\to \mcd$的函子范畴\\
+对$F,G\in\Obj(\Fun(\mcc,\mcd))$,存在$\eta\in\Hom_{\Fun(\mcc,\mcd)}(F,G),\sigma\in\Hom_{\Fun(\mcc,\mcd)}(G,F)$\\
+有$\eta\circ\sigma=\id_{F}$且$\sigma\circ\eta=\id_{G}$,即对任意$X\in\mcc$,有$\eta_{X}\circ\sigma_{X}=\id_{F(X)}$且$\sigma_{X}\circ\eta_{X}=\id_{G(X)}$\\
+则称$F,G$互为同构,记为$F\cong_{\Fun(\mcc,\mcd)}G$
+\end{dingyi}
+
+\begin{dingyi}
+对范畴$\mcc$和$\mcd$和函子$F:\mcc\to\mcd$\\
+若对$F:\mcc\to\mcd$,存在$G:\mcd\to\mcc$,有$G\circ F=\id_{\mcc}$且$F\circ G=\id_{\mcd}$\\
+则称$F$为范畴同构,即全忠实且单且满\\
+若对$F:\mcc\to\mcd$,存在$G:\mcd\to\mcc$,有$G\circ F\cong_{\Fun(\mcc,\mcc)}\id_{\mcc}$且$F\circ G\cong_{\Fun(\mcd,\mcd)}\id_{\mcd}$\\
+则称$F$为范畴等价,即全忠实且本质满
+\end{dingyi}
+
+\begin{zhu}
+范畴等价的直观:\\
+每个对象在对方范畴内有同构的对象,态射通过诱导得到模去同构的双射
+\end{zhu}
+
+\begin{dingyi}
+对范畴$\mcc$\\
+若$\Obj(\mcc)$和$\{\Hom_{\mcc}\}$为集合,则称$\mcc$为小范畴\\
+若$\mcc$范畴等价于一个小范畴,则称$\mcc$为本质小范畴
+\end{dingyi}
+
+\begin{dingyi}
+对小范畴$\mcc$和范畴$\mcd$,有函子$F:\mcc \to \mcd$\\
+则称$F$为$\mcd$中的$\mcc$-图表\\
+若对$X_i,X_j\in\Obj(\mcc),Y\in\Obj(\mcd)$,存在$\varphi:Y\to\mcc$,对任意$f_{ij}\in\Hom_{\mcc}(X_i,X_j)$\\
+有$\varphi_{i}:Y\to F(X_{i})$且$\varphi_{j}=F(f_{ij})\circ\varphi_{i}$,即下面图表交换:
+\begin{center}
+    $\begin{tikzcd}
+    & Y \ar[dl,"\varphi_{i}"'] \ar[dr,"\varphi_{j}"'] & \\
+    F(X_i) \ar[rr,"F(f_{ij})"] & & F(X_j)
+    \end{tikzcd}$
+\end{center}
+则称$(Y,\varphi)$为$\mcc$-图表的锥\\
+若对$X_i,X_j\in\Obj(\mcc),Y\in\Obj(\mcd)$,存在$\varphi:\mcc\to Y$,对任意$f_{ij}\in\Hom_{\mcc}(X_i,X_j)$\\
+有$\varphi_{i}:F(X_{i})\to Y$且$\varphi_{i}=\varphi_{j}\circ F(f_{ij})$,即下面图表交换:
+\begin{center}
+    $\begin{tikzcd}
+    F(X_i) \ar[rr,"F(f_{ij})"] \ar[dr,"\varphi_{i}"'] & & F(X_j) \ar[dl,"\varphi_{j}"'] \\
+    & Y &
+    \end{tikzcd}$
+\end{center}
+则称$(Y,\varphi)$为$\mcc$-图表的余锥
+\end{dingyi}
+
+\begin{dingyi}
+对小范畴$\mcc$和范畴$\mcd$,有函子$F:\mcc \to \mcd$\\
+若存在$(Z,\psi)$为$\mcc$-图表的锥,对任意$(Y,\varphi)$为$\mcc$-图表的锥\\
+存在唯一态射$h:Y\to Z$,对任意$X_i\in\Obj(\mcc)$,有$\varphi_{i}=\psi_{i}\circ h$,即下面图表交换:
+\begin{center}
+    $\begin{tikzcd}
+     & Y \ar[ddl,"\varphi_{i}"'] \ar[d,dashed,"h"'] \ar[ddr,"\varphi_{j}"] & \\
+     & Z \ar[dl,"\psi_{i}"] \ar[dr,"\psi_{j}"'] & \\
+    F(X_{i}) \ar[rr,"F(f_{ij})"'] &  &  F(X_{j})
+    \end{tikzcd}$
+\end{center}
+则称$(Z,\psi)$为$F$的极限,记为$\lim\limits_{X\in\mcc}F(X)$\\
+若存在$(Z,\psi)$为$\mcc$-图表的余锥,对任意$(Y,\varphi)$为$\mcc$-图表的余锥\\
+存在唯一态射$h:Z\to Y$,对任意$X_i\in\Obj(\mcc)$,有$\varphi_{i}=h\circ\psi_{i}$,即下面图表交换:
+\begin{center}
+    $\begin{tikzcd}
+    F(X_{i}) \ar[rr,"F(f_{ij})"] \ar[dr,"\psi_{i}"] \ar[ddr,"\varphi_{i}"'] &  & F(X_{j}) \ar[dl,"\psi_{j}"'] \ar[ddl,"\varphi_{j}"'] \\
+     & Z \ar[d,dashed,"h"] & \\
+     & Y & 
+    \end{tikzcd}$
+\end{center}
+则称$(Z,\psi)$为$F$的余极限,记为$\colim\limits_{X\in\mcc}F(X)$
+\end{dingyi}
+
+\begin{dingli}
+对小范畴$\mcc$和范畴$\mcd$,有函子$F:\mcc \to \mcd$\\
+若$(U,\varphi),(V,\psi)$为$F$的极限,则$U\cong_{\mcd}V$\\
+若$(U,\varphi),(V,\psi)$为$F$的余极限,则$U\cong_{\mcd}V$
+\end{dingli}
+
+\begin{zhu}
+以下为集合范畴的重要例子:\\
+考虑一组集合$X_{i}$和投射$\varphi_{i}:X_{i+1}\to X_{i}$\\
+此映射链构成交换图表: $X_1\stackrel{\varphi_{1}}{\leftarrow}X_2\stackrel{\varphi_{2}}{\leftarrow}X_3\stackrel{\varphi_{3}}{\leftarrow}\cdots$\\
+则一定存在锥构成序列的反极限$($对应范畴中的极限$)$,即下面图表交换:
+\begin{center}
+    $\begin{tikzcd}
+     & & \lim\limits_{\leftarrow}X_i \ar[dll,"\psi_1"'] \ar[dl,"\psi_2"',pos=0.8] \ar[d,"\psi_3"'] & \\
+    X_1 & X_2 \ar[l,"\varphi_{1}"] & X_3 \ar[l,"\varphi_{2}"] & \cdots \ar[l,"\varphi_{3}"]
+    \end{tikzcd}$
+\end{center}
+考虑一组集合$X_{i}$和包含$\varphi_{i}:X_{i}\to X_{i+1}$\\
+此映射链构成交换图表: $X_1\stackrel{\varphi_{1}}{\rightarrow}X_2\stackrel{\varphi_{2}{\rightarrow}}X_3\stackrel{\varphi_{3}}{\rightarrow}\cdots$\\
+则一定存在余锥构成序列的正极限$($对应范畴中的余极限$)$,即下面图表交换:
+\begin{center}
+    $\begin{tikzcd}
+    X_1 \ar[r,"\varphi_{1}"] \ar[drr,"\psi_1"'] & X_2 \ar[r,"\varphi_{2}"] \ar[dr,"\psi_2"',pos=0.05] & X_3 \ar[r,"\varphi_{3}"] \ar[d,"\psi_3"'] & \cdots\\
+     & & \lim\limits_{\rightarrow}X_i & 
+    \end{tikzcd}$
+\end{center}
+\end{zhu}
+
+\begin{dingyi}
+对小范畴$\mcc$和范畴$\mcd$,有函子$F:\mcc \to \mcd$\\    
+若$\mcc$为偏序集$(X_i,\leq)\ ($偏序即为态射$)$且$\mcd$为Abel范畴\\
+有$(Z,\varphi)$为$F$的余极限且$Z$满足以下两条性质:\\
+对$y_i\in F(X_i)$,若有$\varphi_{i}(y_{i})=0\in Z$,则存在$X_i\leq X_j$,有$F(f_{ij})(d_i)=0$\\
+对$X_i\leq X_j$,若有任意$F(f_{ij})$为单射,则诱导典范态射$\lim\limits_{\rightarrow}X_{i}\to Z$为单射\\
+则称$(Z,\varphi)$为$F$的滤余极限
+\end{dingyi}
+
+\begin{dingli}
+Yoneda引理:\\
+对小范畴$\mcc$,有函子范畴$\Fun(\mcc^{op},Sets)$\\
+有函子$\mathrm{y}:\mcc\to\Fun(\mcc^{op},Sets)$为Yoneda嵌入\\
+有$X\mapsto h_{X}=\Hom_{\mcc}(-,X)$且$f:X\to Y\mapsto \Hom_{\mcc}(-,X)\to\Hom_{\mcd}(-,Y)$\\
+则$\mathrm{y}$为忠实的且有同构$\Hom_{\Fun(\mcc^{op},Sets)}(h_{X},F)\cong F(X)$\\
+其中$X\in \mcc$且$F\in\Fun(\mcc^{op},Sets)$,则$\mathrm{y}(X)=h_{X}\in \Fun(\mcc^{op},Sets)$且$F(X)\in Sets$
+\end{dingli}
+
+%\end{document}

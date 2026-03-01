@@ -1,0 +1,860 @@
+%\documentclass[12pt,oneside,a4paper]{book}
+
+%\usepackage{amsmath}
+%\usepackage{mathtools}
+%\usepackage{amsfonts}
+%\usepackage{unicode-math}
+%\usepackage{geometry}
+%\usepackage{ctex}
+
+%\begin{document}
+
+%\setcounter{chapter}{0}
+\setcounter{section}{0}
+\setcounter{subsection}{0}
+
+\chapter{群}
+
+\begin{dingyi}
+对集合$G$和其上定义的二元封闭运算$\cdot$满足如下性质:\\
+结合律:对任意$a,b,c\in G$,有$(a\cdot b)\cdot c=a\cdot (b\cdot c)$\\
+含幺元:存在$1\in G$,对任意$a\in G$,有$a\cdot 1=1\cdot a=a$\\
+含逆元:对任意$a\in G$,存在$a^{-1}\in G$,有$a\cdot a^{-1}=a^{-1}\cdot a=1$\\
+则称$G$为群$($可将$a\cdot b$记为$ab$$)$\\
+若$G$只满足结合律,则称$G$为半群,若$G$还含幺元,则称$G$为含幺半群\\
+交换律:对任意$a,b\in G$,有$a\cdot b=b\cdot a$\\
+若群$G$满足交换律,则称$G$为Abel群\\
+群$G$的阶数即为$G$中元素个数,记为$|G|$\\
+若$|G|<\infty$,则称群$G$为有限群\\
+若$|G|=\infty$,则称群$G$为无限群
+\end{dingyi}
+
+\begin{zhu}
+群$(G,\cdot)$满足如下性质:\\
+消去律:对任意$a,b,c\in G$,若$a\cdot b=a\cdot c$,则$b=c$\\
+逆元唯一:对任意$a\in G$,存在唯一$a^{-1}\in G$,有$a\cdot a^{-1}=a^{-1}\cdot a=1$\\
+幺元唯一:存在唯一$1\in G$,对任意$a\in G$,有$a\cdot 1=1\cdot a=a$
+\end{zhu}
+
+\begin{dingyi}
+对群$(G_1,\times)$和群$(G_2,\cdot)$\\
+若映射$f:G_1\to G_2,g\mapsto f(g)$,对任意$a,b\in G$,有$f(a\times b)=f(a)\cdot f(b)$\\
+则称$f$为$G_1\to G_2$的群同态\\
+若$f$为双射,则称$f$为$G_1\to G_2$的群同构\\
+群同态$f$的核$\Ker f=\{g\in G_1|f(g)=1_{G_2}\}$\\
+群同态$f$的像$\Im f=\{g'\in G_2|\text{存在}g\in G_1,f(g)=g'\}$
+\end{dingyi}
+
+\begin{zhu}
+对群同态$f:G_1\to G_2$\\
+对任意$g\in G_1$,有$f(g^{-1})=f(g)^{-1}$,特别地,有$f(1_{G_1})=1_{G_2}$
+\end{zhu}
+
+\begin{dingyi}
+对群$G_1,G_2$,有笛卡尔积$G=G_1\times G_2$\\
+定义乘法:对任意$a_1,a_2\in G_1,b_1,b_2\in G_2$,有$(a_1,b_1)(a_2,b_2)=(a_1a_2,b_1b_2)$\\
+则$G$在此乘法下构成群,称为$G_1$和$G_2$的直积
+\end{dingyi}
+
+\begin{liz}
+以下为群的重要例子:\\
+在加法运算下:\\
+整数群$\Z$,有理数群$\Q$,实数群$\R$,复数群$\C$均为无限Abel群\\
+对任意$n\in \Z$,整数模$n$的剩余类群$\Z/n\Z=\{\overline{0},\overline{1},\cdots,\overline{n-1}\}$为有限Abel群\\
+在乘法运算下:\\
+有$\Q^{\times}=\Q\backslash \{0\},\ \R^{\times}=\R\backslash \{0\},\ \C^{\times}=\C\backslash \{0\}$均为无限Abel群\\
+对任意$n\in \Z$,整数模$n$剩余类子集$(\Z/n\Z)^{\times}=\{\overline{a}\in\Z/n\Z|(a,n)=1\}$为有限Abel群\\
+对任意$n\in Z$,有$n$次单位根群$\{\zeta^{k}|k\in \Z,\zeta=\e^{\frac{2k\pi\i}{n}}\}$为有限Abel群\\
+单位圆$\{z\in\C\Big| |z|=1\}$为无限Abel群\\
+对域$F$上$n$维线性空间$V$,线性变换可由给定基下$n$阶方阵唯一确定\\
+在矩阵加法下:\\
+域$F$上$n$阶方阵$\M_n(F)$为无限Abel群\\
+在矩阵乘法下:\\
+域$F$上$n$阶可逆方阵$\GL_n(F)$为无限群,称为一般线性群\\
+域$F$上$n$阶方阵$\{A\in\GL_n(F)|\det A=1\}$为无限群,称为特殊线性群\\
+在映射复合下:\\
+对集合$X$,所有$X\to X$的双射构成$S_{X}$为群,阶为$|S_{X}|=|X|!$,称为$|X|$阶置换群\\
+对正$n$边形,所以保持其不变的刚性变换$($旋转和反射$)$构成$D_{n}$为群,称为二面体群\\
+对群$G$,所有$G\to G$的群同构构成$\Aut G$,称为$G$的自同构群
+\end{liz}
+
+\begin{dingyi}
+对群$G$\\
+若$H\subset G$在$G$的运算下构成群,则称$H$为$G$的子群,记为$H\leq G$\\
+$\Leftrightarrow$对任意$a,b\in H$,有$1\in H,a^{-1}\in H,ab\in H$\\
+$\Leftrightarrow$对任意$a,b\in H$,有$ab^{-1}\in H$\\
+记$HK=\{h\cdot k|h\in H,k\in K\}$,对$H\leq G$,对任意$a\in G$\\
+则称$aH=\{a\}H$称为$H$的左陪集,则称$Ha=H\{a\}$称为$H$的右陪集\\
+若对子群$N\leq G$,对任意$a\in G$,有$aN=Na$,则称$N$为$G$的正规子群,记为$N\lhd G$\\
+$\Leftrightarrow$对任意$a\in G$,有$a^{-1}Na=N$\\
+$\Leftrightarrow$对任意$a\in G,b\in N$,有$a^{-1}ba\in N$\\
+一般地,则称$\{1\}\lhd G,G\lhd G$为$G$的平凡正规子群
+\end{dingyi}
+
+\begin{dingli}
+对群同态$f:G_1\to G_2$,有$\Ker f\lhd G_1$且$\Im f\leq G_2$
+\end{dingli}
+
+\begin{dingli}
+对群$G$和子群$H\leq G$\\
+对任意$a,b\in G$,有$aH=bH$\ $($此时有$b^{-1}a\in H,a^{-1}b\in H$$)$或$aH\cap bH=\varnothing$
+\end{dingli}
+
+\begin{dingli}
+Lagrange定理:\\
+对群$G$和子群$H\leq G$\\
+有$G=\bigcup\limits_{g\in G}gH=\bigcup\limits_{i\in I}g_iH$或$G=\bigcup\limits_{g\in G}Hg=\bigcup\limits_{i\in I}Hg_i$\\
+记群$G$关于子群$H$的指数为$[G:H]=|I|$,则$|G|=[G:H]|H|$
+\end{dingli}
+
+\begin{zhu}
+对群$G$的任意子群$H\leq G$,有$|H|\Big| |G|$
+\end{zhu}
+
+\begin{dingyi}
+对群$G$\\
+对任意$g\in G$,包含$g$的最小子群称为由$g$生成的子群,记为$\langle g\rangle$\\
+对任意$S\subset G$,包含$S$的最小子群称为由$S$生成的子群,记为$\langle S\rangle$\\
+对任意$G$中元素$g$的阶为子群$\langle g\rangle$的阶,记为$o(g)$\\
+$\Leftrightarrow$对任意$g\in G$,有$o(g)=|\langle g\rangle|=\inf\{n\in \N^*|g^n=1\}$\\
+若$G=\langle S\rangle,|S|<\infty$,则称$G$为有限生成群,否则为无限生成群\\
+特别地,若$G=\langle g\rangle$,则称$G$为循环群
+\end{dingyi}
+
+\begin{dingli}
+对群$G=\langle g\rangle$\\
+若$o(g)<\infty$,则$G\cong \Z/o(g)\Z$且$\Aut G\cong(\Z/o(g)\Z)^{\times}$\\
+若$o(g)=\infty$,则$G\cong \Z$且$\Aut G\cong \Z/2\Z$
+\end{dingli}
+
+\begin{dingli}
+对群$G$和子群$H\leq G,K\leq G$\\
+有$|H||K|=|HK||H\cap K|$且$[G:H\cap K]\leq [G:H][G:K]$\\
+上述不等式等号成立当且仅当$HK=G$\ $($当$([G:H],[G:K])=1$时等号成立$)$\\
+特别地,若$K\leq H$,则$[G:K]=[G:H][H:K]$
+\end{dingli}
+
+\begin{dingyi}
+对群$G$\\
+若对$x\in G,y\in G$,存在$g\in G$,有$x=g^{-1}yg$,则称$x$与$y$互为共轭\\
+以上关系构成等价关系,由以上关系定义的$G$的等价类称为共轭类\\
+若$g\in G$所属的共轭类为$\{g\}$,则$g$与$G$中所有元素均可交换\\
+记$Z(G)=\{g\in G|\text{若}g',g\text{互为共轭},\text{则}g'=g\}$,则称$Z(G)$为群$G$的中心
+\end{dingyi}
+
+\begin{tuilun}
+对群$G$\\
+对任意正规子群$N\lhd G$,则$N$为$G$中一些共轭类的并\\
+特别地,群$G$的中心$Z(G)\lhd G$\\
+特别地,群$G$为$Abel$群当且仅当若$Z(G)=G$,则对任意$H\leq G$,有$H\lhd G$
+\end{tuilun}
+
+\begin{dingyi}
+对群$G$和正规子群$N\lhd G$\\
+考虑$N$陪集,定义乘法:\\
+对任意$a,b\in G$,有$(aN)(bN)=(ab)N$$($可记为$\overline{a}\overline{b}=\overline{ab}$$)$\\
+则称$G/N=\{gN|g\in G\}$在乘法下构成的群为$G$关于$N$的商群
+\end{dingyi}
+
+\begin{tuilun}
+对群$G$和正规子群$N\lhd G$\\
+有自然同态$\pi:G\to G/N,g\to gN=\overline{g}$,则$\Ker \pi=N$且$\Im \pi=G/N$
+\end{tuilun}
+
+\begin{dingyi}
+对群$G$\\
+对任意$a,b\in G$,称$a$和$b$的换位子为$[a,b]=aba^{-1}b^{-1}$\\
+则称$G'=\langle\{[a,b]|a,b\in G\}\rangle$为$G$的换位子群
+\end{dingyi}
+
+\begin{dingli}
+对群$G$\\
+若有$G'\lhd G$且$G/G',A$为Abel群且有群同态$\phi:G\to A$\\
+则$G'\subset\Ker f$且有群同态$\varphi:G/G'\to A,\overline{g}\mapsto \phi(g)$,即$G/G'$为$G$的最大Abel商群
+\end{dingli}
+
+\begin{dingli}
+同态基本定理:\\
+对群同态$f:G\to H$,有$G/\Ker f\cong \Im f$
+\end{dingli}
+
+\begin{dingli}
+第一同构定理:\\
+对群$G$和子群$H\leq G$和正规子群$N\lhd G$\\
+有$(H\cap N)\lhd H$且$N\lhd NH\leq G$\\
+则$NH/N\cong H/(H\cap N)$
+\end{dingli}
+
+\begin{dingli}
+第二同构定理:\\
+对群$G$和正规子群$H\lhd G$和正规子群$N\lhd G$\\
+若$N\leq H$,则$G/H\cong(G/N)/(H/N)$
+\end{dingli}
+
+\begin{dingli}
+第三同构定理:\\
+对群$G$和正规子群$N\lhd G$\\
+记$\mathscr{N}=\{H|N\leq H\leq G\}$且$\overline{\mathscr{N}}=\{\overline{H}|\overline{H}\leq G/N\}$\\
+则有双射$f:\mathscr{N}\to \overline{\mathscr{N}},H\mapsto H/N=\overline{H}$\\
+$H_1\leq H_2$当且仅当$\overline{H_1}\leq \overline{H_2}$,$H\lhd G$当且仅当$\overline{H}\lhd \overline{G}$
+\end{dingli}
+
+\begin{dingyi}
+对集合$C$\\
+若$c_i\in C,\varepsilon_i\in\{\pm 1\}$,则称$w=c_1^{\varepsilon_1}\cdots c_n^{\varepsilon_n}$为$C$的长为$n$的字\\
+若$w$为$C$的长为$0$的字,则称$w$为$C$的唯一空字\\
+若$w$为$C$的字且不含$cc^{-1},c^{-1}c$,则称$w$为$C$的约化字\\
+记$w$所对应的唯一约化字为$\overline{w}$,记$F(C)=\{\overline{w}|w\text{为}C\text{的字}\}$,定义乘法:\\
+对$w_1=a_1^{\varepsilon_1}\cdots a_n^{\varepsilon_n},w_2=b_1^{\delta_1}\cdots b_m^{\delta_m}$,则$\overline{w}_1\overline{w}_2=\overline{a_1^{\varepsilon_1}\cdots a_n^{\varepsilon_n}b_1^{\delta_1}\cdots b_m^{\delta_m}}$\\
+则称$F(C)$在乘法下构成的群为自由群,则称$|C|$为$F(C)$的秩,记为$\rank F(C)=|C|$\\
+若$|C|<\infty$,则称$F(C)$为有限生成自由群\\
+特别地,若$C=\varnothing$,则$F(C)=\{0\}$;若$C=\{c\}$,则$F(C)\cong\Z$
+\end{dingyi}
+
+\begin{dingli}
+对群$G$和集合$C$\\
+若$C\subset G$且$\langle C\rangle=G$,则存在唯一满同态$\xi: F(C)\to G$\\
+对任意$c\in C$,有$\xi:c(\text{作为}F(C)\text{中长为}1\text{的约化字})\mapsto c(\text{作为}G\text{中的元素})$
+\end{dingli}
+
+\begin{dingyi}
+对群$G$和集合$C$\\
+若$C\subset G$且$\langle C\rangle=G$,则称$\Ker\xi$为$G$中的关系\\
+若$R\subset\Ker\xi$且$\min\{H\lhd F(C)|R\subset H\}=\Ker\xi$,则称$R$为$G$的生成关系组\\
+则称$<C\mid R>$为$G$的表出,记为$F(C)/\Ker\xi=<C\mid R>$\\
+若$C=\{c_1,\cdots,c_n\}$且$R=\{r_1,\cdots,r_m\}$,则记$<C\mid R>=<c_1,\cdots,c_n\mid r_1,\cdots,r_m>$\\
+则称$G$为有限表出群\\
+若$G_1$有表出$<C_1\mid R_1>$且$G_2$有表出$<C_2\mid R_2>$,将$C_1,C_2,R_1,R_2$视为无交独立集\\
+则称有表出$<C_1\cup C_2\mid R_1\cup R_2>$的群为$G_1,G_2$的直积,记为$G_1*G_2$\\
+若$G$有表出$<C\mid R>$\\
+则称有表出$<C\mid R\cup\{aba^{-1}b^{-1}\mid a,b\in C\}>$的群为$G$的交换化群,即为$G/G'$
+\end{dingyi}
+
+\begin{zhu}
+若$w=c_1^{\varepsilon_1}\cdots c_n^{\varepsilon_n}$且$\xi(w)=1$,则在$G$中$c_1^{\varepsilon_1}\cdots c_n^{\varepsilon_n}=1$\\
+对集合$C$,则自由群$F(C)$有表出$<C\mid \varnothing>$\\
+对集合$\{c\}$,则自由群$\Z/n\Z$有表出$<c\mid c^n>$
+\end{zhu}
+
+\begin{dingli}
+对群$G$和集合$C$\\
+若$R\subset G$,记$[R]=\{x_1r_1^{\varepsilon_1}x_1^{-1}\cdots x_nr_n^{\varepsilon_n}x_n^{-1}|x_i\in G,r_i\in R,\varepsilon_i\in\{\pm 1\}\}$\\
+则$[R]=\min\{H\lhd G|R\subset H\}$
+\end{dingli}
+
+\begin{dingli}
+对群$G$和集合$C$\\
+若$G$有表出$<C\mid R>$且$\varphi:G\to H$为同构,记$C_{\varphi}=\{\varphi(c)|c\in C\}$\\
+则有诱导同构$\phi:F(C)\to F(C_{\varphi}),c_1^{\varepsilon_1}\cdots c_n^{\varepsilon_n}\mapsto \varphi(c_1)^{\varepsilon_1}\cdots \varphi(c_n)^{\varepsilon_n}$\\
+记$R_{\varphi}=\{\phi(r)|r\in R\}$,则$H$有表出$<C_{\varphi}\mid R_{\varphi}>$
+\end{dingli}
+
+\begin{dingyi}
+对群$G$和集合$X$\\
+定义映射$G\times X\to X,(g,x)=g(x)$\\
+若对任意$x\in X$,有$1(x)=x$且对任意$a,b\in G$,有$a(b(x))=ab(x)$\\
+则称此映射为$G$在$X$上的作用\\
+元素$x\in X$的轨道$\Orb(x)=\{g(x)|g\in G\}\subset X$\\
+元素$x\in X$的稳定子群$\Stab(x)=\{g\in G|g(x)=x\}\leq X$\\
+若存在$x\in X$,有$\Orb(x)=X$,则称$G$在$X$上作用可迁
+\end{dingyi}
+
+\begin{dingli}
+对群$G$在$X$上的作用\\
+有自然双射$f:G/\Stab(x)\to \Orb(X),g\Stab(x)\mapsto g(x)$\\
+则$[G:\Stab(x)]=|\Orb(x)|$,即$|G|=|\Stab(x)||\Orb(x)|$\\
+且$|X|=\sum|\Orb(x)|=\sum[G:\Stab(x)]$
+\end{dingli}
+
+\begin{dingli}
+Caylay定理:\\
+每个有限群均为置换群的子群
+\end{dingli}
+
+\begin{dingli}
+Sylow定理:\\
+对群$G$,有$|G|=mp^r$,其中$p$为素数且$(m,p)=1$\\
+则存在子群$H\leq G$,有$|H|=p^r$,记为Sylow-$p$子群\\
+对任意$G$中Sylow-$p$子群$P_1,P_2$,存在$g\in G$,有$P_1=g^{-1}P_2g$\\
+群$G$中Sylow-$p$子群总数$n_p\equiv 1\mod p$且$n_p|m=\frac{|G|}{p^r}$
+\end{dingli}
+
+\begin{liz}
+以下为群作用的重要例子:\\
+$\quad$对群$G$和集合$X$,有群作用$G\times X\to X$\\
+对任意$g\in G$,有双射$\rho_g:X\to X,x\mapsto g(x)\ (\rho_{g^{-1}}$为$\rho_g$的逆$)$\\
+则有群同态$\rho:G\to S_{X},g\to \rho_g$,称为群作用诱导的同态/$\rho$为$G$的一个表示\\
+则$\Ker \rho=\bigcap\limits_{x\in X}\Stab(x)\lhd G$,则诱导单同态$\varrho:G/\Ker\rho\to S_{X}$\\
+$\quad$对群$G$,有左乘作用$G\times G\to G,(g,x)\mapsto gx$\\
+对任意$x\in G$,有$\Stab(x)=\{1\}$且$\Orb(x)=G$\\
+$\quad$对群$G$,有共轭作用$G\times G\to G,(g,x)\mapsto g^{-1}xg$\\
+对任意$x\in G$,有$\Stab(x)=\{g\in G|gx=xg\}=Z(x)$\\
+且$\Orb(x)=\{g^{-1}xg|g\in G\}=C(x)$\\
+记$x$的中心化子为$Z(x)$且$x$所在共轭类为$C(x)$,则$|G|=|C(x)||Z(x)|$\\
+$\quad$对群$G$和子群$H\leq G$,记$G/H=\{aH|a\in G\}$\\
+有陪集左乘作用$G\times G/H,(g,aH)\mapsto gaH$\\
+对任意$aH\in G/H$,有$\Stab(aH)=\{g\in G|gaH=aH\}=aHa^{-1}$且$\Orb(aH)=G/H$\\
+$\quad$对群$G$和子群$H\leq G$,记$X_{H}=\{a^{-1}Ha|a\in G\}$\\
+有陪集共轭作用$G\times X_{H},(g,a^{-1}Ha)\mapsto g^{-1}a^{-1}Hag$\\
+$\quad$对任意$a^{-1}Ha\in X_{H}$,有$\Stab(a^{-1}Ha)=\{g\in G|g^{-1}a^{-1}Hag=a^{-1}Ha\}=N_{G}(a^{-1}Ha)$且$\Orb(a^{-1}Ha)=X_{H}$\\
+记$H$的正规化子为$N_{G}(H)=\{g\in G|g^{-1}Hg=H\}\leq G$,则$|G|=|N_G(H)||X_{H}|$
+\end{liz}
+
+\begin{tuilun}
+对群$G$和共轭作用\\
+有类方程$|G|=\sum|C_x|=|Z(G)|+\sum\limits_{|C_{x}|\neq 1}|C_x|$\\
+若$|G|=p^n$,其中$p$为素数且$n\in N^*$\ $($此时称$G$为$p$群$)$\\
+则$G$的中心$Z(G)\neq\{1\}$\\
+当$n=1$时,有$G$为循环群;当$n=2$时,有$G$为Abel群
+\end{tuilun}
+
+\chapter{环}
+
+\begin{dingyi}
+对集合$R$和其上定义的$2$个二元封闭运算$+$和$\cdot$,满足如下性质:\\
+加法结合律:对任意$a,b,c\in R$,有$(a+b)+c=a+(b+c)$\\
+加法交换律:对任意$a,b\in R$,有$a+b=b+a$\\
+加法含幺元:存在$0\in R$,对任意$a\in R$,有$a+0=0+a=a$\\
+加法含逆元:对任意$a\in R$,存在$-a\in R$,有$a+(-a)=(-a)+a=0$\\
+乘法结合律:对任意$a,b,c\in R$,有$(a\cdot b)\cdot c=a\cdot (b\cdot c)$\\
+加乘分配律:对任意$a,b,c\in R$,有$(a+b)\cdot c=a\cdot c+b\cdot c$且$a\cdot (b+c)=a\cdot b+a\cdot c$\\
+则称$R$为环\ $($加法Abel群,乘法半群,分配律$)$\\
+若还满足:\\
+乘法含幺元:存在$1\in R$,对任意$a\in R$,有$1\cdot a=a\cdot 1=a$\\
+则称$R$为含幺环\\
+乘法含逆元:对任意$a\in R$,存在$a^{-1}\in R$,有$a^{-1}\cdot a=a\cdot a^{-1}=1$\\
+则称$R$为可除环\\
+乘法交换律:对任意$a,b\in R$,有$a\cdot b=b\cdot a$\\
+则称$R$为交换环
+\end{dingyi}
+
+\begin{dingli}
+对环$R$\\
+对任意$a\in R$,有$a\cdot 0=0\cdot a=0$,特别地,若$1=0\in R$,则$R=\{0\}$
+\end{dingli}
+
+\begin{dingyi}
+对环$R_1$和$R_2$\\
+有映射$f:R_1\to R_2$,满足:\\
+对任意$a,b\in R_1$,有$f(a+b)=f(a)+f(b),f(a\cdot b)=f(a)\cdot f(b)$\\
+若$R_1$和$R_2$均为含幺环,则需要$f(1_{R_1})=1_{R_2}$\\
+则称$f$为$R_1\to R_2$的环同态\\
+若$f$为双射,则称$f$为$R_1\to R_2$的环同构\\
+环同态$f$的核$\Ker f=\{r\in R_1|f(r)=0_{R_2}\}$\\
+环同态$f$的像$\Im f=\{r'\in R_2|\text{存在}r\in R_1,f(r)=r'\}$
+\end{dingyi}
+
+\begin{dingli}
+对环同态$f:R_1\to R_2$\\
+对任意$r_1\in R_1$,有$f(-r_1)=-f(r_1)$,特别地,有$f(0_{R_1})=0_{R_2}$\\
+若$R_1$和$R_2$均为含幺环,则对任意$r_1\in R_1,r_1^{-1}\in R_1$,有$f(r_1^{-1})=f(r_1)^{-1}$
+\end{dingli}
+
+\begin{liz}
+以下为环的重要例子:\\
+在加法运算与乘法运算下\\
+整数$\Z$,有理数$\Q$,实数$\R$,复数$\C$均为交换幺环\\
+记$i^2=j^2=k^2=-1$且$ij=k=-ji,jk=i=-kj,ki=j=-ik$\\
+四元数体$\mathbb{H}=\{a+bi+cj+dk|a,b,c,d\in \R\}$为可除环\\
+多项式$\Z[x],\Q[x],\R[x],\C[x]$均为交换幺环\\
+赋值式$\Z[\alpha]=\{\sum\limits_{i=0}^{n}a_i\alpha^i|n\in \N^*\,a_i\in \Z\}$为交换幺环$($其中$\alpha\in \C$为常数$)$\\
+在矩阵加法和矩阵乘法下\\
+域$F$上$n$阶方阵$\M_n(F)$为交换幺环
+\end{liz}
+
+\begin{zhu}
+对环$R$交换含幺\\
+一般以$f(x)=a_0+a_1x+\cdots+a_nx^n\in R[x]$表示多项式,其中$\deg f(x)=n$\\
+但此时变元$x$的意义不明确且序列长度不确定,故考虑另一种等价定义和表示方法\\
+令$S=\{(a_0,a_1,\cdots)|a_i\in R,\text{只有有限多个}a_i\text{不为}0\}$,其中$\deg =\max\{n\in \N^*|a_n\neq 0\}$\\
+在$S$上定义加法和乘法,有$(a_0,a_1,\cdots)+(b_0,b_1,\cdots)=(a_0+b_0,a_1+b_1,\cdots)$\\
+有$(a_0,a_1,\cdots)\cdot(b_0,b_1,\cdots)=(a_0b_0,a_0b_1+a_1b_0,\cdots,a_0b_n+a_1b_{n-1}+\cdots+a_nb_0,\cdots)$\\
+此环$S$为环$R$上一元多项式环
+\end{zhu}
+
+\begin{dingyi}
+对环$R$,有子集$S$\\
+若$S$在$R$的运算下构成环,则称$S$为$R$的子环\\
+若对环$R$的子环$I$,满足\\
+对任意$r\in R$和$a\in I$,有$ar\in I$且$ra\in I$$\Leftrightarrow$对任意$r\in R$,有$rI\subset I$且$Ir\subset I$\\
+则称$I$为环$R$的理想\\
+一般地,$\{0\}$和$R$为环$R$的平凡理想\\
+对环$R$的子集$X$,理想$\{\sum r_ixr_i'|r_i,r_i'\in R,x\in X\}$称为由$X$生成的理想\\
+特别地,若$X=\{x\}$,则称理想$\{\sum r_ixr_i'|r_i,r_i'\in R\}$称为由$x$生成的主理想,记为$(x)$
+\end{dingyi}
+
+\begin{tuilun}
+对环$R$\\
+有子环$\{S_x\},x\in X$,则$\bigcap\limits_{x\in X}S_x$为子环\\
+有理想$\{I_x\},x\in X$,则$\bigcap\limits_{x\in X}I_x$为理想\\
+有理想$\{I_x\},x\in X$,则$\sum\limits_{x\in X}I_x$为理想\\
+有理想$\{I_x\},x\in X$,则$\prod\limits_{x\in X}I_x$为理想\\
+一般地,子环$S_1$和$S_2$的和$S_1+S_2$和积$S_1S_2$不为子环\\
+一般地,有$\prod\limits_{x\in X}I_x\subset \bigcap\limits_{x\in X}I_x$
+\end{tuilun}
+
+\begin{dingli}
+对环同态$f:R_1\to R_2$\\
+有$\Ker f$为环$R_1$的理想,$\Im f$为环$R_2$的子环
+\end{dingli}
+
+\begin{dingyi}
+对环$R$和其理想$I$\\
+考虑加法陪集$R/I$,定义加法和乘法:对任意$a+I\in R/I,b+I\in R/I$\\
+有$(a+I)+(b+I)=(a+b)+I$且$(a+I)\cdot(b+I)=(ab)+I$\\
+则$R/I$在加法和乘法下构成环,称为$R$关于$I$的商环
+\end{dingyi}
+
+\begin{zhu}
+特别注意,此处乘法仅为定义,实际上作为集合$(a+I)(b+I)\subset ab+I$,不一定相等
+\end{zhu}
+
+\begin{tuilun}
+对群$R$和理想$I$\\
+有自然同态$\pi:R\to R/I,r\mapsto r+I=\overline{r}$\\
+则$\Ker \pi=I$且$\Im \pi=R/I$
+\end{tuilun}
+
+\begin{dingli}
+同态基本定理:\\
+对环同态$f:R_1\to R_2$,有$R_1/\Ker f\cong \Im f$,从而有分解:$R_1\stackrel{\pi}{\rightarrow}R/\Ker f\stackrel{\overline{f}}{\rightarrow}\Im f\stackrel{i}{\rightarrow}R_2$\\
+其中$\pi$为自然同态,$i$为嵌入同态,$\overline{f}$为诱导同态
+\end{dingli}
+
+\begin{dingli}
+理想对应定理:\\
+对环$R$和其理想$I$,考虑商环$R/I$\\
+有自然同态$\pi:R\to R/I,r\mapsto r+I=\overline{r}$\\
+则环$R$中包含$I$的理想$J$与$R/I$中的理想在$\pi$下一一对应\\
+即$J\mapsto \pi(J)=J/I$且$J/I\mapsto \pi^{-1}(J/I)=J$\\
+有$R/J\cong(R/I)/(J/I)$
+\end{dingli}
+
+\begin{dingyi}
+对环$R$,由群的知识可知$R$关于加法有消去律\\
+对$a,b\in R$且$a\neq 0,b\neq 0$\\
+若$a\cdot b=0$,则称$a\in R$为环$R$的左零因子\\
+若$b\cdot a=0$,则称$a\in R$为环$R$的右零因子\\
+若$a\in R$为环$R$的左零因子和右零因子,则称$a\in R$为环$R$的零因子\\
+特别地,在交换环$R$中,左零因子$\Leftrightarrow$右零因子$\Leftrightarrow$零因子\\
+对$a,b\in R$且$a\neq 0,b\neq 0$\\
+若$b\cdot a=1$,则称$a\in R$在环$R$中左可逆且$b\in R$为$a\in R$的左逆\\
+若$a\cdot b=1$,则称$a\in R$在环$R$中游可逆且$b\in R$为$a\in R$的右逆\\
+若$a\in R$在环$R$中左可逆且右可逆,则称$a\in R$为环$R$中的单位\\
+特别地,在交换环$R$中,左可逆$\Leftrightarrow$右可逆$\Leftrightarrow$单位\\
+环$R$中所有单位关于环$R$的乘法构成群,称为环$R$的单位群,记为$R^{\times}$
+\end{dingyi}
+
+\begin{dingyi}
+若环$R$交换含幺且无零因子,则称$R$为整环
+\end{dingyi}
+
+\begin{tuilun}
+环$R$为整环当且仅当环$R$中关于乘法有消去律
+\end{tuilun}
+
+\begin{dingyi}
+对环$R$交换含幺\\
+对任意$a,b\in R$,若存在$x\in R$,有$ax=b$,则称$a$为$b$的因子,记为$a|b$\\
+若$a|b$且$b|a$,则称$a$与$b$相伴,记为$a\sim b$\\
+对任意$a\in R$,任意$u\in R^{\times}$和$a$均为$a$的因子,称为平凡因子\\
+对$p\notin R^{\times}$且$p\neq 0$,若$p|ab$,有$p|a$或$p|b$,则称$p$为素元\\
+对$a\notin R^{\times}$且$a\neq 0$,若$a=bc$,有$b\in R^{\times}$或$c\in R^{\times}$,则称$a$为不可约元
+\end{dingyi}
+
+\begin{tuilun}
+元素$p\in R$为环$R$的素元$\Rightarrow$元素$p\in R$为环$R$的不可约元
+\end{tuilun}
+
+\begin{zhu}
+对环$R$交换含幺,多项式环$R[x]$交换含幺\\
+若$f(x)\in R[x]$为环$R[x]$上不可约元,则称$f(x)\in R[x]$为环$R[x]$上不可约多项式
+\end{zhu}
+
+\begin{dingyi}
+对环$R$交换含幺\\
+若对真理想$\p$,对任意$ab\in \p$,有$a\in \p$或$b\in \p$,则称$\p$为环$R$的素理想\\
+环$R$上所有素理想构成集合$\Spec R$,称为环$R$的素谱\\
+若对真理想$\m$,对任意理想$I\supsetneq \m$,有$I=R$,则称$\m$为环$R$的极大理想\\
+环$R$上所有极大理想构成集合$\Max R$,称为环$R$的极大谱
+\end{dingyi}
+
+\begin{tuilun}
+理想$\p$为环$R$素理想$\Leftrightarrow$对环$R$理想$I_1,I_2$,若$I_1I_2\subset \p$,有$I_1\subset \p$或$I_2\subset \p$
+\end{tuilun}
+
+\begin{dingli}
+对环$R$交换含幺\\
+理想$\p$为环$R$的素理想$\Leftrightarrow$商环$R/\p$为整环\\
+理想$\m$为环$R$的极大理想$\Leftrightarrow$商环$R/\m$为域\\
+理想$\m$为环$R$的极大理想$\Rightarrow$理想$\m$为环$R$的素理想
+\end{dingli}
+
+\begin{dingli}
+对环$R$交换含幺\\
+元素$p\in R$为素元$\Leftrightarrow$主理想$(p)$为素理想\\
+元素$a\in R$为极大元$\Leftrightarrow$主理想$(a)$为环$R$中非平凡主理想集合中的极大元
+\end{dingli}
+
+\begin{dingyi}
+对环$R$交换含幺\\
+若对$a,b\in R$,其中$a,b$不全为$0$,存在$d\in R$\\
+有$d|a,d|b$且对任意$d'|a,d'|b$,有$d'|d$\\
+则称$d$为$a$和$b$的最大公因子,记为$d=(a,b)$
+\end{dingyi}
+
+\begin{dingyi}
+对整环$R$\\
+若对任意$r\in R$,存在$a_i$均为不可约元,有$r=a_1a_2\cdots a_n$\\
+若还有$b_j$均为不可约元,有$r=b_1b_2\cdots b_m$\\
+在适当排序后有$r=b_{1'}b_{2'}\cdots b_{m'}$,有$a_i\sim b_{j'}$且$m=n$\\
+则称$R$为唯一分解环\\
+若环$R$中任意理想$I$均为主理想\\
+则称$R$为主理想整环\\
+若存在函数$\mathfrak{e}:R\backslash \{0\}\to \Z^{+}$
+对任意$a,b\in R$,其中$b\neq 0$\\
+存在$q,r\in R$,有$a=bq+r$,其中$r=0$或$\mathfrak{e}(r)<\mathfrak{e}(b)$\\
+则称$R$为欧几里得环
+\end{dingyi}
+
+\begin{dingli}
+对整环$R$\\
+对任意$r\in R$,存在$a_i$均为不可约元,有$r=a_1a_2\cdots a_n$,则称此因子链条件\\
+则$R$为唯一分解环\\
+$\Leftrightarrow$整环$R$有因子链条件且不可约元均为素元\\
+$\Leftrightarrow$整环$R$有因子链条件且对任意$a,b\in R,a\neq 0,b\neq 0$,存在$d\in R,d=(a,b)$
+\end{dingli}
+
+\begin{dingli}
+对整环$R$\\
+若$R$为主理想整环,则$a\in R$为不可约元当且仅当$(a)$为非零极大理想
+\end{dingli}
+
+\begin{dingli}
+欧几里得环是主理想整环,主理想整环是唯一分解环
+\end{dingli}
+
+\begin{dingyi}
+对唯一分解环$R$,有$f(x)=a_0+a_1x+\cdots+a_nx^n\in R[x]$\\
+则称$f(x)$的容度为各项系数的最大公因子,记为$c(f(x))=(a_0,a_1,\cdots,a_n)$\\
+若$\deg f(x)\geq 1$且$c(f(x))=1$,则称$f(x)$为$R[x]$中的本原多项式
+\end{dingyi}
+
+\begin{dingli}
+Gauss引理:\\
+唯一分解环的多项式环中,两个本原多项式的乘积为本原多项式
+\end{dingli}
+
+\begin{tuilun}
+对唯一分解环$R$\\
+对任意$f(x),g(x)\in R[x]$,有$c(f(x)g(x))=c(f(x))c(g(x))$
+\end{tuilun}
+
+\begin{dingli}
+唯一分解环的多项式环为唯一分解环
+\end{dingli}
+
+\begin{dingli}
+域的多项式环为主理想整环
+\end{dingli}
+
+\chapter{域}
+
+\begin{dingyi}
+对集合$F$和其上定义的$2$个二元封闭运算$+$和$\cdot$满足如下性质:\\
+加法结合律:对任意$a,b,c\in F$,有$(a+b)+c=a+(b+c)$\\
+加法交换律:对任意$a,b\in F$,有$a+b=b+a$\\
+加法含幺元:存在$0\in F$,对任意$a\in F$,有$a+0=0+a=a$\\
+加法含逆元:对任意$a\in F$,存在$-a\in F$,有$a+(-a)=(-a)+a=0$\\
+乘法结合律:对任意$a,b,c\in F$,有$(a\cdot b)\cdot c=a\cdot (b\cdot c)$\\
+乘法交换律:对任意$a,b\in F$,有$a\cdot b=b\cdot a$\\
+乘法含幺元:存在$1\in F$,对任意$a\in F$,有$1\cdot a=a\cdot 1=a$\\
+乘法含逆元:对任意$a\in F$,存在$a^{-1}\in F$,有$a\cdot a^{-1}=a^{-1}\cdot a=1$\\
+加乘分配律:对任意$a,b,c\in F$,有$(a+b)\cdot c=a\cdot c+b\cdot c$且$a\cdot (b+c)=a\cdot b+a\cdot c$\\
+则称$F$为域\ $($加法Abel群,乘法Abel群,分配律$)$
+\end{dingyi}
+
+\begin{dingli}
+对环$F$交换含幺且不为$\{0\}$\\
+环$R$为域当且仅当环$R$只有平凡理想$\{0\}$和$R$
+\end{dingli}
+
+\begin{dingyi}
+对域$F$\\
+若对$n\in \N^*$,有$\sum\limits_{i=1}^{n}1=0$,则称域$F$的特征为满足条件的最小正整数\\
+记为$\char (F)=\min\{n\in \N^*|\sum\limits_{i=1}^{n}1=0\}$
+\end{dingyi}
+
+\begin{zhu}
+若不存在正整数满足条件,则称域的特征为$0$
+\end{zhu}
+
+\begin{dingli}
+对域$F$\\
+若$\char (F)>0$,则$\char (F)$为素数,则域$F$有子域同构于$\F_{p}$\\
+若$\char (F)=0$,则域$F$有子域同构于$\Q$
+\end{dingli}
+
+\begin{dingyi}
+域的同态为域视为环的环同态,域的同构为域视为环的环同构\\
+域的同态只有零同态$\Ker=\{0\}$和单同态$\Ker=\text{域本身}$两种\\
+对域扩张$K/E,K/F,E/F$,考虑单同态$\sigma:E\to K$\\
+若对任意$a\in F$,有$\sigma(a)=a$,即$\sigma|_{F}=\id$\\
+则称此同态为$F$-同态,若$\sigma$为同构,则称此同态为$F$-同构
+\end{dingyi}
+
+\begin{dingyi}
+对整环$R$,考虑$S=\{(a,b)|a,b\in R,b\neq 0\}$\\
+在$S$上定义等价关系$($反身性,对称性,传递性$)$:$(a_1,b_2)\sim(a_2,b_2)$$\Leftrightarrow$$a_1b_2=a_2b_1$\\
+考虑$S$在等价关系下等价类构成的集合$S/\sim$定义加法和乘法\\
+有$\overline{(a_1,b_1)}+\overline{(a_2,b_2)}=\overline{(a_1b_2+a_2b_1,b_1b_2)}$且$\overline{(a_1,b_1)}\cdot\overline{(a_2,b_2)}=\overline{(a_1a_2,b_1b_2)}$\\
+则$S/\sim$关于加法和乘法构成域,称为整环$R$的分式域\\
+对整环$R$的多项式环$R[x]$为整环\\
+则有多项式环$R[x]$的分式域,记为$R(x)=\{\frac{f(x)}{g(x)}|f(x),g(x)\in R[x],g(x)\neq 0\}$
+\end{dingyi}
+
+\begin{dingyi}
+对域$F$,若存在域$K$,有$F\subset K$\\
+则称域$F$为域$K$的子域,域$K$为域$F$的扩张,记为$K/F$\\
+对域扩张$K/F$,若对子集$S\subset K$,有包含$F$和$S$的最小子域\\
+则称此域$K$的子域为$S$生成的子域,记为$F(S)$\\
+特别地,若$S=\{\alpha\}$,则称$F(\alpha)$为$\alpha$生成的子域
+\end{dingyi}
+
+\begin{dingyi}
+对域扩张$K/F$\\
+对$\alpha\in K$,若存在$f(x)\in F[x]$,有$f(\alpha)=0$\\
+则称$\alpha$为$F$上的代数元,否则,称$\alpha$为$F$上的超越元\\
+若任意$\alpha\in K$为$F$上的代数元,则称域扩张$K/F$为代数扩张\\
+若存在$\alpha\in K$为$F$上的超越元,则称域扩张$K/F$为超越扩张
+\end{dingyi}
+
+\begin{dingyi}
+对域扩张$K/F$\\
+若存在$\alpha_i\in K$,有$K=F(\alpha_1,\alpha_2,\cdots,\alpha_n)$\\
+则称域扩张$K/F$为有限生成扩张,否则为无限生成扩张\\
+特别地,若存在$\alpha\in K$,有$K=F(\alpha)$,则称域扩张$K/F$为单扩张\\
+则有限生成扩张可表示为若干次单扩张的叠加\\
+即$F(\alpha_1,\alpha_2,\cdots,\alpha_n)=F(\alpha_1,\cdots{n-1})(\alpha_n)=\cdots=F(\alpha_1)(\alpha_2)\cdots(\alpha_n)$
+\end{dingyi}
+
+\begin{dingyi}
+对域扩张$K/F$\\
+考虑域$K$作为域$F$上线性空间的维数$\dim_{F}K$\\
+则称域扩张$K/F$的扩张次数为$[K:F]=\dim_{F}K$\\
+若$[K:F]<\infty$,则称域扩张$K/F$为有限扩张\\
+若$[K:F]=\infty$,则称域扩张$K/F$为无限扩张
+\end{dingyi}
+
+\begin{dingli}
+次数公式:\\
+对域扩张$K/F$和域扩张$F/E$,有域扩张$K/E$\\
+有$[K:E]=[K:F]\cdot[F:E]$
+\end{dingli}
+
+\begin{dingli}
+有限扩张$\Leftrightarrow$有限生成代数扩张
+\end{dingli}
+
+\begin{dingli}
+对域扩张$K/F$和域扩张$F/E$,有域扩张$K/E$\\
+若域扩张$K/F$和域扩张$F/E$均为代数扩张,则域扩张$K/E$为代数扩张
+\end{dingli}
+
+\begin{dingli}
+对域扩张$K/F$\\
+所有$K$中的代数元构成$K$的子域/$F$的扩域,称为$F$在$K$中的代数闭包
+\end{dingli}
+
+\begin{dingyi}
+对域扩张$K/F$\\
+若对$\alpha\in K$,存在$f(x)\in F[x]$,有$f(\alpha)=0$\\
+且$f(x)$为满足条件的次数最低的首一多项式\\
+则称$f(x)$为$\alpha$在$F$上的极小多项式,记为$\Irr(\alpha,F)=f(x)$
+\end{dingyi}
+
+\begin{dingli}
+对域扩张$K/F$和$\alpha \in K$\\
+有$f(x)=\Irr (\alpha,F)$当且仅当$f(\alpha)=0$且$f(x)\in F[x]$为首一不可约多项式
+\end{dingli}
+
+\begin{dingli}
+对域扩张$K/F$和$\alpha \in K$\\
+若$\alpha$为代数元,则$F(\alpha)\cong F[x]/(\Irr(\alpha,F))$\\
+若$\alpha$为超越元,则$F(\alpha)\cong F(x)$
+\end{dingli}
+
+\begin{tuilun}
+对域扩张$K/F$和$\alpha \in K$\\
+有$\alpha$为代数元当且仅当$[F(\alpha):F]=\deg \Irr (\alpha, F)$
+\end{tuilun}
+
+\begin{dingli}
+对域扩张$K/F$\\
+若$f(x)\in F[x]$为不可约多项式,则存在含$f(x)$零点的扩域$F[x]/(f(x))$\\
+若对域$\Omega$,所有$g(x)\in \Omega(x)$的零点均属于$\Omega$,则称$\Omega$为代数封闭域
+\end{dingli}
+
+\begin{dingli}
+对域扩张$K/F$\\
+若域$K$含有$f(x)\in F[x]$所有零点\\
+则称域$F$上由$f(x)$所有零点生成的域$K$的子域为$f(x)$在$F$上的分裂域
+\end{dingli}
+
+\begin{dingli}
+对域扩张$K/F$和$f(x)\in F[x]$\\
+有$f(x)$在$F$上的分裂域$E$和其扩域$L$\\
+若域$L$确定,则$f(x)$在$F$上的分裂域$E$唯一\\
+且对任意$L$的$F$-自同构$\sigma$,有$\sigma(E)=E$
+\end{dingli}
+
+\begin{zhu}
+此处只将分裂域映射到自身,一般不为恒等映射
+\end{zhu}
+
+\begin{dingli}
+对域$F$和$F'$,有域同构$\sigma:F\to F'$\\
+若$f(x)\in F[x]$为不可约多项式且有零点$\alpha$,有$F(\alpha)=\{g(\alpha)|g(x)\in F[x]\}$\\
+考虑$\sigma$作用在$f(x)$各项系数上得到的$f^{\sigma}(x)\in F'[x]$且有零点$\alpha'$\\
+则有诱导的映射$\sigma':F(\alpha)\to F'(\alpha'),g(\alpha)\mapsto g^{\sigma}(\alpha')$为域同构
+\end{dingli}
+
+\begin{dingli}
+对域$F$和$F'$,有域同构$\sigma:F\to F'$\\
+若$f(x)\in F[x]$在$F$上有分裂域$E$且$f^{\sigma}(x)\in F'[x]$在$F'$上有分裂域$E'$\\
+则存在域同构$\sigma':E\to E'$,对任意$a\in F$,有$\sigma'(a)=\sigma(a)$
+\end{dingli}
+
+\begin{dingli}
+对域$F$\\
+有$f(x)\in F[x]$在$F$上分裂域存在,且在$F$-同构意义下唯一
+\end{dingli}
+
+\begin{dingyi}
+对域扩张$K/F$\\
+若$K/F$为代数扩张且对任意不可约多项式$f(x)\in F[x]$\\
+若$K$中含有一个$f(x)$的零点,则$K$中含有所有$f(x)$的零点\\
+则称$K/F$为正规扩张
+\end{dingyi}
+
+\begin{dingli}
+对域扩张$K/F$\\
+域扩张$K/F$为有限正规扩张当且仅当存在$f(x)\in F[x]$,有$K$为$f(x)$在$F$上分裂域
+\end{dingli}
+
+\begin{tuilun}
+对域扩张$K/F$为有限正规扩张\\
+则对任意域扩张$L/K$和域$L$的任意$F$-自同构$\sigma$,有$\sigma(K)=K$
+\end{tuilun}
+
+\begin{dingyi}
+对域扩张$K/F$和$L/K$,有域扩张$L/F$\\
+若$K/F$为有限扩张且$L/F$为正规扩张\\
+对任意域$L$和域$K$中间域$E$,若域扩张$E/F$,有$E=L$\\
+则称域$L$为域$K$在$F$上的正规闭包
+\end{dingyi}
+
+\begin{dingyi}
+对域扩张$K/F$\\
+若域$K$为不可约多项式$f(x)\in F[x]$在$F$上分裂域且$f(x)\in K[x]$所有因式为单因式\\
+则称$f(x)\in F[x]$为$F$上可分多项式,否则为不可分多项式\\
+对任意$\alpha\in K$,若$\Irr(\alpha,F)$为可分多项式,则称$\alpha$为$F$上可分元\\
+则称域扩张$K/F$为可分扩张,否则为不可分扩张
+\end{dingyi}
+
+\begin{dingli}
+对域$F$和$f(x)\in F[x]$\\
+有$\alpha$为$f(x)$的$k$重零点\\
+若$\char(F)\nmid k$,则$\alpha$为$f'(x)$的$k-1$重零点\\
+若$\char(F)\mid k$,则$\alpha$为$f'(x)$的至少$k$重零点
+\end{dingli}
+
+\begin{dingli}
+对域$F$和$f(x)\in F[x]$\\
+则有$f(x)\in F[x]$有重数大于$1$的零点当且仅当$(f(x),f'(x))\neq1$\\
+则不可约多项式$f(x)\in F[x]$无重数大于$1$的零点当且仅当$f'(x)\neq 0$
+\end{dingli}
+
+\begin{dingli}
+对域$F$和$f(x)\in F[x]$\\
+若$\char(F)=0$,则不可约多项式$f(x)\in F[x]$为可分多项式\\
+若域$F$为有限域,则$\char F>0$,则不可约多项式$f(x)\in F[x]$为可分多项式
+\end{dingli}
+
+\begin{dingli}
+对域扩张$L/K$和单同态$\sigma:K\to L$\\
+有域$K$上代数元$\alpha\in L$和$\Irr(\alpha,K)$\\
+若域$L$包含$\Irr(\alpha,K)$所有零点,则$\sigma$可扩充为单同态$\sigma':K(\alpha)\to L$\\
+特别地,这种扩充与$\Irr(\alpha,K)^{\sigma}(x)$的零点一一对应
+\end{dingli}
+
+\begin{tuilun}
+此时$\sigma$在$K(\alpha)$上扩充个数$\leq \deg \Irr(\alpha,K)=[K(\alpha):K]$\\
+等号成立当且仅当$\alpha$为$K$上可分元
+\end{tuilun}
+
+\begin{dingli}
+对域扩张$K/F$\\
+若域扩张$K/F$为有限扩张且$K=F(\alpha_1,\cdots,\alpha_n)$,记$\prod\limits_{i=1}^{n}\Irr(\alpha_i,F)$在$F$上分裂域为$E$\\
+则有$K/F$为可分扩张当且仅当$F$-单同态$\sigma:K\to E$的个数为$[K:F]$
+\end{dingli}
+
+\begin{tuilun}
+对域扩张$K/F$\\
+若域扩张$K/F$为有限扩张且$K=F(\alpha_1,\cdots,\alpha_n)$\\
+则有$K/F$为可分扩张当且仅当$\alpha_1,\cdots,\alpha_n$为$F$上可分元
+\end{tuilun}
+
+\begin{dingyi}
+对域扩张$K/F$\\
+有$K$中所有$F$上可分元构成$K$的子域,称为$F$在$K$中可分闭包
+\end{dingyi}
+
+\begin{dingli}
+有限可分扩张为单扩张
+\end{dingli}
+
+\begin{dingyi}
+对域扩张$K/F$\\
+在映射复合下,所有域$K$的$F$-自同构构成群称为Galois群,记为$\Gal(K/F)$\\
+对子群$H\leq \Gal(K/F)$,记$K^{H}=\{k\in K|\text{对任意}h\in H,\text{有}h(k)=k\}$
+\end{dingyi}
+
+\begin{dingli}
+对域扩张$K/F$\\
+对域$K$和域$F$的任意中间域$L$,有$L\subset K^{\Gal(K/L)}$\\
+对任意子群$H\leq \Gal(K/F)$,有$H\subset\Gal(K/K^{H})$
+\end{dingli}
+
+\begin{dingyi}
+正规可分扩张称为Galois扩张\\
+特别地,若Galois群为交换群,则为Abel扩张,若Galois群为循环群,则为循环扩张
+\end{dingyi}
+
+\begin{dingyi}
+Galois定理:\\
+若域扩张$K/F$为有限Galois扩张\\
+有域$K$和域$F$的中间域集$\{L\}$和域扩张$\Gal(K/F)$的子群集$\{H\}$存在一一对应\\
+即$L\to \Gal(K/L)$和$K^{H}\to H$是中间域集和子群集之间的双射\\
+对任意$\sigma \in \Gal(K/F)$,有$K^{\sigma H\sigma^{-1}}=\sigma (K^{H})$\\
+有子群$H\lhd \Gal(K/F)$当且仅当域扩张$K^{H}/F$为正规扩张
+\end{dingyi}
+
+\begin{dingli}
+对域扩张$K/F$为有限扩张\\
+域扩张$K/F$为Galois扩张当且仅当$|\Gal(K/F)|=[K:F]$
+\end{dingli}
+
+\begin{dingli}
+对域扩张$K/F$\\
+对域$K$和域$F$的任意中间域$L$,若$K/F$和$L/F$均为有限Galois扩张\\
+有$\Gal(L/F)\cong\Gal(K/F)/\Gal(K/L)$
+\end{dingli}
+
+\begin{dingli}
+对域扩张$K/F$和$E/F$\\
+若$K/F$均为有限Galois扩张且$E/F$为代数扩张\\
+若$K\cap E=F$,则域扩张$KE/E$为有限Galois扩张且$\Gal(KE/E)\cong\Gal(K/F)$
+\end{dingli}
+
+%\end{document}

@@ -1,0 +1,374 @@
+%\documentclass[12pt,oneside,a4paper]{book}
+
+%\usepackage{amsmath}
+%\usepackage{mathtools}
+%\usepackage{amsfonts}
+%\usepackage{unicode-math}
+%\usepackage{geometry}
+%\usepackage{ctex}
+
+%\begin{document}
+
+%\setcounter{chapter}{0}
+\setcounter{section}{0}
+\setcounter{subsection}{0}
+
+\begin{dingyi}
+对群$G$和域$F$上线性空间$V$\\
+若存在群同态$\rho:G\to\GL(V)$,则称$(\rho,V)$为$G$的$F$-线性表示\\
+以下是等价定义:\\
+若存在映射$G\times V\to V,(g,v)\to g(v)$\\
+有$g(v_1+v_2)=g(v_1)+g(v_2),g(f(v))=f(g(v)),1v=v,(g_1g_2)(v)=g_1(g_2(v))$\\
+则称$V$为$G$的一个$F$-线性表示
+\end{dingyi}
+
+\begin{dingyi}
+对群$G$在域$F$上的$F$-线性表示$(\rho,V)$\\
+则称$V$为表示空间,则称表示的次数为$\deg \rho=\dim_{F}V$\\
+若$\Ker \rho=\{1\}$,则称表示为忠实的\\
+若$\Ker \rho=G$,则称表示为平凡的\\
+若$\deg \rho=1$,则称表示为主表示,记为$1_{G}$
+\end{dingyi}
+
+\begin{dingyi}
+对群$G$在域$F$上的两个$F$-线性表示$(\rho,V)$和$(\varrho,W)$\\
+若存在线性空间的同构$\sigma:V\to W$,对任意$g\in G$,有$\rho(g)\sigma=\sigma\varrho(g)$\\
+则称两个线性表示$(\rho,V)$和$(\varrho,W)$等价,即以下图表交换:
+\begin{center}
+    $\begin{tikzcd}[column sep=normal,row sep=normal]
+    V \ar[r,"\sigma"] \ar[d,"\rho(g)"'] & W \ar[d,"\varrho(g)"] \\
+    V \ar[r,"\sigma"] & W 
+    \end{tikzcd}$
+\end{center}
+\end{dingyi}
+
+\begin{dingyi}
+对群$G$在集合$\Omega=\{x_1,\cdots,x_n\}$有群作用和域$F$\\
+以$\Omega$为基在域$F$上形式的构造出$n$维线性空间$V=\{\sum\limits_{i=1}^{n}a_ix_i|a_i\in F\}$\\
+则群作用$G\times\Omega\to\Omega$自然诱导出群同态$\rho:G\to \GL(V),g\to \rho(g)$\\
+其中$\rho(g)(\sum\limits_{i=1}^{n}a_ix_i)=\sum\limits_{i=1}^{n}a_ig(x_i)$,有$\rho(g)\rho(g^{-1})=\rho(1)$,即$\rho(g)\in \GL(V)$\\
+则称$(\rho,V)$为$n$次置换表示
+\end{dingyi}
+
+\begin{dingyi}
+对群$G$和域$F$,其中$|G|<\infty$\\
+有自然的群作用为左乘作用$G\times G\to G$,记$|G|$维线性空间$F[G]=\{\sum\limits_{g\in G}a_{g}g|a_{g}\in F\}$\\
+则左乘作用诱导群同态$\rho:G\to F[G],x\to \rho(x)$,其中$\rho(x)(\sum\limits_{g\in G}a_{g}g)=\sum\limits_{g\in G}a_{g}xg$\\
+则称$(\rho,F[G])$为正则$F$-表示\\
+由$\Ker \rho=\{1\}$可知群$G$的正则$F$-表示为忠实的
+\end{dingyi}
+
+\begin{dingyi}
+对群$G$有$F$-线性表示$(\rho,V)$\\
+对任意$g\in G$,若$V$的子空间$U$是线性变换$\rho(g)$的不变子空间\\
+则称$U$为$G$不变子空间\\
+则$(\rho|_{U},U)$为群$G$的$F$-线性表示,称为$(\rho,V)$的子表示
+\end{dingyi}
+
+\begin{dingyi}
+对群$G$有$F$-线性表示$(\rho,V)$\\
+若$V$有$G$不变子空间$U$,若存在$V$的$G$不变子空间$W$,有$V=U\oplus W$\\
+则称$W$为$U$在$V$中的$G$不变补空间\\
+则有子表示$(\rho|_{U},U)$和$(\rho|_{W},W)$\\
+则称$\rho$为子表示$\rho|_{U}$和$\rho|_{W}$的直和,记为$\rho=\rho|_{U}\oplus\rho|_{W}$
+\end{dingyi}
+
+\begin{dingyi}
+对群$G$有$F$-线性表示$(\rho,V)$\\
+若$V$没有非平凡的$G$不变子空间,即$V$的$G$不变子空间只有$\{0\}$和$V$\\
+则称$(\rho,V)$为不可约表示\\
+若对任意$V$的$G$不变子空间,均存在$G$不变补空间\\
+则称$(\rho,V)$为完全可约表示
+\end{dingyi}
+
+\begin{tuilun}
+若$(\rho,V)$为不可约表示,则$(\rho,V)$为完全可约表示
+\end{tuilun}
+
+\begin{tuilun}
+若$\dim_{F}V=1$,则$(\rho,V)$为不可约表示,则$(\rho,V)$为完全可约表示
+\end{tuilun}
+
+\begin{dingli}
+对群$G$的完全可约表示,其子表示为完全可约表示
+\end{dingli}
+
+\begin{dingli}
+对群$G$的有限维完全可约表示$(\rho,V)$\\
+存在有限多个不可约子表示$(\rho_{1},U_1),\cdots,(\rho_{n},U_n)$,有$\rho=\rho_1\oplus\cdots\oplus\rho_n$
+\end{dingli}
+
+\begin{dingli}
+Maschke定理:\\
+对群$G$有$F$-线性表示$(\rho,V)$,其中$|G|<\infty,\char(F)\nmid |G|$,则$(\rho,V)$为完全可约表示
+\end{dingli}
+
+\begin{dingli}
+对群$G$的$\C$-表示$(\rho,V)$\\
+若$G$为Abel群且$\dim_{\C}V<\infty$,有$(\rho,V)$为不可约表示当且仅当$\dim_{\C}V=1$
+\end{dingli}
+
+\begin{dingli}
+对群$G$的$\C$-表示$(\rho,V)$\\
+若$G$为Abel群且$|G|<\infty,\dim_{\C}V=1$,则所有表示$\rho$在函数乘法下构成群$\hat{G}\cong G$
+\end{dingli}
+
+\begin{dingyi}
+对域$F$和环$A$,其中$A$上有加法$+$和乘法$\cdot$且为域$F$上线性空间\\
+若对任意$a,b\in A,k\in F$,有$k(a\cdot b)=k(a)\cdot b=a\cdot k(b)$\\
+则称$A$为$F$-代数
+\end{dingyi}
+
+\begin{dingyi}
+对群$G$和域$F$,其中$|G|<\infty$\\
+有$F$-线性表示$(\rho,V)$和正则$F$-表示$(\varphi,F[G])$\\
+对$F[G]=\{\sum\limits_{g\in G}a_{g}g|a_{g}\in F\}$\\
+在其上的定义加法和乘法:\\
+有$\sum\limits_{g\in G}a_{g}g+\sum\limits_{g\in G}b_{g}g=\sum\limits_{g\in G}(a_{g}+b_{g})g$且$(\sum\limits_{g\in G}a_{g}g)(\sum\limits_{g'\in G}b_{g'}g')=\sum\limits_{g\in G}(\sum\limits_{g'\in G}(a_{gg'^{-1}}b_{g'}))g$\\
+则$F[G]$为含幺环\\
+有对任意$a,b\in F[G],k\in F$,有$k(ab)=(ka)b=a(kb)$\\
+则称$F[G]$为群代数,即由群$G$在域$F$上生成的$F$-代数
+\end{dingyi}
+
+\begin{dingyi}
+对域$F$上代数$A$和域$F$上线性空间$V$\\
+有$V$上所有线性变换构成集合$\Hom_{F}(V,V)$\\
+有$\Hom_{F}(V,V)$在加法和映射复合下构成环且为$F$-代数\\
+若有代数同态$T:A\to \Hom_{F}(V,V)$\\
+则称$(\rho,V)$为$A$的$F$-线性表示
+\end{dingyi}
+
+\begin{dingyi}
+对群$G$有$F$-线性表示$(\rho,V)$和群代数$F[G]$的$F$-线性表示$(\rho^{*},V)$\\
+则有群同态$\rho:G\to\GL(V)$和代数同态$\rho^{*}:F[G]\to \Hom_{F}(V,V)$\\
+若$\rho^{*}(\sum\limits_{g\in G}a_{g}g)=\sum\limits_{g\in G}a_{g}\rho(g)$且$\rho(g)=\rho^{*}|_{G}(g)$\\
+则群$G$的$F$-线性表示$(\rho,V)$和群代数$F[G]$的$F$-线性表示$(\rho^{*},V)$一一对应\\
+同时,群代数$F[G]$的$F$-线性表示诱导了$F[G]$在$V$上的左模\\
+对任意$a\in F[G],v\in V$,有$a(v)=\rho^{*}(a)(v)$\\
+则群$G$的$F$-线性表示$(\rho,V)$和群代数$F[G]$在$V$上左模一一对应
+\end{dingyi}
+
+\begin{dingyi}
+对$R$模$M$\\
+若$M$没有非平凡的子模,即$M$有且仅有$\{0\}$和$M$两个子模\\
+则称$M$为不可约模/单模,否则称$M$为可约模/非单模\\
+若对任意$M$的子模$N$,存在$M$的子模$L$,有$M=N\oplus L$\\
+则称$M$为完全可约模/半单模
+\end{dingyi}
+
+\begin{dingli}
+对群$G$有$F$-线性表示$(\rho,V)$和$(\varphi,V')$和$F[G]$模$V,V'$\\
+有$V$的子空间$U$为$G$不变子空间当且仅当$U$为$F[G]$模$V$的子模\\
+对$(\rho,V)$子表示$(\rho|_{U},U)$和$(\rho|_{W},W)$\\
+有$\rho=\rho|_{U}\oplus\rho|_{W}$当且仅当在$F[G]$模下$V=U\oplus W$\\
+有$(\rho,V)$和$(\varphi,V')$等价当且仅当$F[G]$模$V\cong V'$
+\end{dingli}
+
+\begin{dingli}
+Maschke定理:\\
+对群$G$有$F[G]$模$V$,其中$|G|<\infty,\char(F)\nmid |G|$,则$F[G]$模$V$为完全可约模
+\end{dingli}
+
+\begin{dingyi}
+Schur引理:\\
+对$R$模$M,N$,其中$M$和$N$为不可约模\\
+若$M\cong N$,则$\Hom_{R}(M,N)=\{f|f:M\to N\text{为同构}\}$\\
+若$M\not\cong N$,则$\Hom_{R}(M,N)=\{f|f:M\to N,\Ker 0=M\}$
+\end{dingyi}
+
+\begin{dingli}
+Schur引理:\\
+对群$G$的$\C$-线性表示$(\rho,M),(\varphi,N)$\\
+有$(\rho,M),(\varphi,N)$为不可约表示,其中$M=\GL(m,\C)$且$N=\GL(n,\C)$\\
+存在$X\in\M_{n\times m}(\C)$,对任意$g\in G$,有$X\circ\rho(g)=\varphi(g)\circ X$\\
+若$M\neq N$,即$m\neq n$,则$X=0$\\
+若$M=N$,即$m=n$,则$X$为可逆矩阵/可逆线性变换
+\end{dingli}
+
+\begin{dingli}
+Schur引理:\\
+对群$G$的$\C$-线性表示$(\rho,M)$\\
+有$(\rho,M)$为不可约表示,其中$M=\GL(m,\C)$\\
+存在$X\in\M_{m\times m}(\C)$,对任意$g\in G$,有$\rho(g)\circ X=X\circ \rho(g)$\\
+则存在$\lambda\in \C$,有$X=\lambda \id$ 
+\end{dingli}
+
+\begin{dingyi}
+对$F$-代数$A$,其中$\dim_{F}A<\infty$\\
+若$A$模均为完全可约模,则称$A$为半单代数
+\end{dingyi}
+
+\begin{dingli}
+对$F$-代数$A$\\
+若$A$为半单代数,对$A$模$A$,存在$A_1,\cdots,A_n$为不可约模且为$A$的子模\\
+有$A$模下$A\cong A_1\oplus\cdots\oplus A_n$
+\end{dingli}
+
+\begin{dingli}
+对群$G$有$F$-线性表示$(\rho,V)$和$F[G]$模$V$\\
+有$|G|<\infty,\char(F)\nmid |G|$,则$F[G]$为半单代数\\
+若$F$-线性表示$(\rho,V)$为不可约表示,则$\dim_{F}V<\infty$
+\end{dingli}
+
+\begin{dingli}
+对群$G$有$F$-线性表示$(\rho,V)$,其中$|G|<\infty,\char(F)\nmid |G|$\\
+则所有不等价的不可约表示$(\rho,V)$的个数$s\ \leq$群$G$中共轭类的个数$r$\\
+特别地,若$F$为代数闭域,则$s=r$,记所有不等价不可约表示为$(\rho_1,V_1),\cdots,(\rho_s,V_s)$\\
+有$|G|=\sum\limits_{i=1}^{s}(\deg \rho_i)^2=\sum\limits_{i=1}^{s}(\dim_{F}V)^2$
+\end{dingli}
+
+\begin{dingyi}
+对群$G$和域$F$\\
+对空间$V_{G}=\{\sum\limits_{i\in I}a_{i}g_{i}|a_{i}\in F,g_{i}\in G\}$,定义加法和数乘:对任意$a\in F$\\
+有$\sum\limits_{i\in I}a_{i}g_{i}+\sum\limits_{i\in I}b_{i}g_{i}=\sum\limits_{i\in I}(a_{i}+b_{i})g_{i}$且$a\sum\limits_{i\in I}a_{i}g_{i}=\sum\limits_{i\in I}(aa_{i})g_{i}$\\
+则称$V_{G}$为群空间,维数为$|G|$\\
+对函数$f:G\to F$,则称$f$为群函数\\
+则称所有群函数在自然的加法和数乘下构成群函数空间$F_{G}$\\
+对群函数$f$,若对任意$g,g'\in G$,有$f(g'^{-1}gg')=f(g)$,则称$f$为类函数\\
+则称所有类函数在自然的加法和数乘下构成类群函数空间$\Cl F_{G}$,为$F_{G}$的子空间
+\end{dingyi}
+
+\begin{dingyi}
+对群$G$有$F$-线性表示$(\rho,V)$\\
+定义函数$\chi_{\rho}$,对任意$g\in G$,有$\chi_{\rho}(g)=\Tr(\rho(g))\in F$\\
+则称$\chi_{\rho}$为群$G$的$F$-线性表示$(\rho,V)$的特征标\\
+若$(\rho,V)$为主表示,则称$\chi_{\rho}$为主特征标\\
+若$(\rho,V)$为不可约表示,则称$\chi_{\rho}$为不可约特征标
+\end{dingyi}
+
+\begin{dingli}
+对群$G$有$F$-线性表示$(\rho,V)$和$(\varphi,V')$\\
+有$\chi_{\rho}(1_{G})=(\deg \phi)1_{F}$,有$\chi_{\rho+\varphi}=\chi_{\rho}+\chi_{\varphi}$\\
+对任意$g,g'\in G$,有$\chi_{\rho}(g'^{-1}gg')=\chi_{\rho}(g)$\\
+若有子表示$(\rho|_{U},U)$和$(\rho|_{V},V)$,有$\rho=\rho|_{U}\oplus\rho|_{V}$,则$\chi_{\rho}=\chi_{\rho|_{U}}+\chi_{\rho_{V}}$
+\end{dingli}
+
+\begin{dingli}
+对群$G$有$\C$-表示$(\rho,V)$,其中$|G|<\infty$\\
+记群$G$的指数$m=[o(g_1),\cdots,o(g_{|G|})]$\\
+则对任意$g\in G$,有$\chi_{\rho}(g^{-1})=\overline{\chi_{\rho}(g)}$\\
+则对任意$g\in G$,有$\chi_{\rho}(g)=\sum\limits_{i=1}^{\deg \rho}\xi_i$,其中$\xi^m=1$\\
+则对任意$g\in G$,有$|\chi_{\rho}(g)|\leq |\chi_{\rho}(g)|$,取等当且仅当$\rho(g)=\xi\cdot1_{V}$,其中$\xi_m=1$
+\end{dingli}
+
+\begin{dingli}
+对群$G$有正则$F$-表示$(\rho,F[G])$,其中$|G|<\infty$\\
+对任意$g\in G,g\neq 1$,有$\chi_{\rho}(g)=0$且$\chi_{\rho}(1)=|G|$
+\end{dingli}
+
+\begin{dingyi}
+对群$G$有$\C$-表示$(\rho_1,V_1),\cdots,(\rho_s,V_s)$,其中$|G|<\infty$\\
+若表示为两两不等价不可约表示,则称$\Irr\C_{G}=\{\chi_{\rho_1},\cdots,\chi_{\rho_s}\}$为不可约特征标
+\end{dingyi}
+
+\begin{dingyi}
+对群$G$有$\C$-表示$(\rho_1,V_1),(\rho_2,V_2)$,其中$|G|<\infty$\\
+有特征标运算$<\chi_{\rho_1},\chi_{\rho_2}>=\frac{1}{|G|}\sum\limits_{g\in G}\chi_{\rho_1}(g)\chi_{\rho_2}(g^{-1})=\frac{1}{|G|}\sum\limits_{g\in G}\chi_{\rho_1}(g)\overline{\chi_{\rho_2}(g)}$
+\end{dingyi}
+
+\begin{dingli}
+第一正交关系:\\
+对群$G$有$\C$-表示$(\rho_1,V_1),(\rho_2,V_2)$为不可约表示,其中$|G|<\infty$\\
+若$\rho_1\cong\rho_2$,则$<\chi_{\rho_1},\chi_{\rho_2}>=\frac{1}{|G|}\sum\limits_{g\in G}\chi_{\rho_1}(g)\overline{\chi_{\rho_2}(g)}=0$\\
+若$\rho_1\not\cong\rho_2$,则$<\chi_{\rho_1},\chi_{\rho_2}>=\frac{1}{|G|}\sum\limits_{g\in G}\chi_{\rho_1}(g)\overline{\chi_{\rho_2}(g)}=1$
+\end{dingli}
+
+\begin{dingli}
+第二正交关系:\\
+对群$G$有$\C$-表示$(\rho_1,V_1),\cdots,(\rho_s,V_s)$为两两不等价不可约表示,其中$|G|<\infty$\\
+有$(\rho_1,V_1)$为主表示且$g_1=1\in G$,有$g_1,\cdots,g_s$为$G$中共轭类$C_1,\cdots,C_s$代表元\\
+则$\frac{1}{|G|}\sum\limits_{k=1}^{s}|C_i|\chi_{\rho_k}(g_j)\overline{\chi_{\rho_k}(g_j)}=\delta_{ij}$
+\end{dingli}
+
+\begin{dingli}
+对群$G$有$\C$-表示$(\rho_1,V_1),\cdots,(\rho_s,V_s)$为两两不等价不可约表示,其中$|G|<\infty$\\
+则$\chi_{\rho_1},\cdots,\chi_{\rho_s}$构成$\Cl \C_{G}$的标准正交基\\
+对任意群$G$的$\C$-表示$(\rho,V)$\\
+则$\rho_i$在$\rho$中的重数$($直和分解式中等价子表示个数$)$为$<\chi_{\rho},\chi_{\rho_i}>$
+\end{dingli}
+
+\begin{dingli}
+对群$G$有$\C$-表示$(\rho,V)$且$|G|<\infty$\\
+则$(\rho,V)$为不可约表示当且仅当$<\chi_{\rho},\chi_{\rho}>=1$
+\end{dingli}
+
+\begin{dingli}
+对群$G$有$\C$-表示$(\rho_1,V_1),(\rho_2,V_2)$且$|G|<\infty$\\
+则$(\rho_1,V_1)$等价于$(\rho_2,V_2)$当且仅当$\chi_{\rho_1}=\chi_{\rho_2}$
+\end{dingli}
+
+\begin{dingli}
+对群$G$和其群代数$\C[G]$,其中$|G|<\infty$\\
+则可将特征标由$G$扩充到$\C[G]$上,即$\chi(\sum\limits_{g\in G}a_g g)=\sum\limits_{g\in G}a_g \chi(g)$\\
+对任意$A=\sum\limits_{g\in G}a_g g\in \C[G]$,对任意$g\in G$,有$a_g=\frac{1}{|G|}\sum\limits_{\chi\in \Irr\C_{G}}\chi(Ag^{-1})\chi(1_{G})$
+\end{dingli}
+
+\begin{dingli}
+对群$G$有$\C$-表示$(\rho,V)$且$|G|<\infty$\\
+若$(\rho,V)$为不可约表示,则$\deg \rho|[G:Z(G)]$
+\end{dingli}
+
+\begin{dingli}
+对群$G$有$\C$-表示$\{(\rho_1,V_1),\cdots,(\rho_s,V_s)\}=\Irr\C_{G}$,其中$|G|<\infty$\\
+若子群$N\lhd G$,则$N=\bigcap_{i\in I}\Ker \rho_{i}$,其中$I\subset \{1,\cdots,s\}$\\
+记$(\rho_1,V_1)$为主表示,则$G$为单群当且仅当$\Ker \rho_{i}=\{1_{G}\},i=2,\cdots,s$
+\end{dingli}
+
+\begin{dingli}
+对群$G$有$\C$-表示$(\rho,V)$且$|G|<\infty$\\
+记$C$为$G$的一个共轭类,若$(\rho,V)$为不可约复表示且$(|C|,\chi_{\rho}(1))=1$\\
+则对任意$g\in C$,有$\chi_{\rho}(g)=0$或$|\chi_{\rho}(g)|=\chi_{\rho}(1)$
+\end{dingli}
+
+\begin{dingli}
+对群$G$,其中$|G|<\infty$\\
+若存在$G$的共轭类$C$和素数$p$,有$|C|=p^n$,其中$n\in\N^*$\\
+则$G$不为单群
+\end{dingli}
+
+\begin{dingli}
+Burnside定理:\\
+对群$G$有素数$p,q$和$a,b\in \N$,有$|G|=p^aq^b$,则$G$为可解群
+\end{dingli}
+
+\begin{dingyi}
+对群$G$和其子群$H$,有$H$的$F$-表示$(\rho,V)$\\
+则$W$为$F[H]$模,则有张量积$F[G]\otimes_{F[H]}W$为$F[G]$模\\
+则称$F[G]\otimes_{F[H]}W$为诱导模\\
+则称此模对应的群$G$的$F$-表示为诱导表示,记为$(\rho_{H}^{G},V_{H}^{G})$
+\end{dingyi}
+
+\begin{dingli}
+对群$G$和其子群$H$,有$H$的$F$-表示$(\rho,V)$和$G$的诱导表示$(\rho_{H}^{G},V_{H}^{G})$\\
+若有左陪集分解$G=g_1H\cup\cdots\cup g_nH$且$v_1,\cdots,v_m$为$V$的一组$F$基\\
+则$\{g_i\otimes v_j|i=1,\cdots,n,j=1,\cdots,m\}$为$V_{H}^{G}$的一组$F$基\\
+则$\dim_{F}V_{H}^{G}=[G:H]\cdot\dim_{F}V$
+\end{dingli}
+
+\begin{dingli}
+对群$G$和其子群$H$,有$H$的$F$-表示$(\rho,V)$和$G$的诱导表示$(\rho_{H}^{G},V_{H}^{G})$\\
+若$(\rho,V)$为$H$的正则表示,则在等价意义下,有$(\rho_{H}^{G},V_{H}^{G})$为$G$的正则表示
+\end{dingli}
+
+\begin{dingli}
+对群$G$和其子群$H,N$,其中$H\leq N\leq G$,有$H$的$F$-表示$(\rho,V)$\\
+则有$N$的诱导表示$(\rho_{H}^{N},V_{H}^{N})$和$G$的诱导表示$(\rho_{H}^{G},V_{H}^{G}),((\rho_{H}^{N})_{N}^{G},(V_{H}^{N})_{N}^{G})$\\
+则在等价意义下,有$\rho_{H}^{G}\simeq (\rho_{H}^{N})_{N}^{G}$
+\end{dingli}
+
+\begin{dingyi}
+对群$G$和其子群$H$,有$H$的$F$-表示$(\rho,V)$和$G$的诱导表示$(\rho_{H}^{G},V_{H}^{G})$\\
+若有左陪集分解$G=g_1H\cup\cdots\cup g_nH$,则称$\chi_{\rho_{H}^{G}}$为$G$的诱导特征标\\
+有对任意$g\in G$,有$\chi_{\rho_{H}^{G}}(g)=\sum\limits_{i=1\atop g_{i}^{-1}gg_{i}\in H }^{n}\chi_{\rho}(g_{i}^{-1}gg_{i})=\frac{1}{|H|}\sum\limits_{x\in G\atop x^{-1}gx\in H}\chi_{\rho}(x^{-1}gx)$
+\end{dingyi}
+
+\begin{dingli}
+Frobenius互反律:\\
+对群$G$和其子群$H$,有$H$的$F$-表示$(\rho,V)$和$G$的$F$表示$(\varrho,U)$\\
+则有$G$的诱导表示$(\rho_{H}^{G},V_{H}^{G})$和$H$的限制表示$(\varrho|_{H}^{G},U|_{H}^{G})$\\
+有$\Hom_{R[G]}(V_{H}^{G},U)\simeq\Hom_{R[H]}(V,U|_{H}^{G})$且$V_{H}^{G}\otimes_{R[G]}U\simeq (V\otimes_{R[H]}U|_{H}^{G})_{H}^{G}$\\
+若$F=\C$,则有$<\chi_{\rho_{H}^{G}},\chi_{\varrho}>_{G}=<\chi_{\rho},\chi_{\varrho|_{H}^{G}}>_{H}$且$\chi_{\rho_{H}^{G}}\chi_{\varrho}=(\chi_{\rho}\chi_{\varrho|_{H}^{G}})_{H}^{G}$
+\end{dingli}
+
+
+%\end{document}

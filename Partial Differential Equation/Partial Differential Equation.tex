@@ -1,0 +1,707 @@
+%\documentclass[12pt,oneside,a4paper]{book}
+
+%\usepackage{amsmath}
+%\usepackage{mathtools}
+%\usepackage{amsfonts}
+%\usepackage{unicode-math}
+%\usepackage{geometry}
+%\usepackage{ctex}
+
+%\begin{document}
+
+%\setcounter{chapter}{0}
+\setcounter{section}{0}
+\setcounter{subsection}{0}
+
+\chapter{波动方程}
+
+$1$维波动方程:
+
+\[\frac{\partial^2 u}{\partial t^2}-a^2\frac{\partial^2u}{\partial x^2}=f(x,t)\]
+其中$u=u(x,t),x\in\R,t\in [0,\infty),a\in(0,\infty)$
+
+初值问题:$($即初值条件和定义域如下$)$
+
+\[u|_{t=0}=\varphi(x),\frac{\partial u}{\partial t}|_{t=0}=\psi(x),x\in\R\]
+可分解为
+
+I:\[\frac{\partial^2u}{\partial t^2}-a^2\frac{\partial^2u}{\partial x^2}=0,u|_{t=0}=\varphi(x),\frac{\partial u}{\partial t}|_{t=0}=\psi(x)\]
+
+\begin{jie}D'Alembert\\
+令$\xi=x-at,\eta=x+at$\\
+则$\frac{\partial^2u}{\partial x^2}=\frac{\partial^2u}{\partial \xi^2}+2\frac{\partial^2u}{\partial\xi\partial\eta}+\frac{\partial^2u}{\partial\eta^2}$且$\frac{\partial^2u}{\partial t^2}=a^2\frac{\partial^2u}{\partial \xi^2}-2a^2\frac{\partial^2u}{\partial\xi\partial\eta}+a^2\frac{\partial^2u}{\partial\eta^2}$\\
+则$\frac{\partial^2u}{\partial t}-a^2\frac{\partial^2u}{\partial x^2}=-4a^2\frac{\partial^2u}{\partial\xi\partial\eta}=0$\\
+令$u(x,t)=F(x-at)+G(x+at)$\\
+则$u|_{t=0}=F(x)+G(x)=\varphi(x)$且$\frac{\partial u}{\partial t}|_{t=0}=-aF'(x)+aG'(x)=\psi(x)$\\
+则$F(x)=\frac{1}{2}\varphi(x)-\frac{1}{2a}\int_{0}^{x}\psi(y)\d y-\frac{C}{2},G(x)=\frac{1}{2}\varphi(x)+\frac{1}{2a}\int_{0}^{x}\psi(y)\d y+\frac{C}{2}$\\
+则\[u(x,t)=\frac{1}{2}(\varphi(x-at)+\varphi(x+at))+\frac{1}{2a}\int_{x-at}^{x+at}\psi(y)\d y\]
+\end{jie}
+
+II:\[\frac{\partial^2u}{\partial t^2}-a^2\frac{\partial^2u}{\partial x^2}=f(x,t),u|_{t=0}=0,\frac{\partial u}{\partial t}|_{t=0}=0\]
+
+\begin{jie}Duhamel\\
+令$w=w(x,t,\tau),v(x,t)=\int_{0}^{t}w(x,t,\tau)\d\tau$\\   
+
+\rm{II}':
+\[\frac{\partial^2w}{\partial t^2}-a^2\frac{\partial^2w}{\partial x^2}=0,w|_{t=\tau}=0,\frac{\partial w}{\partial t}|_{t=\tau}=f(x,\tau )\]
+则$w(x,t,\tau)=\frac{1}{2a}\int_{x-a(t-\tau)}^{x+a(t-\tau)}f(y,\tau)\d y$\\
+则$\int_{0}^{t}\frac{\partial^2w}{\partial t^2}\d\tau=a^2\frac{\partial^2(\int_{0}^{t}w\d\tau)}{\partial x^2}$\\
+则$\frac{\partial^2 v}{\partial t^2}=f(x,t)+a^2\frac{\partial^2v}{\partial x^2},v|_{t=0}=0,\frac{\partial v}{\partial t}|_{t=0}=0$,即$u(x,t)=v(x,t)$\\
+则\[u(x,t)=\frac{1}{2a}\int_{0}^{t}\int_{x-a(t-\tau)}^{x+a(t+\tau)}f(y,\tau)\d y\d\tau\]
+\end{jie}
+
+I+II:
+\[u(x,t)=\frac{1}{2}(\varphi(x+at)+\varphi(x-at))+\frac{1}{2a}\int_{x-at}^{x+at}\psi(y)\d y+\frac{1}{2a}\int_{0}^{t}\int_{x-a(t-\tau)}^{x+a(t-\tau)}f(z,\tau)\d z\d\tau\]
+
+初边值问题:$($即初值条件和定义域如下$)$
+
+\[u|_{t=0}=\varphi(x),\frac{\partial u}{\partial t}|_{t=0}=\psi(x),x\in[0,l]\]
+Dirichlet:
+\[u|_{x=0}=\mu_1(t),u|_{x=l}=\mu_2(t)\] 
+Neumann:
+\[\frac{\partial u}{\partial x}|_{x=0}=\mu_1(t),\frac{\partial u}{\partial x}|_{x=l}=\mu_2(t)\] 
+Robin:
+\[-\frac{\partial u}{\partial x}+\sigma u|_{x=0}=\mu_1(t),-\frac{\partial u}{\partial x}+\sigma u|_{x=l}=\mu_2(t)\] 
+
+Dirichlet\\
+令$U(x,t)=\mu_1(t)+\frac{x}{l}(\mu_2(t)-\mu_1(t))$,则$U|_{x=0}=\mu_1(t),U|_{x=l}=\mu_2(t)$\\
+令$\widetilde{u}(x,t)=u(x,t)-U(x,t)$,则$\widetilde{u}|_{x=0}=0,\widetilde{u}|_{x=l}=0$\\
+则初边值问题化为\[\frac{\partial^2 \widetilde{u}}{\partial t^2}-a^2\frac{\partial^2\widetilde{u}}{\partial x^2}=f(x,t)-(\frac{\partial^2U}{\partial t^2}-a^2\frac{\partial^2U}{\partial x^2})=\widetilde{f}(x,t)\]
+\[\widetilde{u}|_{t=0}=\widetilde{\varphi}(x),\frac{\partial\widetilde{u}}{\partial t}|_{t=0}=\widetilde{\psi}(x)\] 
+\[\widetilde{u}|_{x=0}=0,\widetilde{u}|_{x=l}=0\]
+可分解为$(\widetilde{u}\to u,\widetilde{\varphi}\to\varphi,\widetilde{\psi}\to\psi)$
+
+I:\[\frac{\partial^2 u}{\partial t^2}-a^2\frac{\partial^2u}{\partial x^2}=0,u|_{t=0}=\varphi(x),\frac{\partial u}{\partial t}|_{t=0}=\psi(x),u|_{x=0}=0,u|_{x=l}=0\]
+
+\begin{jie}$\\$
+令$v(x,t)=X(x)T(t)$为满足方程的分离变量解,则$XT''-a^2X''T=0$\\
+则存在常数$\lambda$,有$\frac{T''}{a^2T}=\frac{X''}{X}=-\lambda$\\
+则
+\[X''+\lambda X=0,X(0)=X(l)=0,x\in [0,l]\]
+\[T''+a^2\lambda T=0,t>0\] 
+当$\lambda\leq 0$时,有$X=0$,解为平凡解\\
+当$\lambda> 0$时,由$u|_{x=0}=0,u|_{x=l}=0$,有$\lambda=\frac{k^2\pi^2}{l^2}$,其中$k\in\N^*$\\
+则$X_{k}(x)=C\sin\frac{k\pi}{l}x,T_{k}(t)=A_k\cos\frac{ak\pi}{l}t+B_k\sin\frac{ak\pi}{l}t$\\
+又$u|_{t=0}=\sum\limits_{k=1}^{\infty}C_{1k}\sin\frac{k\pi}{l}x=\varphi(x),\frac{\partial u}{\partial t}|_{t=0}=\frac{l}{ak\pi}\sum\limits_{k=1}^{\infty}C_{2k}\sin\frac{k\pi}{l}x=\psi(x)$\\
+则\[u(x,t)\sim\sum\limits_{k=1}^{\infty}X_k(x)T_{k}(t)=\sum\limits_{k=1}^{\infty}(C_{1k}\cos\frac{ak\pi}{l}t+C_{2k}\sin\frac{ak\pi}{l}t)\sin\frac{k\pi}{l}x\]
+其中$C_{1k}=\frac{2}{l}\int_{0}^{l}\varphi(x)\sin\frac{k\pi}{l}x\d x,C_{2k}=\frac{2}{ak\pi}\int_{0}^{l}\psi(x)\sin\frac{k\pi}{l}x\d x$
+\end{jie}    
+
+\begin{dingli*}
+若$\varphi\in C^3,\psi\in C^2$且有相容性条件:
+\[\varphi(0)=\varphi(l)=\varphi''(0)=\varphi''(l)=\psi(0)=\psi(l)=0\]
+则$\sum\limits_{k=1}^{\infty}k^2|C_{1k}|<\infty,\sum\limits_{k=1}^{\infty}k^2|C_{2k}|<\infty$,则$\sum\limits_{k=1}^{\infty}X_k(x)T_{k}(t)\in C^2$\\
+则\[u(x,t)=\sum\limits_{k=1}^{\infty}((\frac{2}{l}\int_{0}^{l}\varphi(y)\sin\frac{k\pi}{l}y\d y)\cos\frac{ak\pi}{l}t+(\frac{2}{ak\pi}\int_{0}^{l}\psi(y)\sin\frac{k\pi}{l}y\d y)\sin\frac{ak\pi}{l}t)\sin\frac{k\pi}{l}x\]
+\end{dingli*}
+
+II:\[\frac{\partial^2 u}{\partial t^2}-a^2\frac{\partial^2u}{\partial x^2}=f(x,t),u|_{t=0}=0,\frac{\partial u}{\partial t}|_{t=0}=0,u|_{x=0}=0,u|_{x=l}=0\]
+
+\begin{jie}Duhamel\\
+令$w=w(x,t,\tau),v(x,t)=\int_{0}^{t}w(x,t,\tau)\d\tau$
+
+\rm{II}':
+\[\frac{\partial^2w}{\partial t^2}-a^2\frac{\partial^2w}{\partial x^2}=0,w|_{t=\tau}=0,\frac{\partial w}{\partial t}|_{t=\tau}=f(x,\tau ),w|_{x=0}=0,w|_{x=l}=0\]
+则$w(x,t,\tau)\sim \sum\limits_{k=1}^{\infty}(C_{1k}\cos\frac{ak\pi}{l}(t-\tau)+C_{2k}\sin\frac{ak\pi}{l}(t-\tau))\sin\frac{k\pi}{l}x$
+其中$C_{1k}=\frac{2}{l}\int_{0}^{l}0\sin\frac{k\pi}{l}x\d x=0,C_{2k}=\frac{2}{ak\pi}\int_{0}^{l}f(x,\tau)\sin\frac{k\pi}{l}x\d x$\\
+则$\int_{0}^{t}\frac{\partial^2w}{\partial t^2}\d\tau=a^2\frac{\partial^2(\int_{0}^{t}w\d\tau)}{\partial x^2}$\\
+则$\frac{\partial^2 v}{\partial t^2}=f(x,t)+a^2\frac{\partial^2v}{\partial x^2},v|_{t=0}=0,\frac{\partial v}{\partial t}|_{t=0}=0,v|_{x=0}=0,v|_{x=l}=0$,即$u(x,t)=v(x,t)$\\
+则\[u(x,t)\sim \sum\limits_{k=1}^{\infty}(\int_{0}^{t}C_{k}(\tau)\sin\frac{ak\pi}{l}(t-\tau)\d\tau)\sin\frac{k\pi}{l}x\]
+其中$C_{k}(\tau)=\frac{2}{ak\pi}\int_{0}^{l}f(x,\tau)\sin\frac{k\pi}{l}x\d x$
+\end{jie}
+
+\begin{dingli*}
+若$f\in C^2$且有相容性条件:
+\[f(0,t)=f(l,t)=0\]
+则\[u(x,t)=\sum\limits_{k=1}^{\infty}(\int_{0}^{t}(\frac{2}{ak\pi}\int_{0}^{l}f(y,\tau)\sin\frac{k\pi}{l}y\d y)\sin\frac{ak\pi}{l}(t-\tau)\d\tau)\sin\frac{k\pi}{l}x\]
+\end{dingli*}
+
+I+II:\\
+若$\varphi\in C^3,\psi\in C^2,f\in C^2$且有相容性条件:
+\[\varphi(0)=\varphi(l)=\varphi''(0)=\varphi''(l)=\psi(0)=\psi(l)=f(0,t)=f(l,t)=0\]
+则\[u(x,t)=\sum\limits_{k=1}^{\infty}(A_k\cos\frac{ak\pi}{l}t+B_{k}\sin\frac{ak\pi}{l}t)\sin\frac{k\pi}{l}x+\sum\limits_{k=1}^{\infty}(\int_{0}^{t}C_{k}(\tau)\sin\frac{ak\pi}{l}(t-\tau)\d\tau)\sin\frac{k\pi}{l}x\]
+其中$A_{k}=\frac{2}{l}\int_{0}^{l}\varphi(x)\sin\frac{k\pi}{l}x\d x,B_{k}=\frac{2}{ak\pi}\int_{0}^{l}\psi(x)\sin\frac{k\pi}{l}x\d x,C_{k}(\tau)=\frac{2}{ak\pi}\int_{0}^{l}f(y,\tau)\sin\frac{k\pi}{l}y\d y$\\
+
+$n$维波动方程:
+
+\[\frac{\partial^2 u}{\partial t^2}-a^2\Delta u=f(x,t)\]
+其中$u=u(x,t),x\in\R^n,t\in [0,\infty),a\in(0,\infty)$,记$\Delta u=\frac{\partial^2u}{\partial x_1^2}+\cdots+\frac{\partial^2u}{\partial x_n^2}$为Laplace算子\\
+
+初值问题:$($即初值条件和定义域如下$)$
+
+\[u|_{t=0}=\varphi(x),\frac{\partial u}{\partial t}|_{t=0}=\psi(x),x\in\R^n\]
+可分解为
+
+I:\[\frac{\partial^2 u}{\partial t^2}-a^2\Delta u=0,u|_{t=0}=\varphi(x),\frac{\partial u}{\partial t}|_{t=0}=\psi(x)\]
+
+\begin{jie}
+Poisson:\\
+当$n=3$时\\
+对$h(x_1,x_2,x_3)\in C^2$\\
+令$x_0=(x_{10},x_{20},x_{30}),S_{r}(x_{0})=\{(x_1,x_2,x_3)\in\R^3|r^2=(x_1-x_{10})^2+(x_2-x_{20})^2+(x_3-x_{30})^2\}$
+记\[M_{h}(x_{10},x_{20},x_{30},r)=\frac{1}{4\pi r^2}\iint\limits_{S_{r}(x_{0})}h(x_1,x_2,x_3)\d S=\frac{1}{4\pi}\iint\limits_{S_{1}(x_{0})}h(x_{10}+r\alpha_1,x_{20}+r\alpha_2,x_{30}+r\alpha_3)\d S\]
+其中$\alpha_1^2+\alpha_2^2+\alpha_3^2=1$为$x-x_0$的方向向量分量\\
+则$M_{h}(x_{10},x_{20},x_{30},r)\in C^2$\\
+则\[M_{h}(x_{10},x_{20},x_{30},r)|_{r=0}=h(x_{10},x_{20},x_{30}),\ \frac{\partial M_{h}(x_{10},x_{20},x_{30},r)}{\partial r}|_{r=0}=0\]
+由Green公式:\\
+则$\frac{\partial \M_{h}}{\partial r}=\frac{1}{4\pi}\iint\limits_{S_1(x)}\sum\limits_{i=1}^{3}\frac{\partial h}{\partial x_i}\alpha_i\d S=\frac{1}{4\pi r^2}\iint\limits_{S_r(x)}\sum\limits_{i=1}^{3}\frac{\partial h}{\partial x_i}\alpha_i\d S=\frac{1}{4\pi r^2}\iiint\limits_{B_{r}(x)}\Delta h\d V$\\
+则$\frac{\partial^2 \M_{h}}{\partial r^2}=-\frac{1}{2\pi r^3}\iiint\limits_{B_{r}(x)}\Delta h\d V+\frac{1}{4\pi r^2}\iint\limits_{S_{r}(x)}\Delta h\d S$\\
+则\[\Delta M_{h}(x_{10},x_{20},x_{30},r)=\frac{\partial^2 M_{h}(x_{10},x_{20},x_{30},r)}{\partial r^2}+\frac{2}{r}\frac{\partial M_{h}(x_{10},x_{20},x_{30},r)}{\partial r}\]
+若$u(x_1,x_2,x_3,t)$为\rm{I}的解
+
+\rm{I}':
+\[\frac{\partial^2 M_{u}}{\partial t^2}-a^2(\frac{\partial^2 M_{u}}{\partial r^2}+\frac{2}{r}\frac{\partial M_{u}}{\partial r})=0,M_{u}|_{t=0}=M_{\varphi},\frac{\partial M_{u}}{\partial t}|_{t=0}=M_{\psi}\]
+令$v(x_1,x_2,x_3,r,t)=rM_{u}(x_1,x_2,x_3,r,t)$
+
+\rm{I}'':
+\[\frac{\partial^2 v}{\partial t^2}-a^2\frac{\partial^2 v}{\partial r^2}=0,v|_{t=0}=rM_{\varphi},\frac{\partial v}{\partial t}|_{t=0}=rM_{\psi}\]
+则$v(x,r,t)=\frac{1}{2}((r+at)M_{\varphi}(x,r+at)+(r-at)M_{\varphi}(x,r-at))+\frac{1}{2a}\int_{r-at}^{r+at}yM_{\psi}(y)\d y$\\
+则$M_{u}(x,r,t)=\frac{1}{2}((at+r)M_{\varphi}(x,at+r)+(at-r)M_{\varphi}(x,at-r))+\frac{1}{2a}\int_{at-r}^{at+r}yM_{\psi}(y)\d y$\\
+令$r\to 0$,则$M_{u}(x_1,x_2,x_3,r,t)\to u(x_1,x_2,x_3,t)$\\
+则$u(x_1,x_2,x_3,t)=\frac{\partial yM_{\varphi}(x_1,x_2,x_3,y)}{\partial y}|_{y=at}+\frac{1}{a}yM_{\psi}(x_1,x_2,x_3,y)|_{\psi=at}$\\
+则$u(x_1,x_2,x_3,t)=\frac{\partial t M_{\varphi}(x_1,x_2,x_3,at)}{\partial t}+tM_{\psi}(x_1,x_2,x_3,at)$\\
+则\[u(x_1,x_2,x_3,t)=\frac{\partial \frac{1}{4\pi a^2t}\iint\limits_{S_{at}(x)}\varphi(x_1,x_2,x_3)\d S}{\partial t}+\frac{1}{4\pi a^2t}\iint\limits_{S_{at}(x)}\psi(x_1,x_2,x_3)\d S\]
+\end{jie}
+II:\[\frac{\partial^2 u}{\partial t^2}-a^2\Delta u=f(x,t),u|_{t=0}=0,\frac{\partial u}{\partial t}|_{t=0}=0\]
+
+\begin{jie}
+Duhamel:\\
+当$n=3$时\\
+令$w=w(x_1,x_2,x_3,t,\tau),\tau\geq 0$
+
+\rm{II'}:
+\[\frac{\partial^2 w}{\partial t^2}-a^2\Delta w=0,w|_{t=\tau}=0,\frac{\partial w}{\partial t}|_{t=\tau}=f(x_1,x_2,x_3,\tau)\]
+则$w(x_1,x_2,x_3,t,\tau)=\frac{1}{4\pi a^2(t-\tau)}\iint\limits_{S_{a(t-\tau)}(x)}f(x_1,x_2,x_3)\d S$\\
+则\[u(x_1,x_2,x_3,t)=\int_{0}^{t}w(x_1,x_2,x_3,t,\tau)\d \tau=\int_{0}^{t}\frac{1}{4\pi a^2(t-\tau)}\iint\limits_{S_{a(t-\tau)}(x)}f(x_1,x_2,x_3)\d S\d \tau\]
+\end{jie}
+
+I+II:\\
+当$n=3$时\\
+\[u(x,t)=\frac{\partial \frac{1}{4\pi a^2t}\iint\limits_{S_{at}(x)}\varphi(x)\d S}{\partial t}+\frac{1}{4\pi a^2t}\iint\limits_{S_{at}(x)}\psi(x)\d S+\int_{0}^{t}\frac{1}{4\pi a^2(t-\tau)}\iint\limits_{S_{a(t-\tau)}(x)}f(x,\tau)\d S\d \tau\]
+当$n=2$时\\
+将$u(x,t)=u(x_1,x_2,t)$视为$u(x_1,x_2,x_3,t)$\\
+则$u(x,t)=\frac{\partial \frac{1}{4\pi a^2t}\iint\limits_{S_{at}(x)}\varphi(x_1,x_2,x_3)\d S}{\partial t}+\frac{1}{4\pi a^2t}\iint\limits_{S_{at}(x)}\psi(x_1,x_2,x_3)\d S+\int_{0}^{t}\frac{1}{4\pi a^2(t-\tau)}\iint\limits_{S_{a(t-\tau)}(x)}f(x_1,x_2,x_3)\d S\d \tau$\\
+记$J_0(t)=\sqrt{(at)^2-(x_1-x_1)^2-(x_2-x_2)^2},J_0(t-\tau)=\sqrt{(a(t-\tau))^2-(x_1-x_1)^2-(x_2-x_2)^2}$
+其中$\iint\limits_{S_{at}(x)}\varphi(x_1,x_2,x_3)\d S=2\iint\limits_{\sum_{at}(x)}\varphi(x_1,x_2)\frac{\d S}{\d\sigma}\d\sigma=2\iint\limits_{\sum_{at}(x)}\varphi(x_1,x_2)\frac{at}{J_0(t)}\d\sigma$\\
+其中$\int_{0}^{t}\frac{1}{4\pi a^2(t-\tau)}\iint\limits_{S_{a(t-\tau)}(x)}f(x_1,x_2,x_3,\tau)\d S\d \tau=\int_{0}^{t}\frac{1}{4\pi a^2(t-\tau)}2\iint\limits_{\sum_{a(t-\tau)}(x)}f(x_1,x_2,\tau)\frac{a(t-\tau)}{J_0(t-\tau)}\d \sigma\d \tau$\\
+则\[u(x,t)=\frac{1}{2\pi a}\frac{\partial\iint\limits_{\sum_{at}(x)}\frac{\varphi(x)}{J_0(t)}\d \sigma}{\partial t}+\frac{1}{2\pi a}\iint\limits_{\sum_{at}(x)}\frac{\psi(x)}{J_0(t)}\d\sigma+\int_{0}^{t}\frac{1}{2\pi a}\iint\limits_{\sum_{a(t-\tau)}(x)}\frac{f(x,\tau)}{J_0(t-\tau)}\d \sigma\d \tau\]
+
+初边值问题:$($即初值条件和定义域如下$)$
+
+\[u|_{t=0}=\varphi(x),\frac{\partial u}{\partial t}|_{t=0}=\psi(x),x\in\Omega\subset\R^n\]
+Dirichlet:
+\[u|_{x\in\partial\Omega}=\mu(x,t)\] 
+Neumann:
+\[\frac{\partial u}{\partial x}|_{x\in\partial\Omega}=\widetilde{\mu}(x,t)\] 
+Robin:
+\[-\frac{\partial u}{\partial x}+\sigma u|_{x\in\partial\Omega}=\widetilde{\widetilde{u}}(x,t)\] 
+
+当$n=2$时,初边值问题可化为:\\
+\[\frac{\partial ^2 u}{\partial t^2}-a^2(\frac{\partial ^2 u}{\partial x^2}+\frac{\partial^2 u}{\partial y^2})=0,u|_{t=0}=\varphi(x,y),\frac{\partial u}{\partial t}|_{t=0}=\psi(x,y),u|_{x\in\partial\Omega}=0\]
+
+\begin{jie}
+令$u(x,y,t)=X(x)Y(y)T(t)$,解为平凡解\\
+令$u(x,y,t)=Z(x,y)T(t)$\\
+则$ZT''-a^2T\Delta Z=0,Z|_{\partial \Omega}=0$,则$\frac{T''}{a^2T}=\frac{\Delta Z}{Z}=-\lambda$\\
+则
+\[\Delta Z+\lambda Z=0,Z|_{\partial \Omega}=0\]
+\[T''+a^2T=0\]
+\end{jie}
+
+\begin{dingli*}
+对$2$维初边值问题:解有唯一性
+\[\frac{\partial^2 u}{\partial t^2}-a^2(\frac{\partial^2 u}{\partial x^2}+\frac{\partial^2 u}{\partial y^2})=f(x,y,t),u|_{t=0}=\varphi(x,y),\frac{\partial u}{\partial t}|_{t=0}=\psi(x,y),u|_{\partial\Omega}=\mu(x,y,t)\]
+其中$(x,y)\in\Omega \subset\R^2,t\geq 0$
+\end{dingli*}
+
+\begin{jie}
+考虑能量$E_1(t)=\iint\limits_{\Omega}((\frac{\partial u}{\partial t})^2+a^2((\frac{\partial u}{\partial x})^2+(\frac{\partial u}{\partial y})^2))\d x\d y$,其中$t\geq 0$\\
+则$\frac{\d E_1(t)}{\d t}=\iint\limits_{\Omega}(2\frac{\partial u}{\partial t}\frac{\partial^2 u}{\partial t^2}+2a^2\frac{\partial u}{\partial x}\frac{\partial^2 u}{\partial x\partial t}+2a^2\frac{\partial u}{\partial y}\frac{\partial^2 u}{\partial y\partial t})\d x\d y$\\
+由Green公式:\\
+则$\frac{\d E_1(t)}{\d t}=2\iint\limits_{\Omega}(\frac{\partial u}{\partial t})(\frac{\partial^2 u}{\partial t^2}-a^2(\frac{\partial^2 u}{\partial x^2}+\frac{\partial^2 u}{\partial y^2}))\d x\d y+2a^2\int\limits_{\partial\Omega}(\frac{\partial u}{\partial x}\frac{\partial u}{\partial t}\cos(n,x)+\frac{\partial u}{\partial y}\frac{\partial u}{\partial t}\cos(n,y))\d S$\\
+若有两解$u_1,u_2$,令$v=u_1-u_2$,则$\frac{\d E_1(t)}{\d t}=0$,则对于任意$t\geq 0$,有$E_1(t)=E_1(0)=0$\\
+则对于任意$(x,y)\in \Omega,t\in[0,\infty)$,有$\frac{\partial v}{\partial x}=\frac{\partial v}{\partial y}=\frac{\partial v}{\partial t}=0$\\
+则对于任意$(x,y,t)\in \Omega\times[0,\infty)$,有$v(x,y,t)=v|_{t=0}=0$
+\end{jie}
+
+\begin{dingli*}
+对$2$维初边值问题:解有稳定性
+\[\frac{\partial^2 u}{\partial t^2}-a^2(\frac{\partial^2 u}{\partial x^2}+\frac{\partial^2 u}{\partial y^2})=f(x,y,t),u|_{t=0}=\varphi(x,y),\frac{\partial u}{\partial t}|_{t=0}=\psi(x,y),u|_{\partial\Omega}=0\]
+其中$(x,y)\in\Omega \subset\R^2,t\geq 0$
+\end{dingli*}
+
+\begin{jie}
+考虑能量$E_1(t)=\iint\limits_{\Omega}((\frac{\partial u}{\partial t})^2+a^2((\frac{\partial u}{\partial x})^2+(\frac{\partial u}{\partial y})^2))\d x\d y$,其中$t\geq 0$\\
+考虑范数$E_0(t)=\iint\limits_{\Omega}u^2\d x\d y$\\
+则$\frac{\d E_1(t)}{\d t}=2\iint\limits_{\Omega}(\frac{\partial u}{\partial t})f(x,y,t)\d x\d y+2a^2\int\limits_{\partial\Omega}(\frac{\partial u}{\partial x}\frac{\partial u}{\partial t}\cos(n,x)+\frac{\partial u}{\partial y}\frac{\partial u}{\partial t}\cos(n,y))\d S$\\
+则$\frac{\d E_1(t)}{\d t}\leq \iint\limits_{\Omega}f^2\d x\d y+E_1(t)$,则$\frac{\d \e^{-t}E_1(t)}{\d t}\leq \e^{-t}\iint\limits_{\Omega}f^2\d x\d y$\\
+则$E_1(t)\leq \e^{t}(E_1(0)+\int_{0}^{t}\e^{-z}\iint\limits_{\Omega}f^2\d x\d y\d z)$\\
+则$\frac{\d E_0(t)}{\d t}=2\iint\limits_{\Omega}u\frac{\partial u}{\partial t}\d x\d y\leq\iint\limits_{\Omega}u^2\d x\d y+\iint\limits_{\Omega}(\frac{\partial u}{\partial t})^2\d x\d y$,则$\frac{\d \e^{-1}E_0(t)}{\d t}\leq \e^{-t}E_1(t)$\\
+则$E_0(t)\leq \e^{t}(E_0(0)+\int_{0}^{t}e^{-z}E_1(z)\d z)$\\
+综上\[E_1(t)+E_0(t)\leq C(E_0(0)+E_1(0)+\int_{0}^{t_0}\iint\limits_{\Omega}f^2\d x\d y\d t)\]
+其中$C$为只于$t_0$有关的常数且$t\in[0,t_0]$
+\end{jie}
+
+\begin{dingli*}
+对$2$维初值问题:解有唯一性
+\[\frac{\partial^2 u}{\partial t^2}-a^2(\frac{\partial^2 u}{\partial x^2}+\frac{\partial^2 u}{\partial y^2})=f(x,y,t),u|_{t=0}=\varphi(x,y),\frac{\partial u}{\partial t}|_{t=0}=\psi(x,y)\]
+其中$(x,y)\in\R^2,t\geq 0$
+\end{dingli*}
+
+\begin{jie}
+考虑能量$E_1(t)=\iint\limits_{\R^2}((\frac{\partial u}{\partial t})^2+a^2((\frac{\partial u}{\partial x})^2+(\frac{\partial u}{\partial y})^2))\d x\d y$不一定收敛\\
+记$\Omega_t=\{(\xi,\zeta,t)|(\xi-x)^2+(\zeta-y)^2\leq (R-at)^2\},\Omega_0=\{(\xi,\zeta)|(\xi-x)^2+(\zeta-y)^2\leq R^2\}$\\
+考虑能量$E_1(\Omega_t)=\iint\limits_{\Omega_t}((\frac{\partial u}{\partial t})^2+a^2((\frac{\partial u}{\partial x})^2+(\frac{\partial u}{\partial y})^2))\d x\d y$\\
+则$\frac{\d E_1(\Omega_t)}{\d t}=\frac{\d}{\d t}(\iint\limits_{\Omega_t}((\frac{\partial u}{\partial t})^2+a^2((\frac{\partial u}{\partial x})^2+(\frac{\partial u}{\partial y})^2))\d x\d y)$\\
+则$\frac{\d E_1(\Omega_t)}{\d t}=2\iint\limits_{\Omega_t}(\frac{\partial u}{\partial t}\frac{\partial^2 u}{\partial t^2}+a^2(\frac{\partial u}{\partial x}\frac{\partial^2u}{\partial x\partial t}+\frac{\partial u}{\partial y}\frac{\partial^2 u}{\partial y\partial t}))\d S\d r-a\int_{\partial \Omega_t}((\frac{\partial u}{\partial t})^2+a^2((\frac{\partial u}{\partial x})^2+(\frac{\partial u}{\partial y})^2))\d S$\\
+若有两解$u_1,u_2$,令$v=u_1-u_2$\\
+由Green公式:\\
+则$\frac{\d E_1(\Omega_t)}{\d t}=2\int_{\partial \Omega_t}a^2(\frac{\partial v}{\partial x}\frac{\partial v}{\partial t}\cos(n,x)+\frac{\partial v}{\partial y}\frac{\partial v}{\partial t}\cos(n,y))-\frac{a}{2}((\frac{\partial v}{\partial t})^2+a^2((\frac{\partial v}{\partial x})^2+(\frac{\partial v}{\partial y})^2))\d S$\\
+则$\frac{\d E_1(\Omega_t)}{\d t}=-a\int_{\partial \Omega_t}(a\frac{\partial v}{\partial x}-\frac{\partial v}{\partial t}\cos(n,x))^2+(a\frac{\partial v}{\partial y}\frac{\partial v}{\partial t}\cos(n,y))^2\d S\leq 0$\\
+则$E_1(\Omega_t)\leq E_1(\Omega_0)=0$\\
+则对于任意$(x,y)\in \R^2$,有$\frac{\partial v}{\partial x}=\frac{\partial v}{\partial y}=0$\\
+则对于任意$(x,y,t)\in \Omega\times[0,\infty)$,有$v(x,y,t)=v|_{t=0}=0$
+\end{jie}
+
+\begin{dingli*}
+对$2$维初值问题:解有稳定性
+\[\frac{\partial^2 u}{\partial t^2}-a^2(\frac{\partial^2 u}{\partial x^2}+\frac{\partial^2 u}{\partial y^2})=f(x,y,t),u|_{t=0}=\varphi(x,y),\frac{\partial u}{\partial t}|_{t=0}=\psi(x,y)\]
+其中$(x,y)\in\Omega \subset\R^2,t\geq 0$
+\end{dingli*}
+
+\begin{jie}
+考虑能量$E_1(t)=\iint\limits_{\Omega_{t}}((\frac{\partial u}{\partial t})^2+a^2((\frac{\partial u}{\partial x})^2+(\frac{\partial u}{\partial y})^2))\d x\d y$,其中$t\geq 0$\\
+考虑范数$E_0(t)=\iint\limits_{\Omega_{t}}u^2\d x\d y$\\
+记$\Omega_t=\{(\xi,\zeta,t)|(\xi-x)^2+(\zeta-y)^2\leq (R-at)^2\},\Omega_0=\{(\xi,\zeta)|(\xi-x)^2+(\zeta-y)^2\leq R^2\}$\\
+则$E_1(\Omega_t)\leq E_1(\Omega_0)$\\
+则$E_0(\Omega_t)\leq \e^{t}(E_0(\Omega_0)+\int_{0}^{t}e^{-z}E_1(\Omega_{z})\d z)$\\
+综上\[E_1(\Omega_t)+E_0(\Omega_t)\leq C(E_0(\Omega_0)+E_1(\Omega_0))\]
+其中$C$为只于$t_0$有关的常数且$t\in[0,t_0]$
+\end{jie}
+
+\chapter{传导方程}
+
+$1$维传导方程:
+
+\[\frac{\partial u}{\partial t}-a^2\frac{\partial^2 u}{\partial x^2}=f(x,t)\]
+其中$u=u(x,t),x\in\R,t\in [0,\infty),a\in(0,\infty)$
+
+\begin{dingli*}
+对$f,g\in C^{1}(\R)$,记$(f*g)(x)=\int_{-\infty}^{\infty}f(x-t)g(t)\d t$\\
+记$F[f](\lambda)=\int_{-\infty}^{\infty}f(x)\e^{-\i\lambda x}\d x$且$F^{-1}[g](x)=\frac{1}{2\pi}\int_{-\infty}^{\infty}g(\lambda)\e^{\i x\lambda}\d\lambda$\\
+则称$F[f]$为$f$的Fourier变换,则称$F^{-1}[g]$为$g$的Fourier逆变换\\
+则有$F[f*g]=F[f]F[g]$,则有$F^{-1}[f]*F^{-1}[g]=F^{-1}[fg]$,则有$F[f']=(\i\lambda)F[f]$
+\end{dingli*}
+
+初值问题:$($即初值条件和定义域如下$)$
+
+\[u|_{t=0}=\varphi(x),x\in\R^n\]
+
+可分解为
+
+I:\[\frac{\partial u}{\partial t}-a^2\frac{\partial^2u}{\partial x^2}=0,u|_{t=0}=\varphi(x)\]
+
+\begin{jie}
+关于$x$做Fourier变换\\
+记$\widetilde{u}(\lambda,t)=F[u(x,t)](\lambda,t),\widetilde{\varphi}(\lambda)=F[\varphi(x)](\lambda)$
+
+\rm{I}':
+\[\frac{\partial\widetilde{u}}{\partial t}-a^2(\i\lambda)^2\widetilde{u}=0,\widetilde{u}|_{t=0}=\widetilde{\varphi}\]
+则有$\widetilde{u}(\lambda,t)=\widetilde{\varphi}(\lambda)\e^{-a^2\lambda^2 t}$\\
+又有$F^{-1}[\e^{-a^2\lambda^2 t}](x,t)=\frac{1}{2a\sqrt{\pi t}}\e^{-\frac{x^2}{4a^2 t}}$\\
+则有$u(x,t)=F^{-1}[\widetilde{u}(\lambda,t)](x,t)=\varphi(x)*F^{-1}[\e^{-a^2\lambda^2 t}](x,t)$\\
+则\[u(x,t)=\frac{1}{2a\sqrt{\pi t}}\int_{-\infty}^{\infty}\varphi(y)\e^{-\frac{(x-y)^2}{4a^2t}}\d y\]
+\end{jie}
+
+II:\[\frac{\partial u}{\partial t}-a^2\frac{\partial^2u}{\partial x^2}=f(x,t),u|_{t=0}=0\]
+
+\begin{jie}
+Duhamel:\\
+令$w=w(x,t,\tau),v(x,t)=\int_{0}^{t}w(x,t,\tau)\d\tau$\\
+
+\rm{II}':
+\[\frac{\partial w}{\partial t}-a^2\frac{\partial^2 w}{\partial x^2}=0,w|_{t=\tau}=f(x,\tau)\]
+则$w(x,t,\tau)=\frac{1}{2a\sqrt{\pi (t-\tau)}}\int_{-\infty}^{\infty}f(y,\tau)\e^{-\frac{(x-y)^2}{4a^2(t-\tau)}}\d y$\\
+则$v(x,t)=\int_{0}^{t}\frac{1}{2a\sqrt{\pi (t-\tau)}}\int_{-\infty}^{\infty}f(y,\tau)\e^{-\frac{(x-y)^2}{4a^2(t-\tau)}}\d y\d \tau$\\
+又$\frac{\partial v}{\partial t}=w|_{t=\tau}+\int_{0}^{t}\frac{\partial w}{\partial t}\d\tau=f(x,t)+a^2\frac{\partial^2 v}{\partial x^2},v|_{t=0}=0$,即$u(x,t)=v(x,t)$\\
+则\[u(x,t)=\int_{0}^{t}\frac{1}{2a\sqrt{\pi (t-\tau)}}\int_{-\infty}^{\infty}f(y,\tau)\e^{-\frac{(x-y)^2}{4a^2(t-\tau)}}\d y\d \tau\]
+\end{jie}
+
+I+II:\\
+若$\varphi,f\in BC$\\
+则对任意$x_0\in\R,\varepsilon>0$,存在$\delta>0$,若$|x-x_0|<\delta,|t|<\delta$,记$\zeta=\frac{y-x}{2a\sqrt{t}},M=\sup\limits_{x\in\R}|\varphi(x)|$\\
+则$|u(x,t)-\varphi(x_0)|<\frac{1}{\sqrt{\pi}}(\int_{-\infty}^{-N}+\int_{-N}^{N}+\int_{N}^{\infty})|\varphi(x+2a\sqrt{t}\zeta)-\varphi(x_0)|\e^{-\zeta^2}\d\zeta<\frac{2\varepsilon}{6M}2M+\frac{\varepsilon}{4}<\varepsilon$\\
+则\[u(x,t)=\frac{1}{2a\sqrt{\pi t}}\int_{-\infty}^{\infty}\varphi(y)\e^{-\frac{(x-y)^2}{4a^2t}}\d y+\int_{0}^{t}\frac{1}{2a\sqrt{\pi (t-\tau)}}\int_{-\infty}^{\infty}f(y,\tau)\e^{-\frac{(x-y)^2}{4a^2(t-\tau)}}\d y\d \tau\]
+
+初边值问题:$($即初值条件和定义域如下$)$
+
+\[u|_{t=0}=\varphi(x),x\in[0,l]\]
+Dirichlet:
+\[u|_{x=0}=\mu_1(t),u|_{x=l}=\mu_2(t)\] 
+Neumann:
+\[\frac{\partial u}{\partial x}|_{x=0}=\mu_1(t),\frac{\partial u}{\partial x}|_{x=l}=\mu_2(t)\] 
+Robin:
+\[\frac{\partial u}{\partial x}+h u|_{x=0}=\mu_1(t),\frac{\partial u}{\partial x}+h u|_{x=l}=\mu_2(t)\] 
+
+Dirichlet+Robin
+\[u|_{x=0}=0,\frac{\partial u}{\partial x}+h u|_{x=l}=0\] 
+可分解为
+
+I:\[\frac{\partial u}{\partial t}-a^2\frac{\partial^2u}{\partial x^2}=0,u|_{t=0}=\varphi(x),u|_{x=0}=0,\frac{\partial u}{\partial x}+h u|_{x=l}=0\]
+
+\begin{jie}
+令$u(x,t)=X(x)T(t)$为满足方程的分离变量解\\
+则存在常数$\lambda$,有$\frac{T'}{a^2T}=\frac{X''}{X}=-\lambda$\\
+则
+\[X''+\lambda X=0,X(0)=X'(l)+hX(l)=0,x\in [0,l]\]
+\[T''+a^2\lambda T=0,t\geq 0\] 
+当$\lambda\leq 0$时,有$X=0$,解为平凡解\\
+当$\lambda> 0$时,有$\tan(\sqrt{\lambda_k}l)=-\frac{\lambda_kl}{hl}$,则$\lambda_k\in(\frac{(k-\frac{1}{2})^2\pi^2}{l^2},\frac{k^2\pi^2}{l^2})$,其中$k\in\N^*$\\
+则$X_{k}(x)=C_{1k}\sin\sqrt{\lambda_k}x,T_{k}(t)=C_{2k}\e^{-a^2\lambda_k t}$\\
+又$u|_{t=0}=\sum\limits_{k=1}^{\infty}C_{k}\sin\sqrt{\lambda_k}x=\varphi(x)$且$\{\sin\sqrt{\lambda_k}\}$为$L^2([0.l])$上标准正交基\\
+则\[u(x,t)\sim \sum\limits_{k=1}^{\infty}X_k(x)T_{k}(t)=\sum\limits_{k=1}^{\infty}C_k\e^{-a^2\lambda_k t}\sin\sqrt{\lambda_k}x\]
+其中$C_{k}=\frac{\int_{0}^{l}\varphi(x)\sin\sqrt{\lambda_k}x\d x}{\int_{0}^{l}\sin^2\sqrt{\lambda_k}x\d x}$
+\end{jie}
+
+\begin{dingli*}
+若$\varphi\in C^2$且有相容性条件:
+\[\varphi(0)=\varphi'(l)+h\varphi(l)=0\]
+则$\sum\limits_{k=1}^{\infty}|C_{k}|\lambda_{k}^{n}\e^{-a^2\lambda_k t}<\infty$,则$\sum\limits_{k=1}^{\infty}X_k(x)T_{k}(t)\in C^\infty$\\
+则\[u(x,t)=\sum\limits_{k=1}^{\infty}(\frac{\int_{0}^{l}\varphi(x)\sin\sqrt{\lambda_k}x\d x}{\int_{0}^{l}\sin^2\sqrt{\lambda_k}x\d x})\e^{-a^2\lambda_k t}\sin\sqrt{\lambda_k}x\]
+\end{dingli*}
+
+II:\[\frac{\partial u}{\partial t}-a^2\frac{\partial^2u}{\partial x^2}=f(x,t),u|_{t=0}=0,u|_{x=0}=0,\frac{\partial u}{\partial x}+h u|_{x=l}=0\]
+
+\begin{jie}
+Duhamel:\\
+令$w=w(x,t,\tau),u(x,t)=\int_{0}^{t}w(x,t,\tau)\d\tau$
+
+\rm{II}':
+\[\frac{\partial w}{\partial t}-a^2\frac{\partial^2 w}{\partial x^2}=0,w|_{t=\tau}=f(x,\tau),w|_{x=0}=0,\frac{\partial w}{\partial x}+h w|_{x=l}=0\]
+则$w(x,t,\tau)\sim \sum\limits_{k=1}^{\infty}C_k\e^{-a^2\lambda_k (t-\tau)}\sin\sqrt{\lambda_k}x$\\
+其中$C_{k}=\frac{\int_{0}^{l}f(x,\tau)\sin\sqrt{\lambda_k}x\d x}{\int_{0}^{l}\sin^2\sqrt{\lambda_k}x\d x}$
+则$\int_{0}^{t}\frac{\partial w}{\partial t}\d\tau=a^2\frac{\partial^2(\int_{0}^{t}w\d\tau)}{\partial x^2}$\\
+则$\frac{\partial v}{\partial t}=f(x,t)+a^2\frac{\partial^2v}{\partial x^2},v|_{t=0}=0,v|_{x=0}=0,\frac{\partial v}{\partial x}+h v|_{x=l}=0$,即$u(x,t)=v(x,t)$\\
+则\[u(x,t)\sim \sum\limits_{k=1}^{\infty}(\int_{0}^{t}C_k(\tau)\e^{-a^2\lambda_k (t-\tau)}\d\tau)\sin\sqrt{\lambda_k}x\]
+其中$C_{k}(\tau)=\frac{\int_{0}^{l}f(x,\tau)\sin\sqrt{\lambda_k}x\d x}{\int_{0}^{l}\sin^2\sqrt{\lambda_k}x\d x}$
+\end{jie}
+
+\begin{dingli*}
+若$f\in C^2$且有相容性条件:
+\[f(0,t)=\frac{\partial f}{\partial x}(l,t)+hf(l,t)=0\]
+则\[u(x,t)=\sum\limits_{k=1}^{\infty}(\int_{0}^{t}(\frac{\int_{0}^{l}f(y,\tau)\sin\sqrt{\lambda_k}y\d y}{\int_{0}^{l}\sin^2\sqrt{\lambda_k}y\d y})\e^{-a^2\lambda_k (t-\tau)}\d\tau)\sin\sqrt{\lambda_k}x\]
+\end{dingli*}
+
+I+II:\\
+若$\varphi\in C^2,f\in C^2$且有相容性条件:
+\[\varphi(0)=\varphi'(l)+h\varphi(l)=f(0,t)=\frac{\partial f}{\partial x}(l,t)+hf(l,t)=0\]
+则\[u(x,t)=\sum\limits_{k=1}^{\infty}A_k\e^{-a^2\lambda_k t}\sin\sqrt{\lambda_k}x+\sum\limits_{k=1}^{\infty}(\int_{0}^{t}B_k(\tau)\e^{-a^2\lambda_k (t-\tau)}\d\tau)\sin\sqrt{\lambda_k}x\]
+其中$A_{k}=\frac{\int_{0}^{l}\varphi(x)\sin\sqrt{\lambda_k}x\d x}{\int_{0}^{l}\sin^2\sqrt{\lambda_k}x\d x},B_{k}(\tau)=\frac{\int_{0}^{l}f(x,\tau)\sin\sqrt{\lambda_k}x\d x}{\int_{0}^{l}\sin^2\sqrt{\lambda_k}x\d x}$
+
+$n$维传导方程:
+
+\[\frac{\partial u}{\partial t}-a^2\Delta u=f(x,t)\]
+其中$u=u(x,t),x\in\R^n,t\in [0,\infty),a\in(0,\infty)$,记$\Delta u=\frac{\partial^2u}{\partial x_1^2}+\cdots+\frac{\partial^2u}{\partial x_n^2}$为Laplace算子\\
+
+\begin{dingli*}
+对$f,g\in C^{n}(\R)$\\
+记$F[f](\lambda_1,\cdots,\lambda_n)=\int_{-\infty}^{\infty}\cdots\int_{-\infty}^{\infty}f(x_1,\cdots,x_n)\e^{\i(\lambda_1 x_1+\cdots+\lambda_n x_n)}\d x_1\cdots\d x_n$\\
+记$F^{-1}[g](x_1,\cdots,x_n)=\frac{1}{(2\pi)^{n}}\int_{-\infty}^{\infty}\cdots\int_{-\infty}^{\infty}g(\lambda_1,\cdots,\lambda_n)\e^{\i (\lambda_1x_1+\cdots+\lambda_n x_n)}\d\lambda_1\cdots\d \lambda_n$\\
+则称$F[f]$为$f$的Fourier变换,则称$F^{-1}[g]$为$g$的Fourier逆变换\\
+记$(f*g)(x_1,\cdots,x_n)=\int_{-\infty}^{\infty}\cdots\int_{-\infty}^{\infty}f(x_1-t_1,\cdots,x_n-t_n)g(t_1,\cdots,t_n)\d t_1\cdots\d t_n$\\
+则有$F[f*g]=F[f]F[g]$,则有$F^{-1}[f]*F^{-1}[g]=F^{-1}[fg]$,则有$F[f']=(\i\lambda)F[f]$
+\end{dingli*}
+
+初值问题:$($即初值条件和定义域如下$)$
+
+\[u|_{t=0}=\varphi(x),x\in\R^n\]
+
+初边值问题:$($即初值条件和定义域如下$)$
+
+\[u|_{t=0}=\varphi(x),x\in\Omega\subset\R^n\]
+Dirichlet:
+\[u|_{x\in\partial\Omega}=\mu(x,t)\] 
+Neumann:
+\[\frac{\partial u}{\partial x}|_{x\in\partial\Omega}=\widetilde{\mu}(x,t)\] 
+Robin:
+\[\frac{\partial u}{\partial n}+\sigma u|_{x\in\partial\Omega}=\widetilde{\widetilde{\mu}}(x,t)\] 
+
+\begin{dingli*}
+极值原理\\
+对有界区域$\Omega\subset \R^n$和$T>0$\\
+记$R_T=\{(x,t)\in \R^n\times[0,\infty)|x\in \overline{\Omega},t\in[0,T]\}$\\
+记$\Gamma_T=\{(x,t)\in \R^n\times[0,\infty)|x\in \overline{\Omega},t=0\  or\ x\in \partial\overline{\Omega},t\in [0,T] \}$\\
+若$u(x,t)$在$\mathring{R}_T$上满足$\frac{\partial u}{\partial t}-a^2\Delta u\leq 0$且在$R_T$上连续\\
+则$\max\limits_{R_T}u=\max\limits_{\Gamma_T}u$且$\min\limits_{R_T}u=\min\limits_{\Gamma_{T}}u$\\
+若$u_1(x,t),u_2(x,t)$在$\mathring{R}_T$上满足$\frac{\partial u_1}{\partial t}-a^2\Delta u_1\leq \frac{\partial u_2}{\partial t}-a^2\Delta u_2$且在$R_T$上连续\\
+若$u_1|_{\Gamma_T}\leq u_2|_{\Gamma_T}$,则$u_1|_{R_T}\leq u_2|_{R_T}$
+\end{dingli*}
+
+\begin{jie}
+只需对$\max\limits_{R_T}u=\max\limits_{\Gamma_T}u$验证即可\\
+若存在$(x_0,t_0)\in R_T\backslash \Gamma_T$,有$u(x_0,t_0)=\max\limits_{R_T}u>\max\limits_{\Gamma_T}u$\\
+记$\widetilde{u}(x,t)=u(x,t)+\varepsilon|x-x_0|^2$,则可取$\varepsilon=\frac{\max\limits_{R_{T}}u-\max\limits_{\Gamma_{T}}u}{4\sup\limits_{x,x'\in\Omega}|x-x'|^2}>0$,有$\max\limits_{R_T}\widetilde{u}>\max\limits_{\Gamma_T}\widetilde{u}$\\
+则存在$(x_1,t_1)\in R_t\backslash \Gamma_T$,有$\widetilde{u}(x_1,t_1)=\max\limits_{R_T}\widetilde{u}\geq\max\limits_{R_{T}}u>\max\limits_{\Gamma_{T}}\widetilde{u}$\\
+则$\Delta u+2n\varepsilon|_{(x_1,t_1)}\leq 0,\frac{\partial \widetilde{u}}{\partial t}|_{(x_1,t_1)}\geq 0$,即$\frac{\partial \widetilde{u}}{\partial t}-a^2\Delta u|_{(x_1,t_1)}>0$
+\end{jie}
+
+\begin{dingli*}
+对$n$维初边值问题:解具有唯一性和稳定性
+\[\frac{\partial u}{\partial t}-a^2\Delta u=f(x,t),u|_{t=0}=\varphi(x),u|_{x\in\partial\Omega}=\mu(x,t)\]
+\end{dingli*}
+
+\begin{jie}
+令$v=u_1-u_2$,有$\frac{\partial v}{\partial t}-a^2\Delta v\leq 0$运用极值原理\\
+若$u_1(x,t),u_2(x,t)$均为解,则$u_1(x,t)=u_2(x,t)$\\
+若$u_1(x,t)$对应$\varphi_1(x),\mu_1(x,t)$且$u_2(x,t)$对应$\varphi_2(x),\mu_2(x,t)$\\
+若$|\varphi_1-\varphi_2|\Big|_{\Omega}\leq \varepsilon$且$|\mu_1-\mu_2|\Big|_{\partial \Omega \times [0,T]}\leq \varepsilon$,则$|u_1-u_2|\Big|_{R_T}\leq \varepsilon$
+\end{jie}
+
+\begin{dingli*}
+对$n$维初边值问题:解具有唯一性和稳定性
+\[\frac{\partial u}{\partial t}-a^2\Delta u=f(x,t),u|_{t=0}=\varphi(x),\frac{\partial u}{\partial n}+\sigma u|_{x\in\partial\Omega}=\mu(x,t)\]
+\end{dingli*}
+
+\begin{jie}
+令$v=u_1-u_2$,有$\frac{\partial v}{\partial t}-a^2\Delta v\leq 0$运用极值原理\\
+若$u_1(x,t),u_2(x,t)$均为解,则$u_1(x,t)=u_2(x,t)$\\
+若$u_1(x,t)$对应$\varphi_1(x),\mu_1(x,t)$且$u_2(x,t)$对应$\varphi_2(x),\mu_2(x,t)$\\
+若$|\varphi_1-\varphi_2|\Big|_{\Omega}\leq \varepsilon$且$|\mu_1-\mu_2|\Big|_{\partial \Omega \times [0,T]}\leq \sigma\varepsilon$,则$|u_1-u_2|\Big|_{R_T}\leq \varepsilon$
+\end{jie}
+
+\begin{dingli*}
+对$n$维初值问题
+\[\frac{\partial u}{\partial t}-a^2\Delta u=f(x,t),u|_{t=0}=\varphi(x)\]
+若$\varphi(x)\in BC(\R^n)$,则解$u(x,t)\in BC$具有唯一性且连续依赖于初值条件
+\end{dingli*}
+
+\begin{jie}
+记$|u(x,t)|\leq B,|\varphi(x)|\leq \eta$,对任意$x_0\in \R^n,t_0>0$和任意充分大$r>0$\\
+记$v(x,t)=\frac{4nB}{r^2}(\frac{|x-x_0|^2}{2n}+a^2t)+\eta,$,其中$(x,t)\in \overline{B_{r}(x_0)}\times[0,t_0]$运用极值原理\\
+则$u(x_0,t_0)\leq v(x_0,t_0)$,令$r\to \infty$,则$u(x_0,t_0)\leq \varepsilon$,同理,$u(x_0,t_0)\geq -\varepsilon$\\
+若$\frac{\partial u}{\partial t}-a^2\Delta u=0,u|_{t=0}=0$,在$u\in BC$中有且仅有解$u(x,t)\Big|_{\R^n\times[0,\infty)}=0$\\
+若$|\varphi(x)|\Big|_{\R^n}\leq \varepsilon$,则$|u(x,t)|\Big|_{\R^n\times [0,\infty)}\leq \varepsilon$
+\end{jie}
+
+\begin{dingli*}
+对$1$维初边值问题
+\[\frac{\partial u}{\partial t}-a^2\frac{\partial^2 u}{\partial x^2}=0,u|_{t=0}=\varphi(x),u|_{x=0}=0,\frac{\partial u}{\partial x}+h u|_{x=l}=0\]
+若$\varphi(x)\in C^2,\varphi(0)=0,\varphi'(l)+h\varphi(l)=0$\\
+则存在$C>0$,对任意$x\in [0,l]$,有$|u(x,t)|\leq C\e^{-a^2\lambda t}$
+\end{dingli*}
+
+\begin{jie}
+由解为$u(x,t)=\sum\limits_{k=1}^{\infty}(\frac{\int_{0}^{l}\varphi(x)\sin\sqrt{\lambda_k}x\d x}{\int_{0}^{l}\sin^2\sqrt{\lambda_k}x\d x})\e^{-a^2\lambda_k t}\sin\sqrt{\lambda_k}x$\\
+则$|\frac{\int_{0}^{l}\varphi(x)\sin\sqrt{\lambda_k}x\d x}{\int_{0}^{l}\sin^2\sqrt{\lambda_k}x\d x}|\leq C_1$且$(\lambda_k-\lambda_1)\e^{-a^2(\lambda_k-\lambda_1)}\leq C_2$且$\sum\limits_{k=2}^{\infty}\frac{1}{\lambda_{k}-\lambda_{1}}<\infty$\\
+则$|u(x,t)|\leq|C_1(1+C_2\sum\limits_{k=2}^{\infty}\frac{1}{\lambda_{k}-\lambda_{1}})\e^{-a^2\lambda_1 t}|\leq C\e^{-a^2\lambda_1 t}$
+\end{jie}
+
+\begin{dingli*}
+对$1$维初值问题
+\[\frac{\partial u}{\partial t}-a^2\frac{\partial^2 u}{\partial x^2}=0,u|_{t=0}=\varphi(x)\]
+若$\varphi(x)\in BC,\varphi(x)\in L^1$\\
+则存在$C>0$,对任意$x\in \R,t\in (0,\infty)$,有$|u(x,t)|\leq Ct^{-\frac{1}{2}}$
+\end{dingli*}
+
+\begin{jie}
+由解为$u(x,t)=\frac{1}{2a\sqrt{\pi t}}\int_{-\infty}^{\infty}\varphi(y)\e^{-\frac{(x-y)^2}{4a^2t}}\d y$\\
+则$|u(x,t)|\leq |\frac{1}{2a\sqrt{\pi}}\int_{-\infty}^{\infty}|\varphi(y)|\d y|\cdot t^{-\frac{1}{2}}\leq Ct^{-\frac{1}{2}}$
+\end{jie}
+
+\chapter{调和方程}
+
+$n$维调和方程:
+
+\[-\Delta u=f(x)\]
+其中$u=u(x),x\in\Omega\subset\R^n,t\in [0,\infty)$,记$\Delta u=\frac{\partial^2u}{\partial x_1^2}+\cdots+\frac{\partial^2u}{\partial x_n^2}$为Laplace算子\\
+
+初值问题:$($即初值条件和定义域如下$)$
+
+\[\Delta u=0,x\in\R^n\]
+
+\begin{jie}
+若$u(x)=l(|x|)$,则$\frac{\partial u}{\partial x_i}=\frac{x_i}{|x|}\frac{\d l(|x|)}{\d |x|}$\\
+则$\Delta u=\frac{\sum\limits_{i=1}^{n}x_i^2}{|x|^2}\frac{\d^2 l(|x|)}{\d |x|^2}+\frac{\sum\limits_{i=1}^{n}|x|^2-x_i^2}{|x|^3}\frac{\d l(|x|)}{\d |x|}$\\
+则$\Delta u=l''(|x|)+\frac{n-1}{|x|}l'(|x|)=0$,则$l'(|x|)=C|x|^{1-n}$\\
+当$n=2$时,有$u(x)=l(|x|)=C_1\ln|x|+C_2$\\
+当$n\geq 3$时,有$u(x)=l(|x|)=C_1\frac{1}{|x|^{n-2}}+C_2$
+\end{jie}
+
+初边值问题:$($即初值条件和定义域如下$)$
+
+\[\Delta u=0,x\in\Omega\subset\R^n\]
+Dirichlet:
+\[u|_{x\in\partial\Omega}=\mu(x)\] 
+Neumann:
+\[\frac{\partial u}{\partial x}|_{x\in\partial\Omega}=\widetilde{\mu}(x)\] 
+Robin:
+\[-\frac{\partial u}{\partial x}+\sigma u|_{x\in\partial\Omega}=\widetilde{\widetilde{u}}(x)\]
+
+内问题:对$\Omega\subset \R^n$,有边界$\partial \Omega$且$\Omega$在$\partial \Omega$内部\\
+有$u(x)$在$\Omega$内满足方程且在$\partial\Omega$上连续且满足初值条件
+
+外问题:对$\Omega\subset \R^n$为无界区域,有内边界$\partial \Omega$\\
+有$u(x)$在$\Omega$内满足方程且在$\partial\Omega$上连续且满足初值条件\\
+有$\lim\limits_{|x|\to\infty}u(x)=0$,即若$x\to\infty$,则$u(x)$在$\Omega$内一致趋近于$0$
+
+\begin{dingli*}
+Green:\\
+对$u,v\in C^2(\overline{\Omega})$和$\partial\Omega$上外单位法向$\vec{n}$,记$\frac{\partial u}{\partial \vec{n}}=\sum\limits_{i=1}^{n}\frac{\partial u}{\partial x_i}\cos(\vec{n},x_i)$,记$\nabla u=\sum\limits_{i=1}^{n}\frac{\partial u}{\partial x_i}\vec{x_i}$\\
+则有$\int_{\Omega}u\Delta v\d x+\int_{\Omega}\nabla u\cdot \nabla v\d x=\int_{\partial \Omega}u\frac{\partial v}{\partial \vec{n}}\d s$\\
+则有$\int_{\Omega}(u\Delta v-v\Delta u)\d x=\int_{\partial \Omega}(u\frac{\partial v}{\partial \vec{n}}-v\frac{\partial u}{\partial \vec{n}})\d s$\\
+特别地,若$\Delta u|_{\Omega}=0$,则$\int_{\partial \Omega}\frac{\partial u}{\partial \vec{n}}\d s=0$
+\end{dingli*}
+
+\begin{dingli*}
+对$n$维初边值问题
+\[-\Delta u=f,u|_{\partial \Omega}=\varphi\]
+记$V_{0}=\{v\in C^{2}(\Omega)\cap C^{1}(\overline{\Omega})|\ v|_{\partial \Omega}=0\}$,记$J(u)=\int_{\Omega}(\frac{1}{2}\sum\limits_{i=1}^{n}(\frac{\partial u}{\partial x_i}^2)-fu)\d x$
+则$u=u(x)$为初边值问题的解当且仅当\\
+有$u\in C^2(\Omega)\cap C^{0}(\overline{\Omega})$且$u|_{\partial \Omega}=\varphi$且$J(u)=\min\limits_{v\in V_0}J(u+v)$
+\end{dingli*}
+
+\begin{jie}
+由$J(u+\lambda w)=J(u)+\lambda\int_{\Omega}\sum\limits_{i=1}^{n}(\frac{\partial u}{\partial x_i}\frac{\partial w}{\partial x_i}-fw)\d x+\frac{\lambda^2}{2}\int_{\Omega}\sum\limits_{i=1}^{n}(\frac{\partial w}{\partial x_i}^2)\d x$\\
+则$\frac{\d J(u+\lambda w)}{\d \lambda}|_{\lambda=0}=\int_{\Omega}(\sum\limits_{i=1}^{n}\frac{\partial u}{\partial x_i}\frac{\partial w}{\partial x_i}-fw)\d x=0$
+由Green公式:\\
+则$\int_{\partial \Omega}w\frac{\partial u}{\partial \vec{n}}\d S-\int_{\Omega}(w\Delta u+fw)\d x=0$,即$\int_{\Omega}(w\Delta u+fw)\d x=0$\\
+由$w\in V_0$的任意性可知:$-\Delta u=f,u|_{\partial \Omega}=\varphi$,反之亦然$($由方程推极大性即可$)$
+\end{jie}
+
+Dirichlet:
+\[\Delta u=0,u|_{x\in\partial\Omega}=\mu(x)\]
+
+\begin{jie}对$n=3$\\
+对$x_0\in \Omega$,考虑$\frac{1}{r_{x_0}(x)}=\frac{1}{|x-x_0|}$,则$\frac{1}{r_{x_0}(x)}$在$\Omega\backslash B_{\varepsilon}(x_0)$上有$\Delta v=0$\\
+在$\partial B_{\varepsilon}(x_0)$上:对向心$\vec{n}$,有$\frac{\partial\frac{1}{r_{x_0}(x)}}{\partial \vec{n}}=\nabla\frac{1}{r_{x_0}(x)}\cdot\vec{n} =\frac{\partial \frac{1}{r_{x_0}(x)}}{\partial r_{x_0}(x)}(-\nabla r_{x_0}(x)\cdot\vec{n})=\frac{1}{\varepsilon^2}$\\
+则$\int_{\partial B_{\varepsilon}(x_0)}u\frac{\partial\frac{1}{r_{x_0}(x)}}{\partial \vec{n}}\d s=\frac{1}{\varepsilon^2}\int_{\partial B_{\varepsilon}(x_0)}u\d s\to u(x_0)$且$\int_{\partial B_{\varepsilon}(x_0)}\frac{1}{r_{x_0}(x)}\frac{\partial u}{\partial \vec{n}}\d s=\frac{1}{\varepsilon}\int_{\partial B_{\varepsilon}(x_0)}\frac{\partial u}{\partial \vec{n}}\d s\to 0$\\
+由Green公式:\\
+则$\int_{\Omega\backslash B_{\varepsilon}(x_0)}(u\Delta(\frac{1}{r_{x_0}(x)})-\frac{1}{r_{x_0}(x)}\Delta u)\d x=\int_{\partial \Omega\cup\partial B_{\varepsilon}(x_0)}u\frac{\partial\frac{1}{r_{x_0}(x)}}{\partial \vec{n}}-\frac{1}{r_{x_0}(x)}\frac{\partial u}{\partial \vec{n}}\d s=0$\\
+令$\varepsilon\to0$,则
+\[u(x_0)=-\frac{1}{4\pi}\int_{\partial \Omega}u(x)\frac{\partial\frac{1}{r_{x_0}(x)}}{\partial \vec{n}}-\frac{1}{r_{x_0}(x)}\frac{\partial u(x)}{\partial \vec{n}}\d s\]
+\end{jie}
+
+Dirichlet':
+\[-\Delta u=f(x),u|_{x\in\partial\Omega}=\mu(x)\]
+
+\begin{jie}
+考虑$x_0\in \Omega$的邻域$B_{\varepsilon}(x_0)$
+对$n=3$\\
+由Green公式:\\
+则有$\int_{\Omega\backslash B_{\varepsilon}(x_0)}(u\Delta(\frac{1}{r_{x_0}(x)})-(\frac{1}{r_{x_0}(x)})\Delta u)\d x=\int_{\partial (\Omega\backslash B_{\varepsilon}(x_0))}(u\frac{\partial \frac{1}{r_{x_0}(x)}}{\partial \vec{n}}-\frac{1}{r_{x_0}(x)}\frac{\partial u}{\partial \vec{n}})\d s$\\
+则$\int_{\Omega\backslash B_{\varepsilon}(x_0)}\frac{f(x)}{r_{x_0}(x)}\d x=\int_{\partial (\Omega\backslash B_{\varepsilon}(x_0))}(u\frac{\partial \frac{1}{r_{x_0}(x)}}{\partial \vec{n}}-\frac{1}{r_{x_0}(x)}\frac{\partial u}{\partial \vec{n}})\d s$\\
+则$\varepsilon\to 0^{+}$,有$\int_{\Omega}\frac{f(x)}{r_{x_0}(x)}\d x=\int_{\partial \Omega}(u\frac{\partial \frac{1}{r_{x_0}(x)}}{\partial \vec{n}}-\frac{1}{r_{x_0}(x)}\frac{\partial u}{\partial \vec{n}})\d s+4\pi u(x_0)$\\
+则\[u(x_0)=-\frac{1}{4\pi}\int_{\partial \Omega}(u\frac{\partial \frac{1}{r_{x_0}(x)}}{\partial \vec{n}}-\frac{1}{r_{x_0}(x)}\frac{\partial u}{\partial \vec{n}})\d s+\frac{1}{4\pi}\int_{\Omega}\frac{f(x)}{r_{x_0}(x)}\d x\]
+对$n=2$\\
+由Green公式:\\
+则有$\int_{\Omega\backslash B_{\varepsilon}(x_0)}(u\Delta(\ln \frac{1}{r_{x_0}(x)})-(\ln \frac{1}{r_{x_0}(x)})\Delta u)\d x=\int_{\partial (\Omega\backslash B_{\varepsilon}(x_0))}(u\frac{\partial \ln \frac{1}{r_{x_0}(x)}}{\partial \vec{n}}-\ln \frac{1}{r_{x_0}(x)}\frac{\partial u}{\partial \vec{n}})\d s$\\
+则$\varepsilon\to 0^{+}$,有$\int_{\Omega}f(x)\ln \frac{1}{r_{x_0}(x)}\d x=\int_{\partial \Omega}(u\frac{\partial \ln \frac{1}{r_{x_0}(x)}}{\partial \vec{n}}-\ln \frac{1}{r_{x_0}(x)}\frac{\partial u}{\partial \vec{n}})\d s+2\pi u(x_0)$\\
+则\[u(x_0)=-\frac{1}{2\pi}\int_{\partial \Omega}(u\frac{\partial \ln \frac{1}{r_{x_0}(x)}}{\partial \vec{n}}-\ln \frac{1}{r_{x_0}(x)}\frac{\partial u}{\partial \vec{n}})\d s+\frac{1}{2\pi}\int_{\Omega}f(x)\ln\frac{1}{r_{x_0}(x)}\d x\]
+\end{jie}
+
+\begin{dingli*}
+对$u\in C^0(\overline{\Omega})$,记$\omega_n$为$\R^n$的$B_{1}(0)$的体积\\
+则$\Delta u|_{\Omega}=0$当且仅当\\
+对任意$B_{\varepsilon}(x_0)\subset \Omega$,有$u(x_0)=\frac{1}{\omega_n\varepsilon^n}\int_{B_{\varepsilon}(x_0)}u\d x=\frac{1}{\omega_nn \varepsilon^{n-1}}\int_{\partial \Omega}u\d s$
+\end{dingli*}
+
+\begin{dingli*}
+对$u\in C^0(\overline{\Omega})$且$\Omega\subset\R^n$为有界连通区域\\
+若$\Delta u|_{\Omega}=0$,则$u(x)$的最值点$x_0\notin\overline{\Omega}\backslash\partial\Omega$\\
+若$u\in C^2(\Omega)\cap C^0(\overline{\Omega})$且$\Delta u|_{\Omega}=0$\\
+则$\max\limits_{x\in\overline{\Omega}}u(x)=\max\limits_{x\in\partial\Omega}u(x),\min\limits_{x\in\overline{\Omega}}u(x)=\min\limits_{x\in\partial\Omega}u(x)$
+\end{dingli*}
+
+\begin{dingli*}
+对$n$维初边值问题
+\[\Delta u=0,u|_{\partial \Omega}=\mu(x)\]
+则解具有唯一性且连续依赖于初值条件
+\end{dingli*}
+
+Dirichlet:
+\[\Delta u=0,u|_{x\in\partial\Omega}=\mu(x)\]
+
+\begin{jie}
+上述积分公式同时需要$u|_{\Omega}$和$\frac{\partial u}{\partial \vec{n}}$,但两者无法同时给出$($确定但未知$)$\\
+\hspace*{2em}对$n=3$\\
+考虑$\Delta g_{x_0}(x)=0,g_{x_0}(x)|_{\partial \Omega}=\frac{1}{4\pi r_{x_0}(x)}$\\
+记$G_{x_0}(x)=\frac{1}{4\pi r_{x_0}(x)}-g_{x_0}(x)$为Green函数\\
+由$\int_{\partial \Omega}g\frac{\partial u}{\partial \vec{n}}-u\frac{\partial g}{\partial \vec{n}}\d s=0$可知:有$u(x_0)=\int_{\partial \Omega}G_{x_0}(x)\frac{\partial u(x)}{\partial \vec{n}}-u(x)\frac{\partial G_{x_0}(x)}{\partial \vec{n}}\d s$\\
+则\[u(x_0)=\int_{\partial \Omega}-\mu(x)\frac{\partial G}{\partial \vec{n}}\d s\]
+考虑球面$B_{R}(0)$和$x_1$满足$x\in B_{R}(0)$且$\vec{x_0}\cdot\vec{x_1}=R^2$且$\vec{x_0}$与$\vec{x_1}$同向,记$\gamma$为$\vec{x_0}$与$\vec{x}$的夹角\\
+则有$r_{x_1}(x)=\frac{R}{|x_0|}r_{x_0}(x)$,则$g_{x_0}(x)=\frac{R}{4\pi|x_0|}r_{x_0}(x)$\\
+则$G_{x_0}(x)|_{B_{R}(0)}=\frac{1}{4\pi}(\frac{1}{r_{x_0}(x)}-\frac{R}{|x_0|}\frac{1}{r_{x_1}(x)})$\\
+又有$r_{x_0}(x)=\sqrt{|x_0|^2+|x|^2-2|x_0||x|\cos\gamma},r_{x_1}(x)=\sqrt{|x_1|^2+|x|^2-2|x_1||x|\cos\gamma}$\\
+则$\frac{\partial G}{\partial \vec{n}}|_{B_{R}(0)}=\frac{\partial G}{\partial |x|}|_{|x|=R}=-\frac{1}{4\pi R}\frac{R^2-|x_0|^2}{(R^2+|x_0|^2-2R|x_0|\cos\gamma)^{\frac{3}{2}}}$\\
+则\[u(x_0)=\frac{1}{4\pi R}\int_{B_{R}(0)}\frac{R^2-|x_0|^2}{(R^2+|x_0|^2-2R|x_0|\cos\gamma)^{\frac{3}{2}}}\mu(x)\d s\]
+对$n=3$,考虑球坐标$x=(\rho,\theta,\varphi),x_0=(\rho_0,\theta_0,\varphi_0)$\\
+有$\cos\gamma=\cos\theta\cos\theta_0+\sin\theta\sin\theta_0\cos(\varphi-\varphi_0)$\\
+则\[u(\rho_0,\theta_0,\varphi_0)=\frac{R}{4\pi }\int_{0}^{2\pi}\int_{0}^{\pi}\frac{R^2-\rho_0^2}{(R^2+\rho_0^2-2R\rho_0\cos\gamma)^{\frac{3}{2}}}\mu(\rho,\theta,\varphi)\sin\theta \d\theta\d\varphi\]
+\hspace*{2em}对$n=2$\\
+则$G_{x_0}(x)|_{B_{R}(0)}=\frac{1}{2\pi}(\ln \frac{1}{r_{x_0}(x)}-\ln \frac{R}{|x_0|}\frac{1}{r_{x_1}(x)})$\\
+则$\frac{\partial G}{\partial \vec{n}}|_{B_{R}(0)}=\frac{\partial G}{\partial |x|}|_{|x|=R}=-\frac{1}{2\pi R}\frac{R^2-|x_0|^2}{R^2-2R|x_0|\cos \gamma+|x_0|^2}$\\
+则\[u(x_0)=\frac{1}{2\pi R}\int_{B_{R}(0)}\frac{R^2-|x_0|^2}{R^2-2R|x_0|\cos \gamma+|x_0|^2}\mu(x)\d s\]
+对$n=2$,考虑极坐标$x=(\rho,\theta),x_0=(\rho_0,\theta_0)$\\
+有$\cos\gamma=\cos\theta\cos\theta_0+\sin\theta\sin\theta_0$\\
+则\[u(\rho_0,\theta_0)=\frac{1}{2\pi}\int_{0}^{2\pi}\frac{R^2-\rho_0^2}{R^2+\rho_0^2-2R\rho_0\cos\gamma}\mu(\rho,\theta)\d\theta\]\\
+\hspace*{2em}对$n=3$\\
+考虑半空间$\R^{3}_{+}=\{x=(x|_1,x|_2,x|_3)\in\R^3\Big|\  x|_3>0\}$\\
+若$|x|\to \infty$,有$u(x)=O(\frac{1}{|x|}),\frac{\partial u}{\partial \vec{n}}=O(\frac{1}{|x|^2})$\\
+考虑$x_1,x'\in \R^3$,有$x_0$与$x_1$关于$z=0$对称且$x'$为$x$在$x|_3=0$上的投影\\
+则$G_{x_0}(x)|_{\partial \R^3_{+}}=\frac{1}{4\pi}(\frac{1}{|x-x_0|}-\frac{1}{|x-x_1|})$,则$\frac{\partial G}{\partial \vec{n}}|_{\partial \R^3_{+}}=-\frac{\partial G}{\partial x|_3}|_{x|_3=0}=\frac{2x'|_{3}}{|x'-x_0|^{3}}$\\
+则\[u(x_0)=\frac{1}{2\pi }\int_{\partial \R^{3}_{+}}\frac{x'|_{3}}{|x'-x_0|^{3}}\mu(x')\d s\]
+\end{jie}
+
+\begin{zhu}
+对Green函数$G_{x_0}(x)=\frac{1}{4\pi r_{x_0}(x)}-g_{x_0}(x)$,有$\Delta G_{x_0}(x)|_{\Omega\backslash B_{\varepsilon}(x_0)}=0,G_{x_0}(x)|_{\partial \Omega}=0$\\
+有当$x\to x_0$时,有$G_{x_0}(x)\sim \frac{1}{4\pi r_{x_0}(x)}\to \infty$,有$G_{x_0}(x)=G_{x}(x_0)$且$\int_{\partial \Omega}\frac{\partial G_{x_0}(x)}{\partial \vec{n}}\d s=-1$
+\end{zhu}
+
+\begin{dingli*}
+对初边值问题:上述Poisson积分公式给出的形式解为解
+\[\Delta u=0,u|_{x\in\partial\Omega}=\mu(x)\]
+其中$\partial \Omega=B_{R}(0)$或$\partial \R^3_{+}$
+\end{dingli*}
+
+\begin{dingli}
+Harnack:\\
+对有界区域$\Omega\subset \R^n$,有满足$\Delta u=0$的函数列$\{u_n\}$\\
+若对任意$n\in\N^*$,有$u_n\in C^{2}(\Omega)\cup C^{0}(\overline{\Omega})$且$\{u_n\}$在$\partial \Omega$上一致收敛于$u_0$\\
+则$\{u_n\}$在$\Omega$上一致收敛于$u_0$且$\Delta u_0=0$\\
+对有界连通区域$\Omega\subset \R^n$,有满足$\Delta u=0$的关于$n$单调递增函数列$\{u_n\}$\\
+若对任意$n\in\N^*$,有$u_n\in C^{2}(\Omega)\cup C^{0}(\overline{\Omega})$且$\{u_n\}$在$x_0\in \Omega$上收敛于$u_0(x_0)$\\
+则$\{u_n\}$在$\Omega$上处处收敛且内闭一致收敛于$u_0$且$\Delta u_0=0$
+\end{dingli}
+
+\begin{dingli}
+对有界区域$\Omega\subset \R^n$\\
+若$u\geq 0$且$\Delta u|_{\Omega}=0$,则对任意闭区域$\overline{\Omega}_0\subset \Omega$\\
+则有只与$\Omega$和$\Omega_0$有关的常数$C>0$,有$\max\limits_{\overline{\Omega}_0}u \leq C\min\limits_{\overline{\Omega}_{0}}u$
+\end{dingli}
+
+\begin{dingli}
+对有界区域$\Omega\subset \R^n$\\
+若$\Delta u|_{\Omega\backslash\{x_0\}}=0$且$\lim\limits_{x\to x_0}r_{x_0}(x)u(x)=0$\\
+则存在$v$,有$u|_{\Omega\backslash\{x_0\}}=v|_{\Omega\backslash\{x_0\}}$且$\Delta v|_{\Omega}=0$
+\end{dingli}
+
+\begin{dingli}
+对有界区域$\Omega\subset \R^n$\\
+若$\Delta u|_{\Omega}=0$,则$u\in C^{\omega}(\Omega)\subsetneq C^{\infty}(\Omega)$\\
+即$u$可在任意$x\in \Omega$邻域内展开为收敛Taylor级数
+\end{dingli}
+
+\begin{dingli}
+Hopf:\\
+对有界区域$\Omega\subset \R^n$,有满足$\Delta u=0$的函数$u$\\
+若$u\in C^{2}(\Omega)\cap C(\overline{\Omega})$不为常数,存在$x_0\in\partial \Omega$,有$u(x_0)=\min\limits_{x\in\overline{\Omega}}u(x)$\\
+则有$\frac{\partial u}{\partial\vec{n}}(x_0)<0$
+\end{dingli}
+
+\begin{dingli}
+对初边值问题
+\[\Delta u=f(x),\frac{\partial u}{\partial x}|_{x\in\partial\Omega}=\mu(x)\]
+则对$x\in \Omega$的内问题,有$u\in C^{2}(\Omega)\cap C^{1}(\overline{\Omega})$在相差常数下唯一\\
+则对$x\in \R^{n}\backslash\Omega$且$\lim\limits_{|x|\to\infty}u(x)=0$的外问题,有$u\in C^{2}(\R^{n}\backslash\overline{\Omega})\cap C^{1}(\R^{n}\backslash\overline{\Omega})$唯一
+\end{dingli}
+
+%\end{document}

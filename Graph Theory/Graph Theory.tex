@@ -1,0 +1,478 @@
+%\documentclass[12pt,oneside,a4paper]{book}
+
+%\usepackage{amsmath}
+%\usepackage{mathtools}
+%\usepackage{amsfonts}
+%\usepackage{unicode-math}
+%\usepackage{geometry}
+%\usepackage{ctex}
+
+%\begin{document}
+
+%\setcounter{chapter}{0}
+\setcounter{section}{0}
+\setcounter{subsection}{0}
+
+\chapter{基础图}
+
+\begin{dingyi}
+对集合$G$\\
+若$G$中有两类元素$V(G)=\{v_i|i\in I\}$和$E(G)\subset \{v_iv_j|i,j\in I,i\neq j\}$\\
+其中$V(G)$表示$G$中的点集且$E(G)$表示$G$中连接两点的边集\\
+则称$G=(V(G),E(G))$为图,记$|G|=|V(G)|,\|G\|=|E(G)|$\\
+图的同态即为保持边的映射,图的同构即为保持边的双射
+\end{dingyi}
+
+\begin{dingyi}
+对图$G=(V(G),E(G))$\\
+若有$|G|<\infty$,则称$G$为有限图,否则,则称$G$为无限图\\
+若有$E(G)=\{v_iv_j|i,j\in I,i\neq j\}$,则称$G$为完全图,记为$K_{n}$,其中$n=|K_{n}|$\\
+若对$\overline{G}=(V(\overline{G}),E(\overline{G}))$,有$V(\overline{G})=V(G)$且$E(G)=K_{|G|}\backslash E(G)$\\
+则称$\overline{G}$为$G$的补图
+\end{dingyi}
+
+\begin{dingyi}
+对图$G=(V(G),E(G))$\\
+若有图$G_1=(V(G_1),E(G_1))$,有$V(G_1)\subset V(G),E(G_1)\subset E(G)$\\
+则称$G_1$为$G$的子图\\
+若有图$G_1=(V(G_1),E(G_1))$为$G$的子图,有$E(G_1)=\{v_iv_j\in E(G)|v_i,v_j\in V(G_1)\}$\\
+则称$G_1$为$G$的导出子图\\
+若有图$G_1=(V(G_1),E(G_1))$为$G$的子图,有$V(G_1)=V(G)$\\
+则称$G_1$为$G$的支撑子图
+\end{dingyi}
+
+\begin{dingyi}
+对图$G=(V(G),E(G))$\\
+若对$v_i,v_j\in V(G)$,有$e_{ij}=v_iv_j\in E(G)$\\
+则称$v_i,v_j$为相邻的,否则,则称$v_i,v_j$为独立的\\
+若对$e_k,e_l\in E(G)$,存在$v_i\in V(G)$,有$v_i\in e_k$且$v_i\in e_{l}$\\
+则称$e_k,e_l$为相邻的,否则,则称$e_k,e_l$为独立的
+\end{dingyi}
+
+\begin{dingyi}
+对图$G=(V(G),E(G))$\\
+若对任意$v\in V(G)$,记$d_{G}(v)=|\{vv_i\in E(G)|v_i\in V(G)\}|$\\
+则称$d_{G}(v)$为$v$在$G$中的度\\
+若对任意$v\in V(G)$,有$k=d_{G}(v)$,则称$G$为$k$-正则图\\
+则称$\delta(G)=\min\limits_{v\in V(G)}d_{G}(v)$为$G$的最小度\\
+则称$\Delta(G)=\max\limits_{v\in V(G)}d_{G}(v)$为$G$的最大度\\
+则称$d(G)=\frac{1}{|G|}\sum\limits_{v\in V(G)}d_{G}(v)$为$G$的平均度
+\end{dingyi}
+
+\begin{dingli}
+对图$G=(V(G),E(G))$\\
+若$E(G)\neq\varnothing$,则存在$G$的子图$G_1$,有$\delta(G_1)> \frac{1}{2}d(G_1)\geq \frac{1}{2}d(G)$
+\end{dingli}
+
+\begin{dingyi}
+对图$G=(V(G),E(G))$\\
+若有子图$P=(V(P),E(P))$,其中$V(P)=\{v_1,\cdots,v_k\}$且$E(P)=\{v_1v_2,\cdots,v_{k-1}v_{k}\}$\\
+则称$P=v_1v_2\cdots v_{k}$为$G$中的路,长度为$||P||=k-1$\\
+若有子图$C=(V(C),E(C))$,其中$V(C)=\{v_1,\cdots,v_k\}$且$E(C)=\{v_1v_2,\cdots,v_{k-1}v_{k},v_{k}v_1\}$\\
+则称$C=v_1v_2\cdots v_{k}v_1$为$C$中的圈,长度为$||C||=k$\\
+若对路$P_1=(V(P_1),E(P_1)),P_2=(V(P_2).E(P_2))$,有$V(P_1)\cap V(P_2)\subset\{P_1,P_2\text{的端点}\}$\\
+则称$P_1,P_2$为独立的\\
+若对圈$C_1=(V(C_1),E(C_1)),C_2=(V(C_2).E(C_2))$,有$V(C_1)\cap V(C_2)=\varnothing$\\
+则称$C_1,C_2$为独立的\\
+若有点集$A,B\subset V(P)$和路$P=v_1v_2\cdots v_{k}$,有$V(P)\cap A=\{v_1\},V(P)\cap B=\{v_{k}\}$\\
+则称$P$为$A-B$路
+\end{dingyi}
+
+\begin{dingli}
+对图$G=(V(G),E(G))$\\
+若$\delta(G)\geq 2$,则存在路$P$和圈$C$,有$||P||=\delta(G)$和$||C||\geq \delta(G)+1$
+\end{dingli}
+
+\begin{dingyi}
+对图$G=(V(G),E(G))$\\
+若有$v_1,v_2\in V(G)$,记$d_{G}(v_1,v_2)=\inf\{||P|||P=v_1\cdots v_2\text{为}G\text{中的路}\}\cup\{\infty\}$\\
+则称$d_{G}(v_1,v_2)$为$v_1,v_2$的距离\\
+则称$rad(G)=\inf\limits_{v_1\in V(G)}\sup\limits_{v_2\in V(G)} d_{G}(v_1,v_2)$为$G$的半径\\
+则称$diam(G)=\sup\limits_{v_1,v_2\in V(G)} d_{G}(v_1,v_2)$为$G$的直径\\
+则称$g(G)=\inf\{||C||\Big| C\text{为}G\text{中的圈}\}\cup\{\infty\}$为$G$的围长\\
+则称$c(G)=\sup\{||C||\Big| C\text{为}G\text{中的圈}\}\cup\{0\}$为$G$的周长
+\end{dingyi}
+
+\begin{dingli}
+对图$G=(V(G),E(G))$\\
+若$G$中存在圈$C$,则$g(G)\leq 2diam(G)+1$
+\end{dingli}
+
+\begin{dingyi}
+对图$G=(V(G),E(G))$\\
+若对任意$v_1,v_2\in V(G)$,存在路$P=v_1\cdots v_2$\\
+则称$G$为连通的\\
+则称$G$的极大连通子图为$G$的分支\\
+若对$n\in \N^*$,有$|G|>n$且对任意$X\subset V(G),|X|<n$,有导出子图$G\backslash X$为连通的\\
+则称$G$为$n$-点连通的\\
+则称$\kappa(G)=\max\{n\in\N^*|G\text{为}n\text{-连通的}\}$为$G$的点连通度\\
+若对$n\in \N^*$,有$||G||>n$且对任意$X\subset E(G),|X|<n$,有子图$G\backslash X$为连通的\\
+则称$G$为$n$-边连通的\\
+则称$\lambda(G)=\max\{n\in\N^*|G\text{为}n\text{-连通的}\}$为$G$的边连通度
+\end{dingyi}
+
+\begin{dingli}
+对图$G=(V(G),E(G))$\\
+若$G$为连通的,则存在$V(G)$的排列$\{v_1,\cdots,v_{n}\}$\\
+对任意$i=1,\cdots,n$,有导出子图$G_i$为连通的,其中$V(G_i)=\{v_1,\cdots,v_i\}$
+\end{dingli}
+
+\begin{dingli}
+对图$G=(V(G),E(G))$\\
+则有$\kappa(G)\leq\lambda(G)\leq\delta(G)$
+\end{dingli}
+
+\begin{dingyi}
+对图$G=(V(G),E(G))$\\
+若有$A,B\subset V(G),X\subset V(G)\cup E(G)$,对任意$A-B$路$P$,有$P\cap X\neq \varnothing$\\
+则称$X$分离$A,B$\\
+若有$A=\{a\},B=\{b\}\subset V(G),a,b\notin X\subset V(G)\cup E(G)$且$X$分离$A,B$\\
+则称$X$分离$G$\\
+若有$G$的分支$G_1$且$X=\{v\}$分离$G_1$\\
+则称$v$为割点\\
+若有$A=\{v_1\},B=\{v_2\}\subset V(G)$且$X=\{v_1v_2\}$分离$A,B$\\
+则称$v_1v_2$为割边
+\end{dingyi}
+
+\begin{dingli}
+Mader:\\
+对图$G=(V(G),E(G))$\\
+若对$n\in\N^*$,有$d(G)\geq 4n$\\
+则存在子图$H$,有$H$为$n+1$-连通的且$d(H)> d(G)-2n\geq 2n$
+\end{dingli}
+
+\begin{dingyi}
+对图$G=(V(G),E(G))$\\
+若存在$V(G)$的可重复排序$v_1\cdots v_n$\\
+有$\{v_iv_{i+1}|i=1,\cdots,n-1\}=E(G)$且$n-1=||G||$,则称$G$为欧拉图
+\end{dingyi}
+
+\begin{dingli}
+对图$G=(V(G),E(G))$\\
+则$G$为欧拉图当且仅当对任意$v\in G$,有$d(v)$为偶数
+\end{dingli}
+
+\begin{dingyi}
+对图$G=(V(G),E(G))$\\
+若$G$中不存在圈$C$,则称$G$为森林\\
+若$G$中不存在圈$C$且$G$为连通的,则称$G$为树\\
+若树$G$中$v\in V(G)$且$d(v)=1$,则称$v$为叶子
+\end{dingyi}
+
+\begin{dingli}
+对图$G=(V(G),E(G))$\\
+则$G$为树当且仅当对任意$v_1,v_2\in V(G)$,存在唯一路$P=v_1\cdots v_2$\\
+则$G$为树当且仅当$G$为连通的且任意$e\in E(G)$为割边$($极小连通$)$\\
+则$G$为树当且仅当$G$为森林且任意$v_1v_2\notin E(G)$,有$G\cup\{v_1v_2\}$有圈$($极大无圈$)$
+\end{dingli}
+
+\begin{dingli}
+对图$G=(V(G),E(G))$\\
+若$G$为连通的,则$G$为树当且仅当$||G||=|G|-1$\\
+若$G_1$为树且$\delta(G)\geq|G_1|-1$,则$G_1$为$G$的子图
+\end{dingli}
+
+\chapter{匹配图}
+
+\begin{dingyi}
+对图$G=(V(G),E(G))$\\
+若存在$V(G)=\bigcup\limits_{i=1}^{n}V_i$且对任意$i\neq j$,有$V_i\cap V_j=\varnothing$\\
+对任意$i\in\{1,\cdots,n\}$,对任意$v_1,v_2\in V_i$,有$v_1,v_2$为独立的\\
+则称$G$为$n$-部图\\
+若对图$G$为$n$-部图,对任意$i\neq j$,对任意$v_i\in V_i,v_j\in V_j$,有$v_iv_j\in E(G)$\\
+则称$G$为完全$n$-部图,记为$K^{n}$
+\end{dingyi}
+
+\begin{dingli}
+对图$G=(V(G),E(G))$\\
+则$G$为$2$-部图当且仅当$G$中不存在长度为奇数的圈$C$
+\end{dingli}
+
+\begin{dingyi}
+对图$G=(V(G),E(G))$\\
+若对子图$G_1$,有$G_1$为$k$-正则图且$G_1$为$G$的支撑子图\\
+则称$G_1$为$k$-因子\\
+若对子图$M=(V(M),E(M))$,其中$V(M)=V(G)$\\
+有对任意$e_i,e_j\in E(M)$为独立的且对任意$v_i\in V(M)$,存在$e_i\in E(M)$,有$v_i\in e_i$\\
+则称$M$为$G$的匹配,即为$G$导出子图的$1$-因子\\
+若对子集$U\subset V(G)$,对任意$e\in E(G)$,存在$v\in U$,有$v\in e$\\
+则称$U$为$V$的覆盖\\
+若对子集$U\subset V(G)$,有匹配$M$,其中$|M|=2|U|$\\
+有对任意$e\in E(M)$,存在唯一$v\in U\cap e$且对任意$v\in U$,存在唯一$v\in e\in E(M)$\\
+则称$M$为饱和$U$的匹配
+\end{dingyi}
+
+\begin{dingyi}
+对图$G=(V(G),E(G))$\\
+若对匹配$M$,有路$P=v_1v_2\cdots v_n$,其中$v_1\in V(G)\backslash V(M)$,对任意$i\in\{2,\cdots,n-1\}$\\
+有$v_{i-1}v_i\in E(M),v_iv_{i+1}\notin E(M)$或$v_{i-1}v_i\notin E(M),v_iv_{i+1}\in E(M)$\\
+则称$P$为$M$的交错路\\
+若对匹配$M$,有路$P=v_1v_2\cdots v_n$为交错路且$v_n\in V(G)\backslash V(M)$\\
+则称$P$为$M$的增广路
+\end{dingyi}
+
+\begin{dingli}
+König:\\
+对图$G=(V(G),E(G))$\\
+则$\max\{||M||\Big|M\text{为}G\text{的匹配}\}=\min\{|U|\Big|U\text{为}G\text{的覆盖}\}$
+\end{dingli}
+
+\begin{dingli}
+Hall:\\
+对图$G=(V(G),E(G))$\\
+对子集$U\subset V(G)$,则存在饱和$U$的匹配当且仅当对任意$S\subset U$,有$|N(S)|\geq|S|$\\
+其中$N(S)=\{v\in V(G)\backslash S|\text{存在}v'\in S,\text{有}v,v'\text{为相邻的}\}$
+\end{dingli}
+
+\begin{dingli}
+Tutte:\\
+对图$G=(V(G),E(G))$\\
+若对任意$S\subset V(G)$,有$q(G\backslash S)\leq|S|$,则$G$有匹配$M$\\
+其中$q(G)$为图$G$的奇分支个数
+\end{dingli}
+
+\begin{dingli}
+Menger:\\
+对图$G=(V(G),E(G))$\\
+对子集$A,B\subset V(G)$\\
+则$\min\{|X|\Big|X\subset V(G)\text{分离}A,B\}=\max\{|Y|\Big|P_i,P_j\in Y\subset E(G)\text{为独立的}A-B\text{路}\}$
+\end{dingli}
+
+\begin{dingli}
+对图$G=(V(G),E(G))$\\
+若对$v,v'\in V(G)$且$vv'\notin E(G)$\\
+则$\min\{|X|\Big|X\subset V(G)\text{分离}v,v'\}=\max\{|Y|\Big|P_i,P_j\in Y\subset E(G)\text{为独立的}v-v'\text{路}\}$\\
+若对$v,v'\in V(G)$\\
+则$\min\{|X|\Big|X\subset E(G)\text{分离}v,v'\}=\max\{|Y|\Big|P_i,P_j\in Y\subset E(G),\text{有}E(P_i)\cap E(P_j)=\varnothing\}$
+\end{dingli}
+
+\begin{dingli}
+Menger:\\
+对图$G=(V(G),E(G))$\\
+则$G$为$n$-点连通的当且仅当\\
+对任意$v,v'\in V(G)$,存在$v-v'$路$P_1,\cdots,P_n$且$P_i,P_j$为独立的\\
+则$G$为$n$-边连通的当且仅当\\
+对任意$v,v'\in V(G)$,存在$v-v'$路$P_1,\cdots,P_n$且$E(P_i)\cap E(P_j)=\varnothing$
+\end{dingli}
+
+\begin{dingyi}
+对图$G=(V(G),E(G))$\\
+若有映射$c:V(G)\to S$,对任意$v_1,v_2\in V(G)$,若$v_1,v_2$为相邻的,则$c(v_1)\neq c(v_2)$\\
+则称$c$为$G$的着色\\
+若有着色$c:V(G)\to S$且$|c(V(G))|=k\in\N^*$\\
+则称$c$为$G$的$k$-着色\\
+记$\chi(G)=\min\{|c(V(G))|\Big| c\text{为}G\text{的着色}\}$\\
+则称$\chi(G)$为$G$的色数
+\end{dingyi}
+
+\begin{dingli}
+对图$G=(V(G),E(G))$\\
+记$col(G)$为贪心算法的最小染色数\\
+则$\chi(G)\leq col(G)=\max\limits_{H\text{为}G\text{的子图}}\delta(H)+1$
+\end{dingli}
+
+\begin{dingyi}
+对图$G=(V(G),E(G))$\\
+若存在映射$p:V(G)\to\R^2$诱导$l:E(G)\to \{L\subset\R^2|L\text{为线段}\}$\\
+对任意$v_i,v_j\in V(G),v_i\neq v_j$,有$l(v_iv_j)=\{a(t)| a(t)=p(v_i)+t(p(v_j)-p(v_i)), t\in(0,1)\}$\\
+对任意$e_k,e_l\in E(G),e_k\neq e_l$,有$l(e_k)\cap l(e_l)=\varnothing$\\
+则称$G$为平面图,则记$f(G)=\{\text{所有}\overline{l(v_iv_j)}\text{将}\R^2\text{划分的区域数}\}$为$G$的面数
+\end{dingyi}
+
+\begin{dingli}
+Euler:\\
+对图$G=(V(G),E(G))$\\
+若$G$为平面图,则$|G|-||G||+f(G)=2$\\
+若$G$为平面图且$|G|\geq 3$,则$||G||\leq 3|G|-6$
+\end{dingli}
+
+\begin{dingli}
+对图$G=(V(G),E(G))$\\
+若$G$为平面图,则$\chi(G)\leq 4\leq 5$
+\end{dingli}
+
+\chapter{极值图}
+
+\begin{dingyi}
+对图$G=(V(G),E(G))$\\
+若对固定图$H=(V(H),E(H))$和$n=|G|$,记$ex(n,H)=\max\{||G||\Big| H\text{不为}G\text{的子图}\}$\\
+若有$||G||=ex(n,H)$,则称$G$关于$n$和$H$为极值的
+\end{dingyi}
+
+\begin{dingyi}
+对图$G=(V(G),E(G))$\\
+若有$|G|=n\geq r$且有划分$V(G)=\{V_1,\cdots,V_r\}$\\
+有$G$为完全$r$-部图且$\max\limits_{i,j\in \{1,\cdots,n\}}\{\Big||V_i|-|V_j|\Big|\}\leq 1$\\
+则称$G$为Turán图,记为$T^{r}(n)$,记$||T^{r}(n)||=t_{r}(n)$
+\end{dingyi}
+
+\begin{zhu}
+对任意$n\leq r-1$,有$T^{r-1}(n)=K_{n}$,有$\lim\limits_{n\to\infty}\frac{t_{r-1}(n)}{C_{n}^{2}}=\frac{r-2}{r-1}$
+\end{zhu}
+
+\begin{dingli}
+Mantel:\\
+对图$G=(V(G),E(G))$\\
+若$K_3$不为$G$的子图,则$||G||\leq [\frac{|G|^2}{4}]$且$||G||=[\frac{|G|^2}{4}]$当且仅当$G=K_{[\frac{|G|}{2}],|G|-[\frac{|G|}{2}]}$
+\end{dingli}
+
+\begin{dingli}
+Turán:\\
+对图$G=(V(G),E(G))$\\
+若对$n,r\in \N^*,r>1$,有$|G|=n$且$||G||=ex(n,K_{r})$,则$G=T^{r-1}(n)$
+\end{dingli}
+
+\begin{dingli}
+对图$G=(V(G),E(G))$\\
+若对固定图$H=(V(H),E(H)),||H||\geq 1$,则$\lim\limits_{n\to\infty}\frac{ex(n,H)}{C_{n}^{2}}=\frac{\chi(H)-2}{\chi(H)-1}$
+\end{dingli}
+
+\begin{dingyi}
+对图$G=(V(G),E(G))$\\
+若有子集$A,B\subset V(G),A\cap B=\varnothing$,记$e_{G}(A,B)=|\{v_iv_j\in E(G)|v_i\in A,v_j\in B\}|$\\
+则称$d_{G}(A,B)=\frac{e_{G}(A,B)}{|A||B|}$为$A,B$的边密度\\
+若有子集$A,B\subset V(G),A\cap B=\varnothing$,对$\varepsilon>0$\\
+对任意$X\subset A, Y\subset B, |X|\geq \varepsilon |A|, |Y|\geq \varepsilon |B|$,有$|d_{G}(X,Y)-d_{G}(A,B)|\leq \varepsilon$\\
+则称$A,B$为$\varepsilon$-正则的\\
+若对$\varepsilon>0$,有划分$V(G)=\{V_0,\cdots,V_k\}$,有$|V_0|\leq \varepsilon|G|, |V_1|=\cdots=|V_k|$\\
+且存在$U\subset \{(V_i,V_j)|1\leq i<j\leq k\},|U|\geq C_{k}^2-\varepsilon k^2$\\
+对任意$(V_i,V_j)\in U$,有$V_i,V_j$为$\varepsilon$-正则的\\
+则称$V(G)=\{V_0,\cdots,V_k\}$为$\varepsilon$-正则的
+\end{dingyi}
+
+\begin{dingli}
+Szemerédi:\\
+对图$G=(V(G),E(G))$\\
+对任意$\varepsilon>0, m\in \N^*$,存在$M\in \N^*$,对任意$|G|>m$\\
+存在划分$V(G)=\{V_0,\cdots,V_k\}$为$\varepsilon$-正则的且$m<k<M$
+\end{dingli}
+
+\begin{dingli}
+对图$G=(V(G),E(G))$\\
+若有$A,B\subset V(G)$为$\varepsilon$-正则的,对$Y\subset B, |Y|\geq \varepsilon|B|$,则存在$X\subset A,|X|\geq (1-\varepsilon)|A|$\\
+对任意$x\in X$,有$|N(\{v\})|\geq (d_{G}(A,B)-\varepsilon)|Y|$\\
+若有$A,B,C\subset V(G)$,其中$A,B$和$B,C$和$C,A$均为$\varepsilon$-正则的,则对$3$-部图$A,B,C$\\
+有至少$(1-2\varepsilon)(d_{G}(A,B)-\varepsilon)(d_{G}(B,C)-\varepsilon)(d_{G}(C,A)-\varepsilon)|A||B||C|$个三角形
+\end{dingli}
+
+\begin{dingli}
+对图$G=(V(G),E(G))$\\
+对任意$\varepsilon>0$,存在$\delta>0$,若$G$至少删$\varepsilon|G|^2$条边有$K_3\not\subset G$\\
+则$G$中至少包含$\delta|G|^3$个三角形
+\end{dingli}
+
+\begin{zhu}
+若$S\subset\{1,\cdots,n\}$不含子集$\{a-d,a,a+d\},d>0$,则$\lim\limits_{n\to\infty}\frac{|S|}{n}=0$
+\end{zhu}
+
+\begin{dingli}
+Erd\H{o}s-Stone:\\
+对图$G=(V(G),E(G))$\\
+对任意$\varepsilon>0,s,r\in \N^*,r>1$,存在$N\in \N^*$,对充分大$n=|G|$\\
+对任意$|G|\geq N,||G||\geq t_{r-1}(n)+\varepsilon n^2$,有完全$r$-部图$K_{s,s,\cdots,s}$为$G$的子图\\
+即$ex(n,K_{s,s,\cdots,s})\leq t_{r-1}(n)+\varepsilon n^2$
+\end{dingli}
+
+\begin{dingyi}
+对图$G=(V(G),E(G))$\\
+若对图$H_1,H_2$,存在最小的$n\in\N^*$,若$|G|\geq n$,有$H_1$为$G$的子图或$H_2$为$\overline{G}$的子图\\
+则称$R(H_1,H_2)=n$为$H_1,H_2$的Ramsey数
+\end{dingyi}
+
+\begin{dingli}
+对图$G=(V(G),E(G))$\\
+若对$K_{s},K_{t},s,t\in\N^*$,则有$R(K_{s},K_{t})\leq R(K_{s-1},K_{t})+R(K_{s},K_{t-1})$
+\end{dingli}
+
+\begin{dingli}
+Ramsey:\\
+对图$G=(V(G),E(G))$\\
+若对$K_{s},s\in\N^*$,则有$R(K_s,K_s)\leq 2^{2s-3}$
+\end{dingli}
+
+\begin{zhu}
+$R(K_2,K_2)=2,R(K_3,K_3)=6,R(K_4,K_4)=18$\\
+$R(K_5,K_5)\in[43,49],R(K_6,K_6)\in[102,165]$
+\end{zhu}
+
+\begin{dingli}
+Szemerédi:\\
+对图$G=(V(G),E(G))$\\
+对任意$N\in\N^*$,存在常数$C$,对任意图$H$,有$\Delta(H)\leq N$,则$R(H,H)\leq C|H|$
+\end{dingli}
+
+\begin{dingyi}
+对集合$G$\\
+若$G$中有两类元素$V(G)=\{v_i|i\in I\}$和$HE(G)\subset \{\{v_{j}|j\in J\}|J\subset I\}$\\
+则称$he\in HE(G)$为超边,则称$G=(V(G),HE(G))$为超图
+\end{dingyi}
+
+\begin{dingyi}
+对超图$G=(V(G),HE(G))$\\
+若存在$r\in\N^*$,对任意$he\in HE(G)$,有$|he|=r$\\
+则称$G$为$r$-一致超图,则图$G=(V(G),E(G))$为$2$-一致超图\\
+若存在$r\in\N^*$,有$|G|=n$且$HE(G)=\{\{v_{j}|j\in J\}|J\subset I,|J|=r\}$\\
+则称$G$为完全$r$-一致超图,记为$K_{n}^{(r)}$\\
+若对超图$H=(V(H),HE(H))$,有$V(H)\subset V(G),HE(H)\subset HE(G)$\\
+则称$H$为$G$的子图\\
+若对$r$-一致超图$G$,有超图$\overline{G}=(V(\overline{G}),HE(\overline{G}))$,有$V(\overline{G})=V(G),HE(\overline{G})=HE(K_{|G|}^{(r)})\backslash HE(G)$\\
+则称$H$为$G$的$r$-一致补图
+\end{dingyi}
+
+\begin{dingyi}
+对超图$G=(V(G),HE(G))$\\
+若对$r$-一致超图$H_1,H_2$,存在最小的$n\in\N^*$\\
+若$r$-一致超图$G$有$|G|\geq n$,则$H_1$为$G$的子图或$H_2$为$\overline{G}$的子图\\
+则称$R^{(r)}(H_1,H_2)=n$为$H_1,H_2$的$r$-一致超图Ramsey数
+\end{dingyi}
+
+\begin{dingli}
+对超图$G=(V(G),HE(G))$\\
+若对$K_{s}^{(r)},K_{t}^{(r)}$,则$R^{(r)}(K_{s}^{(r)},K_{t}^{(r)})\leq R^{(r-1)}(K_{R^{(r)}(K_{s-1}^{(r)},K_{t}^{(r)})}^{(r-1)},K_{R^{(r)}(K_{s}^{(r)},K_{t-1}^{(r)})}^{(r-1)})+1$
+\end{dingli}
+
+\begin{dingyi}
+对图$G=(V(G),E(G))$\\
+若对$|G|=n\in\N^*, p\in(0,1)$,对任意$e\in E(K_{|G|})$,有概率空间$\Omega_{e}=\{0_{e},1_{e}\}$\\
+其中$P(\{1_{e}\})=p, P(\{0_{e}\})=1-p$且事件$1_{e}$表示$e\in E(G)$\\
+则有乘积概率空间$\mcg(n,p)=\Omega=\prod\limits_{e\in E(K_{|G|})}\Omega_{e}$\\
+则称$G$为随机图,记为$G\in \mcg(n,p)$
+\end{dingyi}
+
+\begin{dingli}
+对图$G=(V(G),E(G))$\\
+若对$|G|=n\in\N^*, p\in(0,1)$,有$G\in\mcg(n,p)$\\
+则对任意$k\in\N^*, k\in[2,n]$,有$P(K_{k}\text{为}G\text{的子图})\leq C_{n}^{k}p^{C_{k}^{2}}$\\
+则对任意$k\in\N^*, k\in[2,n]$,有$E(X:\text{长度为}k\text{的圈的数量})=\frac{(k-1)!}{2}C_{n}^{k}p^{k}$
+\end{dingli}
+
+\begin{dingli}
+Erd\H{o}s:\\
+对图$G=(V(G),E(G))$\\
+若对$K_{s}, s\in\N^*, s\geq 3$,则有$R(K_s,K_s)> 2^{\frac{s}{2}}$
+\end{dingli}
+
+\begin{dingli}
+Erd\H{o}s:\\
+对图$G=(V(G),E(G))$\\
+若对$k\in\N^*$,有$g(G)>k$,则存在图$G$有$\chi(G)>k$
+\end{dingli}
+
+\begin{dingli}
+对超图$G=(V(G),HE(G))$\\
+若$G$为$r$-一致超图且$||G||<2^{r-1}$,则$G$为$2$-可着色的\\
+即存在$A,B\subset V(G)$,有$A\cap B=\varnothing, A\cup B=V(G)$\\
+且对任意$e\in HE(G)$,有$e\cap A\neq\varnothing, e\cap B\neq \varnothing$ 
+\end{dingli}
+
+\begin{dingli}
+对有向图$G=(V(G),E(G))$\\
+若$G$中任意两点有且仅有$1$条有向边,则对任意$k\in\N^*,k\leq |G|$,存在$G$\\
+有对任意$S\subset V(G),|S|=k$,存在$x\in V(G)\backslash S$,有$\{x\to y|y\in S\}\subset E(G)$
+\end{dingli}
+
+\begin{zhu}
+对任意$A\subset\Z\backslash\{0\},|A|<\infty$,存在$B\subset A,|B|\geq\frac{1}{3}|A|$,对任意$x,y\in B$,有$x+y\notin B$
+\end{zhu}
+
+%\end{document}

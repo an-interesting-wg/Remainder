@@ -1,0 +1,959 @@
+%\documentclass[12pt,oneside,a4paper]{book}
+
+%\usepackage{amsmath}
+%\usepackage{mathtools}
+%\usepackage{amsfonts}
+%\usepackage{unicode-math}
+%\usepackage{geometry}
+%\usepackage{ctex}
+
+%\begin{document}
+
+%\setcounter{chapter}{0}
+\setcounter{section}{0}
+\setcounter{subsection}{0}
+
+\chapter{拓扑}
+
+\begin{zhu}
+以下环均交换含幺且$k$表示代数闭域
+\end{zhu}
+
+\begin{dingyi}
+对$k^n=\{(x_1,\cdots,x_n)|x_i\in k\},n\in \N^*$的一个子集$V\subset k^n$\\
+若对环$k[x_1,\cdots,x_n]$,存在多项式集$M\subset k[x_1,\cdots,x_n]$\\
+有$V=V(M)=\{(x_1,\cdots,x_n)\in k^n|\text{对任意}f\in M,\text{有}f(x_1,\cdots,x_n)=0\}$\\
+则称$V=V(M)$为仿射代数集
+\end{dingyi}
+
+\begin{tuilun}
+对多项式集$M\subset N\subset k[x_1,\cdots,x_n]$,有$V(N)\subset V(M)$
+\end{tuilun}
+
+\begin{dingli}
+对多项式集$M\subset k[x_1,\cdots,x_n]$\\
+考虑$M$在环$k[x_1,\cdots,x_n]$上生成的理想$\a(M)$\\
+有$V(M)=V(\a(M))=V(r(\a(M)))$\\
+且存在$M$的有限子集$\{f_1,\cdots,f_m\}\subset M$,有$V(M)=V(\{f_1,\cdots,f_m\})$
+\end{dingli}
+
+\begin{dingyi}
+Zariski拓扑:\\
+在$k^n$上,定义闭集为仿射代数集\\
+有$V(\varnothing)=k^n,V(\{1\})=\varnothing$且$\bigcap\limits_{i\in \sum}V(M_i)=V(\bigcup\limits_{i\in \sum}M_i)$\\
+对$M_1M_2=\{fg|f\in M_1,g\in M_2\}$,有$V(M_1)\cup V(M_2)=V(M_1M_2)$\\
+则$k^n$为拓扑空间,记为$\A^n(k)=k^n$
+\end{dingyi}
+
+\begin{dingli}
+对有限生成$k$-代数$R\neq \{0\}$,存在$k$-代数映射$R\to k$
+\end{dingli}
+
+\begin{dingli}
+Hilbert零点定理:\\
+对映射$\Phi:\{\a|\a\text{为环}k[x_1,\cdots,x_n]\text{的理想且}\a=r(\a)\}\to\{V|V\text{为}\A^n(k)\text{中闭集}\},\a\mapsto V(\a)$\\
+有$\Phi$为双射且$\Phi^{-1}:\{V\}\to\{\a\},V\mapsto\{f|\text{对任意}(x)\in V,\text{有}f(x)=0\}$
+\end{dingli}
+
+\begin{zhu}
+对环$k[x_1,\cdots,x_n]$中理想$\a$和$V(\a)$\\
+有$\Phi^{-1}(V(\a))=\{f\in k[x_1,\cdots,x_n]|\text{对任意}(x)\in V(\a),\text{有}f(x)=0\}=r(\a)$\\
+对$f\in k[x_1,\cdots,x_n]$且$f\notin r(\a)$,存在$(x)\in V(\a)$,有$f(x)=0$\\
+有$k[x_1,\cdots,x_n,y]/(f(x_1,\cdots,x_n)y-1,\a)\cong (k[x_1,\cdots,x_n]/\a)_{f}$
+\end{zhu}
+
+\begin{dingli}
+对环$k[x_1,\cdots,x_n]$中的真理想$\a\subsetneq k[x_1,\cdots,x_n]$\\
+存在$(x_1,\cdots,x_n)\in k^n$,对任意$f\in \a$,有$f(x_1,\cdots,x_n)=0$
+\end{dingli}
+
+\begin{dingyi}
+对$\A^n(k)$中闭集$V$\\
+记$\O(V)=k[x_1,\cdots,x_n]/\{f\in k[x_1,\cdots,x_n]|\text{对任意}x\in V,\text{有}f(x)=0\}$\\
+则称$\O(V)$为$V$上的方程代数集
+\end{dingyi}
+
+\begin{tuilun}
+有$\O(V)$为既约的且$\O(V)\cong\Hom(V,\A^1(k))$\\
+有$\O(V)$为整环当且仅当$V$不可约
+\end{tuilun}
+
+\begin{dingli}
+对仿射代数集$V$和方程代数集$\O(V)$\\
+有范畴$V,f:V\to W$和$\O(V),F:\O(V)\to_{k-alg.}\O(W)$\\
+有范畴反变函子$V\mapsto\O(V),f:V\to W\mapsto F$
+\end{dingli}
+
+\begin{dingyi}
+对$\A^n(k)$上仿射代数集$V$和$\A^m(k)$上仿射代数集$W$\\
+对映射为$f:V\to W$,若存在$f_1,\cdots,f_m\in k[x_1,\cdots,x_n]$\\
+对任意$(x_1,\cdots,x_n)\in V$,有$f(x_1,\cdots,x_n)=(f_1(x_1,\cdots,x_n),\cdots,f_m(x_1,\cdots,x_n))$\\
+则称$f$为$V\to W$的一个态射
+\end{dingyi}
+
+\begin{dingli}
+对环$R$和其素谱$\Spec R$和某些域$F$\\
+有环同态$\R\to F$为单同态\\
+则有双射$\{f\in \Hom(R,F)\}\to \Spec R,f\mapsto \Ker f$
+\end{dingli}
+
+\begin{dingyi}
+对环$R$和其素谱$\Spec R\ ($此处视为有Zariski拓扑的空间,素理想即为点$)$\\
+对任意$x\in Spec R$,记对应的素理想为$\p=x$\\
+则有映射$f_x:R\to R/\p\to \Frac(R/\p)=k(x),r\to f_x(r)$\\
+若将$r\in R$视为$\Spec R$上函数,对任意$x\in \Spec R$,有$r(x)=f_x(r)\in k(x)$
+\end{dingyi}
+
+\begin{dingyi}
+对环$R$和其素谱$\Spec R$,对任意子集$M\subset R$\\
+记$V(M)=\{\p\in Spec R|M\subset\p\}=\{x\in \Spec R|\text{对任意}r\in R,\text{有}r(x)=0\}$\\
+则在$\Spec R$上以$V(M)$为闭集构成Zariski拓扑$($存在且唯一$)$
+\end{dingyi}
+
+\begin{tuilun}
+Zariski拓扑$\Spec R$一般不是Hausdorff空间
+\end{tuilun}
+
+\begin{dingli}
+对环$R$和其素谱$\Spec R$,有$Zariski$拓扑$\Spec R$是拟紧的\\
+即对任意开覆盖$\Spec R=\bigcup\limits_{i\in I}U_i$,存有限子集$J\subset I$,有$\Spec R=\bigcup\limits_{j\in J}U_j$
+\end{dingli}
+
+\begin{dingli}
+对环$R$和其子集$M$,有理想$\a=(M)$\\
+有$V(M)=V(\a)=V(r(\a))$\\
+有同态$R\to R/\a$诱导了一个连续映射$\iota:\Spec R/\a\to\Spec R$\\
+且有同胚$\Spec(A/\a)\cong\iota(\Spec(R/\a))$\\
+有双射$\{V(M)\subset\Spec R|M\subset R\}\to\{r(\a)|\a\text{为环}R\text{的理想}\}$\\
+其中$V\rightarrow \bigcap\limits_{\p\in V}\p,V(\a)\leftarrow \a $
+\end{dingli}
+
+\begin{dingyi}
+对环$R$和其元素$f\in R,f\neq 0$\\
+有局部化$R_{f}=\{\frac{r}{f^n}|r\in R,n\in\N\}$\\
+定义$R_{f}$上等价关系$\frac{a}{f^n}\sim\frac{b}{f^m}$当且仅当存在$k\in\N$,有$f^k(af^m-bf^n)=0$\\
+有连续映射$\Spec R_{f}\to \Spec R$,其中像集为$D(f)=\Spec R\backslash V(f)$\\
+则称$D(f)$为$\Spec R$的Zariski拓扑上的主开集
+\end{dingyi}
+
+\begin{tuilun}
+若$f,g\in R$,有$D(f)=D(g)$当且仅当$R_{f}=R_{g}$
+\end{tuilun}
+
+\begin{dingyi}
+对环$R$和其素谱$\Spec R$\\
+对$f\in R$,则称Zariski拓扑上的开集为$U=D(f)$\\
+则称$\O(U)=R_{f}$为坐标环
+\end{dingyi}
+
+\begin{zhu}
+有$f=1\in R$且$\O(\Spec R)=R$
+\end{zhu}
+
+\begin{dingyi}
+对拓扑空间$X$和其子集$V\neq \{0\}$\\
+若对任意闭集$Z_1\neq \{0\},Z_2\neq \{0\}$,有$V=Z_1\cup Z_2$则$V=Z_1$或$V=Z_2$\\
+则称$V$为拓扑空间$X$上的不可约子集\\
+$\Rightarrow$任意不可约子集$V$为闭集\\
+若对不可约子集$V$,对任意不可约子集$W$且$V\subsetneq W\subset X$,有$W=X$\\
+则称$V$为拓扑空间$X$上的不可约分支\\
+$\Rightarrow$任意不可约子集$V$存在不可约分支$W$,有$V\subset W$\\
+若$X$为不可约,则称拓扑空间为不可约空间\\
+对$x\in X$,若$\overline{\{x\}}$为拓扑空间上的不可约分支\\
+则称$x\in X$为极大点\\
+对$x\in X$,若对任意开集$U\neq \{0\}$,有$x\in U\quad \Leftrightarrow$有$\overline{\{x\}}=X$\\
+则称$x\in X$为一般点\\
+$\Rightarrow$若存在$x\in X$为一般点,则$X$为不可约空间
+\end{dingyi}
+
+\begin{tuilun}
+对拓扑空间$X$\\
+对任意$x\in X$,存在不可约分支$U_{x}$,有$x\in U_{x}$,即$X=\bigcup\limits_{x\in X}U_x=\bigcup\limits_{U\text{为不可约分支}}U$
+\end{tuilun}
+
+\begin{dingli}
+对环$R$和其素谱$\Spec R$\\
+有双射$\{\p|\p\text{为环}R\text{的素理想}\}\to\{\Spec R\text{中的不可约子集}\},\p\to V(\p)$\\
+对素理想$\p\subset R$,有$\overline{\{\p\}}=V(\p)$,即$\p$为子拓扑空间$V(\p)$的唯一一般点\\
+对极大理想$\m\subset R$,有$\overline{\{\m\}}=V(\m)=\{\m\}$,即$\m$为拓扑空间中的闭点\\
+若$R$为整环,则$\{0\}\in \Spec R$为一般点
+\end{dingli}
+
+\begin{dingyi}
+对拓扑空间$X$\\
+考虑范畴$\Op(X)$,有$\Obj(\Op(X))=\{U\subset X|U\text{为开集}\}$\\
+若$U\subset V$,则$\Hom_{\Op(X)}(U,V)=\{f|f:U\to V\}$,若$U\not \subset V$,则$\Hom_{\Op(X)}(U,V)=\varnothing$\\
+有反范畴$\Op(X)^{op}$,有$\Obj(\Op(X))^{op}=\Obj(\Op(X))$\\
+对任意$U,V\subset X$,有$\Hom_{\Op(X)^{op}}(U,V)=\Hom_{\Op(X)}(V,U)$\\
+若有函子$\mcf:\Op(X)^{op}\to \mcc$,其中$\mcc$为集/群/环/模/代数...$\ $\\
+有$\mcf(U)\subset \Obj(\mcc)$\\
+有$\Hom_{\mcc}(\mcf(V),\mcf(U))=\varnothing,V\not\subset U$或$\Hom_{\mcc}(\mcf(V),\mcf(U))=\{\rho_{V}^{U}\},V\subset U$\\
+有$\rho_{U}^{U}=\id_{\mcf(U)}$,对$V\subset W\subset U$,有$\rho_{V}^{U}=\rho_{V}^{W}\circ\rho_{W}^{U}$\\
+则称$\mcf$为$\mcc$在$X$上的预层,若$\mcc$为环则称为环预层\\
+对$X$上的预层$\mcf$和$\mcg$\\
+若存在映射$\varphi:\mcf\to\mcg$,对任意$V\subset U$,有$\rho_{V}^{U}\circ\varphi=\varphi\circ\rho_{V}^{U}$,即下面图表交换:
+\begin{center}
+    $\begin{tikzcd}[column sep=tiny]
+    \mcf(U) \ar[r,"\varphi"] \ar[d,"\rho_{V}^{U}"'] & \mcg(U) \ar[d,"\rho_{V}^{U}"]\\
+    \mcf(V) \ar[r,"\varphi"] & \mcg(V)
+    \end{tikzcd}$
+\end{center}
+则称$\varphi$为$\mcf\to\mcg$在$X$上的态射\\
+在$X$上的预层和其态射构成范畴$\PSh(X)$
+\end{dingyi}
+
+\begin{dingyi}
+对拓扑空间$X$和在$X$上的预层$\mcf$\\
+对任意$U\subset X$,则称$s\in \mcf(U)$为$\mcf$在$U$上的一个截面\\
+对任意开覆盖$U=\bigcup\limits_{i\in I}U_i$和任意$s_i\in \mcf(U_i)$\\
+若对$s,t\in \mcf(U)$,有$s|_{U_i}=t|_{U_i}$,则$s=t$\\
+若对任意$i,j\in I$,有$s_i|_{U_i\cap U_j}=s_j|_{U_i\cap U_j}$,则存在$s\in \mcf(U)$,对任意$i\in I$,有$s|{U_i}=s_i$\\
+则称$\mcf$为在$X$上的层,若$\mcc$为环则称为环层\\
+层的态射为预层的态射,层的范畴为预层的范畴,记为$\Sh(X)$
+\end{dingyi}
+
+\begin{dingli}
+对环$R$和其素谱$\Spec R$\\
+有主开集$D(f)=\Spec R\backslash V(f)$构成Zariski拓扑的一族拓扑基\\
+定义函子$\O_{\Spec R}:D(f)\to R_{f}$,则$\O_{\Spec R}$为Zariski拓扑的层
+\end{dingli}
+
+\begin{dingyi}
+对拓扑空间$X$和在$X$上的预层$\mcf$\\
+对$x\in X$,则称$\mcf_{x}=\colim\limits_{x\in U \atop U\in\Op(X)}\mcf(U)$为$\mcf$在$x\in X$处的茎\\
+即$\mcf_{x}=\{(U,s)|x\in U,U\in \Op(X),s\in\mcf(U)\}/\sim$\\
+其中$(U,s)\sim(U',s')$当且仅当存在$V\in \Op(X),x\in V\subset U\cap U'$,有$s|_{V}=s'|_{V}$\\
+对$x\in U \in \Op(X)$和$s\in \mcf(U)$,则称$s_{x}=\Im_{\mcf_{x}}(s)=(U,s)$为$\mcf$在$x\in X$处的芽\\
+即$s_{x}=\overline{(U,s)}\in \mcf_{x}$
+\end{dingyi}
+
+\begin{dingli}
+对拓扑空间$X$和在$X$上的预层$\mcf$和$\mcg$\\
+有态射$\phi:\mcf \to \mcg$,则对任意$V,U\in\Op(x),x\in V\subset U$,有$\phi(U),\phi(V)$\\
+有$\phi$诱导$($万有性质$)\ ,$存在唯一的态射$\phi_x$,有下面图表交换:
+\begin{center}
+    $\begin{tikzcd}[column sep=small, row sep=small]
+    \mcf(U) \ar[rr,"\phi"] \ar[dr,"s_{\mcf(U)}"'] & & \mcg(U) \ar[dr,"s_{\mcf(U)}"] & \\
+    & \mcf_{x} \ar[rr,"\phi_{x}",dashed] & & \mcg_{x} \\
+    \mcf(V) \ar[rr,"\phi"] \ar[ur,"s_{\mcf(V)}"] & & \mcg(V) \ar[ur,"s_{\mcf(V)}"'] &
+    \end{tikzcd}$
+\end{center}
+有$\phi_{x}:\mcf_{x}\to\mcg_{x}$,即茎有函子性
+\end{dingli}
+
+\begin{dingli}
+对拓扑空间$X$和在$X$上的预层$\mcf$和$\mcg$\\
+有态射$\phi,\psi:\mcf \to \mcg$和其诱导态射$\phi_{x},\psi_{x}:\mcf_{x}\to\mcg_{x}$和$U\in\Op(X)$\\
+若$\mcf$为层,则映射$\mcf(U)\to\prod\limits_{x\in U}\mcf_{x},s\to (s_{x})_{x\in U}$为单射\\
+有$\phi(U)$为单射/双射当且仅当对任意$x\in U$,有$\phi_{x}$为单射/双射\\
+有$\phi=\psi$当且仅当对任意$x\in X$,有$\phi_{x}=\psi_{x}$
+\end{dingli}
+
+\begin{dingli}
+对拓扑空间$X$和在$X$上的层$\mcf$和$\mcg$\\
+有态射$\phi:\mcf \to \mcg$和其诱导态射$\phi_{x}:\mcf_{x}\to\mcg_{x}$和$U\in\Op(X)$\\
+有$\phi(U)$为单射/满射/双射当且仅当对任意$x\in U$,有$\phi_{x}$为单射/满射/双射\\
+有$\phi(U)$为单射/双射$\Leftrightarrow$对任意$U\in \Op(X)$,有$\phi(U)$为单射/双射\\
+有$\phi(U)$为满射$\mathop{\rightleftharpoons}\limits_{\surd}^{\times}$对任意$U\in \Op(X)$,有$\phi(U)$为满射
+\end{dingli}
+
+\begin{dingli}
+对拓扑空间$X$和在$X$上的预层$\mcf$\\
+则存在层$\widetilde{\mcf}$和映射$\iota:\mcf\to\widetilde{\mcf}$,其中$\widetilde{\mcf}$和$\iota$在同构意义下唯一\\
+有$\iota$诱导了茎的同构,即对任意$x\in X$,有$\iota_{x}:\mcf_{x}\to\widetilde{\mcf_{x}}$\\
+对任意层$\mcg$和态射$\phi:\mcf\to\mcg$,存在唯一态射$\overline{\phi}:\widetilde{\mcf}\to\mcg$,有$\phi=\overline{\phi}\circ\iota$\\
+有双射$\Hom_{\PSh(X)}(\mcf,\mcg)\cong\Hom_{\Sh(X)}(\widetilde{\mcf},\mcg)$\\
+即嵌入函子$\Sh(X)\hookrightarrow \PSh(X)$有左伴随
+\end{dingli}
+
+\begin{zhu}
+此构造称为预层的层化,具体为对任意$U\in\Op(X)$\\
+有$\widetilde{\mcf}(U)=\{(s_x)_{x\in U}\in\prod\limits_{x\in U}\mcf_{x}|\exists V\in \Op(X),x\in V\subset U,t\in \mcf(V),\forall y\in V\Rightarrow s_{y}=t_{y}\}$
+\end{zhu}
+
+\begin{dingli}
+对环$R$和其素谱$\Spec R$,有层$\O_{\Spec R}$\\
+则对任意$x\in \Spec R$和对应素理想$\p_{x}\subset R$\\
+记主开集集$\mcb=\Op(\Spec R)=\{D(f)\subset \Spec R|f\in R\}$\\
+有茎$\O_{\Spec R,x}=\colim\limits_{x\in U\atop U\in B}\O_{\Spec R}(U)=\colim\limits_{x\in U\atop U\in B}R_{f}\cong R_{\p_{x}}$,其中$f\notin \p_{x}$
+\end{dingli}
+
+\begin{dingyi}
+对拓扑空间$X$和$Y$,有连续映射$f:X\to Y$\\
+有$U\in \Op(X),V\in Op(V)$和$X$上预层$\mcf$和$Y$上预层$\mcg$\\
+若有$Y$上预层$f_{*}\mcf$,有$f_{*}\mcf(V)=\mcf(f^{-1}(V))$,则称$f_{*}\mcf$为推进预层\\
+即有函子$f_{*}:\PSh(X)\to\PSh(Y)$\\
+若有$X$上预层$f^{+}\mcg$,有$f^{+}\mcg(U)=\colim\limits_{f(U)\subset V\atop V\in \Op(V)}\mcg(V)$,则称$f^{+}\mcg$为拉回预层\\
+即有函子$f^{+}:\PSh(Y)\to\PSh(X)$\\
+若有$\mcg$为层,则称$f^{-1}\mcg=\widetilde{f^{+}\mcg}$为拉回层,即$f^{+}\mcg$的层化
+\end{dingyi}
+
+\begin{zhu}
+对拉回预层,有自然的茎$(f^{+}\mcg)_{x}=\colim\limits_{x\in U}\colim\limits_{f(U)\subset V \atop V\in \Op(Y)}\mcg(V)=\mcg_{f(x)}$
+\end{zhu}
+
+\begin{dingli}
+对拓扑空间$X$和$Y$,有连续映射$f:X\to Y$\\
+有$X$上预层$\mcf$和$Y$上预层$\mcg$和推进$f_{*}\mcf$和拉回$f^{+}\mcg$\\
+则$f^{+}$关于$f_{*}$有左伴随,有同构$\Hom_{\PSh(X)}(f^{+}\mcg,\mcf)\cong\Hom_{\Sh(Y)}(\mcg,f_{*}\mcf)$
+\end{dingli}
+
+\begin{dingli}
+对拓扑空间$X$和$Y$,有连续映射$f:X\to Y$\\
+有$U\in \Op(X),V\in Op(V)$和$X$上层$\mcf$和$Y$上层$\mcg$\\
+有$f_{*}\mcf$为$Y$上层且有$f^{+}\mcg$的层化为$f^{-1}\mcg=\widetilde{f^{+}\mcg}$为拉回层\\
+有同构$\Hom_{\Sh(X)}(f^{-1}\mcg,\mcf)\cong\Hom_{\Sh(Y)}(\mcg,f_{*}\mcf)$
+\end{dingli}
+
+\begin{zhu}
+此时,有自然的茎$(f^{-1}\mcg)_{x}=\mcg_{f(x)}$
+\end{zhu}
+
+\chapter{概形}
+
+\begin{dingyi}
+对拓扑空间$X$和在$X$上的环层$\O_{X}$,则称$(X,\O_{X})$为环化空间\\
+若对任意$x\in X$,有$\O_{X,x}$为局部环,则称$(X,\O_{X})$为局部环化空间
+\end{dingyi}
+
+\begin{dingyi}
+对拓扑空间$X$和$Y$,有环化空间$(X,\O_{X})$和$(Y,\O_{Y})$\\
+若有$f:X\to Y$为连续映射且$f^{\#}:\O_{Y}\to f_{*}\O_{X}$为环层的态射\\
+则称$(f,f^{\#})$为环化空间的态射\\
+若$(X,\O_{X})$和$(Y,\O_{Y})$为局部环化空间,且有环化空间的态射$(f,f^{\#})$\\
+且对任意$x\in X$,有$f^{\#}_{x}:\O_{Y,f(x)}\to f_{*}\O_{X,x}$为局部环同态\\
+则称$(f,f^{\#})$为局部环化空间的态射
+\end{dingyi}
+
+\begin{dingyi}
+其中$f^{\#}:\O_{Y}\to f_{*}\O_{X}\Leftrightarrow f^{\#}:f^{-1}\O_{Y}\to \O_{X}$,故采用同一记号
+\end{dingyi}
+
+\begin{dingyi}
+对拓扑空间$X$,有局部环化空间$(X,\O_{X})$\\
+若存在环$R$,有$(X,\O_{X})\cong (\Spec R,\O_{\Spec R})$\\
+则称$(X,\O_{X})$为仿射概形\\
+仿射概形的态射即为局部环化空间的态射\\
+若存在开覆盖$U=\bigcup_{i\in I}U_i$且$(U_i,\O_{x}|_{U_i})$为仿射概形\\
+则称$(X,\O_{X})$为概形\\
+概形的态射即为局部环化空间的态射
+\end{dingyi}
+
+\begin{dingyi}
+对概形$(X,\O_{X})$\\
+对任意$x\in X$,有茎$\O_{X,x}$为局部环\\
+则称$\m_{x}$为$\O_{X,x}$的唯一极大理想\\
+则称$k(x)=\O_{X,x}/\m_{x}$为$\O_{X,x}$的剩余类域
+\end{dingyi}
+
+\begin{dingyi}
+对概形$S$\\
+定义概形范畴$\Sch/S$,有$\Obj(\Sch/S)$为概形的态射$f_{X}:X\to S$\\
+有$\Hom_{\Sch/S}$为概形的$S$-态射,使下面图表交换:
+\begin{center}
+    $\begin{tikzcd}[column sep=small, row sep=small]
+    X \ar[rr,"g"] \ar[dr,"f_{X}"'] & & Y \ar[dl,"f_{Y}"]\\ 
+    & S &
+    \end{tikzcd}$
+\end{center}
+\end{dingyi}
+
+\begin{dingli}
+对概形$S$和概形范畴$\Sch/S$\\
+有$\Sch/S\to \mathrm{Fun}(\Sch/S^{op},Sets),X\mapsto h_{X}=\Hom_{\Sch/S}(-,X)$为忠实的Yoneda嵌入\\
+对$\Sch/S$的子范畴$\AffSch/S$\\
+有$\Sch/S\to \mathrm{Fun}(\AffSch/S^{op},Sets)$为忠实的
+\end{dingli}
+
+\begin{dingyi}
+对概形$X,Y$和概形范畴$\Sch/S$,其中$X,Y\in\Sch/S$\\
+有概形$X\times_{S}Y$,附有态射$X\times_{S}Y\to X,X\times_{S}Y\to Y$\\
+对任意概形$T$,附有态射$T\to X,T\to Y$,有$T\to X\to S=T\to Y\to S$\\
+则存在唯一态射$f:T\to X\times_{S}Y$,有$T\to X\times_{S}Y\to X=T\to X$\\
+且$T\to X\times_{S}Y\to Y=T\to Y$,即下面图表交换$($万有性质$)$:
+\begin{center}
+    $\begin{tikzcd}[column sep=small, row sep=small]
+    T \ar[dr,dashed] \ar[drr,bend left] \ar[ddr,bend right] & & \\
+    & X\times_{S}Y \ar[r] \ar[d] & X \ar[d]\\
+    & Y \ar[r] & S 
+    \end{tikzcd}$
+\end{center}
+则称$X\times_{S}Y$为$X$和$Y$的纤维积
+\end{dingyi}
+
+\begin{zhu}
+用范畴论的语言表述,即给定$X\to S,Y\to S$\\
+可定义函子$\varphi:\Sch^{op}\to Sets,T\mapsto h_{X}(T)\times_{h_{S}(T)}h_{Y}(T)$\\
+其中,对集合态射$f_1:A_1\to B,f_2:A_2\to B$\\
+有$A_1\times_{B}A_2=\{(x,y)|x\in A_1,y\in A_2,f_1(x)=f_2(y)\}$\\
+则存在唯一$X\times_{S}Y$,有$\varphi\simeq h_{X\times_{S}Y}$\\
+即对任意$T\in \Sch$,有$h_{X}(T)\times_{h_{S}(T)}h_{Y}(T)\simeq h_{X\times_{S}Y}(T)$
+\end{zhu}
+
+\begin{dingli}
+对概形$S$和概形范畴$\Sch/S$,对任意概形$X,Y\in \Sch/S$,存在纤维积$X\times_{S}Y$
+\end{dingli}
+
+\begin{dingyi}
+对概形$S$和概形范畴$\Sch/S$\\
+对任意概形$X,Y\in \Sch/S$,有概形态射$X\to S$和$Y\to S$\\
+则称$X\times_{S}Y\to Y$为概形态射$X\to S$的底扩张
+\end{dingyi}
+
+\begin{dingyi}
+对概形$(X,\O_{X})$,则称$\Gamma(X,\O_{X})=\O_{X}(X)$为全局截面
+\end{dingyi}
+
+\begin{dingli}
+对概形$(X,\O_{X})$和$(Y,\O_{Y})$\\
+若$(X,\O_{X})$和$(Y,\O_{Y})$为仿射概形\\
+则有$\Hom_{ring}(X,Y)\mathop{\rightleftarrows}\limits_{\Gamma}^{\Spec}\Hom_{affine\ scheme}(\Spec R,\Spec R')$
+\end{dingli}
+
+\begin{dingyi}
+对概形$(X,\O_{X})$\\
+若$X$为连通的,则称$(X,\O_{X})$为连通的\\
+若$X$为拟紧的,即对任意开覆盖$X=\bigcup\limits_{i\in I}U_i$,存在$J\subset I,|J|<\infty$,有$X=\bigcup\limits_{j\in J}U_j$\\
+则称$(X,\O_{X})$为拟紧的\\
+若$X$为不可约的,即不存在闭集$U,V\subsetneq X$,有$X=U\cup V$\\
+则称$(X,\O_{X})$为不可约的\\
+若对任意开集$U\subset X$,有$\O_{X}(U)$为既约环,则称$(X,\O_{X})$为既约的\\
+若对任意开集$U\subset X,U\neq \varnothing$,有$\O_{X}(X)$为整环,则称$(X,\O_{X})$为整的
+\end{dingyi}
+
+\begin{dingli}
+对概形$(X,\O_{X})$\\
+则有$(X,\O_{X})$为整的当且仅当$(X,\O_{X})$为不可约的的且为既约的\\
+若$(X,\O_{X})$为整的,则对任意$x\in X$,有$\O_{X,x}$为整环
+\end{dingli}
+
+\begin{dingli}
+对概形$(X,\O_{X})$\\
+可定义$X$上另一预层$\O_{X_{red}}^{0}$,对任意开集$U\subset X$,有$\O_{X_{red}}^{0}(U)=\O_{X}(U)_{red}$\\
+则预层$\O_{X_{red}}^{0}$层化后得到层$\O_{X_{red}}$,有$(X,\O_{X_{red}})$为既约概形
+\end{dingli}
+
+\begin{dingli}
+对概形$(X,\O_{X})$\\
+有$(X,\O_{X})$为既约概形当且仅当对任意$(X,\O_{X})$的开子概型$(U,\O_{X}|_{U})$为既约概形\\
+若$X$为仿射概形\\
+有$(X,\O_{X})$为既约概形当且仅当$\Gamma(X,\O_{X})$为既约环
+\end{dingli}
+
+\begin{dingyi}
+对概形$(X,\O_{X})$和$(Y,\O_{Y})$和概形态射$f:(X,\O_{X})\to (Y,\O_{Y})$\\
+若对任意开覆盖$X=\bigcup\limits_{i\in I}U_i$,存在有限子集$J\subset I$,有$X=\bigcup\limits_{j\in J} U_j$\\
+则称$(X,\O_{X})$为拟紧的\\
+若对任意开子概形$(U,\O_{X}|_{U})$和$(V,\O_{X}|_{V})$为拟紧的,有$(U\cap V,\O_{X}|_{U\cap V})$为拟紧的\\
+则称$(X,\O_{X})$为拟分离的\\
+若对任意拟紧子概形$(U',\O_{Y}|_{U'})$,有$f^{-1}(U',\O_{Y}|_{U'})$为拟紧子概形\\
+则称概形态射$f$为拟紧的\\
+若对任意拟分离子概形$(U',\O_{Y}|_{U'})$,有$f^{-1}(U',\O_{Y}|_{U'})$为拟分离子概形\\
+则称概形态射$f$为拟分离的
+\end{dingyi}
+
+\begin{dingyi}
+对概形$(X,\O_{X})$\\
+若对任意开集$U=\Spec R\subset X$,有$R$为Noether环,则称$(X,\O_{X})$为局部Noether的\\
+若$(X,\O_{X})$为局部Noether的且为拟紧的,则称$(X,\O_{X})$为Noether的
+\end{dingyi}
+
+\begin{dingyi}
+对概形$(X,\O_{X})$为局部Noether的\\
+若对$x\in X$,有$\O_{X,x}$为正则局部环,则称$x$为正则的\\
+若对任意$x\in X$,有$\O_{X,x}$为正则局部环,则称$(X,\O_{X})$为正则的\\
+若对$x\in X$,有$\O_{X,x}$为整闭整环,则称$x$为正规的\\
+若对任意$x\in X$,有$\O_{X,x}$为整闭整环,则称$(X,\O_{X})$为正规的
+\end{dingyi}
+
+\begin{dingyi}
+对概形$(X,\O_{X})$和$(Y,\O_{Y})$\\
+若对概形的态射$f:(X,\O_{X})\to (Y,\O_{Y})$,对任意开仿射概形$U\subset Y$\\
+则有$f^{-1}(U)\subset X$为开仿射概形,即存在环$R',R$,有$f^{-1}(\Spec R')=f^{-1}(\Spec R')$\\
+则称$f$为仿射态射
+\end{dingyi}
+
+\begin{dingyi}
+对概形$(X,\O_{X})$和$(Y,\O_{Y})$\\
+若有态射$f:(X,\O_{X})\to (Y,\O_{Y})$\\
+有$f:X\to Y$为开嵌入且$f^{\#}:f^{-1}\O_{Y}\to \O_{X}$为层的同构\\
+则称$f$为开浸没
+\end{dingyi}
+
+\begin{dingyi}
+对概形$(X,\O_{X})$和$(Y,\O_{Y})$\\
+若对概形的态射$f:(X,\O_{X})\to (Y,\O_{Y})$\\
+有$f:X\to Y$为闭映射且$f^{\#}:\O_{Y}\to f_{*}\O_{X}$为层的满态射\\
+则称$f$为闭浸没
+\end{dingyi}
+
+\begin{dingyi}
+对概形$(X,\O_{X})$和$(Y,\O_{Y})$\\
+若对概形的态射$f:(X,\O_{X})\to (Y,\O_{Y})$\\
+有$f:X\to Y$为连续映射且$X\simeq f(X)$为$Y$中局部闭子集\\
+且对任意$x\in X$,有$\O_{Y,f(x)}\to\O_{X,x}$为满同态\\
+则称$f$为浸没
+\end{dingyi}
+
+\begin{dingli}
+对概形$(X,\O_{X})$和$(Y,\O_{Y})$\\
+则概形的态射$f:(X,\O_{X})\to (Y,\O_{Y})$为闭浸没\\
+$\Leftrightarrow$有$f$为仿射态射\\
+且对任意$U=\Spec R'\subset Y$和$f^{-1}(U)=\Spec R\subset X$,有$R'\to R$为满态射\\
+$\Leftrightarrow$存在开覆盖$Y=\bigcup\limits_{i\in I}\Spec R_i'$\\
+且有$f^{-1}(\Spec R_i')=\Spec R_i\subset X$为开仿射概形且$R_i'\to R_i$为满态射
+\end{dingli}
+
+\begin{dingyi}
+对概形$(X,\O_{X})$和$(Y,\O_{Y})$\\
+若对概形的态射$f:(X,\O_{X})\to (Y,\O_{Y})$\\
+若对任意开集$V=\Spec R'\subset Y$,有$U=\Spec R\subset f^{-1}(U)$和$R'\to R$\\
+且$R$为有限生成$R'$-代数,则称$f$为局部有限型的\\
+若对任意开集$V=\Spec R'\subset Y$,有$\bigcup\limits_{i=1}^{n}U_i=\bigcup\limits_{i=1}^{n}\Spec R_i=f^{-1}(U)$为开覆盖\\
+且$R_i$为有限生成$R'$-代数,则称$f$为有限型的\\
+若存在开覆盖$\bigcup\limits_{i=1}^{n}V_{i}=\bigcup\limits_{i=1}^{n}\Spec R'_{i}=Y$,有$U_i=\Spec R_i=f^{-1}(V_i)$\\
+且$R_i$为有限生成$R_i'$-代数,则称$f$为有限的
+\end{dingyi}
+
+\begin{dingyi}
+对概形$(X,\O_{X})$和$(S,\O_{S})$和概形态射$f:(X,\O_{X})\to(S,\O_{S})$\\
+若有纤维积$X\times_{S}X$且自然概形态射$\Delta:X\to X\times_{S}X$为闭浸没\\
+则称$f$为分离的
+\end{dingyi}
+
+\begin{dingyi}
+对概形$(X,\O_{X})$和$(S,\O_{S})$\\
+若对概形的态射$f:(X,\O_{X})\to (Y,\O_{Y})$,有$f:X\to Y$为闭映射\\
+且对任意概形$(Y,\O_{Y})\in\Sch/S$,有$f_{Y}:X\times_{S}Y\to Y$为闭映射\\
+则称$f$为万有闭的
+\end{dingyi}
+
+\begin{dingyi}
+对概形$(X,\O_{X})$和$(Y,\O_{Y})$\\
+若概形的态射$f:(X,\O_{X})\to (Y,\O_{Y})$为有限型的且为分离的且为万有闭的\\
+则称$f$为本征的
+\end{dingyi}
+
+\begin{dingli}
+对概形$(X,\O_{X})$和概形$(Y,\O_{Y})$,有概形态射$f:(X,\O_{X})\to(Y,\O_{Y})$\\
+若$f$为开浸没,则$f$为分离的\\
+若$f$为闭浸没,则$f$为分离的\\
+若有概形态射$g:(Y,\O_{Y})\to(Y',\O_{Y'})$且$f,g$均为分离的,则$g\circ f$为分离的\\
+若有概形态射$g:(Y,\O_{Y})\to (Z,\O_{Z})$且$g\circ f$为分离的,则$f$为分离的\\
+若有概形态射$(Y',\O_{Y'})\to (Y,\O_{Y})$且$f$为分离的\\
+则底扩张$f':X\times_{Y} Y'\to Y'$为分离的\\
+若有概形态射$f':(X',\O_{X'})\to (Y',\O_{Y'})$且$X,Y,X',Y'\in \Sch/S$\\
+则若$f,f'$为分离的,则$f\times f':X\times_{S} X'\to Y\times_{S} Y'$为分离的
+\end{dingli}
+
+\begin{dingli}
+对概形$(X,\O_{X})$和$(Y,\O_{Y})$,其中概形为Noether概形\\
+有概形态射$f:(X,\O_{X})\to (Y,\O_{Y})$,
+若有$f$为有限的,则$f$为本征的\\
+若有$f$为闭浸没,则$f$为本征的\\
+若有概形态射$g:(Y,\O_{Y})\to(Y',\O_{Y'})$且$f,g$均为本征的,则$g\circ f$为本征的\\
+若有概形态射$g:(Y,\O_{Y})\to (Z,\O_{Z})$且$g\circ f$为本征的且$g$为分离的,则$f$为本征的\\
+若有概形态射$(Y',\O_{Y'})\to (Y,\O_{Y})$且$f$为本征的\\
+则底扩张$f':X\times_{Y} Y'\to Y'$为分离的\\
+若有概形态射$f':(X',\O_{X'})\to (Y',\O_{Y'})$且$X,Y,X',Y'\in \Sch/S$\\
+则若$f,f'$为本征的,则$f\times f':X\times_{S} X'\to Y\times_{S} Y'$为本征的
+\end{dingli}
+
+\chapter{模层}
+
+\begin{dingyi}
+对概形$(X,\O_{X})$\\
+若对Abel层$\mcf$,有态射$\mcf\times\mcf\to \mcf,\O_{X}\times\mcf\to\mcf$\\
+对任意开集$U\subset X$,对任意$a\in \O_{X}(U),b,b_1,b_2\in \mcf(U)$\\
+则层的态射诱导有$(b_1,b_2)\mapsto b_1+b_2,(a,b)\mapsto ab$\\
+即对任意开集$U\subset X$,有$\mcf(U)$为$\O_{X}(U)$模\\
+则称$\mcf$为$\O_{X}$模层\\
+若对$\O_{X}$模层$\mcf$和$\mcg$,有态射$f:\mcf\to \mcg$\\
+对任意开集$U\subset X$,对任意$a\in \O_{X}(U),b,b_1,b_2\in \mcf(U)$\\
+则层的态射诱导有$f(U)(b_1+b_2)=f(U)(b_1)+f(U)(b_2),f(U)(a(b))=a(f(U)(b))$\\
+即对任意开集$U\subset X$,有$f(U):\mcf(U)\to\mcg(U)$为$\O_{X}(U)$模同态\\
+则称$f$为$\O_{X}$模层态射
+\end{dingyi}
+
+\begin{dingyi}
+对概形$(X,\O_{X})$和$\O_{X}$模层$\mcf$\\
+对任意$x\in X$和$U\subset X,x\in U$,则茎$\mcf_{x}$有诱导的$\O_{X,x}$模结构且有芽$s_{x}$\\
+记$\mcf(x)=\mcf_{x}/\m_{x}\mcf_{x}=\mcf\otimes_{\O_{X,x}}k(x)$且$s(x)$,则$\mcf(x)$为$k(x)$上线性空间\\
+则称$\mcf(x)$为$\mcf$在$x$处的纤维\\
+则称$s(x)=\Im_{\mcf(x)}s_{x}\in \mcf(x)$为$s_{x}$在$\mcf(x)$的截影?
+\end{dingyi}
+
+\begin{dingyi}
+对概形$(X,\O_{X})$和$\O_{X}$模层$\mcf$\\
+则称$\Supp(\mcf)=\{x\in X|\mcf_{x}\neq\{0\}\}$为$\mcf$的支集\\
+若有$\O_{X}$模层$\mcg$,有$\O_{X}$模层态射$\mcg\to\mcf$\\
+且对任意开集$U\subset X$,有$\mcg(U)\subset \mcf(U)$\\
+则称$\mcg$为$\mcf$的$\O_{X}$子模层\\
+特别地,则称$\O_{X}$模层$\O_{X}$的$\O_{X}$子模层为$\O_{X}$的理想
+\end{dingyi}
+
+\begin{dingyi}
+对概形$(X,\O_{X})$和$\O_{X}$模层$\mcf$\\
+若有开覆盖$X=\bigcup\limits_{i=1}^{n}U_i$,有$\O_{X}|_{U_i}$模层同构$\mcf|_{U_i}\simeq\O_{X}|_{U_i}^{n_i}$\\
+则称$\mcf$为局部自由的
+\end{dingyi}
+
+\begin{dingyi}
+对概形$(X,\O_{X})$和$(Y,\O_{Y})$和概形态射$f:(X,\O_{X})\to (Y,\O_{Y})$\\
+若有$\O_{X}$模层$\mcf$,则有$f_{*}\mcf$为$f_{*}\O_{X}$模层\\
+则由$f^{\#}:\O_{Y}\to f_{*}\O_{X}$,有$f_{*}\mcf$为$\O_{Y}$模层\\
+则称$f_{*}\mcf$为推进$\O_{Y}$模层\\
+若有$\O_{Y}$模层$\mcg$,则由$f^{\#}:f^{-1}\O_{Y}\to \O_{X}$,有$f^{-1}\mcg$为$f^{-1}\O_{Y}$模层\\
+记$f^{*}\mcg=\O_{X}\otimes_{f^{-1}\O_{Y}}f^{-1}\mcg$,则$f^{*}\mcg$为$\O_{X}$模层\\
+则称$f^{*}\mcg$为拉回$\O_{X}$模层
+\end{dingyi}
+
+\begin{dingli}
+对概形$(X,\O_{X})$和$(Y,\O_{Y})$和概形态射$f:(X,\O_{X})\to (Y,\O_{Y})$\\
+对任意$\O_{X}$模层$\mcf$和$\O_{Y}$模层$\mcg$,由环同态$\Gamma(Y,\O_{Y})=\Gamma(X,\O_{X})$\\
+则有$\Gamma(Y,\O_{Y})$模同态$\Hom_{\O_{X}}(f^{*}\mcg,\mcf)\simeq\Hom_{\O_{Y}}(\mcg,f_{*}\mcf)$
+\end{dingli}
+
+\begin{dingyi}
+对$R$模$M$\\
+定义$\Spec R$上预层$\widetilde{M}$,对任意$f\in R$,有$\widetilde{M}(D(f))=M_{f}$\\
+则$\widetilde{M}$定义了$X$主开集$\{D(f)|f\in R\}$上的层,此层为$\O_{\Spec R}$模层\\
+对任意$x=\p\in Spec R$,有茎$\widetilde{M}_{x}=\colim\limits_{x\in D(f)}M_{f}=\colim\limits_{f\notin\p}M_{f}=M_{\p}$
+\end{dingyi}
+
+\begin{dingli}
+对环$R$\\
+有函子$F:R\text{模}\to\O_{\Spec R}\text{模层},M\mapsto \widetilde{M}$为忠实的\\
+若有$\O_{\Spec R}$模层$\mcm$,对开覆盖$\Spec R=\bigcup\limits_{i\in I}D(f_i)$\\
+有$\mcm|_{D(f_i)}\simeq \widetilde{M_i}$,其中$\widetilde{M_i}$为$R_{f_i}$模$M_i$的层化\\
+则存在$R$模$M$,有$\mcm\simeq \widetilde{M}$
+\end{dingli}
+
+\begin{dingyi}
+对概形$(X,\O_{X})$\\
+若对$\O_{X}$模层$\mcm$,存在开覆盖$X=\bigcup\limits_{i\in I}\Spec R_i$\\
+有$\mcm|_{\Spec R_i}\simeq \widetilde{M_i}$,其中$\widetilde{M_i}$为$R_i$模$M_i$的层化\\
+则称$\mcm$为拟凝聚层
+\end{dingyi}
+
+\begin{dingyi}
+对概形$(X,\O_{X})$为局部Noether的\\
+若对$\O_{X}$模层$\mcm$,存在开覆盖$X=\bigcup\limits_{i\in I}\Spec R_i$\\
+有$\mcm|_{\Spec R_i}\simeq \widetilde{M_i}$,其中$\widetilde{M_i}$为$R_i$模$M_i$的层化且$M_i$为有限生成模\\
+则称$\mcm$为凝聚层
+\end{dingyi}
+
+\begin{dingli}
+对仿射概形$(\Spec R,\O_{\Spec R})$\\
+则有范畴等价$\{R\text{模}\}\simeq\{\Spec R\text{上拟凝聚层}\}$\\
+有$M\mapsto\widetilde{M}$且$\mcm\mapsto\mcm(\Spec R)$\\
+对$R_{f_i}$模$M_i=M_{f_i}$和同构$\alpha_{ij}:(M_{i})_{f_j}\to(M_{j})_{f_i}$\\
+则有范畴等价$\{\Spec R\text{上拟凝聚层}\}\simeq\{D(f_i)\text{上拟凝聚层和粘合条件}\}\simeq\{(M_i,\alpha_{ij})\}$
+\end{dingli}
+
+\begin{dingli}
+对概形$(X,\O_{X})$\\
+有$\O_{X}$模层$\mcm$和$\mcn$,则有预层$\mcf:U\to \mcm(U)\otimes_{\O_{X}(U)}\mcn(U)$\\
+记$\mcm\otimes_{\O_{X}}\mcn$为预层$\mcf$的层化\\
+若$\mcm$和$\mcn$均为拟凝聚层,则$\mcm\otimes_{\O_{X}}\mcn$为拟凝聚层
+\end{dingli}
+
+\begin{dingli}
+对概形$(X,\O_{X})$和$(Y,\O_{Y})$和概形态射$f:(X,\O_{X})\to (Y,\O_{Y})$\\
+若有概形$(Y,\O_{Y})$的拟凝聚层$\mcn$为$\O_{Y}$模层\\
+则$f^{+}\mcn$为概形$(X,\O_{X})$的拟凝聚层,为$\O_{X}$模层\\
+若概形态射$f$为拟紧的且为拟分离的,有概形$(X,\O_{X})$的拟凝聚层$\mcm$\\
+则$f_{*}\mcm$为概形$(Y,\O_{Y})$的拟凝聚层,为$\O_{Y}$模层
+\end{dingli}
+
+\begin{dingyi}
+对概形$(X,\O_{X})$\\
+若有拟凝聚层$\mcl$为$\O_{X}$模层,存在拟凝聚层$\mcn$为$\O_{X}$模层,有$\mcl\otimes_{\O_{X}}\mcn\simeq\O_{X}$\\
+则称$\mcl$为线丛\\
+若有层$\mcf$为$\O_{X}$模层,为局部自由的\\
+即存在覆盖$X=\bigcup\limits_{i\in I}U_i$,存在$n_i\in \N^*$,有$\mcf|_{U_i}\simeq\O_{X}|_{U_i}^{n_i}$\\
+则称$\mcf$为向量丛\\
+则称线丛在张量积下构成的幺元为$\O_{X}$的群为Picard群
+\end{dingyi}
+
+\begin{zhu}
+若所有$n_i=n$,则称向量丛$\mcf$的秩为$n$,特别地,线丛为秩为$1$的向量丛
+\end{zhu}
+
+\chapter{射影}
+
+\begin{dingli}
+对概形$(U_i,\O_{U_i})$,其中$i\in I$\\
+对任意$i,j\in I$,有开子概型$U_{ij}\subset U_{i}=U_{ii}$和概形同构$\alpha_{ij}:U_{ij}\to U_{ji}$\\
+有上闭链条件:对任意$i,j,k\in I$,在$U_{ijk}=U_{ij}\cap \alpha_{ij}^{-1}(U_{jk})$上有$\alpha_{ik}=\alpha_{jk}\circ\alpha_{ij}$\\
+即下面图表交换:
+\begin{center}
+    $\begin{tikzcd}[column sep=small, row sep=small]
+    U_{ij}\cap \alpha_{ij}^{-1}(U_{jk}) \ar[rr,"\alpha_{ij}"] \ar[dr,"\alpha_{ik}"'] & & U_{ji}\cap U_{jk} \ar[dl,"\alpha_{jk}"]\\
+    & U_{ki}\cap U_{kj} & 
+    \end{tikzcd}$
+\end{center}
+则有概形$X\simeq\bigcup\limits_{i\in I}U_i$,有开覆盖$X=\bigcup\limits_{i\in I}V_i$和概形同构$\beta_{i}:V_i\to U_i$\\
+有$\beta_i\rightsquigarrow V_i\cap V_j \simeq U_{ij}$且$\beta_j\rightsquigarrow V_j\cap V_i\simeq U_{ji}$且$\alpha_{ij}=\beta_{j}\circ\beta_{i}^{-1}$
+\end{dingli}
+
+\begin{dingyi}
+对环$R$\\
+定义概形$U_i=\Spec R[(X_{ij})_{j=0,1,\cdots,n,j\neq i}]$,可将$X_{ij}$视为$"\frac{X_j}{X_i}"$\\
+定义开子概型$U_{ij}=D(X_{ij})=\Spec R[X_{ij}^{-1},(X_{ik})_{k=0,1,\cdots,n,k\neq i}]\subset U_i=U_{ii}$\\
+则环同构$R[X_{ji}^{-1},(X_{jk})_{k=0,1,\cdots,n,k\neq j}]\to R[X_{ij}^{-1},(X_{ik})_{k=0,1,\cdots,n,k\neq i}]$\\
+其中,有$X_{ji}^{-1}\mapsto X_{ij},X_{ji}\mapsto X_{ij}^{-1},X_{jk}\mapsto X_{ik}X_{ij}^{-1}$\\
+此态射诱导了概形同构$\alpha_{ij}:U_{ij}\to U_{ji}$,有$\alpha_{ik}=\alpha_{jk}\circ\alpha_{ij}$\\
+则称概形$\PJP^{n}_{R}\simeq\bigcup\limits_{i=0}^{n}U_i$为射影概形
+\end{dingyi}
+
+\begin{zhu}
+一般的,有$\O_{\PJP^{n}_{R}}(\PJP^{n}_{R})=\Gamma(\PJP^{n}_{R},\O_{\PJP^{n}_{R}})=R$\\
+特别地,若$R=k$为域,则$\PJP^{n}_{k}=\bigcup\limits_{i=1}^{n}\A^{n}(k)$,若$R=\Z$,则$\PJP^{n}_{\Z}=\bigcup\limits_{i=1}^{n}\A^{n}(\Z)$
+\end{zhu}
+
+\begin{dingli}
+对环$R,R'$和射影概形$\PJP^{n}_{R},\PJP^{n}_{R'}$\\
+若有环同态$R\to R'$,则有概形态射$\Spec R'\to \Spec R$\\
+则有$\PJP^{n}_{R}\times_{\Spec R}\Spec R'\simeq\PJP^{n}_{R'}$
+\end{dingli}
+
+\begin{dingyi}
+对概形$(X,\O_{X})$\\
+则称$X$的射影概形为$\PJP^{n}_{X}=\PJP^{n}_{\Z}\times_{\Spec \Z}X$\\
+若存在$\PJP^{n}_{R}$的闭子概形$V$,有概形同构$X\simeq V$\\
+则称$(X,\O_{X})$为射影的
+\end{dingyi}
+
+\begin{dingli}
+对环$R$和射影概形$\PJP^{n}_{R}$\\
+有等价$p:R^{\oplus n+1}\to L\sim p':R^{\oplus n+1}\to L'$当且仅当存在同构$f:L\to L'$,有$f\circ p=p'$\\
+则有双射$\PJP^{n}_{R}\longleftrightarrow\{p:R^{\oplus n+1}\to L|L\text{为可逆}R\text{模且}p\text{为满同态}\}/\sim$
+\end{dingli}
+
+\begin{dingyi}
+对概形$(X,\O_{X})$\\
+记$\dim X=\max\{n|\varnothing \neq X_{0}\subsetneq X_{1}\subsetneq \cdots \subsetneq X_{n}=X\text{且}X_i\text{为不可约的闭集}\}$\\
+则称$\dim X$为$(X,\O_{X})$的Krull维数\\
+若$\dim X=1$,则称$(X,\O_{X})$为算术曲线
+\end{dingyi}
+
+\begin{dingyi}
+对环$R$为分次环,有$R=\bigoplus\limits_{i=0}^{\infty}R_i$\\
+有射影谱$\Proj(R)=\{\p|\p\text{为}R\text{的齐次素理想}\}$,定义其上拓扑空间\\
+有闭集$V(I)=\{\p\in \Proj(R)|I\text{为齐次理想且}I\subset\p\}$\\
+有开集$D_{+}(f)=\Proj(R)\backslash V(f)$,其中存在$i_{f}\in \N$,有$f\in R_{i_{f}}$\\
+定义预层$\O_{\Proj(R)}(D_{+}(f))=(R_{f})_{\deg=0}=\{\frac{g}{f^r}|\text{存在}i_{g}\in \N,\text{有}g\in R_{i_{g}}\text{且}i_{g}=ri_{f}\}$\\
+记预层$\O_{\Proj(R)}$同为$\O_{\Proj(R)}$\\
+则有概形$(\Proj(R),\O_{\Proj(R)})$
+\end{dingyi}
+
+\begin{dingyi}
+对$R$模$M$,其中$R$为分次环且$M$为分次$R$模\\
+定义$\Proj(R)$上模层$\widetilde{M}$,对$f\in R$,存在$i_{f}\in \N$,有$f\in R_{i_{f}}$\\
+有$\widetilde{M}(D_{+}(f))=(M_{f})_{\deg=0}=\{\frac{m}{f^r}|\text{存在}i_{m}\in \N,\text{有}m\in M_{i_{m}}\text{且}i_{m}=ri_{f}\}$\\
+则$\mcm$为$\Proj(R)$上拟凝聚层
+\end{dingyi}
+
+\begin{dingyi}
+对环$R$为分次环和$\Proj(R)$为射影谱\\
+若对$n\in \Z$,有$R(n)$为分次$R$模且$(R(n))_{d}=R_{n+d}$,即$R$中$\deg=k$的元素在$R(d)$中$\deg=n-d$\\
+对$f\in R$,存在$i_{f}\in \N$,有$f\in R_{i_{f}}$\\
+记$\O(n)(D_{+}(f))=(R(n)_{f})_{\deg=0}=(R_{f})_{\deg=n}=\{\frac{g}{f^r}|\text{存在}i_g\in \N,\text{有}g\in R_{i_{g}}\text{且}i_{g}=ri_{f}+n\}$\\
+则有$\Proj(R)$上拟凝聚层$\O(n)=\widetilde{R(n)}$
+\end{dingyi}
+
+\begin{dingli}
+对环$R$为分次环和$\Proj(R)$为射影谱\\
+若$R=\bigoplus\limits_{i=0}^{\infty}R_{i}$且$R$为$R_0$模$R_1$有限生成\\
+即存在$\{f_i\}\subset R_1,|\{f_{i}\}|<\infty$,有$R$由$\{f_i\}$在$R_0$上有限生成\\
+则有$\O(n)$为可逆层\\
+则对分次$R$模$M$和$N$,有$\widetilde{M\otimes N}=\widetilde{M}\otimes\widetilde{N}$
+\end{dingli}
+
+\begin{zhu}
+特别地,有$\widetilde{M(n)}=\widetilde{M}\otimes\O(n)$且$\O(n_1)\otimes\O(n_2)=\O(n_1+n_2)$
+\end{zhu}
+
+\begin{dingyi}
+对概形$(X,\O_{X})$和$X$上Abel层$\mcf$\\
+若有开覆盖$X=\bigcup\limits_{i\in I}U_i$,则对$i_0<\cdots<i_n$,记$U_{i_0\cdots i_n}=\bigcap\limits_{j=0}^{n}U_{i_j}$\\
+定义态射$d^{n}:\prod\limits_{i_0<\cdots<i_{n}}\Gamma(U_{i_0\cdots i_n},\mcf)\to\prod\limits_{i_0<\cdots<i_{n+1}}\Gamma(U_{i_0\cdots i_{n+1}},\mcf)$\\
+有$s_{i_0\cdots i_{n}}\mapsto \sum\limits_{j=0}^{n+1}(-1)^{j}s_{i_0\cdots\widehat{i_{j}}\cdots i_{n+1}}|_{U_{i_0\cdots i_{n+1}}}$,其中$n\geq 0$\\
+则有链:$\prod\limits_{i_0}\Gamma(U_{i_0},\mcf) \stackrel{d^{0}}{\longrightarrow}\prod\limits_{i_0<i_{1}}\Gamma(U_{i_0i_1},\mcf) \stackrel{d^{1}}{\longrightarrow}\prod\limits_{i_{0}<i_{1}<i_{2}}\Gamma(U_{i_0i_1i_2},\mcf) \stackrel{d^{2}}{\longrightarrow}\cdots$\\  
+记$H^{n}(X,\mcf)=H^{n}(\prod\limits_{i_0<\cdots<i_{n}}\Gamma(U_{i_0\cdots i_n},\mcf))=\Ker d^{n}/\Im d^{n-1}$,特别地,$H^{0}(X,\mcf)=\Ker d^{0}=\Gamma(X,\mcf)$
+\end{dingyi}
+
+\begin{dingli}
+对概形$(X,\O_{X})$和$X$上Abel层$\mcf$\\
+若$(X,\O_{X})$为仿射概形,则对任意$n\in\N^*$,有$H^{n}(X,\mcf)=\{0\}$\\
+若概形$(Y,\O_{Y})$为分离的且概形态射$f:(X,\O_{X})\to(Y,\O_{Y})$为有限的且$\mcf$为拟凝聚层\\
+则$H^{n}(X,\mcf)=H^{n}(Y,f_{*}\mcf)$\\
+若$n\geq |I|$,其中$X=\bigcup\limits_{i\in I}U_i$,则$H^{n}(X,\mcf)=\{0\}$
+\end{dingli}
+
+\begin{dingli}
+对概形$(X,\O_{X})$,其中$S=R[X_0,\cdots,X_n],X=\Proj(S)=\PJP^{n}_{R}$且$\O(d)=\widehat{S(d)}$\\
+则若$i\neq 0,n$,有$H^{i}(X,\O(d))=\{0\}$\\
+则若$i=0$,有$H^{0}(X,\O(d))=H^{0}(\PJP^{n}_{R},\O(d))=(R[X_0,\cdots,X_n])_{\deg=d}$\\
+则若$i=n$,有$H^{n}(X,\O(d))=H^{n}(\PJP^{n}_{R},\O(d))=(R[X_0,\cdots,X_n]/X_0\cdots X_n)_{\deg=d}$
+\end{dingli}
+
+\begin{dingli}
+Serre Duality:\\
+$\dim_{k}H^{i}(\PJP^{1}_{k},\O(r))=\dim_{k}H^{1-i}(\PJP^{1}_{k},\O(-r-2))$\\
+$\dim_{k}H^{i}(\PJP^{n}_{k},\O(r))=\dim_{k}H^{n-i}(\PJP^{n}_{k},\O(-r-n-1))$\\
+对任意$\PJP^{n}_{k}$上凝聚层$\mcf$,存在自然的完美配对$H^{i}(\PJP^{i}_{k},\mcf)\times H^{n-i}(\PJP^{i}_{k},\O_{-n-1})\to k$
+\end{dingli}
+
+\begin{dingyi}
+对环$R,R'$和$R'$模$M$\\
+若有环同态$f:R\to R'$和映射$D:R'\to M$\\
+对任意$r\in R,r_1',r_2'\in R$,有$D(r_1'r_2')=r_1'(D(r_2'))+r_2'(D(r_1'))$且$D(f(r)r_1')=f(r)(D(r_1'))$\\
+则称$D$为$R$线性微分\\
+则记$Der_{R}(R',M)=\{D:R'\to M|D\text{为}R\text{线性微分}\}$
+\end{dingyi}
+
+\begin{dingli}
+对环$R,R'$\\
+对任意环同态$f:R\to R'$,存在唯一的$R'$模$\Omega_{R'/R}^{1}$和$R$线性微分$d:R'\to \Omega_{R'/R}^{1}$\\
+有对任意$R'$模$M$和任意$D\in Der_{R}(R',M)$,存在唯一$R'$模同态$\pi:\Omega_{R'/R}^{1}\to M$\\
+有$D=\pi\circ d$,即对任意$R'$模$M$,有$\Hom_{R'}(R',\Omega_{R'/R}^{1})\simeq Der_{R}(R',M)$
+\end{dingli}
+
+\begin{dingli}
+对概形$(X,\O_{X})$和概形范畴$\Sch/S$,其中$X\in \Sch/S$\\
+则存在唯一拟凝聚层$\Omega_{X/S}^{1}$,对任意开仿射概形态射$U\subset X\to V\subset S$\\
+有$\Omega_{X/S}^{1}|_{U}=\Omega_{\O_{X}(U)/\O_{S}(V)}^{1}$
+\end{dingli}
+
+\begin{dingyi}
+对概形$(X,\O_{X})$和概形范畴$\Sch/S$,其中$X\in \Sch/S$\\
+则有对角态射$\Delta:X\to X\times_{S}X$,则$\Delta(X)=\Im\Delta$为$X\times_{S}X$中的闭集\\
+记$\Delta(X)$的定义理想为$\mathscr{I}$,则有拟凝聚层$\Delta^*(\mathscr{I}/\mathscr{I}^2)=\Omega_{X/S}^{1}$
+\end{dingyi}
+
+\begin{zhu}
+在概形$(X,\O_{X})$局部上,有$\Delta|_{\Spec R}:\Spec R\to \Spec R\times_{R'}\Spec R$\\
+则有$\delta:R\otimes_{R'}R\to R,r_1\otimes r_2\mapsto r_1r_2$,则有生成元$\vartriangle_{r}= r\otimes 1-1\otimes r\in\Ker \delta=I|_{\Spec R}$\\
+则$\vartriangle_{r_1r_2}=(r_1\otimes1)\vartriangle_{r_2}+(r_2\otimes1)\vartriangle_{r_2}+\vartriangle_{r_1}\vartriangle_{r_2}$,在模$I|_{\Spec R}^2$意义下$\vartriangle_{r}$可视为微分\\
+则有$I/I^2=\Omega_{X/S}^{1}$
+\end{zhu}
+
+\begin{dingli}
+对概形$(X,\O_{X})$和概形范畴$\Sch/S$,其中$X\in \Sch/S$\\
+若$(X,\O_{X})$为Noether的$(X,\O_{X})\to (S,\O_{S})$为有限型的,则$\Omega_{X/S}^{1}$为凝聚层
+\end{dingli}
+
+\begin{dingli}
+对概形$(X,\O_{X})$和$(Y,\O_{Y})$和$(Z,\O_{Z})$\\
+若有概形态射$(X,\O_{X})\stackrel{f}{\longrightarrow}(Y,\O_{Y})\stackrel{g}{\longrightarrow}(Z,\O_{Z})$\\
+则有$\O{X}$模的正合列$f^{*}\Omega_{Y/Z}^{1}\longrightarrow\Omega_{X/Z}^{1}\longrightarrow\Omega_{Y/Z}^{1}\longrightarrow\{0\}$
+\end{dingli}
+
+\begin{dingli}
+对概形$(X,\O_{X})$和$(Y,\O_{Y})$和概形范畴$\Sch/S$,其中$X,Y\in \Sch/S$\\
+若有概形态射$f:(X,\O_{X})\longrightarrow(Y,\O_{Y})$为闭浸没,有定义理想$\mathscr{I}$\\
+则有$\O{X}$模的正合列$\mathscr{I}/\mathscr{I}^2\stackrel{\delta}{\longrightarrow}f^{*}\Omega_{Y/S}^{1}\longrightarrow\Omega_{X/S}^{1}\longrightarrow\{0\}$\\
+其中,有$\delta:\O_{Y}\to\Omega_{Y/S},\mathscr{I}^2\subset \mathscr{I}\subset \O_{Y}$且在模$\O_{X}$下$\delta(\mathscr{I}^2)=\{0\}$
+\end{dingli}
+
+\begin{dingyi}
+对概形$(X,\O_{X})$\\
+对任意$x\in X$,有$k(x)=\O_{X,x}/\m_{x}$上线性空间$\m_{x}/\m_{x}^2$\\
+则称$T_{x}X=(\m_{x}/\m_{x}^2)^{*}$为$X$在$x$的切空间
+\end{dingyi}
+
+\begin{dingyi}
+对概形$(X,\O_{X})$和$(Y,\O_{Y})$和概形态射$f:(X,\O_{X})\to (Y,\O_{Y})$\\
+对$x\in X$和$d\in \N$,若存在仿射开集$U\subset X,x\in U$和$\Spec R\simeq V\subset Y,f(x)\in V$\\
+有开浸没$U\to \Spec R[X_1,\cdots,X_n]/(f_1,\cdots,f_{n-d})$且$J_{f_1,\cdots,f_{n-d}}(x)=(\frac{\partial f_i}{\partial X_j}(x))\in\M_{n-d\times n}(k(x))$\\
+有$\rank(J_{f_1,\cdots,f_{n-d}}(x))=n-d$\\
+则称$f$在$x\in X$关于维数$d$光滑\\
+若对$d\in\N$,对任意$x\in X$,有$f$在$x\in X$关于维数$d$光滑\\
+则称$f$关于维数$d$光滑\\
+记$X_{smooth}(f)=\{x\in X|f\text{在}x\text{处光滑}\}$\\
+则称$X_{smooth}(f)$为$X$关于$f$的光滑轨迹
+\end{dingyi}
+
+\begin{dingli}
+对概形$(X,\O_{X})$和$(Y,\O_{Y})$和概形态射$f:(X,\O_{X})\to (Y,\O_{Y})$\\
+若$f$为开浸没,则$f$关于维数$d=0$光滑\\
+若$f$在$x\in X$关于维数$d$光滑且有概形态射$g:(Z,\O_{Z})\to (Y,\O_{Y})$\\
+则$f':X\times_{Y}Z\to Z$在所有$(x,z)\in X\times_{Y}Z$关于维数$d$光滑
+\end{dingli}
+
+\begin{dingyi}
+对概形$(X,\O_{X})$为整的\\
+则有一般点$\eta$且$\O_{X,\eta}$为域\\
+则称$K(X)=\O{X,\eta}$为$(X,\O_{X})$的函数域
+\end{dingyi}
+
+\begin{zhu}
+若$X=\Spec R$,则$K(X)=\Frac(R)$
+\end{zhu}
+
+\begin{dingyi}
+对概形$(X,\O_{X})$为Noether的\\
+对$(X,\O_{X})$的不可约闭集$Y\subset X$和其一般点$\eta$\\
+则称$\O_{X,Y}=\O_{X,\eta}$为$(X,\O_{X})$在$Y$的局部环\\
+则称$\codim_{(X,\O_{X})}Y=\dim\O_{X,\eta}$为$Y$的余维数\\
+则记$X^n=\{Y\subset X|Y\text{为整闭概形且}\codim_{(X,\O_{X})}Y=1\}$\\
+则称$Y\in X^{1}$为Weil素除子\\
+则记$Z^{n}(X)=\{\sum\limits_{Y\in X^{n}}n_{Y}Y|n_{Y}\in \Z\}$且$Z^{n}_{+}(X)=\{\sum\limits_{Y\in X^{n}}n_{Y}Y|n_{Y}\in \N\}$\\
+则称$\sum\limits_{Y\in X^{1}}n_{Y}Y\in Z^1(X)$为Weil除子,记$\Div(X)=Z^1(X)$为群\\
+则称$\sum\limits_{Y\in X^{1}}n_{Y}Y\in Z^1_{+}(X)$为有效Weil除子
+\end{dingyi}
+
+\begin{dingli}
+对概形$(X,\O_{X})$为Noether的\\
+则有不可约闭集$Y\subset X$有$\codim_{(X,\O_{X})}Y=1$当且仅当有且仅有一个不可约分支$X_{0}\subset Y$
+\end{dingli}
+
+\begin{dingyi}
+对概形$(X,\O_{X})$\\
+若有域$k$且存在齐次多项式$f\in k[X_0,X_1,X_2],f\neq 0$\\
+有$V_{+}(f)=(X,\O_{X})\subset \PJP_{k}^{2}$为闭子概形\\
+则称$(X,\O_{X})$为$\PJP_{k}^{2}$上平面曲线\\
+则称$\deg (X,\O_{X})=\deg f$为平面曲线的度
+\end{dingyi}
+
+\begin{dingyi}
+对概形$(X,\O_{X})$和$(Y,\O_{Y})$为$\PJP_{k}^{2}$上平面曲线\\
+若对概形$Z=X\cap Y$,有$Z\to \Spec k$且$\dim Z=0$\\
+则称$i(X,Y)=\dim_{k}(\Gamma(Z,\O_{Z}))$为$(X,\O_{X})$和$(Y,\O_{Y})$的交数\\
+对任意$z\in Z$\\
+则称$i_{z}(X,Y)=\dim_{k}(\O_{Z,z})$为$(X,\O_{X})$和$(Y,\O_{Y})$在$z$的交数
+\end{dingyi}
+
+\begin{dingli}
+对概形$(X,\O_{X})$和$(Y,\O_{Y})$为$\PJP_{k}^{2}$上平面曲线\\
+若有$(X,\O_{X})=V_{+}(f)$且$(Y,\O_{Y})=V_{+}(g)$\\
+则$f$和$g$无公因式当且仅当$\dim V_{+}(f,g)=0$\\
+若有域扩张$K/k$,有$X_{K}=X\otimes_{k}K=V_{+}(f_{K})\subset \PJP_{K}^{2}$且$Y_{K}=Y\otimes_{k}K=V_{+}(g_{K})\subset \PJP_{K}^{2}$\\
+则$i(X,Y)=i(X_{K},Y_{K})$
+\end{dingli}
+
+\begin{dingli}
+Bézout定理:\\
+对概形$(X,\O_{X})$和$(Y,\O_{Y})$为$\PJP_{k}^{2}$上平面曲线\\
+若有$(X,\O_{X})=V_{+}(f)$且$(Y,\O_{Y})=V_{+}(g)$且$f$和$g$无公因式,则$i(X,Y)=\deg f\deg g$\\
+特别地,有$X\cap Y\neq \varnothing$含有有限多个闭点
+\end{dingli}
+
+\begin{zhu}
+对分次环$R=k[X_0,X_1,X_2]=\bigoplus\limits_{d=0}^{\infty}R_{d}$且$\PJP_{k}^{2}=\Proj(R)$\\
+则有理想$I=(f,g)$且有分次环$R/I=\bigoplus\limits_{n=0}^{\infty}S_{n}$
+则有$\dim_{k}R_{d}=C_{d+2}^{2}$且对任意$n\geq\deg f+\deg g$,有$\dim_{k}S_{n}=\deg f\deg g$
+\end{zhu}
+
+\begin{dingyi}
+对概形$(X,\O_{X})$为Noether的\\
+则有不可约分支$X_1,\cdots,X_n$,若没有由单点构成的不可约分支\\
+若对任意闭点$x\in X$,有$\dim \O_{X,x}=\codim_{(X,\O_{X})}\{x\}=1$\\
+$\Leftrightarrow$若$X$的不可约闭集为$X_1,\cdots,X_n$和闭点$x\in X$\\
+$\Leftrightarrow$若对任意$i=1,\cdots,n$,有$\dim X_i=1$\\
+则称$(X,\O_{X})$为绝对曲线
+\end{dingyi}
+
+%\end{document}

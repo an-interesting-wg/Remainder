@@ -1,0 +1,381 @@
+%\documentclass[12pt,oneside,a4paper]{book}
+
+%\usepackage{amsmath}
+%\usepackage{mathtools}
+%\usepackage{amsfonts}
+%\usepackage{unicode-math}
+%\usepackage{geometry}
+%\usepackage{ctex}
+
+%\begin{document}
+
+%\setcounter{chapter}{0}
+\setcounter{section}{0}
+\setcounter{subsection}{0}
+
+\begin{dingyi}
+对群$G$\\
+若$G$为微分流形且$G\times G\to G,(g,g')\mapsto gg'$为微分映射\\
+则称$G$为Lie群
+\end{dingyi}
+
+\begin{dingli}
+对Lie群$G$\\
+若$G$连通且为Abel群,则$G\simeq V\times (\R/\Z)^n\simeq V\times (S^{1})^n$\\
+其中$V$为线性空间且$S^{1}=\{z\in \C|\ |z|=1\}$为圆环
+\end{dingli}
+
+\begin{dingli}
+对Lie群$G$和其子群$H$\\
+若$H\leq G$为闭集,则$H$为Lie群\\
+若$H\lhd G$为闭集,则$G/H$为Lie群
+\end{dingli}
+
+\begin{dingyi}
+对Lie群$G$\\
+有$p\in G$和定义在$p$附近函数的函数芽(等价类)全体$\mathscr{E}_{p}$\\
+则有$p$处切向量$v:\mathscr{E}_{p}\to \R$,有$v(fg)=f(p)v(g)+g(p)v(f)$\\
+则有$p$处切空间$T_{p}G=\{v|v\text{为}p\text{处切向量}\}$\\
+则有$G$的切丛$TG=\bigcup\limits_{p\in G}T_{p}G$
+\end{dingyi}
+
+\begin{dingyi}
+对Lie群$G$,则称$LG=T_{e}G$为$G$的Lie代数
+\end{dingyi}
+
+\begin{dingli}
+对Lie群$G$和其Lie代数$LG$,有$G\times LG\simeq TG$
+\end{dingli}
+
+\begin{dingyi}
+对Lie群$G$\\
+对任意$x\in G$,有自然的左作用$l_{x}:G\to G,g\mapsto xg$\\
+则$l_{x}$自然的诱导了$Tl_{x}:TG\to TG,v\in T_{g}G\mapsto v'\in T_{xg}G$\\
+有自然的映射$\pi:TG\to G,v\in T_{p}G\mapsto p$\\
+若有映射$X:G\to TG$,有$\pi\circ X=\id_{G}$\\
+则称$X$为$G$上向量场\\
+若对向量场$X$,对任意微分映射$f:G\to \R$,有$X(f):G\to \R,p\mapsto X(p)(f)$为微分映射\\
+则称$X$为$G$上微分向量场\\
+若对向量场$X$,对任意$x\in G$,有下面图表交换:
+\begin{center}
+    $\begin{tikzcd}[column sep=small, row sep=small]
+    G \ar[r,"l_{x}"] \ar[d,"X"] & G \ar[d,"X"] \\
+    TG \ar[r,"Tl_{x}"] & TG
+    \end{tikzcd}$
+\end{center}
+则称$X$为$G$上左不变向量场
+\end{dingyi}
+
+\begin{zhu}
+对微分流形$G$取局部坐标$\R^n$,则微分向量场$X:G\to TG,x\mapsto\sum\limits_{i=1}^{n}a_{i}(x)\partial_{i}$,其中$a_i$为光滑函数
+\end{zhu}
+
+\begin{dingli}
+对Lie群$G$和其Lie代数$LG$\\
+对任意$v\in LG$,有左不变向量场$X_{v}:G\to TG,x\mapsto Tl_{x}(v)$\\
+则有双射$LG\longleftrightarrow \{G\text{上左不变向量场}\},v\mapsto X_{v}$
+\end{dingli}
+
+\begin{zhu}
+以下,记$X\in LG$为$G$上左不变向量场,即存在$v\in LG$,有$X=X_v$
+\end{zhu}
+
+\begin{dingyi}
+对Lie群$G$和其上向量场$X:G\to TG$\\
+有曲线芽$\alpha:(\R,\tau)\to (G,p)$,记$\frac{\partial}{\partial t}|_{\tau}\alpha=\dot{\alpha}(t)\in T_{p}G$\\
+对任意$f:\mathscr{E}_{p}\to \R$,有$\dot{\alpha}(t)(f)=\frac{\partial}{\partial t}|_{\tau} f(\alpha(t))$\\
+若曲线芽为微分映射且$\dot{\alpha}(t)=X(\alpha(t))$\\
+则称$\alpha$为$X$的积分曲线\\
+对曲线芽的方程和给定的初值条件$\alpha(0)=p\in G$,由微分方程知识可知:\\
+存在唯一解,可表为流$\Phi:A\subset \R\times G\to G,(t,p)\mapsto \Phi(t,p)=\alpha_{p}(t)=\Phi_{t}(p)$\\
+有$\Phi(0,p)=p$且$\Phi(s,\Phi(t,p))=\Phi(s+t,p)$\\
+有$\Phi_{0}=\id_{G}$且$\Phi_{s+t}=\Phi_{s}\circ\Phi_{t}$\\
+则$X(p)=\frac{\partial}{\partial t}|_{0}\Phi(t,p)\in T_{p}G$
+\end{dingyi}
+
+\begin{zhu}
+对微分流形$G$取局部坐标$\R^n$,则曲线芽$\alpha(t)=(\alpha_1(t),\cdots,\alpha_n(t))$\\
+则$\dot{\alpha}(t)=X(\alpha(t))=\sum\limits_{i=1}^{n}a_i(\alpha(t))\partial_i$\\
+则曲线芽方程为$\dot{\alpha_i}(t)=a_i(\alpha(t))$,初值条件为$\alpha(0)=p\in G$
+\end{zhu}
+
+\begin{dingli}
+对Lie群$G$和其上向量场$X:G\to TG$,其中$X$为左不变向量场\\
+则对$X$的积分曲线$\alpha$,对任意$x\in G$,有$l_{x}\alpha$为积分曲线\\
+记初值条件为$\alpha(0)=e\in G$的积分曲线为$\alpha^{X}$\\
+则存在唯一的流$\Phi(t,g)=g\alpha^{X}(t)$
+\end{dingli}
+
+\begin{dingyi}
+对Lie群$G$和其Lie代数$LG$\\
+则称Lie群同态$\alpha:R\to G$为Lie群$G$的单参数群\\
+则有双射$\{\text{Lie群}G\text{的单参数群}\}\longleftrightarrow LG$\\
+其中$\alpha\rightarrow\dot{\alpha}(0),\alpha^{X}\leftarrow X$
+\end{dingyi}
+
+\begin{dingli}
+对Lie群$G$和其Lie代数$LG$\\
+对任意左不变向量场$X,Y,Z\in LG(\mathscr{E}_{e}\to \R)$,对任意$f\in \mathscr{E}_{e}(G\to \R)$\\
+有Lie括号运算$[X,Y]f=X(Yf)-Y(Xf)$,其中$Zf:G\to\R,g\mapsto Z(g)(f)$且$Z(g)=Tl_{g}(X)\in TG$\\
+有$[X,Y]\in LG$,有$[X,X]=0$\\
+有Jacobi恒等式$[X,[Y,Z]]+[Y,[Z,X]]+[Z,[X,Y]]=0$
+\end{dingli}
+
+\begin{dingyi}
+对Lie群$G$和其Lie代数$LG$\\
+对任意$g\in G$,有共轭作用$c_{g}:G\to G,x\mapsto gxg^{-1}$\\
+有群同态$C:G\to \Aut(G),g\to c_{g}$和映射$T_{e}c_{g}:LG\to LG$\\
+有伴随表示$Ad:G\to \Aut(LG),g\to T_{e}c_{g}$\\
+有Lie代数同态$ad:LG\to L\Aut(LG)=\End(LG),X\mapsto ad(X)$,其中$ad(X):LG\to LG,Y\mapsto [X,Y]$
+\end{dingyi}
+
+\begin{dingyi}
+对Lie群$G$和其Lie代数$LG$\\
+则称$exp:LG\to G,X\mapsto \alpha^{X}(1)$为指数映射
+\end{dingyi}
+
+\begin{dingyi}
+对Lie群$G$和$\C$上线性空间$V$,其中$\dim V<\infty$\\
+若有群同态$\rho:G\to \GL(V)=\Aut(V)$,有$G\times V\to V,(g,v)\to\rho(g)v$为连续映射\\
+则称$(\rho,V)$为Lie群$G$的表示\\
+对任意$g\in G$,有$gV=\rho(g) V\subset V$,则$V$为自然的$G$模\\
+若对子空间$U\subset V$,对任意$g\in G$,有$gU\subset U$,则$U$为$V$的子模\\
+则称$(\rho|_{U},U)$为$(\rho,V)$的子表示\\
+若$(\rho,V)$的子表示有且仅有$(0,\{o\})$和$(\rho,V)$\\
+则称$(\rho,V)$为Lie群$G$的不可约表示\\
+则称$\Irr(G,\C)$为所有两两不等价Lie群$G$的不可约表示
+\end{dingyi}
+
+\begin{dingyi}
+对Lie群$G$和其表示$(\rho,V)$和$(\varrho,W)$\\
+若对线性映射$f:V\to W$,对任意$g\in G,v\in V$,有$f(g(v))=g(f(v))$\\
+则称$f$为Lie群$G$的表示同态,即为$G$模同态\\
+则记$\Hom_{G}(V,W)=\{f|f:V\to W\text{为Lie群}G\text{的表示同态}\}$
+\end{dingyi}
+
+\begin{dingli}
+对Lie群$G$的表示$(\rho,V)$\\
+在$G$模下,有$V\simeq\bigoplus\limits_{V_i\in \Irr(G,\C)}V_i^{\oplus n_i}=\bigoplus\limits_{V_i\in \Irr(G,\C)}(\Hom_{G}(V_i,V)\otimes_{\C}V_i)$
+\end{dingli}
+
+\begin{dingyi}
+对域$F$上线性空间$\g$\\
+若有二元运算$[\ ,\ ]:\g\times\g\to\g$,对任意$a,b,c\in\g$\\
+有$[a,a]=0$,有$[a,[b,c]]+[b,[c,a]]+[c,[a,b]]=0$\\
+则称$\g$为Lie代数\\
+若有子空间$\h\subset\g$,对任意$X,Y\in \h$,有$[X,Y]\in \h$\\
+则称$\h$为$\g$的子Lie代数\\
+若有子空间$\h\subset\g$,对任意$X\in\g,Y\in\h$,有$[X,Y]\in \h$\\
+则称$\h$为$\g$的Lie理想
+\end{dingyi}
+
+\begin{dingyi}
+对Lie代数$\g$和$\h$\\
+若有线性空间同态$\rho:\g\to\h$,有$\rho[X,Y]=[\rho(X),\rho(Y)]$\\
+则称$\rho$为Lie代数同态
+\end{dingyi}
+
+\begin{dingyi}
+对Lie代数$\g$\\
+定义$\g^{0}=\g,\g^{1}=[\g,\g],\cdots,\g^{n}=[\g^{n-1},\g^{n-1}],\cdots$\\
+若存在$n\in \N$,有$\g^n=\{0\}$,则称$\g$为可解的\\
+则称$\rad(\g)$为$\g$的极大可解Lie理想\\
+若$\rad(\g)=\{0\}$,则称$\g$为半单的\\
+若$\g$的Lie理想只有$\{0\}$和$\g$,则称$\g$为单的
+\end{dingyi}
+
+\begin{dingyi}
+对Lie代数$\g$和$\h$\\
+若有Lie代数同态$\rho:\g\to\gl(V)=\gl(n,\C)$,则称$(\rho,V)$为Lie代数的表示
+\end{dingyi}
+
+\begin{dingli}
+Weyl定理:\\
+对Lie代数$\g$,其中$F=\C$\\
+若$\g$为半单的,则任意有限维Lie代数表示均为完全可约的
+\end{dingli}
+
+\begin{dingli}
+对Lie群$G$和其Lie代数$LG$\\
+有Lie群同态$\rho:G\to \GL(V)$和Lie代数同态$Te_{\rho}:LG\to L\GL(V)$,则下面图表交换:
+\begin{center}
+    $\begin{tikzcd}[column sep=small,row sep=small]
+    G \ar[r,"\rho"] & \GL(V) \\
+    LG \ar[u,"exp"] \ar[r,"Te_{\rho}"] & L\GL(V) \ar[u,"exp"]    
+    \end{tikzcd}$
+\end{center}
+则$\rho\circ exp(tX)$为单参数群,有$\frac{\d}{\d t}|_{t=0}\rho\circ exp(tX)=Te_{\rho}(X)$\\
+且$Te_{\rho}[X,Y]=[Te_{\rho}(X),Te_{\rho}(Y)]$
+\end{dingli}
+
+\begin{dingyi}
+对Lie群$G$为紧的\\
+记连续函数环为$C^{0}(G,\C)$\\
+则有$G$在$C^{0}(G,\C)$上自然的左作用$L:G\times C^{0}(G,\C)\to C^{0}(G,\C)$,有$L(g,\varphi)(x)=\varphi(g^{-1}x)$\\
+则有$G$在$C^{0}(G,\C)$上自然的右作用$R:G\times C^{0}(G,\C)\to C^{0}(G,\C)$,有$L(g,\varphi)(x)=\varphi(xg)$\\
+在$G$的作用下,若对$f\in C^{0}(G,\C)$,有$f$生成$C^{0}(G,\C)$的有限维$G$不变子空间\\
+则称$f$为表示函数,记表示函数构成函数空间$\mcf(G,\C)$
+\end{dingyi}
+
+\begin{zhu}
+对任意Lie群$G$为紧的的表示$\rho:G\to \GL(n,\C),g\mapsto \rho(g)=(a_{ij}(g))$\\
+则矩阵系数定义了函数$a_{ij}:G\to \C$为表示函数
+\end{zhu}
+
+\begin{dingli}
+对Lie群$G$为紧的\\
+则$f\in C^{0}(G,\C)$为表示函数当且仅当存在Lie群$G$的表示$\rho$,有$(\rho(g))_{ij}=f(g)$
+\end{dingli}
+
+\begin{dingyi}
+对Lie群$G$为紧的\\
+定义$C^{0}(G,\C)$上范数,对任意$n\in \N^{*}$,有$||f||_{n}=(\int_{G}|f(g)|^{n}\d g)^{\frac{1}{n}}$\\
+记$||f||_{\infty}=\sup\{|f(g)|\ \Big|\ g\in G\}$\\
+则有函数空间$L^{n}(G)=\{f\in C^{0}(G,\C)\Big|\ ||f||_{n}<\infty\}$,其中$n\in\N^{*}\cup\{\infty\}$
+\end{dingyi}
+
+\begin{zhu}
+特别地,若$n=2$,则$L^{2}(G)$为Hilbert空间,可定义内积$(\ \ ,\ )=||\ ||^2$且为完备的
+\end{zhu}
+
+\begin{dingyi}
+对Lie群$G$为紧的\\
+对任意$f,g\in C^{0}(G,\C)$,定义对偶$<f,g>=\int_{G}f(x)\overline{g(x)}\d x$
+对任意$f,g\in C^{0}(G,\C)$,定义卷积$f*g\in C^{0}(G,\C)$,对任意$x\in G$,有$f*g(x)=\int_{G}f(xy^{-1})g(y)\d y$\\
+对任意$\phi\in C^{0}(G,\C)$,有$T_{\phi}:L^{n}(G)\to C^{0}(G,\C),f\to \phi*f$
+\end{dingyi}
+
+\begin{dingli}
+对Lie群$G$为紧的\\
+对任意$\phi,f\in C^{0}(G,\C)$,有$||T_{\phi}(f)||_{\infty}\leq ||\phi||_{\infty}||f||_{1}$\\
+有$T_{\phi}$为有界的且为紧的,有$T_{\phi}$为自伴随的,即$<T_{\phi}(f),g>=<f,T_{\phi}(g)>$当且仅当$\phi(g^{-1})=\overline{\phi(g)}$
+\end{dingli}
+
+\begin{dingli}
+Peter-Weyl定理:\\
+对Lie群$G$为紧的\\
+则$\mcf(G,\C)$在$C^{0}(G,\C)$和$L^{2}(G)$中均稠密\\
+则$\{\rho_{ij}|\rho\in \Irr(G,\C)\}$生成的子空间在$C^{0}(G,\C)$上稠密\\
+则$L^{2}(G)=\widehat{\bigoplus\limits_{\rho\in \Irr(G,\C)}}\rho_{ij}$,即稠密子空间取完备化后得到全空间
+\end{dingli}
+
+\begin{dingyi}
+对Lie群$G$为紧的且为连通的\\
+若对子群$T\leq G$,有$T$为环面,即存在$n\in \N$,有$T\simeq (S^{1})^{n}$\\
+且不存在环面$T'\leq G$,有$T\subsetneq T'\subset G$\\
+则称$T$为Lie群$G$的极大环面\\
+记极大环面$T$的中心化子为$N_{G}(T)=\{g\in G|g^{-1}Tg=T\}$\\
+则称$W=N_{G}(T)/T$为Lie群$G$的Weyl群\\
+则称$\rank(G)=\dim (T)$为Lie群$G$的秩
+\end{dingyi}
+
+\begin{dingli}
+对Lie群$G$为紧的且为连通的\\
+则Lie群$G$的极大环面$T$为极大Abel子群\\
+则对任意Abel子群$S\leq G$,有$Z(S)=\bigcup\limits_{S\subset T \atop T\text{为极大环面}}T$,有$Z(G)=\bigcap\limits_{T\text{为极大环面}}T$\\
+则对任意$g\in G$,存在极大环面$T$,有$g\in T$\\
+则对任意极大环面$T,T'$,存在$g\in G$,有$T=g^{-1}Tg$
+\end{dingli}
+
+\begin{dingli}
+对Lie群$G$为紧的且为连通的,则Weyl群$W=N_{G}(T)/T$为有限群
+\end{dingli}
+
+\begin{dingyi}
+对Lie群$G$和其Lie代数$LG$\\
+对Lie群$G$的表示$(\rho,V)$,有群作用$G\times V\to V$\\
+则对任意$X\in LG,v\in V$,有Lie微分$L_{X}v=\lim\limits_{t\to 0}\frac{exp(tX)v-v}{t}$\\
+有$(X,v)\mapsto L_{X}v$为双线性映射且$L_{X}L_{Y}v-L_{Y}L_{X}v=L_{[X,Y]}v$\\
+则有自然诱导的群作用$LG\times V\to V$,则称为表示的微分形式
+\end{dingyi}
+
+\begin{dingyi}
+对Lie群$G$和其Lie代数$LG$\\
+对任意环面$T\leq G$,有复$T$模$V$和不可约特征$\theta:T\to S^{1}$\\
+若存在$v\in V,v\neq 0$,对任意$t\in T$,有$t(v)=\theta(t)v$\\
+则称$\theta$为$V$的权\\
+则称$V(\theta)=\{v\in V|\text{对任意}t\in T,\text{有}t(v)=\theta(t)v\}$为$V$的权空间\\
+将$(\theta,S^{1})$视为表示,则有微分形式$LT\times S^{1}\to S^{1}$\\
+有诱导的微权$L\theta:LT\to \i\R=LS^{1}$\\
+有微权空间$V(L\theta)=\{v\in V|\text{对任意}X\in LT,\text{有}L_{X}v=L\theta(X)v\}$
+\end{dingyi}
+
+\begin{dingli}
+对Lie群$G$和其Lie代数$LG$\\
+有双射$\theta\to L\theta$且$V(\theta)=V(L\theta)$
+\end{dingli}
+
+\begin{dingli}
+对Lie群$G$为紧的且为连通的\\
+若$\rank(G)=\dim(T)=1$,则$G\simeq \SU(2)$或$G\simeq \SO(3)$且$LG\simeq \sl(2,\C)$
+\end{dingli}
+
+\begin{dingyi}
+对$\R$上有限维线性空间$V$\\
+若对$\sigma\in \Aut(V)$,对给定的$\alpha\in V$与超平面$H_{\alpha}$\\
+有$\sigma(\alpha)=-\alpha$且对任意$\beta\in H_{\alpha}$,有$\sigma(\beta)=\beta$\\
+则称$\alpha$为反射,记为$\sigma=\sigma_{\alpha}$
+\end{dingyi}
+
+\begin{zhu}
+若$V$上有内积$\langle\ ,\ \rangle$,则对给定$\alpha\in V$,对任意$\beta\in V$,有$\sigma_{\alpha}(\beta)=\beta-2\frac{\langle\beta,\alpha\rangle}{\langle\alpha,\alpha\rangle}\alpha$为反射
+\end{zhu}
+
+\begin{dingyi}
+对$\R$上有限维线性空间$V$,有内积$\langle\ ,\ \rangle$\\
+若有子集$R\subset V$,有$|R|<\infty,0\notin R$且$R$可张成$V$\\
+有若$\alpha\in R$,则有$-\alpha\in R$且对任意$n\in \Z,n\neq \pm 1$,有$n\alpha\notin R$\\
+有若$\alpha\in R$,则有反射$\sigma_{\alpha}$,对任意$\beta\in R$,有$\sigma(\beta)=\beta$\\
+有若$\alpha,\beta\in R$,则$N_{\alpha,\beta}=2\frac{\langle\beta,\alpha\rangle}{\langle\beta,\beta\rangle}$\\
+则称$R$为根系,则称$\alpha\in R$为根,则称$R$的秩为$\rank R=\dim V$\\
+若有$W\leq \Aut(V)$且$W$由$\{\sigma_{\alpha}|\alpha\in R\}$生成\\
+则称$W$为Weyl群
+\end{dingyi}
+
+\begin{dingli}
+对Lie群$G$为紧的且为连通的\\
+若有极大环面$T$且$R$为所有$LT$的实特征$\alpha$构成的集合,有$V\subset LT^{*}$为由$R$张成的子空间\\
+则$R$为$V$的根系且$G$的Weyl群$N_{G}(T)/T$与根系$R$诱导生成的Weyl群$W$相同
+\end{dingli}
+
+\begin{dingyi}
+对$\R$上有限维线性空间$V$,有内积$\langle\ ,\ \rangle$\\
+若有根系$R$和其子集$\Delta\subset R$,有$\Delta$为$V$的一组基\\
+有对任意$\beta\in R$,有$\beta=\sum\limits_{\alpha\in R}k_{\alpha}\alpha$,其中$k_{\alpha}\in \Z$\\
+且对任意$\alpha\in R$,有$k_{\alpha}\geq 0$均成立或有$k_{\alpha}\leq 0$均成立\\
+则称$\Delta$为$R$的贝斯
+\end{dingyi}
+
+\begin{dingli}
+对$\R$上有限维线性空间$V$,有内积$\langle\ ,\ \rangle$\\
+对任意根系$R$,存在$\Delta\subset R$为$R$的贝斯
+\end{dingli}
+
+\begin{zhu}
+对$\alpha\in R$,定义超平面$H_{\alpha}=\{\beta\in V|\langle\beta,\alpha\rangle=0\}$\\
+对正则元$\gamma\in V/\bigcup\limits_{\alpha\in R}H_{\alpha}$,记$R^{+}=\{\alpha\in R|\langle\alpha,\gamma\rangle>0\}$\\
+若对$\alpha\in R^{+}$,不存在$\alpha_1,\alpha_2\in R^{+}$,有$\alpha=\alpha_1+\alpha_2$,则称$\alpha$为不可分解的\\
+则$\Delta^{+}=\{\alpha\in R^{+}|\alpha\text{为不可分解的}\}$为$R$的贝斯
+\end{zhu}
+
+\begin{dingli}
+对$\R$上有限维线性空间$V$,有内积$\langle\ ,\ \rangle$\\
+若有根系$R$,则对任意$\alpha,\beta\in R$,有$N_{\alpha,\beta}N_{\beta,\alpha}=0,1,2,3,4$\\
+若任意$\alpha,\beta\in R,\alpha \not\parallel \beta$\\
+则若$\langle \alpha,\beta \rangle>0$,有$\beta-\alpha \in R$\\
+则若$\langle \alpha,\beta \rangle<0$,有$\beta+\alpha \in R$
+\end{dingli}
+
+\begin{dingyi}
+对$\R$上有限维线性空间$V$,有内积$\langle\ ,\ \rangle$\\
+若有根系$R$和其贝斯$\Delta$\\
+则称$(N_{\alpha,\beta})_{\alpha,\beta\in \Delta}$为Cartan矩阵\\
+若记$\alpha\in\Delta$为$\circ$,记连接$\circ$的边的数量为$N_{\alpha,\beta}N_{\beta,\alpha}$\\
+则称此图为Coxeter图\\
+若Coxeter图中,在边的数量为$2$或$3$上以$<$或$>$指向短根$($内积诱导度量$)$\\
+则称此图为Dynkin表
+\end{dingyi}
+
+
+
+%\end{document}

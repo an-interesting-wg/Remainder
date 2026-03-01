@@ -1,0 +1,1182 @@
+%\documentclass[12pt,oneside,a4paper]{book}
+
+%\usepackage{amsmath}
+%\usepackage{mathtools}
+%\usepackage{amsfonts}
+%\usepackage{unicode-math}
+%\usepackage{geometry}
+%\usepackage{ctex}
+
+%\begin{document}
+
+%\setcounter{chapter}{0}
+\setcounter{section}{0}
+\setcounter{subsection}{0}
+
+\chapter{模}
+
+\begin{dingyi}
+对含幺环$R$和Abel群$M$\\
+定义映射$R\times M\to M,(r,m)\mapsto r(m)$,对任意$r_1,r_2\in R$和$a,b\in M$\\
+有$r_1(a+b)=r_1(a)+r_1(b),(r_1+r_2)(a)=r_1(a)+r_2(a),1(a)=a$\\
+若$(r_2r_1)(a)=r_2(r_1(a))$,则称$M$为环$R$的左模,亦称$M$为左$R$模\\
+若$(r_2r_1)(a)=r_1(r_2(a))$,则称$M$为环$R$的右模,亦称$M$为右$R$模\\
+特别地,若$R$为交换含幺环,则左$R$模$\Leftrightarrow$右$R$模$\Leftrightarrow \ R$模\\
+特别地,若$R=\{0\}$,则称$M$为零模
+\end{dingyi}
+
+\begin{zhu}
+以下模一般为左模
+\end{zhu}
+
+\begin{dingyi}
+对$R$模$M$\\
+若有$N\subset M$且$N$为$R$模,则称$N$为$M$的子模\\
+$\Leftrightarrow$有$N\leq M$且$N$在$R$作用下封闭\\
+若有$N$为$M$的子模,则有$N\lhd M$,有商群$M/N$\\
+定义映射$R\times M/N\to M/N,(r,a+N)\mapsto r(a)+N$\\
+则$M/N$为$R$模,称为$M$关于$N$的商模
+\end{dingyi}
+
+\begin{dingyi}
+对$R$模$M$\\
+对任意$a\in M$,包含$a$的最小子模称为由$a$生成的子模,记为$R(a)$\\
+对任意$S\subset M$,包含$S$的最小子模称为由$S$生成的子模,记为$R(S)$\\
+若$M=R(S),|S|<\infty$,则称子集$S$为模$M$的生成元集$($势最小称为极小生成元集$)$\\
+则称$M$为有限生成模,否则为无限生成模\\
+特别地,若$M=Ra$,则称$M$为循环模
+\end{dingyi}
+
+\begin{dingyi}
+对$R$模$M_i$,其中$i\in I$\\
+有$M=\{(\cdots,x_i,\cdots)|x_i\in M_i\text{且只有有限多个}x_i\neq 0\}$和$M'=\{(\cdots,x_i,\cdots)|x_i\in M_i\}$\\
+在$M$和$M'$上定义加法:$(\cdots,x_i,\cdots)+(\cdots,y_i,\cdots)=(\cdots,x_i+y_i,\cdots)$\\
+若对任意$r\in R$,有$r((\cdots,x_i,\cdots))=(\cdots,r(x_i),\cdots)$\\
+则称$R$模$M$为$M_i$的直和,记为$\bigoplus\limits_{i\in I}M_i$,则称$R$模$M'$为$M_i$的直积,记为$\prod\limits_{i\in I}M_i$ 
+\end{dingyi}
+
+\begin{zhu}
+若$I$为有限集,则$M=M'$,若$I$为无限集,则$M$为$M'$的子模
+\end{zhu}
+
+\begin{dingyi}
+对$R$模$M$和$T$\\
+有映射$f:M\to T$满足对任意$r\in R$和$a,b\in M$\\
+有$f(a+b)=f(a)+f(b)$且$f(r(a))=r(f(a))$\\
+则称$f$为$M\to T$的模同态,若$f$为双射,则$f$为$M\to T$的模同构\\
+所有$M\to T$的模同态构成集合$\Hom_{R}(M,T)$,在自然加法意义下构成Abel群\\
+特别地,若$T=M$,记$\End_{R}(M)=\Hom_{R}(M,T)$,在自然加法和映射复合下构成环\\
+模同态$f$的核$\Ker f=\{a\in M|f(a)=0\}$\\
+模同态$f$的像$\Im f=\{t\in T|\text{存在}a\in M,\text{有}f(a)=t\}$
+\end{dingyi}
+
+\begin{dingli}
+同态基本定理:\\
+对模同态$f:M\to T$,有$M/\Ker f\cong \Im f$
+\end{dingli}
+
+\begin{dingli}
+第一同构定理:\\
+对$R$模$M$和其子模$H$和$N$\\
+有$H\cap N$为$N$的子模且$N$为$NH$的子模且$NH$为$M$的子模\\
+则$NH/N\cong H/(H\cap N)$
+\end{dingli}
+
+\begin{dingli}
+第二同构定理:\\
+对$R$模$M$和其子模$H$和$N$\\
+若$N\leq H$,则$M/H\cong (M/N)/(H/N)$
+\end{dingli}
+
+\begin{dingli}
+第三同构定理:\\
+对$R$模$M$和其子模$N$\\
+记$\mathscr{N}=\{H|H\text{为包含}N\text{的}M\text{的子模}\}$且$\overline{\mathscr{N}}=\{\overline{H}|\overline{H}\text{为商模}G/N\text{的子模}\}$\\
+则有双射$f:\mathscr{N}\to \overline{\mathscr{N}},H\mapsto H/N=\overline{H}$
+\end{dingli}
+
+\begin{dingli}
+对$R$模$M_1,M_2,\cdots,M_n$\\
+则映射$f:\bigoplus\limits_{i=1}^{n}M_i\to \sum\limits_{i=1}^{n}M_i,(x_1,\cdots,x_n)\mapsto x_1+\cdots+x_n$为模同构\\
+$\Leftrightarrow$对任意$x\in \sum\limits_{i=1}^{n}M_i$,有唯一表示$x=\sum\limits_{i=1}^{n}x_i$,其中$x_i\in M_i$\\
+$\Leftrightarrow$对$0\in \sum\limits_{i=1}^{n}M_i$,有唯一表示$0=\sum\limits_{i=1}^{n}x_i$,其中$x_i=0$\\
+$\Leftrightarrow$对任意$j=1,\cdots,n$,有$M_j\cap\sum\limits_{i=1\atop i\neq j}^{n}M_i=\varnothing$
+\end{dingli}
+
+\begin{dingyi}
+对$R$模$M$\\
+对子集$S\subset M$,有对任意$\{x_1,\cdots,x_n\}\subset S$\\
+若对任意$r_1,\cdots,r_n\in R$,若$r_1(x_1)+\cdots+r_n(x_n)=0$,有$r_1=\cdots=r_n=0$\\
+则称子集$S$为$R$-线性无关,否则为$R$-线性相关\\
+若$R$模$M$有$R$-线性无关生成元集$S$\\
+则称$S$为$M$的$R$-基,称$M$为自由模
+\end{dingyi}
+
+\begin{tuilun}
+对$R$模$M$,有$M$有$R$-基$\{x_1,\cdots,x_n\}$当且仅当$M=\bigoplus\limits_{i=1}^{n}R(x_i)$
+\end{tuilun}
+
+\begin{dingli}
+对$R$模$M$\\
+若环$R$交换含幺且模$M$为有限生成自由模,则模$M$的任意$R$-基的元素个数相同
+\end{dingli}
+
+\begin{dingyi}
+对$R$模$M$\\
+若环$R$交换含幺且模$M$为有限生成自由模,有$S$为$M$的$R$-基\\
+则称$M$的$R$秩为$S$的元素个数,记为$\rank_{R}(M)=|S|$\\
+特别地,零模的$R$秩为$0$
+\end{dingyi}
+
+\begin{dingyi}
+对$R$模$M$,其中环$R$为整环\\
+对$a\in M$,若存在$r\in R$,有$r(a)=0$,则称$x\in M$为扭元素,否则为自由元素\\
+若$M$中所有元素均为扭元素,则称$M$为扭模\\
+若$M$中所有非零元素均为自由元素,则称$M$为无扭模
+\end{dingyi}
+
+\begin{tuilun}
+对$R$模$M$,其中环$R$为整环\\
+有$M$的所有扭元素构成$M$的一个子模,称为$M$的扭子模,记为$M_{\tor}$
+\end{tuilun}
+
+\begin{dingli}
+对$R$模$M$,其中环$R$为主理想整环\\
+若$M$为有限生成自由模,则$M$的子模$N$为有限生成自由模且$\rank_{R}(N)\leq \rank_{R}(M)$
+\end{dingli}
+
+\begin{dingli}
+对$R$模$M$,其中环$R$为主理想整环\\
+若$M$为有限生成模,则$M$为自由模当且仅当$M$为无扭模
+\end{dingli}
+
+\begin{dingli}
+对$R$模$M$,其中环$R$为主理想整环\\
+若$M$为有限生成模,则则$M$的子模$N$为有限生成模
+\end{dingli}
+
+\begin{dingli}
+对$R$模$M$,其中环$R$为主理想整环\\
+若$M$为有限生成模,则商模$M/M_{\tor}$为自由模
+\end{dingli}
+
+\begin{dingli}
+对$R$模$M$,其中环$R$为主理想整环\\
+若$M$为有限生成模,则$M$可分解为$M_{\tor}$与一个自由模的直和
+\end{dingli}
+
+\begin{dingyi}
+对$R$模$M$,其中环$R$为主理想整环\\
+若$M$为有限生成模,则商模$M/M_{\tor}$的秩称为$M$的$R$秩,记为$\rank_{R}(M)=\rank_{R}(M/M_{\tor})$
+\end{dingyi}
+
+\begin{dingyi}
+对$R$模$M$,其中环$R$交换含幺\\
+对任意$a\in M$,称$a$的零化子为$\Ann(a)=\{r\in R|r(a)=0\}$\\
+对任意$S\subset M$,称$S$的零化子为$\Ann(S)=\{r\in R|\text{对任意}a\in S,\text{有}r(a)=0\}$\\
+则$\Ann(x)=\Ann(R(x))$和$\Ann(S)$为环$R$的理想\\
+特别地,若$\Ann(S)=\{0\}$,则称$S$为忠实的\\
+对$a\in M$,若存在$p\in R$和$e\in \N^*$,有$\Ann(a)=(p^e)$\\
+则称$e$为$a$的$p$零化指数,记$e=e_{p}(a)$\\
+对环$R$的主理想$(r)$,称$r$所零化的子模为$\M(r)=\{a\in M|r(a)=0\}$\\
+对环$R$的理想$I$,称$I$所零化的子模为$\M(I)=\{a\in M|\text{对任意}r\in I,\text{有}r(a)=0\}$\\
+特别地,对环$R$中素元$p\in R$和$e\in \N^*$,称$\M(p^e)$为$p$模
+\end{dingyi}
+
+\begin{tuilun}
+有$\Ann(S)=\bigcap\limits_{a\in S}\Ann(a)$且$M=\M(\Ann(M))$
+\end{tuilun}
+
+\begin{dingli}
+对$R$模$M$,其中环$R$为主理想整环\\
+若$M$为非零扭模,则存在$r\in R$,有$r\neq 0$且$r$不可逆,有$\Ann(M)=(r)$
+\end{dingli}
+
+\begin{dingli}
+对$R$模$M$,其中环$R$为主理想整环\\
+若对$a,b\in R$,有$(a,b)=1$,则$\M(ab)=\M(a)\bigoplus\M(b)$
+\end{dingli}
+
+\begin{dingli}
+对$R$模$M$,其中环$R$为主理想整环\\
+若$M$为有限生成非零扭模,则存在$p_i\in R$为素元和$e_i\in \N^*$,有$M=\bigoplus\limits_{i=1}^{n}\M(p_i^{e_i})$
+\end{dingli}
+
+\begin{dingli}
+对$R$模$M$,其中环$R$为主理想整环\\
+若$M$为有限生成$p$模,其中$p$为环$R$素元\\
+则$M$为有限多个循环$p$模的直和且直和因子个数等于极小生成元集的势
+\end{dingli}
+
+\begin{dingli}
+对$R$模$M$,其中环$R$为主理想整环\\
+若$M$为循环模,则$M\cong R/\Ann(M)$\\
+特别地,若$M$为循环$p$模,记$M=R(a)$,则$M\cong R/(p^{e_{p}(a)})$
+\end{dingli}
+
+\begin{dingli}
+对环$R$为主理想整环,有非零素元$p,q\in R$\\
+有域$R/(q)$,有$R/(q)$模$(R/(p^e))/((R/(p^e))q)$,即域$R/(q)$上线性空间\\
+若$p\sim q$,则$\dim_{R/(q)}(R/(p^e))/((R/(p^e))q)=1$\\
+若$p\not\sim q$,则$\dim_{R/(q)}(R/(p^e))/((R/(p^e))q)=0$
+\end{dingli}
+
+\begin{dingli}
+对$R$模$M$,其中环$R$为主理想整环\\
+若$M$为有限生成模,则$M$为一个自由子模和有限多个循环$p$子模的直和\\
+即$M\cong R^r\bigoplus(\bigoplus\limits_{i=1}^{n}(\bigoplus\limits_{j_i=1}^{m_i}(R/(p_i^{j_i}))^{k_{ij_i}}))$,此分解在同构意义下唯一\\
+其中$k_{11},\cdots,k_{1m_1},\cdots,k_{n1},\cdots,n_{nm_n}$为$M$扭子模的初等因子
+\end{dingli}
+
+\begin{dingyi}
+对$R$模$M$\\
+若$R$不能表示为两个非零子模的直和,则称$M$为不可分解模
+\end{dingyi}
+
+\begin{dingli}
+对$R$模$M$,其中环$R$为主理想整环\\
+若$M$为有限生成模,则$M$为不可分解模当且仅当$M$为循环$p$模或秩为$1$的自由模
+\end{dingli}
+
+\begin{dingli}
+对$R$模$M$,其中环$R$为主理想整环\\
+若$M$为有限生成模,则存在$d_i\in R$为不可逆元且$d_i|d_{i+1}$,有在同构意义下唯一的分解\\
+即$M\cong R^r\bigoplus(\bigoplus\limits_{i=1}^{l}R/(d_i))$,其中$d_1,\cdots,d_l$为$M$扭子模的不变因子  
+\end{dingli}
+
+\begin{dingyi}
+对$R$模$M_1,\cdots,M_n$和$N$,其中环$R$交换含幺\\
+若映射$f:M_1\times\cdots\times M_n\to N$满足对任意$i=1,\cdots,n$对任意$r\in R$\\
+有$f(x_1,\cdots,x_{i-1},x_i,x_{i+1}\cdots,x_n)+f(x_1\cdots,x_{i-1},y_i,x_{i+1},\cdots,x_n)$\\
+$=f(x_1,\cdots,x_{i-1},x_i+y_i,x_{i+1},\cdots,x_n)$\\
+有$f(x_1,\cdots,x_{i-1},r(x_i),x_{i+1}\cdots,x_n)=r(f(x_1,\cdots,x_{i-1},x_i,x_{i+1}\cdots,x_n))$\\
+则称$f$为$M_1\times\cdots\times M_n\to N$的$n$重$R$-线性映射
+\end{dingyi}
+
+\begin{zhu}
+此处$M_1\times\cdots\times M_n$仅为笛卡尔积,各元素间并无运算
+\end{zhu}
+
+\begin{dingyi}
+对$R$模$M_1,\cdots,M_n$,其中环$R$交换含幺\\
+若存在偶对$(T,\rho)$,其中$T$为$R$模且$\rho$为$M_1\times\cdots\times M_n\to T$的$n$重$R$-线性映射\\
+对任意$R$模$N$和任意$n$重$R$-线性映射$\phi:M_1\times\cdots\times M_n\to N$\\
+存在唯一模同态$\varphi:T\to N$,有$\varphi\circ\rho=\phi$\\
+则称$(T,\rho)$为$M_1,\cdots,M_n$在$R$上张量积,记为$M_1\otimes_{R}\cdots\otimes_{R}M_n$
+\end{dingyi}
+
+\begin{zhu}一般地,以$M_1\otimes_{R}\cdots\otimes_{R}M_n$表示$T$\\
+记任意$(x_1,\cdot,x_n)\in M_1\times\cdots\times M_n$在$\rho$下的像为$x_1\otimes\cdots\otimes x_n$
+\end{zhu}
+
+\begin{dingli}
+对$R$模$M$和$N$,其中环$R$交换含幺\\
+有张量积$M\otimes_{R}N$存在且在同构意义下唯一\\
+记$F=\{\sum\limits_{i=1}^{m}r_i(x_i,y_i)|(x_i,y_i)\in M\times N,r_i\in R,m\in \N^*\}$\\
+即为以笛卡尔积$M\times N$为生成元集的自由模,此时不同$(x_i,y_i)$间无任何$R$-线性关系\\
+在$F$上定义加法和模乘:\\
+$\sum\limits_{i=1}^{m}r_i(x_i,y_i)+\sum\limits_{i=1}^{m}r_i'(x_i,y_i)=\sum\limits_{i=1}^{m}(r_i+r_i')(x_i,y_i),r'(\sum\limits_{i=1}^{m}r_i(x_i,y_i))=\sum\limits_{i=1}^{m}(r'r_i)(x_i,y_i)$\\
+记$S$为$F$由以下元素生成的子模,其中$x,x'\in M,y,y'\in N,r\in R$\\
+有$(x+x',y)-(x,y)-(x',y),(x,y+y')-(x,y)-(x,y'),r(x,y)-(r(x),y),r(x,y)-(x,r(y))$\\
+则有商模$T=F/S$和典范映射$\rho:M\times N\to T,(x_i,y_i)\mapsto \overline{(x_i,y_i)}=x_i\otimes y_i$\\
+则偶对$(T,\rho)$为$M\times N$在$R$上张量积,有存在唯一性
+\end{dingli}
+
+\begin{zhu}
+对张量积$M\otimes_{R}N=T=\{\sum\limits_{i=1}^{m}x_i\otimes y_i|x_i\in M,y_i\in N,m\in \N^*\}$\\
+对任意$x,x'\in M,y,y'\in N,r\in R$,有$0\otimes y=x\otimes 0=0_{\otimes}$,其中$0_{\otimes}$为$M\otimes_{R}N$中零元\\
+有$r(x\otimes y)=r(x)\otimes y=x\otimes r(y)$\\
+有$x\otimes(y+y')=x\otimes y+x\otimes y'$\\
+有$(x+x')\otimes y=x\otimes y+x'\otimes y$
+\end{zhu}
+
+\begin{dingli}
+对$R$模$M$和$N$和$P$,其中环$R$交换含幺\\
+有$R\otimes_{R}M\cong M$\\
+有$M\otimes_{R}N\cong N\otimes_{R}M$\\
+有$(M\otimes_{R}N)\otimes_{R}P\cong M\otimes_{R}(N\otimes_{R}P)$\\
+有$(M\oplus N)\otimes_{R} P\cong (M\otimes_{R}P)\oplus(N\otimes_{R}P)$
+\end{dingli}
+
+\begin{dingli}
+对$R$模$M$和$N$和$S$模$N$和$P$,其中环$R$和$S$交换含幺\\
+有$(M\otimes_{R}N)\otimes_{S}P\cong M\otimes_{R}(N\otimes_{S}P)$
+\end{dingli}
+
+\begin{dingyi}
+对$R$模同态$f:M\to M'$和$g:N\to N'$\\
+有$R$-双线性映射$M\times N\to M'\otimes N',(x,y)\mapsto f(x)\otimes g(y)$\\
+有$R$模同态$h:M\otimes N\to M'\otimes N',x\otimes y\mapsto f(x)\otimes g(y)$\\
+则称模同态$h$为$f$和$g$的张量积,记为$h=f\otimes g$
+\end{dingyi}
+
+\begin{dingyi}
+对环$R$交换含幺\\
+若子集$S\subset R$,有$1\in S$且对任意$a,b\in S$,有$ab\in S$\\
+则称$S$为$R$的乘性子集\\
+定义$R\times S$上等价关系$($反身性,对称性,传递性$)$:\\
+有$(a,s)\sim (b,t)$当且仅当存在$u\in S$,有$u(at-bs)=0$\\
+考虑$R\times S$在等价关系下等价类构成的集合$R\times S/\sim$定义加法和乘法\\
+有$\overline{(r_1,s_1)}+\overline{(r_2,s_2)}=\overline{(r_1s_2+r_2s_1,s_1s_2)}$且$\overline{(r_1,s_1)}\cdot \overline{(r_2,s_2)}=\overline{(r_1r_2,s_1s_2)}$\\
+则$R\times S/\sim$关于加法和乘法构成交换幺环,称为$R$关于$S$的局部化,记为$S^{-1}R$
+\end{dingyi}
+
+\begin{zhu}
+一般记等价类$\overline{(r,s)}=\frac{r}{s}$,特别地,有$S^{-1}R\cong\{0\}$$\Leftrightarrow$$\frac{1}{1}\sim \frac{0}{s}$$\Leftrightarrow$$0\in S$
+\end{zhu}
+
+\begin{dingyi}
+对环$R$交换含幺\\
+对任意$f\in R$,有乘性子集$S=\{f^{n}|n\in \N\}$,记$R_{f}=S^{-1}R=\{\frac{r}{f^{n}}|r\in R,n\in \N\}$\\
+对任意$\p\in \Spec R$,有乘性子集$S=R\backslash\p$,记$R_{\p}=S^{-1}R=\{\frac{r}{s}|r\in R,s\in S\}$\\
+在$R_{\p}$中,有唯一极大理想$I=\{\frac{p}{s}|p\in \p,s\in S\}=\pi(\p)R_{\p}$,有$R_{\p}/I$为域\\
+对乘性子集$S=\{r\in R|r\text{不为零因子}\}$,称$S^{-1}R$为$R$的完全商环,有$\pi$为单射\\
+特别地,若$R$为整环,则$S=R\backslash\{0\}$,称$S^{-1}R$为$R$的分式域,记为$\Frac R$
+\end{dingyi}
+
+\begin{tuilun}
+对局部化$S^{-1}R$\\
+有自然同态$\pi:R\to S^{-1}R,r\mapsto \frac{r}{1}$\\
+若$r\in \Ker \pi$,则有$\frac{r}{1}\sim \frac{0}{1}$,存在$s\in S$,有$rs=0$\\
+对任意$s\in S$,有$\pi(s)\in S^{-1}R$为环$S^{-1}R$的单位\\
+对任意$x\in S^{-1}R$,存在$r\in R,s\in S$,有以下表示$x=\frac{r}{s}=\pi(r)\pi(s)^{-1}$
+\end{tuilun}
+
+\begin{dingli}
+对分式化$S^{-1}R$和环同态$f:R\to R'$\\
+存在唯一环同态$g:S^{-1}R\to R'$,有$f=g\circ \pi$\\
+特别地,若满足以下条件:\\
+若$r\in \Ker f$,则存在$s\in S$,有$rs=0$\\
+对任意$s\in S$,有$f(s)\in R'$为单位\\
+对任意$r'\in R'$,存在$r\in R,s\in S$,有以下表示$r'=f(r)f(s)^{-1}$\\
+则有$R'\cong S^{-1}R$
+\end{dingli}
+
+\begin{dingyi}
+对$R$模$M$和$R$的乘性子集$S$,其中环$R$交换含幺\\
+定义$M\times S$上等价关系$($反身性,对称性,传递性$)$:\\
+有$(a,s)\sim (b,t)$当且仅当存在$u\in S$,有$u(t(a)-s(b))=0$\\
+考虑$M\times S$在等价关系上构成的集合定义加法和模乘:\\
+有$\frac{a}{s}+\frac{b}{t}=\frac{t(a)+s(b)}{st},\frac{r}{t}(\frac{a}{s})=\frac{r(a)}{ts}$\\
+则$S^{-1}M$为$S^{-1}R$模\\
+特别地,对$\p\in \Spec R$和$\m\in \Max R$,由上述定义可得到$R_{\p}$模$M_{\p}$和$R_{\m}$模$M_{\m}$
+\end{dingyi}
+
+\begin{dingli}
+对$R$模$M$和其子模$N$和$P$,其中环$R$交换含幺且有乘性子集$S$\\
+有$S^{-1}(N+P)=S^{-1}N+S^{-1}P$\\
+有$S^{-1}(N\cap P)=S^{-1}N\cap S^{-1}P$\\
+有$S^{-1}(M/N)\cong S^{-1}M/S^{-1}N$
+\end{dingli}
+
+\begin{dingyi}
+对环同态$f:R\to R'$\\
+对环$R$的理想$I$,则记环$R'$中由$f(I)$生成的理想为$I^{e}=(f(I))$,称为理想的扩张\\
+对环$R'$的理想$I'$,则记环$R$的理想$f^{-1}(I)$为$I^{c}=f^{-1}(I)$,称为理想的局限\\
+一般地,有$I\subset I^{ec},I'^{ce}\subset I'$且$I^{e}=I^{ece},I'^{c}=I'^{cec}$
+\end{dingyi}
+
+\begin{dingli}
+对环$R$和其局部化$S^{-1}R$\\
+有自然同态$\pi:R\to S^{-1}R$\\
+对环$S^{-1}R$的理想$J$,有$J=J^{ce}$\\
+对环$R$的理想$I$,有$I^{e}=S^{-1}I$且$I^{ec}=\bigcup\limits_{s\in S}\{r\in R|rs\in I\}$\\
+对环$I$的理想$I$的$S^{-1}$局部化,关于有限的和,积,交,根交换\\
+对环$R$的理想$I$\\
+则存在环$S^{-1}R$的理想$J$,有$J^{c}=I$当且仅当$S$中元素均不为$R/I$的零因子\\
+对$\Spec S^{-1}R$和$\{\p\in \Spec R|\p\cap S=\varnothing\}$有一一对应\\
+特别地,对$\Spec R_{\p_0}$和$\{\p\in \Spec R|\p_0\subset\p\}$有一一对应
+\end{dingli}
+
+\begin{tuilun}
+对环同态$f:R\to R'$\\
+对$\p\in \Spec R$,存在$\p'\in \Spec R'$,有$\p'^{c}=\p$当且仅当$\p=\p^{ec}$
+\end{tuilun}
+
+\chapter{环}
+
+\begin{zhu}
+以下所有的环均为交换含幺
+\end{zhu}
+
+\begin{dingyi}
+对环$R$\\
+若对真理想$\p$,对任意$ab\in \p$,有$a\in \p$或$b\in \p$,则称$\p$为环$R$的素理想\\
+$\Leftrightarrow$商环$R/\p$为整环\\
+环$R$上所有素理想构成集合$\Spec R$,称为环$R$的素谱\\
+若对真理想$\m$,对任意理想$I\supsetneq \m$,有$I=R$,则称$\m$为环$R$的极大理想\\
+$\Leftrightarrow$商环$R/\m$为域\\
+环$R$上所有极大理想构成集合$\Max R$,称为环$R$的极大谱
+\end{dingyi}
+
+\begin{dingli}
+对环$R$\\
+若$R\neq\{0\}$,则存在$\m$为环$R$的极大理想\\
+对任意环$R$的理想$I$,存在极大理想$\m$,有$I\subset \m$\\
+特别地,对任意$r\in R$且$r\notin R^{\times}$,存在极大理想$\m$,有$r\subset \m$
+\end{dingli}
+
+\begin{dingli}
+对环同态$f:R\to R'$\\
+若$\p'$为环$R'$的素理想,则有$\p=f^{-1}(\p')$为环$R$的素理想
+\end{dingli}
+
+\begin{zhu}
+上述定理对极大理想不成立,例如$\Z\to \Q$,其中$\p=\p'=\{0\}$
+\end{zhu}
+
+\begin{dingyi}
+对环$R$和其理想$I$和$J$\\
+则称$(I:J)=\{x\in R|xJ\subset I\}$为理想的商\\
+特别地,若$I=\{0\}$,则称$\Ann(J)=(I:J)$为$J$的零化子\\
+特别地,若$J=(x)$,则记$(I:x)=(I:J)$
+\end{dingyi}
+
+\begin{dingli}
+对环$R$和其理想$I$和$J$和$K$和$I_i$和$J_j$\\
+有$(I:J)$为理想且$I\subset (I:J)$且$J(I:J)\subset I$\\
+有$((I:J):K)=(I:JK)=((I:K):J)$\\
+有$(\bigcap\limits_{i=1}^{n}I_i:J)=\bigcap\limits_{i=1}^{n}(I_i:J)$\\
+有$(I:\sum\limits_{j=1}^{m}J_i)=\bigcap\limits_{j=1}^{m}(I:J_j)$
+\end{dingli}
+
+\begin{dingyi}
+对环$R$\\
+对$r\in R$,若存在$n\in \N^*$,有$r^n=0$,则称$r$为幂零元\\
+环$R$上所有幂零元构成集合$\Nil(R)$,此集合为环$R$的理想,称为幂零根\\
+对$r\in R$,若对任意$r'\in R$,有$r'r-1\in R^{\times}$,则称$r$为Jacobson元\\
+环$R$上所有Jacobson元构成集合$\J(R)$,此集合为环$R$的理想,称为Jacobson根
+\end{dingyi}
+
+\begin{dingli}
+对环$R$\\
+有$\Nil(R)=\bigcap\limits_{\p\in \Spec R}\p$,有$\J(R)=\bigcap\limits_{\m\in \Max R}\m$
+\end{dingli}
+
+\begin{dingyi}
+对环$R$\\
+若对任意$r\in R$,若存在$n\in\N^{*}$,有$r^n=0$,则$r=0$,则称$R$为既约环
+\end{dingyi}
+
+\begin{dingli}
+对环$R$,有$R_{red}=R/\Nil(R)$为既约环
+\end{dingli}
+
+\begin{dingyi}
+对环$R$和其理想$I$\\
+则称$I$的根理想为$r(I)=\{x\in R|\text{存在}n\in \N^*,\text{有}x^n\in I\}$
+\end{dingyi}
+
+\begin{dingli}
+对环$R$和其理想$I$和$J$\\
+有$IJ\subset I\cap J,I+J\subset R$\\
+有$r(IJ)=r(I\cap J)=r(I)\cap r(J)$\\
+有$r(I+J)=r(r(I)+r(J))$
+\end{dingli}
+
+\begin{dingyi}
+对环$R$和其子集$M$\\
+定义$V(E)=\{\p\in \Spec R|M\subset \p\}$
+\end{dingyi}
+
+\begin{dingli}
+对环$R$和其子集$M$\\
+有$V(\{0\})=\Spec R,V(\{1\})=\varnothing$\\
+对理想$I=(M)$,有$V(M)=V(I)=V(r(I))$\\
+对理想$I$和$J$,有$V(I\cap J)=V(IJ)=V(I)\cup V(J)$\\
+若$V(I)\subset V(J)$,则$I\subset r(J)$,则$r(I)\subset r(J)$\\
+则$V(I)=V(J)$当且仅当$r(I)=r(J)$\\
+对子集族$M_i,i\in \sum$,有$V(\bigcup\limits_{i\in \sum}M_i)=\bigcap\limits_{i\in \sum}V(M_i)$
+\end{dingli}
+
+\begin{dingyi}
+Zariski拓扑:\\
+对环$R$和其素谱$\Spec R$,可定义拓扑空间,其闭集即为$V(M),M\subset R$\\
+定义开集$D(r)=\Spec R\backslash V(\{r\})=\{\p\in \Spec R|r \notin \p\}$\\
+对素理想$\p\in \Spec R$为拓扑空间中的点,定义闭包$\overline{\{\p\}}=V(\p)$\\
+若素理想$\m\in \Spec R$为极大理想,则$\overline{\{\m\}}=\{\m\}$
+\end{dingyi}
+
+\begin{dingli}
+对环$R$和其元素$r\in R$\\
+有$D(r)\cap D(r')=D(rr')$\\
+有$D(r)=\varnothing$当且仅当$r\in R$为幂零元\\
+有$D(r)=\Spec R$当且仅当$r\in R$为单位\\
+有$\{D(r)|r\in R\}$构成Zariski拓扑的一族开集基
+\end{dingli}
+
+\begin{dingyi}
+对环$R$\\
+若环$R$有且仅有一个极大理想$\m$,则称环$R$为局部环\\
+则称$R/\m$为环$R$的剩余类域
+\end{dingyi}
+
+\begin{dingli}
+对环$R$和其理想$\m$\\
+若对任意$x\in R\backslash \m$,有$x\in R^{\times}$\\
+则环$R$为局部环且$\m$为环$R$的唯一极大理想\\
+若理想$\m$为极大理想且对任意$x\in \m$,有$1+x\in R^{\times}$\\
+则环$R$为局部环
+\end{dingli}
+
+\begin{dingyi}
+对$R$模$M_i$和$R$模同态$f_i:M_{i-1}\to M_i$\\
+有序列$\cdots\stackrel{f_{i-1}}{\longrightarrow} M_{i-1}\stackrel{f_{i}}{\longrightarrow} M_i\stackrel{f_{i+1}}{\longrightarrow} M_{i+1}\stackrel{f_{i+2}}{\longrightarrow}\cdots$\\
+若对任意$i$,有$\Ker f_{i+1}=\Im f_i$,则称此序列为正合列
+\end{dingyi}
+
+\begin{dingli}
+对$R$模$M$和$M',M''$和$R$模同态$f$和$g$\\
+有$\{0\} \longrightarrow M'\stackrel{f}{\longrightarrow} M$为正合列当且仅当$f$为单同态\\
+有$M\stackrel{g}{\longrightarrow} M''\longrightarrow \{0\}$为正合列当且仅当$g$为满同态\\
+有$\{0\} \longrightarrow M'\stackrel{f}{\longrightarrow} M\stackrel{g}{\longrightarrow} M''\longrightarrow \{0\}$为正合列\\
+{}$\,\,\,\,$当且仅当$f$为单同态且$g$为满同态且$\Im f=\Ker g$
+\end{dingli}
+
+\begin{dingli}
+对$R$模$M$和$M',M''$和$R$模同态$f$和$g$\\
+有$M' \longrightarrow M \longrightarrow M'' \longrightarrow \{0\}$为正合列\\
+当且仅当对任意$R$模$N$,有$\{0\} \longrightarrow \Hom_{R}(M'',N) \longrightarrow \Hom_{R}(M,N) \longrightarrow \Hom_{R}(M',N)$\\
+有$\{0\} \longrightarrow M' \longrightarrow M \longrightarrow M''$为正合列\\
+当且仅当对任意$R$模$N$,有$\{0\} \longrightarrow \Hom_{R}(N,M'') \longrightarrow \Hom_{R}(N,M) \longrightarrow \Hom_{R}(N,M')$
+\end{dingli}
+
+\begin{dingli}
+Snake引理:\\
+对$R$模$M,M',M''$和$N,N',N''$和$R$模同态$\alpha,\beta,\mu,\nu$和$f,g,h$,有如下交换图:
+\begin{center}
+    $\begin{tikzcd}[column sep=small]
+    \{0\} \ar[r] & M' \ar[r,"\alpha"] \ar[d,"f"] & M \ar[r,"\beta"] \ar[d,"g"] & M''\ar[r] \ar[d,"h"] & \{0\}\\
+    \{0\} \ar[r] & N' \ar[r,"\mu"]    & N \ar[r,"vu"]    & N''\ar[r] & \{0\}
+    \end{tikzcd}$
+\end{center}
+有正合列$\{0\}\rightarrow\Ker f\stackrel{\alpha'}{\longrightarrow}\Ker g\stackrel{\beta'}{\longrightarrow}\Ker h\stackrel{\delta}{\longrightarrow}\Coker f\stackrel{\mu'}{\longrightarrow}\Coker g\stackrel{\nu'}{\longrightarrow}\Coker h\rightarrow\{0\}$
+\end{dingli}
+
+\begin{dingyi}
+对$R$模$M$\\
+若对任意正合列$\cdots\stackrel{f_{i-1}}{\longrightarrow} N_{i-1}\stackrel{f_{i}}{\longrightarrow} N_i\stackrel{f_{i+1}}{\longrightarrow} N_{i+1}\stackrel{f_{i+2}}{\longrightarrow}\cdots$\\
+有正合列$\cdots\stackrel{f_{i-1}}{\longrightarrow} M\otimes_{R}N_{i-1}\stackrel{f_{i}}{\longrightarrow} M\otimes_{R}N_i\stackrel{f_{i+1}}{\longrightarrow} M\otimes_{R}N_{i+1}\stackrel{f_{i+2}}{\longrightarrow}\cdots$\\
+则称$M$为平坦模\\
+$\Leftrightarrow$对任意正合列$\{0\}\to N'\to N\to N''\to \{0\}$\\{}$\quad$有正合列$\{0\}\to N'\otimes_{R}M\to N\otimes_{R}M\to N''\otimes_{R}M\to \{0\}$\\
+$\Leftrightarrow$对任意正合列$\{0\}\to N'\to N$,有正合列$\{0\}\to N'\otimes_{R}M\to N\otimes_{R}M$\\
+$\Leftrightarrow$对任意有限生成$R$模$N,N'$的正合列$\{0\}\to N'\to N$\\{}$\quad$有正合列$\{0\}\to N'\otimes_{R}M\to N\otimes_{R}M$
+\end{dingyi}
+
+\begin{dingli}
+对$R$模$M$和$R'$\\
+若$M$为平坦模,则$M\otimes_{R}R'$为$R'$上平坦模
+\end{dingli}
+
+\begin{dingyi}
+对环同态$R\to R'$\\
+则此同态使环$R'$有自然的$R$模结构,则称$R'$为$R$-代数
+\end{dingyi}
+
+\begin{dingli}
+对$R$模$M$\\
+有$M=\{0\}$\\
+$\Leftrightarrow$对任意$\p\in \Spec R$,有$M_{\p}=0$\\
+$\Leftrightarrow$对任意$\m\in \Max R$,有$M_{\m}=0$
+\end{dingli}
+
+\begin{dingli}
+对$R$模同态$f:M\to N$\\
+有$f$为单同态/满同态\\
+$\Leftrightarrow$对任意$\p\in \Spec R$,有$f_{\p}:M_{\p}\to N_{\p}$为单同态/满同态\\
+$\Leftrightarrow$对任意$\m\in \Max R$,有$f_{\m}:M_{\m}\to N_{\m}$为单同态/满同态
+\end{dingli}
+
+\begin{dingli}
+对$R$模$M$\\
+有$M$为$R$上平坦模\\
+$\Leftrightarrow$对任意$\p\in \Spec R$,有$M_{\p}$为$R_{\p}$上平坦模\\
+$\Leftrightarrow$对任意$\m\in \Max R$,有$M_{\m}$为$R_{\m}$上平坦模
+\end{dingli}
+
+\begin{dingli}
+Cayley-Hamilton引理:\\
+对$R$模$M$和环$R$的理想$I$和$\varphi\in\Hom_{R}(M,M)$\\
+若$M$为有限生成模且$\varphi(M)\subset I(M)$\\
+则存在首一多项式$f(x)\in I[x]$,有$f(\varphi)=0_{\Hom_{R}}\in \Hom_{R}(M,M)$
+\end{dingli}
+
+\begin{dingli}
+对$R$模$M$和环$R$的理想$I$\\
+若$M$为有限生成模且$I(M)=M$,则存在$r\in R$,有$r-1\in I$且$r(M)=0$
+\end{dingli}
+
+\begin{dingli}
+Nakayama引理:\\
+对$R$模$M$和环$R$的理想$J\subset \J(R)$\\
+若$M$为有限生成$R$模且$J(M)=M$,则$M=0$\\
+若$M$为有限生成$R$模且$M/J(M)$由$\overline{x_i}$有限生成,其中$x_i\in M$,则$M=\sum\limits_{i=1}^{n}R(x_i)$\\
+若$R$模$N\subset M$且$M/N$为有限生成$R$模,若$N+J(M)=M$,则$N=M$
+\end{dingli}
+
+\begin{dingyi}
+对环$R,R'$,其中$R\subset R'$\\
+若对$r'\in R$,存在首一多项式$f(x)\in R[x]$,有$f(r')=0$\\
+则称$r'\in R'$在$R$上整\\
+$\Leftrightarrow$模$R[r']$为有限生成$R$模\\
+$\Leftrightarrow$存在忠实的$R[r']$模$M$为有限生成$R$模\\
+$\Leftrightarrow$存在$R[r']\subset R''\subset R'$,其中$R''$为$R'$的子环且为有限生成$R$模
+\end{dingyi}
+
+\begin{dingli}
+对$R$模$M$和$N$\\
+若$N$在$M$上有限生成且$M$为有限生成$R$模,则$N$为有限生成$R$模
+\end{dingli}
+
+\begin{dingli}
+对环$R,R'$,其中$R\subset R'$\\
+若$r_1',\cdots,r_n'\in R'$在$R$上整,则$R[r_1',\cdots,r_n']$为有限生成$R$模\\
+则$\{r'\in R'|\ r'\text{在}R\text{上整}\}$为环$R'$的子环
+\end{dingli}
+
+\begin{dingyi}
+对环$R,R'$,其中$R\subset R'$和环同态$f:R\to R''$\\
+则称环$\{r'\in R'|\ r'\text{在}R\text{上整}\}$为$R$在$R'$中的整闭包\\
+若$R=\{r'\in R'|\ r'\text{在}R\text{上整}\}$,则称$R$在$R'$上整闭\\
+若$R'=\{r'\in R'|\ r'\text{在}R\text{上整}\}$,则称$R'$在$R$上整\\
+若$R''$在$f(R)$上整,则称$R''$为整$R$-代数
+\end{dingyi}
+
+\begin{dingli}
+对环$R,R'$和环$R$的乘性子集$S$和环$R'$的理想$J$,其中$R\subset R'$\\
+若$R'$在$R$上整,有理想$I=J^{c}=J\cap R$\\
+则$R'/J$在$R/I$上整且$S^{-1}R'$在$S^{-1}R$上整
+\end{dingli}
+
+\begin{dingli}
+对环$R,R',R''$,其中$R\subset R'\subset R''$\\
+若$R''$在$R'$上整且$R'$在$R$上整,则$R''$在$R$上整
+\end{dingli}
+
+\begin{dingli}
+对环$R,R'$和环$R$的乘性子集$S$,其中$R\subset R'$\\
+有$R$在$R'$中的整闭包为$A$,则$S^{-1}A$为$S^{-1}R$在$S^{-1}R'$的整闭包
+\end{dingli}
+
+\begin{dingli}
+对环$R,R'$,其中$R\subset R'$\\
+若$R$为整环且$R'$在$R$上整,则$R$为域当且仅当$R'$为域
+\end{dingli}
+
+\begin{dingli}
+对环$R,R'$,其中$R\subset R'$\\
+若$R'$在$R$上整,则对$\p\in \Spec R$,存在$\p'\in \Spec R'$,有$\p'\cap R=\p$\\
+则$\p'\in\Max R'$当且仅当$\p\in \Max R$\\
+特别地,若$\p'\subset\q'\in\Spec R'$且$\p'\cap R=\q'\cap R=\p$,则$\q'=\p'$
+\end{dingli}
+
+\begin{dingli}
+上升引理:\\
+对环$R,R'$,其中$R\subset R'$\\
+若$R'$在$R$上整且环$R$为整环\\
+若环$R$有素理想$ \p\subset\q$且环$R'$有素理想$\p'$且$\p'\cap R=\p$\\
+则存在环$R'$的素理想$\q'$,有$\q'\cap R=\q$
+\end{dingli}
+
+\begin{dingyi}
+对环$R,R'$,其中$R\subset R'$\\
+若环$R$为整环$R$且$R$在其分式域$K$上整闭,则称$R$是整闭的\\
+对环$R$的理想$I$\\
+若对$r'\in R'$,存在首一多项式$f(x)\in I[x]$,有$f(r')=0$,则称$r'$在$I$上整\\
+则$\{r'\in R'|r'\text{在}I\text{上整}\}$称为$I$的整闭包$($不一定为环$)$
+\end{dingyi}
+
+\begin{dingli}
+对环$R$,若$R$为整环\\
+有$R$是整闭的\\
+$\Leftrightarrow$对任意$\p\in \Spec R$,有$R_{\p}$是整闭的\\
+$\Leftrightarrow$对任意$\m\in \Max R$,有$R_{\m}$是整闭的
+\end{dingli}
+
+\begin{dingli}
+对环$R,R'$,其中$R\subset R'$\\
+若$R$在$R'$上整闭包为$A$,对环$R$的理想$I$,有$I$在$A$中的扩张为$I^{e}$\\
+则$I$在$R'$的整闭包为$r(I^{e})$
+\end{dingli}
+
+\begin{dingli}
+对环$R,R'$,其中$R\subset R'$\\
+若$R'$在$R$上整且环$R$为整环且其分式域为$K$,对环$R$的理想$I$\\
+对任意$r'\in R'$在$I$上整,有$r'$在$K$上极小多项式为首一多项式$f(x)\in r(I)[x]$
+\end{dingli}
+
+\begin{dingli}
+下降引理:\\
+对环$R,R'$,其中$R\subset R'$\\
+若$R'$在$R$上整且环$R$为整环\\
+若环$R$有素理想$\q\subset \p$且环$R'$有素理想$\p'$且$\p'\cap R=\p$\\
+则存在环$R'$的素理想$\q'$,有$\q'\cap R=\q$
+\end{dingli}
+
+\begin{dingyi}
+对环$R$为整环且$K$为其分式域\\
+若对任意$x\in K$,有$x\in R$或$x^{-1}\in R$\\
+则称$R$为$K$的赋值环
+\end{dingyi}
+
+\begin{dingli}
+对环$R$为赋值环且$K$为其分式域\\
+则环$R$为局部环\\
+$\Leftrightarrow$若环$R'$,有$R\subset R'\subset K$,则$R'$为赋值环\\
+$\Leftrightarrow$环$R$为整闭的
+\end{dingli}
+
+\begin{tuilun}
+对环$R$为赋值环和其乘性子集$S$,有$S^{-1}R$为赋值环
+\end{tuilun}
+
+\begin{dingli}
+对环$R$和域$K$,其中$R\subset K$\\
+若$\overline{R}$为$R$在$K$中的整闭包,则$\overline{R}=\bigcap\limits_{R'\text{为赋值环}\atop R\subset R'}R'$
+\end{dingli}
+
+\begin{dingli}
+对环$R,R'$,其中$R\subset R'$且$R$为整环且$R'$在$R$上有限生成\\
+对任意$r'\in R',r'\neq 0$,存在$u\in R,u\neq 0$,对代数闭域$F$\\
+有对任意同态$f:R\to F$,有$f(u)\neq 0$\\
+有$f$可延拓到$R'\to F$上为$f'$,有$f'(u')\neq 0$
+\end{dingli}
+
+\begin{dingli}
+Hilbert零点定理:\\
+对域$k$和有限生成$k$-代数$R$\\
+若$R$为域,则$R/k$为有限扩张\\
+若$k$为代数闭域,则$k[x_1,\cdots,x_n]$的极大理想为$(x_1-a_1,\cdots,x_n-a_n)$,其中$a_i\in k$
+\end{dingli}
+
+\begin{dingyi}
+对环$R$和其理想$\q$和其根理想$r(\q)=\p$\\
+若$\q\neq (1)$且若$xy\in \q$,则$x\in \q$或$y\in r(\q)$\\
+则称$\q$为准素理想,特别地,称$\q$为$\p$-准素的\\
+$\Leftrightarrow$商环$R/\q\neq \{0\}$中的零因子均为幂零元
+\end{dingyi}
+
+\begin{dingli}
+对环$R$和其理想$\q$\\
+若$\q$为准素理想,则$r(\q)$为包含$\q$的极小素理想\\
+若$r(\q)$为极大理想,则$\q$为准素理想
+\end{dingli}
+
+\begin{dingli}
+对环$R$和其理想$\q_1,\q_2$\\
+若$\q_1,\q_2$为准素理想,则称$\q_1\cap\q_2$为准素理想
+\end{dingli}
+
+\begin{dingyi}
+对环$R$和其理想$I$\\
+若存在$\q_1,\cdots,\q_n$为准素理想,有$I=\bigcap\limits_{i=1}^{n}\q_i$\\
+则称$I$为可分解的,记$I=\bigcap\limits_{i=1}^{n}\q_i$为$I$的准素分解\\
+若对任意$j\neq k$,有$r(\q_j)\neq r(\q_k)$且$\bigcap\limits_{i=1\atop i\neq j}^{n}\q_i\not\subset\q_j$\\
+则称$I=\bigcap\limits_{i=1}^{n}\q_i$为$I$的极小准素分解
+\end{dingyi}
+
+\begin{dingli}
+对环$R$和其理想$\q$,其中$\q$为$\p$-准素理想\\
+若$x\in\q$,则$(\q:x)=R$\\
+若$x\notin\q$,则$(\q:x)$为$\p$-准素的\\
+若$x\notin\p$,则$(\q:x)=\q$
+\end{dingli}
+
+\begin{dingli}
+对环$R$和其理想$I$\\
+若$I$为可分解的且$I$有极小准素分解$I=\bigcap\limits_{i=1}^{n}\q_i$\\
+则$\{\ r((I:x))\ |\ x\in R\text{且}r((I:x))\text{为素理想}\}=\{\ r(\q_i)\ |\ i=1,\cdots,n\}$\\
+此集合与分解无关
+\end{dingli}
+
+\begin{dingyi}
+对环$R$和其理想$I$\\
+若存在$I_1,I_2$,有$I=I_1\cap I_2$,则$I=I_1$或$I=I_2$\\
+则称$I$为不可约理想\\
+$\Leftrightarrow$商环$R/I$中$\{0\}$为不可约理想\\
+$\Leftrightarrow$有$r(I)$为环$R$的素理想
+\end{dingyi}
+
+\begin{tuilun}
+对环$R$,若$\p\in\Spec R$,则$\p$为不可约理想
+\end{tuilun}
+
+\chapter{诺}
+
+\begin{dingyi}
+对偏序集$(\sum,\leq)$,其中$x_i\in\sum$\\
+则称升链为$x_1\leq x_2\leq \cdots \leq x_n\leq \cdots$\\
+若存在$N>0$,对任意$n\geq N$,有$x_{n+1}=x_n$,则称升链稳定\\
+则称降链为$x_1\geq x_2\geq \cdots \geq x_n\geq \cdots$\\
+若存在$N>0$,对任意$n\geq N$,有$x_{n+1}=x_n$,则称降链稳定
+\end{dingyi}
+
+\begin{dingli}
+对偏序集$(\sum,\leq)$\\
+有升链条件:$\sum$中任意升链稳定当且仅当$\sum$中任意非空子集有极大元\\
+有降链条件:$\sum$中任意降链稳定当且仅当$\sum$中任意非空子集有极小元
+\end{dingli}
+
+\begin{dingyi}
+对拓扑空间$X$以包含关系$\subset$作为偏序关系构成偏序集\\
+若开集满足升链条件$\Leftrightarrow$闭集满足降链条件\\
+则称$X$为Noether空间
+\end{dingyi}
+
+\begin{dingli}
+对Noether空间$X_i$\\
+有$X_i$的子空间$Y_i$为Noether空间\\
+有$X=\bigcup\limits_{i=1}^{n}X_i$为Noether空间\\
+有$X_i$为拟紧的,即对任意$X=\bigcup\limits_{k\in I}U_k$,其中$U_k$为开集,有有限子集$J\subset I$,有$X=\bigcup\limits_{j\in J}U_j$\\
+有$X_i$只有有限个不可约分支
+\end{dingli}
+
+\begin{dingyi}
+对环$R$和$R$模$M$\\
+若环$R$的理想在包含关系下满足升链条件,则称$R$为Noether环\\
+若环$R$的理想在包含关系下满足降链条件,则称$R$为Artin环\\
+若模$M$的子模在包含关系下满足升链条件,则称$M$为Noether模\\
+若模$M$的子模在包含关系下满足降链条件,则称$M$为Artin模
+\end{dingyi}
+
+\begin{dingli}
+对环$R$和$R$模$M$\\
+有$M$为Noether模当且仅当$M$的任意子模均为有限生成模\\
+有$R$为Noether环当且仅当$R$的任意理想均为有限生成的
+\end{dingli}
+
+\begin{dingli}
+对Noether环$R$,有$\Spec R$为Noether空间
+\end{dingli}
+
+\begin{dingli}
+对$R$模$M,M',M''$\\
+有正合列$\{0\}\to M'\to M\to M''\to\{0\}$\\
+有$M$为Noether模当且仅当$M',M''$为Noether模\\
+有$M$为Artin模当且仅当$M',M''$为Artin模
+\end{dingli}
+
+\begin{dingli}
+对$R$模$M,M',M''$,其中$M=M'\oplus M''$\\
+有$M$为Noether模当且仅当$M',M''$为Noether模\\
+有$M$为Artin模当且仅当$M',M''$为Artin模
+\end{dingli}
+
+\begin{dingli}
+对$R$模$M$\\
+若$M$为有限生成模且$R$为Noether环,则$M$为Noether模\\
+若$M$为有限生成模且$R$为Artin环,则$M$为Artin模
+\end{dingli}
+
+\begin{dingli}
+对$R$模$M$,其中$M$为Noether模\\
+若$I=\Ann_{R}(M)$为$R$的理想,则商环$R/I$为Noether环
+\end{dingli}
+
+\begin{dingyi}
+对环$R$和其素理想$\p_i$\\
+则称$\dim R=\max\{n|\p_0\subsetneq \p_1\subsetneq\cdots\subsetneq \p_n\text{且}\p_i\in \Spec R\}$为$R$的Krull维数
+\end{dingyi}
+
+\begin{dingli}
+对环$R$为Noether环\\
+对任意理想$\q$,若$\q$为不可约理想,则$\q$为准素理想\\
+对任意理想$I$,存在$\q_1,\cdots,\q_n$为不可约理想,有$I=\bigcap\limits_{i=1}^{n}\q_i$\\
+即任意理想为可分解的
+\end{dingli}
+
+\begin{dingli}
+对环$R$为Noether环\\
+对任意理想$I$,则存在$n\in \N^*$,有$r(I)^n\subset I$
+\end{dingli}
+
+\begin{dingli}
+对环$R$为Noether环和其理想$\q$和$\m$,其中$\m$为极大理想\\
+则$\q$为$\m$-准素的\\
+$\Leftrightarrow$存在$n\in\N^*$,有$\m^n\subset \q\subset \m$\\
+$\Leftrightarrow$有$r(\q)=\m$
+\end{dingli}
+
+\begin{dingli}
+对环$R$为Noether环且为局部环,有极大理想$\m$,则$\dim_{R/\m}\m/\m^2\geq\dim R$
+\end{dingli}
+
+\begin{dingyi}
+对环$R$为Noether环且为局部环,有极大理想$\m$\\
+若$\dim_{R/\m}\m/\m^2=\dim R$,则称$R$为正则局部环\\
+若对任意素理想$\p\in \Spec R$,有$R_{\p}$为正则局部环,则称$R$为正则环
+\end{dingyi}
+
+\begin{zhu}
+正则局部环为整环\\
+环$R$为Noether局部环为正则环当且仅当分次环$\bigoplus\limits_{i=0}^{\infty}\m^n/\m^{n+1}$为$R/\m$上多项式环\\
+此时,若$\bigoplus\limits_{i=0}^{\infty}\m^n/\m^{n+1}\simeq\R/\m[X_1,\cdots,X_k]$,则$\dim R=k$
+\end{zhu}
+
+\begin{dingli}
+对环$R$为Artin环\\
+则任意素理想均为极大理想,即$\Spec R=\Max R$且$\Nil(R)=\J(R)$
+\end{dingli}
+
+\begin{dingli}
+对环$R$为Artin环\\
+则极大理想个数有限且幂零根$\Nil(R)$为幂零理想,即存在$n\in\N^*$,有$\Nil(R)^n=\{0\}$
+\end{dingli}
+
+\begin{dingli}
+对环$R$\\
+则环$R$为Artin环当且仅当环$R$为Noether环且$\dim R=0$
+\end{dingli}
+
+\begin{dingyi}
+对环$R$和其理想$I_1,I_2$\\
+若$I_1+I_2=R$,则称$I_1$和$I_2$互素
+\end{dingyi}
+
+\begin{dingli}
+对环$R$和其理想$I_1,\cdots,I_n$\\
+则有自然同态$\varphi:R\to\prod\limits_{i=1}^{n}R/I_i$\\
+则有$\varphi$为单射当且仅当$\bigcap\limits_{i=1}^{n}I_i=\prod\limits_{i=1}^{n}I_i=\{0\}$\\
+则有$\varphi$为满射当且仅当对任意$i\neq j$,有$I_i$和$I_j$互素\\
+若对任意$i\neq j$,有$I_i$和$I_j$互素,则$\bigcap\limits_{i=1}^{n}I_i=\prod\limits_{i=1}^{n}I_i$
+\end{dingli}
+
+\begin{dingli}
+对环$R$为Artin环\\
+则存在$R_i$为Artin局部环,有$R=\prod\limits_{i=1}^{n}R_i$
+\end{dingli}
+
+\begin{dingli}
+对环$R$为Artin环且为局部环,有极大理想$\m$\\
+则环$R$为主理想整环\\
+$\Leftrightarrow$环$R$的极大理想$\m$为主理想\\
+$\Leftrightarrow$环$R$的极大理想$\m$,有$\dim_{R/\m}\m/\m^2=1$
+\end{dingli}
+
+\begin{dingyi}
+对环$R$为Noether环\\
+若环$R$为整环且$\dim R=1$,则对环$R$的理想$I$,若$I\neq\{0\},I\neq R$\\
+则存在唯一一组准素理想$\q_1,\cdots,\q_n$且对任意$i\neq j$,有$r(\q_i)\cap r(\q_j)=\varnothing$\\
+则有分解$I=\q_1\cdots\q_n$
+\end{dingyi}
+
+\begin{dingyi}
+对域$F$和其乘法群$F^{*}$和环$R$\\
+若有映射$v:K^{*}\to \Z$,有$v(xy)=v(x)+v(y)$且$v(x+y)\geq \min\{v(x),v(y)\}$\\
+则称$v$为$K$上离散赋值\\
+令$v(0)=+\infty$,则可将$v$延拓到$K$上\\
+则称$\{x\in K|v(x)\geq 0\}$为$K$的离散赋值环\\
+若环$R$为整环且其分式域的离散赋值环为$R$\\
+则称$R$为离散赋值环
+\end{dingyi}
+
+\begin{dingli}
+对环$R$为离散赋值环,有离散赋值$v$\\
+若$v(x)=v(y)$,则$(x)=(y)$\\
+有$v(x)=0$当且仅当$x$为$R$中单位\\
+有$R$为主理想整环且为Noether环且为局部环且为整闭的\\
+有唯一极大理想$\m=\{x\in R|v(x)\geq 1\}$且$\dim R=1$
+\end{dingli}
+
+\begin{dingli}
+对环$R$为Noether局部整环,有$\dim R=1$和其极大理想$\m$\\
+则环$R$为离散赋值环\\
+$\Leftrightarrow$环$R$为整闭的\\
+$\Leftrightarrow$环$R$极大理想$\m$为主理想\\
+$\Leftrightarrow$环$R$任意理想$I\neq\{0\}$,存在$n\in \N^*$,有$I=\m^n$\\
+$\Leftrightarrow$环$R$中存在$x\in R$,对任意理想$I\neq\{0\}$,存在$n\in \N^*$,有$I=(x^n)$\\
+$\Leftrightarrow$有$R/\m$上线性空间$\m/\m^2$且$\dim_{R/\m}\m/\m^2=1$
+\end{dingli}
+
+\begin{dingli}
+对环$R$为Noether整环,有$\dim R=1$\\
+则环$R$为整闭的\\
+$\Leftrightarrow$环$R$任意准素理想$\q$,存在素理想$\p$和$n\in\N^*$,有$\q=\p^n$\\
+$\Leftrightarrow$环$R$任意局部化$R_{\p}$为离散赋值环
+\end{dingli}
+
+\begin{dingli}
+对环$R$\\
+若环$R$为Noether整闭整环且$\dim R=1$,则称$R$为Dedekind整环
+\end{dingli}
+
+\begin{zhu}
+Dedekind整环满足定理中三个等价性质
+\end{zhu}
+
+\begin{dingli}
+对环$R$为Dedekind整环\\
+有环$R$为主理想整环当且仅当环$R$为唯一分解环\\
+若环$R$有且仅有有限个素理想,则环$R$为主理想整环
+\end{dingli}
+
+\begin{dingli}
+对环$R$为整环和其分式域$K$\\
+若$K$中的$R$模$I$,存在$x\in R,x\neq 0$,有$xI\subset R$\\
+则称$I$为分式理想\\
+若对分式理想$I$,存在分式理想$J$,有$IJ=R$\\
+则称$I$可逆
+\end{dingli}
+
+\begin{dingli}
+对环$I$为整环和其分式理想$I$\\
+则分式理想$I$可逆\\
+$\Leftrightarrow$分式理想$I$为有限生成且对任意素理想$\p$,有$I_{\p}$在$R_{\p}$上可逆\\
+$\Leftrightarrow$分式理想$I$为有限生成且对任意极大理想$\m$,有$I_{\m}$在$R_{\m}$上可逆
+\end{dingli}
+
+\begin{dingli}
+对环$R$为局部整环\\
+有环$R$为离散赋值环当且仅当环$R$任意分式理想$I\neq\{0\}$可逆
+\end{dingli}
+
+\begin{zhu}
+此时环$R$任意分式理想均为主理想
+\end{zhu}
+
+\begin{dingli}
+对环$R$为整环\\
+有环$R$为Dedekind整环当且仅当环$R$任意分式理想$I\neq\{0\}$可逆
+\end{dingli}
+
+\begin{dingyi}
+对整环$R$\\
+若整环$R$为Noether环$(\Leftrightarrow$整环$R$中理想均为有限生成$)$\\
+且任意整环$R$中素理想$\p\neq\{0\}$为极大理想\\
+且整环$R$为整闭的$(\Leftrightarrow$整环$R$在其分式域$K$上整闭$)$\\
+则称$R$为Dedekind整环
+\end{dingyi}
+
+\begin{dingyi}
+对环$R$为Dedekind整环和其分式域$F$\\
+则$K$可视为$R$-模,则称$F$的有限生成子模$\a$为$R$分式理想\\
+$\Leftrightarrow$有$\a=\{\frac{a}{d}|I\text{为环}R\text{中的理想},a\in I,d\in R\backslash\{0\}\}$
+\end{dingyi}
+
+\begin{dingyi}
+对环$R$为Dedekind整环和其分式理想$\a,\b$\\
+则称分式理想的乘积为$\a\b=\{ab|a\in\a,b\in\b\}$\\
+$\Leftrightarrow$对$\a=\frac{1}{d}\a_1,\b=\frac{1}{e}\b_1$,其中$\a_1,\b_1$为$R$的理想,有$\a\b=\frac{1}{de}\a_1\b_1$
+\end{dingyi}
+
+\begin{zhu}
+此时分式理想的乘积与$d,e,\a_1,\b_1$的选取无关
+\end{zhu}
+
+\begin{dingli}
+对环$R$为Dedekind整环和其分式理想$\a$\\
+存在唯一的分式理想$\b$,有$\a\b=R$,此时记$\b=\a^{-1}$
+\end{dingli}
+
+\begin{dingli}
+对环$R$为Dedekind整环和其分式理想$\a$\\
+存在理想$A,B$,有$\a=A/B$
+\end{dingli}
+
+\begin{tuilun}
+对环$R$为Dedekind整环和其分式域$F$\\
+在分式理想乘法下,所有分式理想构成的集合$I_{F}$为Abel群
+\end{tuilun}
+
+\begin{dingli}
+对环$R$为Dedekind整环和其分式理想$\a$\\
+存在$R$的素理想$\p_1,\cdots,\p_m$和$e_1,\cdots,e_n\in \Z\backslash\{0\}$\\
+有$\a=\p_1^{e_1}\cdots\p_m^{e_m}$且在不计次序的意义下分解唯一
+\end{dingli}
+
+\begin{zhu}
+此时称$\p_i$为$\a$的因子,记为$\p_i|\a$
+\end{zhu}
+
+\begin{dingyi}
+对$R$模$M$和其子模$M_i$\\
+若有链$M=M_0\supset M_1\supset M_2\supset \cdots$和$R$的理想$\a$,有$\a(M_n)\subset M_{n+1}$\\
+则称$(M_n)$为$\a$-滤链\\
+若对$\a$-滤链$(M_n)$,存在$N\in\N$,对$n>N$,有$\a(M_n)=M_{n+1}$\\
+则称$(M_n)$为稳定$\a$-滤链
+\end{dingyi}
+
+\begin{dingyi}
+对环$R$和其加法子群$R_i$\\
+若有$R=\bigoplus\limits_{i=0}^{\infty}R_i$且$R_iR_j\subset R_{i+j}$\\
+则称$R$为分次环\\
+则$R$有理想$R_{+}=\bigoplus\limits_{i=1}^{\infty}R_i$\\
+若$x\in R_i$且$x\neq 0$,则称$x$为齐次的,记次数为$\deg x=n$\\
+则有$\widetilde{R}=\bigcup\limits_{i=0}^{\infty}R_i$包含所有$R$中齐次元,有$\widetilde{R}_{+}=\bigcup\limits_{i=1}^{\infty}R_i$包含所有$R_{+}$中齐次元\\
+\end{dingyi}
+
+\begin{dingli}
+对环$R$为分次环,其中$R=\bigoplus\limits_{i=0}^{\infty}R_i$\\
+则$R$为Noether环当且仅当$R_0$为Noether环且$R$为有限生成$R_0$-代数
+\end{dingli}
+
+\begin{dingyi}
+对$R$模$M$和其子群$M_n$,其中$R=\bigoplus\limits_{i=1}^{\infty}R_i$为分次环\\
+若有$M=\bigoplus\limits_{n=0}^{\infty}M_n$且$R_i(M_n)\subset M_{i+n}$\\
+则称$M$为分次$R$模\\
+若$x\in M_n$且$x\neq 0$,则称$x$为齐次的,记次数为$\deg x=n$
+\end{dingyi}
+
+\begin{zhu}
+有$M_n$均为$R_0$模\\
+对任意$x\in M$,存在$x_n\in M_n$且只有有限个$x_n\neq 0$,有$x=\sum\limits_{i=0}^{\infty}x_n$
+\end{zhu}
+
+\begin{dingyi}
+对$R$模$M$和$R$的理想$\a$\\
+则有分次环$R^{*}=\bigoplus\limits_{i=0}^{\infty}\a^n$\\
+若$M$有$\a$-滤链$(M_n)$\\
+则有分次$R^{*}$模$M^{*}=\bigoplus\limits_{i=0}^{\infty}M_n$
+\end{dingyi}
+
+\begin{dingli}
+Artin-Rees引理:\\
+对$R$模$M$,其中$R$为Noether环且$M$为有限生成模\\
+若$R$有理想$\a$且$M$有$\a$-滤链$(M_n)$,则有$R^{*}$模$M^{*}$\\
+则$M^{*}$为有限生成模当且仅当$(M_n)$为稳定$\a$-滤链\\
+若$(M_n)$为稳定$\a$-滤链,则对$M$的子模$N$,有$(N\cap M_n)$为稳定$\a$-滤链
+\end{dingli}
+
+\begin{dingyi}
+对$R$模$M$和$R$的理想$\a$\\
+记$G_{\a}(R)=\bigoplus_{i=0}^{\infty}\a^{n}/\a^{n+1}$\\
+定义加法为$\sum\limits_{i=0}^{\infty}\overline{a_i}+\sum\limits_{i=0}^{\infty}\overline{b_i}=\sum\limits_{i=0}^{\infty}\overline{a_i+b_i}$\\
+定义乘法为$\sum\limits_{i=0}^{\infty}\overline{a_i}\cdot\sum\limits_{i=0}^{\infty}\overline{b_i}=\sum\limits_{i=0}^{\infty}\sum\limits_{j=0}^{i}\overline{a_jb_{i-j}}$\\
+则$G_{\a}(R)$为分次环\\
+对稳定$\a$-滤链$(M_n)$,记$G_{n}(M)=M_n/M_{n+1}$且$G(M)=\bigoplus\limits_{i=0}^{\infty}M_n/M_{n+1}$\\
+则$G(M)$为分次$G_{\a}(R)$模
+\end{dingyi}
+
+\begin{dingli}
+对$R$模$M$,其中$R$为Noether环且$M$为有限生成模\\
+若$R$有理想$\a$,则$G_{\a}(R)$为Noether环\\
+若$M$有稳定$\a$-滤链$(M_n)$,则有$G(M)$为有限生成模
+\end{dingli}
+
+\begin{dingli}
+对$R$模$M$和$R$的理想$\a$\\
+若$G(M)$为Noether模,则$M$为Noether模
+\end{dingli}
+
+\begin{dingyi}
+对环$R$为分次环,其中$R=\bigoplus\limits_{i=0}^{\infty}R_i$\\
+若$R$的理想$I$,有$I=\bigoplus\limits_{i=0}^{\infty}I_i$且$I_i=I\cap R_{i}$\\
+则称$I$为$R$的齐次理想\\
+则称$\Proj(R)=\{\p|\p\text{为}R\text{的齐次素理想且}R_{+}\not\subset\p\}$为射影谱
+\end{dingyi}
+
+\begin{dingyi}
+对环$R$为分次环和其射影谱$\Proj(R)$,可定义拓扑空间\\
+记$V(f)=\{\p\in\Proj(R)|f\in\p\}$,若$I=\bigoplus\limits_{i=0}^{\infty}I_i$为齐次理想,则$\widetilde{I}=\bigcup\limits_{i=0}^{\infty}I_{i},\widetilde{I}_{+}=\bigcup\limits_{i=1}^{\infty}I_i$\\
+定义闭集为$V(I)=\{\p\in\Proj(R)|I\text{为齐次理想且}I\subset\p\}$\\
+则有$V(I)=\bigcap\limits_{f\in \widetilde{I}}V(f)=\bigcap\limits_{f\in \widetilde{I}_{+}}V(f)$,有$V(I_1I_2)=V(I_1)\cup V(I_2)$
+定义开集$D_{+}(f)=\Proj(R)\backslash V(f)=\{\p\in\Proj(R)|f\notin\p\}$,其中$f\in \widetilde{R}_{+}$\\
+则有$\{D_{+}(f)|f\in \widetilde{R}_{+}\}$构成拓扑的一族开集基
+\end{dingyi}
+
+\begin{dingli}
+对环$R$为Noether环且为分次环,则其射影谱$\Proj(R)$为Noether空间
+\end{dingli}
+
+
+%\end{document}

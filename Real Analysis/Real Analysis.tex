@@ -1,0 +1,450 @@
+%\documentclass[12pt,oneside,a4paper]{book}
+
+%\usepackage{amsmath}
+%\usepackage{mathtools}
+%\usepackage{amsfonts}
+%\usepackage{unicode-math}
+%\usepackage{geometry}
+%\usepackage{ctex}
+
+%\begin{document}
+
+%\setcounter{chapter}{0}
+\setcounter{section}{0}
+\setcounter{subsection}{0}
+
+\chapter{Lebesgue测度}
+
+\begin{dingyi}
+对集合列$\{A_n\}$\\
+上极限$\varlimsup\limits_{n\to \infty}A_n=\{x|\text{存在无穷个}A_n,\text{有}x\in A_n\}=\bigcap\limits_{m=1}^{\infty}\bigcup\limits_{n=1}^{m}A_n$\\
+下极限$\varliminf\limits_{n\to \infty}A_n=\{x|\text{存在有限个}A_n,\text{有}x\notin A_n\}=\bigcup\limits_{m=1}^{\infty}\bigcap\limits_{n=1}^{m}A_n$
+\end{dingyi}
+
+\begin{dingyi}
+在$\R^n$中\\
+开矩体为$I=\{(x_1,x_2,\cdots,x_n|a_i<x_i<b_i,i=1,2,\cdots,n)\}$,其体积为$|I|=\prod\limits_{i=1}^{n}(b_i-a_i)$\\
+对$E\subset\R^n$,若可数个开矩体$I_1,I_2,\cdots$满足$E\subset \bigcup\limits_{i=1}^{\infty}I_i$,则称$\{I_i\}$为$E$的L覆盖\\
+有$E$的Lebesgue外测度$m^*(E)=\inf\{\sum\limits_{i=1}^{\infty}|I_i|\Big| \{I_i\}$为$E$的L覆盖$\}$\\
+对任意矩体$I$,有$E\subset I$\\
+有$E$的Lebesgue内测度$m_*(E)=m^*(I)-m^*(I\backslash E)=|I|-m^*(I\backslash E)$
+\end{dingyi}
+
+\begin{dingli}
+对任意矩体$I\subset\R^n$,有$m^*(I)=|I|$
+\end{dingli}
+
+\begin{dingli}
+对$E\subset \R^n,\{E_n\}\subset \mathscr{P}(\R^n)$\\
+有$0\leq m^*(E)\leq \infty$\\
+若$E_1\subset E_2$,则$m^*(E_1)\leq m^*(E_2)$\\
+有$m^*(\bigcup\limits_{n=1}^{\infty}E_n)\leq \sum\limits_{n=1}^{\infty}m^*(E_n)$
+\end{dingli}
+
+\begin{dingyi}
+对$G\subset\R^n,F\subset\R^n$\\
+若存在开集列$\{G_n\}\subset\mathscr{P}(\R^n)$,有$G=\bigcap\limits_{n=1}^{\infty}G_n$,则称$G$为$G_{\delta}$型集\\
+若存在闭集列$\{F_n\}\subset\mathscr{P}(\R^n)$,有$F=\bigcup\limits_{n=1}^{\infty}F_n$,则称$F$为$F_{\delta}$型集\\
+若集合可以表示为开集和闭集的可数次交并,则称集合为Borel集
+$\Rightarrow$$G_{\delta}$型,$F_{\delta}$型集,Borel集均为可测集
+\end{dingyi}
+
+\begin{dingyi}
+对$E\subset\R^n$\\
+若任意$T\subset\R^n$,有Carathéodory条件:$\ m^*(T)=m^*(T\cap E)+m^*(T\cap E^c)$\\
+则称$E$为Lebesgue可测集或称$E$可测,有Lebesgue测度$m(E)=m^*(E)$\\
+$\Leftrightarrow$对任意$T\subset\R^n$,有$\ m^*(T)\geq m^*(T\cap E)+m^*(T\cap E^c)$\\
+$\Leftrightarrow$对任意开矩体$I\subset\R^n$,有$m^*(I)=|I|\geq m^*(I\cap E)+m^*(I\cap E^c)$\\
+$\Leftrightarrow$对任意$A\subset E,B\subset E^c$,有$m^*(A\cup B)=m^*(A)+m^*(B)$\\
+$\Leftrightarrow$对任意$\varepsilon>0$,存在开集$G$,有$E\subset G$且$m^*(G\backslash E)<\varepsilon$\\
+$\Leftrightarrow$对任意$\varepsilon>0$,存在闭集$F$,有$E\supset F$且$m^*(E\backslash F)<\varepsilon$\\
+$\Leftrightarrow$存在$G_{\delta}$集合$G$,有$E\subset G$且$m^*(G\backslash E)=0$\\
+$\Leftrightarrow$存在$F_{\delta}$集合$F$,有$E\supset F$且$m^*(E\backslash F)=0$\\
+$\Leftrightarrow$有$m^*(E)=m_*(E)$
+\end{dingyi}
+
+\begin{dingli}
+对任意$E\subset \R^n$\\
+若$m^*(E)=0$,则$E$为Lebesgue可测集\\
+若$E$为矩体,则$E$为Lebesgue可测集\\
+若$E$为开集或闭集,则$E$为Lebesgue可测集
+\end{dingli}
+
+\chapter{Lebesgue函数}
+
+\begin{dingyi}
+若有$a_1,a_2,\cdots,a_n\in \R$\\
+对可测集$E\subset\R^n$和可测集$E_1,E_2,\cdots,E_n\subset\R^n$,若$i\neq j$,有$E_i\cap E_j=\varnothing$且$\bigcup\limits_{i=1}^{n}E_i=E$\\
+则称$f(x)=\sum\limits_{i=1}^{n}a_i\chi_{E_i}(x)$为简单函数\\
+若$E_1,E_2,\cdots,E_n$为矩体,则称$f(x)$为阶梯函数
+\end{dingyi}
+
+\begin{dingyi}
+对$E\subset\R^n$可测和$E$上的广义实值函数$f$\\
+若对任意$a\in\R$,有$E(f>a)=\{x\in E|f(x)>a\}\subset \R^n$可测\\
+则称$f$为$E$上Lebeague可测函数\\
+$\Leftrightarrow$对任意$a\in\R$,有$E(f<a)$可测\\
+$\Leftrightarrow$对任意$a\in\R$,有$E(f\geq a)$可测\\
+$\Leftrightarrow$对任意$a\in\R$,有$E(f\leq a)$可测
+\end{dingyi}
+
+\begin{dingli}
+对$E\subset\R^n$\\
+$E$为可测集$\Leftrightarrow$示性函数$\chi_{E}(x)$为$\R^n$上Lebeague可测函数\\
+简单函数$f(x)=\sum\limits_{i=1}^{n}a_i\chi_{E_i}(x)$为任意可测集$E$上Lebeague可测函数
+\end{dingli}
+
+\begin{dingli}
+对可测集$E$上Lebeague可测函数$f(x),g(x)$\\
+对任意$a,b\in\R$,有$af(x)+bg(x)$为$E$上Lebeague可测函数\\
+对任意$n,m\in\N^*$,有$f(x)^n,g(x)^m,f(x)\cdot g(x),\frac{f(x)}{g(x)}$为$E$上Lebeague可测函数
+\end{dingli}
+
+\begin{tuilun}
+对可测集$E\subset\R^n$\\
+定义$f^{+}(x)=\max(f(x),0)$为$f(x)$的正部,$f^{-}(x)=\max(-f(x),0)$为$f(x)$的负部\\
+有$f(x)$为$E$上Lebeague可测函数$\Leftrightarrow$$f^{+}(x),f^{-}(x)$均为$E$上Lebeague可测函数
+\end{tuilun}
+
+\begin{dingli}
+对可测集$E$上Lebeague可测函数列$\{f_n(x)\}$\\
+有$\sup\limits_{n\in\N^*}f_n(x),\inf\limits_{n\in\N^*}f_n(x)$为$E$上Lebeague可测函数\\
+有$\varlimsup\limits_{n\to\infty}f_n(x),\varliminf\limits_{n\to\infty}f_n(x)$为$E$上Lebeague可测函数\\
+有$\max(f(x),g(x)),\min(f(x),g(x))$为$E$上Lebeague可测函数\\
+其中,有$\varlimsup\limits_{n\to\infty}f_n(x)=\inf\limits_{i\in\N^*}(\sup\limits_{n\geq i,n\in\N^*}f_n(x)),\varliminf\limits_{n\to\infty}f_n(x)=\sup\limits_{i\in\N^*}(\inf\limits_{n\geq i,n\in\N^*}f_n(x))$\\
+若$\lim\limits_{n\to\infty}f_n(x)$在$E$上存在,则$\lim\limits_{n\to\infty}f_n(x)$为$E$上Lebeague可测函数
+\end{dingli}
+
+\begin{tuilun}
+对闭区间上连续函数$f$,则在闭区间上一致连续\\
+作控制区间内函数值之差小于$\varepsilon_{n}=\frac{1}{n}$的分法,对每段区间赋值得到阶梯函数列$\{f_n\}$\\
+则有$|f_n(x)-f(x)|<\frac{1}{n}$,即$\lim\limits_{n\to\infty}f_n(x)=f(x)$\\
+有闭区间上连续函数可由阶梯函数逼近\\
+闭区间上连续函数为闭区间上可测函数
+\end{tuilun}
+
+\begin{dingli}
+对可测集列$\{E_n\}$上Lebeague可测函数$f(x)$\\
+若$E_0\subset E_i(i\in\N^*)$,则$f(x)$为$E_0$上Lebeague可测函数\\
+若$E=\bigcup\limits_{n=1}^{\infty}E_n$,则$f(x)$为$E$上Lebeague可测函数
+\end{dingli}
+
+\begin{dingli}
+简单函数逼近:\\
+对可测集$E$上Lebeague可测函数$f(x)$\\
+若$f(x)$非负,则存在$E$上非负简单函数列$\{f_n(x)\}$,有$\lim\limits_{n\to\infty}f_n(x)=f(x)$\\
+若$f(x)$变号,则存在$E$上简单函数列$\{f_n(x)\}$,有$|f_n(x)|\leq |f(x)|$且$\lim\limits_{n\to\infty}f_n(x)=f(x)$\\
+当$f(x)$有界时,上述收敛可为一致收敛
+\end{dingli}
+
+\begin{dingli}
+对$E\subset\R^n$可测\\
+有可测函数$f(x)$和可测函数列$\{f_n(x)\}$均几乎处处有限\\
+有$\{x|\lim\limits_{n\to\infty}f_n(x)=f(x)\}=\bigcap\limits_{l=1}^{\infty}\bigcup\limits_{m=1}^{\infty}\bigcap\limits_{n=m}^{\infty}\{x\Big||f_n(x)-f(x)|<\frac{1}{l}\}$
+有$\{f_n(x)\}$在$E$上几乎处处收敛于$f(x)$,即不收敛点为零测集$/$除去零测集后收敛\\
+$\Leftrightarrow$$m(\bigcup\limits_{l=1}^{\infty}\bigcap\limits_{m=1}^{\infty}\bigcup\limits_{n=m}^{\infty}\{x\Big||f_n(x)-f(x)|\geq\frac{1}{l}\})=0$\\
+$\Leftrightarrow$$m(\bigcap\limits_{m=1}^{\infty}\bigcup\limits_{n=m}^{\infty}\{x\Big||f_n(x)-f(x)|\geq\frac{1}{l}\})=0,\forall\  l\in\N^*$
+\end{dingli}
+
+\begin{dingli}
+对$E\subset\R^n$可测\\
+有可测函数$f(x)$和可测函数列$\{f_n(x)\}$均几乎处处有限\\
+有$\{f_n(x)\}$在$E$上几乎一致收敛于$f(x)$,即除去测度任意小集合后可以一致收敛\\
+$\Leftrightarrow$$m(\bigcup\limits_{l=1}^{\infty}\bigcup\limits_{n=N_l(\delta)}^{\infty}\{x\Big||f_n(x)-f(x)|\geq\frac{1}{l}\})<\delta,\forall\  l\in\N^*,\exists N_l(\delta)\in\N^*$\\
+$\Leftrightarrow$$\lim\limits_{N\to\infty}m(\bigcup\limits_{n=N}^{\infty}\{x\Big||f_n(x)-f(x)|\geq\frac{1}{l}\})=0,\forall\  l\in\N^*$
+\end{dingli}
+
+\begin{dingyi}
+对$E\subset\R^n$可测\\
+有可测函数$f(x)$和可测函数列$\{f_n(x)\}$均几乎处处有限\\
+有可测函数列$\{f_n(x)\}$在$E$上依测度收敛于$f(x)$,即不收敛点集合测度趋向于无穷小\\
+$\Leftrightarrow$$\lim\limits_{n\to\infty}m(\{x\in E||f_n(x)-f(x)|\geq\varepsilon\})=0,\forall\ \varepsilon>0$\\
+$\Leftrightarrow$$\lim\limits_{n\to\infty}m(\{x\in E||f_n(x)-f(x)|\geq\frac{1}{l}\})=0,\forall\ l\in\N^*$
+\end{dingyi}
+
+\begin{dingli}
+对$E\subset\R^n$可测且$m(E)<\infty$\\
+有可测函数$f(x)$和可测函数列$\{f_n(x)\}$均几乎处处有限\\
+若$\{f_n(x)\}$在$E$上几乎处处收敛于$f(x)$,则$\{f_n(x)\}$在$E$上依测度收敛于$f(x)$
+\end{dingli}
+
+\begin{dingli}
+对$E\subset\R^n$可测\\
+有可测函数$f(x),g(x)$和可测函数列$\{f_n(x)\}$均几乎处处有限\\
+若$\{f_n(x)\}$在$E$上依测度收敛于$f(x),g(x)$,则$f(x)$与$g(x)$在$E$上几乎处处相等
+\end{dingli}
+
+\begin{dingli}
+Egorov定理:\\
+对$E\subset\R^n$可测且$m(E)<\infty$\\
+有$E$上的可测函数列$\{f_n(x)\}$几乎处处有限且几乎处处收敛\\
+且$f(x)=\lim\limits_{n\to\infty}f_n(x)\ a.e.$在$E$上几乎处处有限\\
+则对任意$\varepsilon>0$,存在可测集$E_{\varepsilon}\subset E$,有$m(E_{\varepsilon})<\varepsilon$且在$E\backslash E_{\varepsilon}$上$\{f_n(x)\}$一致收敛于$f(x)$\\
+即几乎处处收敛$\stackrel{m(E)<\infty}{\Leftrightarrow}$近一致收敛
+\end{dingli}
+
+\begin{dingli}
+Riesz定理:\\
+对$E\subset\R^n$可测,有$E$上的可测函数列$\{f_n(x)\}$依测度收敛于$f$\\
+则有$\{f_n(x)\}$的子列$\{f_{n_k}(x)\}$在$E$上几乎处处收敛于$f(x)$
+\end{dingli}
+
+\begin{dingli}
+Lusin定理:\\
+对$E\subset\R^n$可测,有$E$上的可测函数$f(x)$几乎处处有限\\
+则对任意$\varepsilon>0$,存在闭集$F\subset E$,有$m(E\backslash F)<\varepsilon$且在$F$上$f(x)$连续
+\end{dingli}
+
+\begin{dingli}
+对$E\subset\R^n$可测,有可测函数$f(x)$\\
+则对任意$\varepsilon>0$,存在$\R^n$上连续函数$g(x)$,有$m(\{x\in E|f(x)\neq g(x)\})<\varepsilon$\\
+若$f(x)$在$E$上有界,则$g(x)$在$E$上有界$($可有相同上界$)$\\
+若$E$有界,则对任意$\varepsilon>0$,存在有$\R^n$上紧支集的连续函数$g(x)$,有$m(\{x\in E|f(x)\neq g(x)\})<\varepsilon$
+\end{dingli}
+
+\chapter{Lebesgue积分}
+
+\begin{dingyi}
+对$E\subset\R^n$可测\\
+有非负简单函数$f(x)=\sum\limits_{i=1}^{n}c_iI_{E_i}(x)$,其中$c_i\in\R,c_i\geq 0$且$E=\bigcup\limits_{i=1}^{n}E_i,E_i\cap E_j=\varnothing(i\neq j)$\\
+则称$f(x)$在$E$上Lebesgue积分为$(L)\int_{E}f(x)\d x=\sum\limits_{i=1}^{n}c_im(E_i)$
+\end{dingyi}
+
+\begin{dingyi}
+对$E\subset\R^n$可测,有$E$上的非负可测函数$f(x)$\\
+若$E$上的非负简单函数列$\{f_n(x)\}$关于$n$递增且收敛于$f(x)$\\
+则称$f(x)$在$E$上Lebesgue积分为$(L)\int_{E}f(x)\d x=\lim\limits_{n\to\infty}(L)\int_{E}f_n(x)\d x$
+\end{dingyi}
+
+\begin{dingyi}
+对$E\subset\R^n$可测,有$E$上的可测函数$f(x)$\\
+若$(L)\int_{E}f^{+}(x)\d x$和$(L)\int_{E}f^{-}(x)\d x$不同时为$\infty$\\
+则称$f(x)$在$E$上Lebesgue积分为$(L)\int_{E}f(x)\d x=(L)\int_{E}f^{+}(x)\d x-(L)\int_{E}f^{-}(x)\d x$\\
+若$(L)\int_{E}f(x)\d x<\infty$,则称$f(x)$在$E$上Lebesgue可积,记为$f(x)\in L(E)$
+\end{dingyi}
+
+\begin{dingli}
+对$E\subset\R^n$可测,有$E$上的非负简单函数$f(x)$\\
+若$E$上的非负简单函数列$\{f_n(x)\}$关于$n$递增且$f(x)\leq \lim\limits_{n\to \infty}f_n(x)$\\
+则有$(L)\int_{E}f(x)\d x\leq\lim\limits_{n\to\infty}(L)\int_{E}f_n(x)\d x$
+\end{dingli}
+
+\begin{dingli}
+Chebyshev不等式:\\
+对$E\subset\R^n$可测,有$E$上的非负可测函数$f(x)$\\
+则对任意$\varepsilon>0$,有$m(E(f\geq \varepsilon))\leq \frac{1}{\varepsilon}\int_{E}f(x)\d x$
+\end{dingli}
+
+\begin{dingli}
+对$E\subset\R^n$可测,有$E$上的非负可测函数$f(x)$\\
+则$\int_{E}f(x)\d x=0$$\Leftrightarrow$$f(x)=0,a.e.x\in E$\\
+则$\int_{E}f(x)\d x<\infty$$\Rightarrow$$f(x)<\infty,a.e.x\in E$
+\end{dingli}
+
+\begin{dingli}
+对$E\subset\R^n$可测且$m(E)<\infty$,有$E$上的非负简单函数$f(x)$且几乎处处有限\\
+对$[0,+\infty)$有分法$\Delta:0=y_0<y_1<\cdots<y_n<\cdots$,其中$y_{n+1}-y_{n}<\delta$\\
+令$E_n=\{x\in E|y_n\leq f(x)<y_{n+1}\}$\\
+则$f(x)\in L(E)$$\Leftrightarrow$$\sum\limits_{n=0}^{\infty}y_nm(E_n)<\infty$\\
+有$\int_{E}f(x)\d x=\lim\limits_{\delta\to 0}\sum\limits_{n=0}^{\infty}y_nm(E_n)$
+\end{dingli}
+
+\begin{dingli}
+对$E\subset\R^n$可测,有$E$上的可测函数$f(x)$\\
+则$f(x)\in L(E)$$\Leftrightarrow$$|f(x)|\in L(E)$\\
+则$f(x)\in L(E)$$\Rightarrow$$|f(x)|<\infty,a.e.x\in E$\\
+若存在非负函数$F(x)\in L(E)$且$|f(x)|\leq F(x)$,则$f(x)\in L(E)$\\
+若$E$为零测集,则$f(x)\in L(E)$
+\end{dingli}
+
+\begin{dingli}
+对$E\subset\R^n$可测,有$E$上的可测函数$f(x),g(x)$\\
+若$f(x),g(x)\in L(E)$且$f(x)\leq g(x),a.e.x\in E$\\
+则$\int_{E}f(x)\d x\leq \int_{E}g(x)\d x$,则$|\int_{E}f(x)\d x|\leq \int_E|f(x)|\d x$
+\end{dingli}
+
+\begin{dingli}
+积分绝对连续:\\
+对$E\subset\R^n$可测,有$E$上的可测函数$f(x)\in L(E)$\\
+则对任意$\varepsilon>0$,存在$\delta>0$,对任意$E_{\delta}\subset E$且$m(E_{\delta})<\delta$\\
+有$\int_{E_{\delta}}|f(x)|\d x<\varepsilon$
+\end{dingli}
+
+\begin{dingli}
+Levi定理:\\
+对$E\subset\R^n$可测\\
+有$E$上的非负可测函数列$\{f_n(x)\}$关于$n$递增且收敛于$f(x)$\\
+则有$(L)\int_{E}f(x)\d x=\lim\limits_{n\to\infty}(L)\int_{E}f_n(x)\d x$
+\end{dingli}
+
+\begin{tuilun}
+逐项积分:\\
+对$E\subset\R^n$可测\\
+有$E$上的非负可测函数列$\{f_n(x)\}$,记$f(x)=\sum\limits_{n=1}^{\infty}f_n(x)$\\
+则有$(L)\int_{E}f(x)\d x=\sum\limits_{n=1}^{\infty}(L)\int_{E}f_n(x)\d x$
+\end{tuilun}
+
+\begin{dingli}
+Fatou引理:\\
+对$E\subset\R^n$可测,有$E$上的非负可测函数列$\{f_n(x)\}$\\
+则有$(L)\int_{E}\liminf\limits_{n\to\infty}f_n(x)\d x\leq\liminf\limits_{n\to\infty}(L)\int_{E}f_n(x)\d x$
+\end{dingli}
+
+\begin{dingli}
+Lebesgue定理:\\
+对$E\subset\R^n$可测\\
+有$E$上的可测函数列$\{f_n(x)\}$几乎处处收敛且$f(x)=\lim\limits_{n\to\infty}f_n(x)\ a.e.$\\
+若有非负可测函数$F(x)\in \mathrm{L}(E)$且对任意$n\in \N^*$有$|f_n(x)|\leq F(x)$\\
+则对任意$n\in \N^*$有$f_n\in L(E)$且$f(x)\in \mathrm{L}(E)$,有$\lim\limits_{n\to\infty}(L)\int_{E}f_n(x)\d x=\int_{E}f(x)\d x$
+\end{dingli}
+
+\begin{dingli}
+积分可数可加:\\
+对$E\subset\R^n$可测,有$E$上的可测函数$f(x)\in L(E)$\\
+若有可测集列$\{E_n\}$满足对任意$i\neq j$,有$E_i\cap E_j=\varnothing$且$E=\bigcup\limits_{n=1}^{\infty}E_n$\\
+则$\int_{E}f(x)\d x=\sum\limits_{n=1}^{\infty}\int_{E_n}f(x)\d x$
+\end{dingli}
+
+\begin{dingli}
+对$[a,b]\subset\R$上函数$f(x)$\\
+若$f(x)$在$[a,b]$上Riemann可积,则$f(x)\in L([a,b])$\\
+有$(R)\int_{a}^{b}f(x)\d x=(L)\int_{[a,b]}f(x)\d x$
+\end{dingli}
+
+\begin{dingli}
+对$[a,b]\subset\R$上函数$f(x)$\\
+若$f(x)$在$[a,b]$上有界\\
+则有$f(x)$在$[a,b]$上Riemann可积$\Leftrightarrow$$f(x)$在$[a,b]$上间断点为零测集
+\end{dingli}
+
+\begin{dingli}
+对$\R$上函数$f(x)$\\
+若$f(x)$在$\R$上任意有限区间有界且$(R)\int_{-\infty}^{\infty}|f(x)|\d x<\infty$\\
+则$f(x)\in L(\R)$且$(L)\int_{\R}f(x)\d x=(R)\int_{-\infty}^{\infty}f(x)\d x<\infty$
+\end{dingli}
+
+\begin{dingli}
+Fubini定理:\\
+对$\R\times\R$上可测函数$f(x,y)$\\
+若$f(x,y)\in L(\R\times\R)$\\
+则对几乎处处$x\in\R$,有$f(x,y)$作为$y$的函数在$\R$上Lebeague可积\\
+则对几乎处处$y\in\R$,有$f(x,y)$作为$x$的函数在$\R$上Lebeague可积\\
+有$(L)\int_{\R}f(x,y)\d y$作为$x$的函数在$\R$上Lebeague可积\\
+有$(L)\int_{\R}f(x,y)\d x$作为$y$的函数在$\R$上Lebeague可积\\
+有$(L)\int_{\R}\d x\int_{\R}f(x,y)\d y=(L)\int_{\R}\d y\int_{\R}f(x,y)\d x=(L)\int_{\R\times\R}f(x,y)\d x\d y$
+\end{dingli}
+
+\begin{dingli}
+Tonelli定理:\\
+对$\R\times\R$上非负可测函数$f(x,y)$\\
+若$f(x,y)\in L(\R\times\R)$\\
+则对几乎处处$x\in\R$,有$f(x,y)$作为$y$的函数在$\R$上Lebeague可积\\
+则对几乎处处$y\in\R$,有$f(x,y)$作为$x$的函数在$\R$上Lebeague可积\\
+有$(L)\int_{\R}f(x,y)\d y$作为$x$的函数在$\R$上Lebeague可积\\
+有$(L)\int_{\R}f(x,y)\d x$作为$y$的函数在$\R$上Lebeague可积\\
+有$(L)\int_{\R}\d x\int_{\R}f(x,y)\d y=(L)\int_{\R}\d y\int_{\R}f(x,y)\d x=(L)\int_{\R\times\R}f(x,y)\d x\d y$
+\end{dingli}
+
+\chapter{Lebesgue微分}
+
+\begin{dingyi}
+Vitali覆盖:\\
+对$E\subset\R$,有区间族$\{I_{\alpha}\}$满足:\\
+对任意$x\in E$和任意$\varepsilon>0$,存在$I_{\alpha}\in \{I_{\alpha}\}$,满足$|I_{\alpha}|<\varepsilon$且$x\in I_{\alpha}$
+\end{dingyi}
+
+\begin{dingli}
+Vitali覆盖定理:\\
+对$E\subset\R$,有Vitali覆盖$\{I_{\alpha}\}$和$m^*(E)>0$\\
+则对任意$\varepsilon>0$,存在$\{I_{\alpha}\}$中有限个区间$I_1,I_2,\cdots,I_n$\\
+有当$i\neq j$时$I_i\cap I_j=\varnothing$且$m^*(E\backslash \bigcup\limits_{i=1}^{n}I_i)<\varepsilon$
+\end{dingli}
+
+\begin{dingli}
+单调微分定理:\\
+对区间$[a,b]$上单调递增函数$f(x)$\\
+有$f'(x)$在$[a,b]$上几乎处处存在且$\int_{a}^{b}f'(x)\d x\leq f(b)-f(a)$$\Rightarrow$$f'(x)\in L([a,b])$
+\end{dingli}
+
+\begin{dingli}
+对$f(x)\in L(E)$,其中$E\subset \R$\\
+则对任意$\varepsilon>0$,存在定义在$\R$上紧集的连续函数$g(x)$,有$(L)\int_{E}|f(x)-g(x)|\d x <\varepsilon$\\
+令$E=\R$,则$f(x)$有平均连续性:$\lim\limits_{h\to 0}(L)\int_{\R}|f(x+h)-f(x)|\d x=0$\\
+令$E=[a,b]$且$F_h(x)=\frac{1}{h}((L)\int_{a}^{x+h}f(t)\d t-(L)\int_{a}^{x}f(t)\d t)=\frac{1}{h}\int_{x}^{x+h}f(t)\d t$\\
+则$\lim\limits_{h\to 0}(L)\int_{a}^{b}|F_n(x)-f(x)|\d x=0$\\
+则$((L)\int_{a}^{x}f(t)\d t)'=f(x)$在$[a,b]$上几乎处处成立
+\end{dingli}
+
+\begin{dingyi}
+有界变差函数:\\
+对定义在$[a,b]$上$f(x)$和$[a,b]$的分法$\Delta:a=x_0<x_1<\cdots<x_n=b$\\
+若全变差$\mathrm{V}_{a}^{b}(f)=\sup\limits_{\Delta}\sum\limits_{i=1}^{n}|f(x_i)-f(x_{i-1})|<\infty$\\
+则称$f(x)$为$[a,b]$上有界变差函数,记为$f(x)\in \mathrm{BV}[a,b]$
+\end{dingyi}
+
+\begin{dingli}
+对$f(x)$为$[a,b]$上有界变差函数\\
+则对任意$a<c<b$,有$\mathrm{V}_{a}^{b}(f)=\mathrm{V}_{a}^{c}(f)+\mathrm{V}_{c}^{b}(f)$
+\end{dingli}
+
+\begin{dingli}
+Jordan分解定理:\\
+对$f(x)$为$[a,b]$上有界变差函数$\Leftrightarrow$存在$[a,b]$上$g(x),h(x)$均为单调上升函数,有$f(x)=g(x)=-h(x)$
+\end{dingli}
+
+\begin{tuilun}
+对$f(x)$为$[a,b]$上有界变差函数\\
+则$f'(x)$在$[a,b]$上几乎处处存在且$f'(x)\in L([a,b])$
+\end{tuilun}
+
+\begin{dingyi}
+绝对连续函数:\\
+对定义在$[a,b]$上$f(x)$\\
+若对任意$\varepsilon>0$,存在$\delta>0$\\
+若$(x_i,y_i)\subset[a,b]$,对任意$i\neq j$,有$(x_i,y_i)\cap (x_j,y_j)=\varnothing$且$\sum\limits_{i=1}^{n}(y_i-x_i)<\delta$\\
+有$\sum\limits_{i=1}^{n}|f(y_i)-f(x_i)|<\varepsilon$\\
+则称$f(x)$为$[a,b]$上绝对连续函数,记为$f(x)\in \mathrm{AC}[a,b]$
+\end{dingyi}
+
+\begin{dingli}
+对$f(x)$为$[a,b]$上绝对连续函数\\
+则$f(x)$在$[a,b]$上一致连续且有界变差\\
+若$f(x)\in L([a,b])$,则$F(x)=(L)\int_{a}^{x}f(t)\d t$绝对连续\\
+若$f'(x)=0$在$[a,b]$上几乎处处成立,则$f(x)$在$[a,b]$上恒为常数
+\end{dingli}
+
+\begin{dingli}
+Newton-Leibniz公式:\\
+对$f(x)\in L([a,b])$和定义在$[a,b]$上函数$F(x)$\\
+有$F'(x)=f(x)$在$[a,b]$上几乎处处成立且$F(x)$在$[a,b]$上绝对连续\\
+则$(L)\int_{a}^{b}f(x)\d x=F(b)-F(a)$
+\end{dingli}
+
+\chapter{Lebeague空间}
+
+\begin{dingyi}
+对$E\subset \R^n$,有$f(x)$为$E$上的可测函数和$1\leq p<\infty$\\
+若$f(x)$的范数$||f||_{p}=(\int_{E}|f(x)|^{p}\d x)^{\frac{1}{p}}<\infty$\\
+则称$f(x)\in L^p(E)$,记函数空间$L^p(x)=\{f(x)\}$
+\end{dingyi}
+
+\begin{dingli}
+对$a,b\alpha,\beta>0$且$\alpha+\beta=1$\\
+则$a^{\alpha}\cdot b^{\beta}\leq \alpha a+\beta b$
+\end{dingli}
+
+\begin{dingli}
+Hôlder不等式:\\
+若$p,q>1$且$\frac{1}{p}+\frac{1}{q}=1$\\
+则对$f(x)\in L^p(E),g(x)\in L^q(E)$,有$||fg||_{1}\leq ||f||_{p}\cdot||g||_{q}$\\
+即$\int_{E}|f(x)g(x)|\d x\leq (\int_{E}|f(x)|^{p}\d x)^{\frac{1}{p}}\cdot(\int_{E}|g(x)|^{q}\d x)^{\frac{1}{q}}$
+\end{dingli}
+
+\begin{dingli}
+Minkowski不等式:\\
+对$f(x),g(x)\in L^p(E)$,有$||f+g||_{p}\leq ||f||_{p}+||g||_{p}$\\
+即$(\int_{E}|f(x)+g(x)|^{p}\d x)^{\frac{1}{p}}\leq (\int_{E}|f(x)|^{p}\d x)^{\frac{1}{p}}\cdot(\int_{E}|g(x)|^{p}\d x)^{\frac{1}{p}}$
+\end{dingli}
+
+\endinput
+%\end{document}

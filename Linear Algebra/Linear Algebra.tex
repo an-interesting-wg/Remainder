@@ -1,0 +1,1873 @@
+%\documentclass[12pt,oneside,a4paper]{book}
+
+%\usepackage{amsmath}
+%\usepackage{mathtools}
+%\usepackage{amsfonts}
+%\usepackage{unicode-math}
+%\usepackage{geometry}
+%\usepackage{ctex}
+
+%\begin{document}
+
+%\setcounter{chapter}{0}
+\setcounter{section}{0}
+\setcounter{subsection}{0}
+
+\chapter{线性方程}
+
+\begin{dingyi}
+对数域$K$\\
+若有$a_{ij}\in K,b_{i}\in K$\\
+则称$\begin{cases}a_{11}x_1+a_{12}x_2+\cdots+a_{1n}x_n=b_1\\ a_{21}x_1+a_{22}x_2+\cdots+a_{2n}x_n=b_2\\ \cdots\\ a_{m1}x_1+a_{m2}x_2+\cdots+a_{mn}x_n=b_n\end{cases}$为$n$元线性方程组\\
+若有$(x_1,x_2,\cdots,x_n)^{T}\in K^n$满足上述方程\\
+则称$(x_1,x_2,\cdots,x_n)^{T}$为$n$元线性方程组的解\\
+则称$\{\alpha\in K^n|\alpha\text{为}n\text{元线性方程组的解}\}$为解集\\
+若有变换:一方程乘常数加至另一方程/互换一方程与另一方程位置/非零数乘至一方程\\
+则称上述变换为$n$元线性方程组的初等变换
+\end{dingyi}
+
+\begin{dingli}
+对数域$K$\\
+则$n$元线性方程组的初等变换不改变$n$元线性方程组的解集
+\end{dingli}
+
+\begin{dingyi}
+对数域$K$\\
+若有$a_{ij}\in K$,其中$i\in\{1,2,\cdots,m\},j\in\{1,2,\cdots,n\}$\\
+则称$A=\begin{bmatrix}a_{11} & a_{12} & \cdots & a_{1n}\\ a_{21} & a_{22} & \cdots & a_{2n}\\ \vdots & \vdots & \ddots & \vdots\\ a_{m1} & a_{m2} & \cdots & a_{mn} \end{bmatrix}$为$K$上$m\times n$矩阵,记为$A=(a_{ij}),A(i:j)=a_{ij}$\\
+则称$K_{m\times n}=\{A|A\text{为}K\text{上}m\times n\text{矩阵}\}$为$K$上$m\times n$矩阵空间\\
+若对$A\in K_{m\times n}$,存在$c_{1},\cdots,c_{m}\in \{1,\cdots,n\}$\\
+有$c_{1}\leq c_{2}\leq \cdots\leq c_{m}$,若$c_{i}=c_{i+1}$,则$c_{i}=c_{i+1}=\cdots=c_{n}=n$\\
+有对任意$i\in\{1,\cdots,m\}$,对任意$1\leq k \leq c_{i}$,有$A(i:k)=0$且$A(i:c_{i}+1)\neq 0$\\
+则称$A$为行阶梯型矩阵\\
+若对$A\in K_{m\times n}$为行阶梯型矩阵,有$A(i:c_{i}+1)=1$\\
+则称$A$为简化行阶梯型矩阵\\
+\ \\
+若有变换:一行乘常数加至另一行/互换一行与另一行位置/取合适非零数乘在一行上\\
+则称上述变换为矩阵的初等行变换\\
+若对$A\in K_{m\times n}$,存在$c_{1},\cdots,c_{n}\in \{1,\cdots,m\}$\\
+有$c_{1}\leq c_{2}\leq \cdots\leq c_{n}$,若$c_{i}=c_{i+1}$,则$c_{i}=c_{i+1}=\cdots=c_{n}=m$\\
+有对任意$j\in\{1,\cdots,n\}$,对任意$1\leq k \leq c_{j}$,有$A(k:j)=0$且$A(c_{j}+1:j)\neq 0$\\
+则称$A$为行阶梯型矩阵\\
+若对$A\in K_{m\times n}$为行阶梯型矩阵,有$A(j:c_{j}+1)=1$\\
+则称$A$为简化行阶梯型矩阵\\
+若有变换:一列乘常数加至另一列/互换一列与另一列位置/取合适非零数乘在一列上\\
+则称上述变换为矩阵的初等列变换
+\end{dingyi}
+
+\begin{dingli}
+对数域$\R$\\
+则任意$A\in \R_{m\times n}$均可做初等行变换得到简化行阶梯型矩阵
+\end{dingli}
+
+\begin{dingyi}
+对数域$K$\\
+若有$n$元线性方程组$\begin{cases}a_{11}x_1+a_{12}x_2+\cdots+a_{1n}x_n=b_1\\ a_{21}x_1+a_{22}x_2+\cdots+a_{2n}x_n=b_2\\ \cdots\\ a_{m1}x_1+a_{m2}x_2+\cdots+a_{mn}x_n=b_n\end{cases}$为$n$元线性方程组\\
+则称$\begin{bmatrix}a_{11} & a_{12} & \cdots & a_{1n} \\ a_{21} & a_{22} & \cdots & a_{2n} \\ \vdots & \vdots & \ddots & \vdots \\ a_{m1} & a_{m2} & \cdots & a_{mn}\end{bmatrix}$为$n$元线性方程组的系数矩阵\\
+则称$\begin{bmatrix}a_{11} & a_{12} & \cdots & a_{1n} & b_1\\ a_{21} & a_{22} & \cdots & a_{2n} & b_2\\ \vdots & \vdots & \ddots & \vdots & \vdots\\ a_{m1} & a_{m2} & \cdots & a_{mn} & b_m\end{bmatrix}$为$n$元线性方程组的增广矩阵\\
+若对增广矩阵做初等行变换得到简化行阶梯型矩阵以此得到方程的解\\
+则称上述方法为Gauss消元法
+\end{dingyi}
+
+\begin{zhu}
+对增广矩阵做初等行变换等价于对线性方程组做初等变换
+\end{zhu}
+
+\begin{dingli}
+对数域$K$\\
+若$K=\Q$或$\R$或$\C$,则$n$元线性方程组的解仅有三种可能:无解/唯一解/无穷多解\\
+则$n$元线性方程组无解当且仅当\\
+系数矩阵和增广矩阵做初等行变换得到简化行阶梯型矩阵非零行数不同\\
+则$n$元线性方程组有唯一解当且仅当\\
+系数矩阵和增广矩阵做初等行变换得到简化行阶梯型矩阵非零行数相同且为$n$\\
+则$n$元线性方程组有无穷多解当且仅当\\
+系数矩阵和增广矩阵做初等行变换得到简化行阶梯型矩阵非零行数相同且小于$n$
+\end{dingli}
+
+\begin{dingyi}
+对数域$K$\\
+若有$a_{ij}\in K$\\
+则称$\begin{cases}a_{11}x_1+a_{12}x_2+\cdots+a_{1n}x_n=0\\ a_{21}x_1+a_{22}x_2+\cdots+a_{2n}x_n=0\\ \cdots\\ a_{m1}x_1+a_{m2}x_2+\cdots+a_{mn}x_n=0\end{cases}$为$n$元齐次线性方程组\\
+则称$(0,0,\cdots,0)^{T}$为$n$元齐次线性方程组的零解,则称其他的解为非零解
+\end{dingyi}
+
+\begin{dingli}
+对数域$K$\\
+则$n$元齐次线性方程组有非零解当且仅当\\
+系数矩阵做初等行变换得到简化行阶梯型矩阵非零行数小于$n$
+\end{dingli}
+
+\begin{dingyi}
+对数域$K$\\
+若有$A\in K_{m\times n}$做初等行变换得到简化行阶梯型矩阵的非零行数为$r_{r}(A)$\\
+则称$r_{r}(A)$为$A$的行秩\\
+若有$A\in K_{m\times n}$做初等列变换得到简化列阶梯型矩阵的非零列数为$r_{c}(A)$\\
+则称$r_{c}(A)$为$A$的列秩
+\end{dingyi}
+
+\begin{dingli}
+对数域$K$\\
+若有$A\in K_{m\times n}$做初等行变换得到$B\in K_{m\times n}$\\
+则$r_{r}(A)=r_{r}(B)$且$r_{c}(A)=r_{c}(B)$
+\end{dingli}
+
+\begin{dingli}
+对数域$K$\\
+若有$A\in K_{m\times n}$,则$r_{r}(A)=r_{c}(A)$\\
+则称$\rank(A)=r_{r}(A)=r_{c}(A)$为$A$的秩
+\end{dingli}
+
+\begin{dingli}
+对数域$K$\\
+则$n$元线性方程组无解当且仅当$\rank(\text{系数矩阵})\neq\rank(\text{增广矩阵})$\\
+则$n$元线性方程组有唯一解当且仅当$\rank(\text{系数矩阵})=\rank(\text{增广矩阵})=n$\\
+则$n$元线性方程组有无穷多解当且仅当$\rank(\text{系数矩阵})=\rank(\text{增广矩阵})<n$\\
+则$n$元齐次线性方程组有非零解当且仅当$\rank(\text{系数矩阵})<n$
+\end{dingli}
+
+\begin{dingyi}
+对数域$K$\\
+若有$A=(a_{ij})\in K_{m\times n},B=(b_{ij})\in K_{m\times n},k\in K$\\
+定义矩阵加法:$A+B=(a_{ij}+b_{ij})\in K_{m\times n}$\\
+定义矩阵数乘:$kA=(ka_{ij})\in K_{m\times n}$\\
+则称$-A=-1A$为$A$的负矩阵,则称$0A$为零矩阵,记为$\bf0$
+\end{dingyi}
+
+\begin{dingli}
+对数域$K$\\
+若有$A,B,C\in K_{m\times n},k,l\in K$\\
+则$A+B=B+A$且$(A+B)+C=A+(B+C)$且$A+{\bf0}=A$且$A+(-A)={\bf0}$\\
+则$(kl)A=k(lA)$且$(k+l)A=kA+lA$且$k(A+B)=kA+kB$
+\end{dingli}
+
+\begin{dingyi}
+对数域$K$\\
+若有$A=(a_{ik})\in K_{m\times l},B=(b_{kj})\in K_{l\times n}$\\
+定义矩阵乘法:$AB=(\sum\limits_{k=1}^{l}a_{ik}b_{kj})\in K_{m\times n}$\\
+则称$I=(\iota_{ij})\in K_{m\times n}$为单位矩阵,其中$\iota_{ij}=1,i=j ;\iota_{ij}=0,i\neq j$\\
+若$AB=BA$,则称$A,B$可交换
+\end{dingyi}
+
+\begin{dingli}
+对数域$K$\\
+若有$A,B,C\in K_{*\times *},I\in K_{*\times *},k\in K$\\
+则$(AB)C=A(BC)$且$A(B+C)=AB+AC$且$(A+B)C=AC+BC$\\
+则$IA=AI=A$且$k(AB)=(kA)B=A(kB)$且$(kI)A=kA$
+\end{dingli}
+
+\begin{dingyi}
+对数域$K$\\
+若有$A=(a_{ij}),B=(b_{ij})\in K_{n\times n}$\\
+定义矩阵幂乘:$A^{m}=AA\cdots A$,其中$m\in \N^*$,记$A^{0}=I\in K_{n\times n}$\\
+若有$A=(a_{ij})\in K_{n\times n}$且存在$k\in \N^*$,有$A^k={\bf0}$,则称$A$为幂零矩阵
+\end{dingyi}
+
+\begin{dingli}
+对数域$K$\\
+若有$A,B\in K_{n\times n},I\in K_{n\times n},k\in K,m,l\in \N$\\
+则$A^{m}A^{l}=A^{m+l}$且$(A^{m})^{l}=A^{ml}$且$A,kI$可交换\\
+若有$A,B$可交换,则$(A+B)^{m}=\sum\limits_{i=0}^{n}C_{n}^{i}A^{i}B^{n-i}$
+\end{dingli}
+
+\begin{dingyi}
+对数域$K$\\
+若有$f:K_{n\times n}\to K, \lambda\in K$\\
+有$f(\begin{bmatrix}a_{11} & a_{12} & \cdots & a_{1n} \\ \vdots & \vdots & \vdots & \vdots \\ a_{i1}+b_{i1} & a_{i2}+b_{i2} & \cdots & a_{in}+b_{in}  \\ \vdots & \vdots & \vdots & \vdots \\ a_{m1} & a_{m2} & \cdots & a_{mn}\end{bmatrix})=f(\begin{bmatrix}a_{11} & a_{12} & \cdots & a_{1n} \\ \vdots & \vdots & \vdots & \vdots \\ a_{i1} & a_{i2} & \cdots & a_{in}  \\ \vdots & \vdots & \vdots & \vdots \\ a_{n1} & a_{n2} & \cdots & a_{nn}\end{bmatrix})+f(\begin{bmatrix}a_{11} & a_{12} & \cdots & a_{1n} \\ \vdots & \vdots & \vdots & \vdots \\ b_{i1} & b_{i2} & \cdots & b_{in}  \\ \vdots & \vdots & \vdots & \vdots \\ a_{n1} & a_{n2} & \cdots & a_{nn}\end{bmatrix})$\\
+且$f(\begin{bmatrix}a_{11} & a_{12} & \cdots & a_{1n} \\ \vdots & \vdots & \vdots & \vdots \\ \lambda a_{i1} & \lambda a_{i2} & \cdots & \lambda a_{in}  \\ \vdots & \vdots & \vdots & \vdots \\ a_{n1} & a_{n2} & \cdots & a_{nn}\end{bmatrix})=\lambda f(\begin{bmatrix}a_{11} & a_{12} & \cdots & a_{1n} \\ \vdots & \vdots & \vdots & \vdots \\ a_{i1} & a_{i2} & \cdots & a_{in}  \\ \vdots & \vdots & \vdots & \vdots \\ a_{n1} & a_{n2} & \cdots & a_{nn}\end{bmatrix})$
+\mbox{则称$f$为行线性函数}\\
+若还有$f(\begin{bmatrix}\vdots & \vdots & \vdots & \vdots \\ a_{1} & a_{2} & \cdots & a_{n}  \\ \vdots & \vdots & \vdots & \vdots \\ a_{1} & a_{2} & \cdots & a_{n}  \\ \vdots & \vdots & \vdots & \vdots \end{bmatrix})=0$,
+则称$f$为反对称的行线性函数\\
+若有$f:K_{n\times n}\to K, \lambda\in K$\\
+有$f(\begin{bmatrix}a_{11} & \cdots & a_{1j}+b_{1j} & \cdots & a_{1n} \\ a_{21} & \cdots & a_{2j}+b_{2j} & \cdots & a_{2n} \\ \vdots & \vdots & \vdots & \vdots & \vdots \\ a_{n1} & \cdots & a_{nj}+b_{nj} & \cdots & a_{nn} \end{bmatrix})=f(\begin{bmatrix}a_{11} & \cdots & a_{1j} & \cdots & a_{1n} \\ a_{21} & \cdots & a_{2j} & \cdots & a_{2n} \\ \vdots & \vdots & \vdots & \vdots & \vdots \\ a_{n1} & \cdots & a_{nj} & \cdots & a_{nn} \end{bmatrix})+f(\begin{bmatrix}a_{11} & \cdots & b_{1j} & \cdots & a_{1n} \\ a_{21} & \cdots & b_{2j} & \cdots & a_{2n} \\ \vdots & \vdots & \vdots & \vdots & \vdots \\ a_{n1} & \cdots & b_{nj} & \cdots & a_{nn} \end{bmatrix})$\\
+且$f(\begin{bmatrix}a_{11} & \cdots & \lambda a_{1j} & \cdots & a_{1n} \\ a_{21} & \cdots & \lambda a_{2j} & \cdots & a_{2n} \\ \vdots & \vdots & \vdots & \vdots & \vdots \\ a_{n1} & \cdots & \lambda a_{nj} & \cdots & a_{nn} \end{bmatrix})=\lambda f(\begin{bmatrix}a_{11} & \cdots & a_{1j} & \cdots & a_{1n} \\ a_{21} & \cdots & a_{2j} & \cdots & a_{2n} \\ \vdots & \vdots & \vdots & \vdots & \vdots \\ a_{n1} & \cdots & a_{nj} & \cdots & a_{nn} \end{bmatrix})$
+\mbox{则称$f$为列线性函数}\\
+若还有$f(\begin{bmatrix}\cdots & a_{1} & \cdots & a_{1} & \cdots \\ \cdots & a_{2} & \cdots & a_{2} & \cdots \\ \cdots & \vdots & \cdots & \vdots & \cdots \\ \cdots & a_{n} & \cdots & a_{n} & \cdots \end{bmatrix})=0$,
+则称$f$为反对称的列线性函数
+\end{dingyi}
+
+\begin{dingli}
+对数域$K$\\
+若有$f:K_{n\times n}\to K, \lambda\in K$且$f$为反对称的行线性函数\\
+则$f(\begin{bmatrix}\vdots & \vdots & \vdots & \vdots \\ a_{i1} & a_{i2} & \cdots & a_{in}  \\ \vdots & \vdots & \vdots & \vdots \\ a_{j1} & a_{j2} & \cdots & a_{jn}  \\ \vdots & \vdots & \vdots & \vdots \end{bmatrix})=-f(\begin{bmatrix}\vdots & \vdots & \vdots & \vdots \\ a_{j1} & a_{j2} & \cdots & a_{jn}  \\ \vdots & \vdots & \vdots & \vdots \\ a_{i1} & a_{i2} & \cdots & a_{in}  \\ \vdots & \vdots & \vdots & \vdots \end{bmatrix})$\\
+则$f(\begin{bmatrix}\vdots & \vdots & \vdots & \vdots \\ a_{i1}+\lambda a_{j1} & a_{i2}+\lambda a_{j2} & \cdots & a_{in}+\lambda a_{jn}  \\ \vdots & \vdots & \vdots & \vdots \\ a_{j1} & a_{j2} & \cdots & a_{jn}  \\ \vdots & \vdots & \vdots & \vdots \end{bmatrix})=f(\begin{bmatrix}\vdots & \vdots & \vdots & \vdots \\ a_{i1} & a_{i2} & \cdots & a_{in}  \\ \vdots & \vdots & \vdots & \vdots \\ a_{j1} & a_{j2} & \cdots & a_{jn}  \\ \vdots & \vdots & \vdots & \vdots \end{bmatrix})$\\
+若有$f:K_{n\times n}\to K, \lambda\in K$且$f$为反对称的列线性函数\\
+则$f(\begin{bmatrix}\cdots & a_{1i} & \cdots & a_{1j} & \cdots \\ \cdots & a_{2i} & \cdots & a_{2j} & \cdots \\ \cdots & \vdots & \cdots & \vdots & \cdots \\ \cdots & a_{ni} & \cdots & a_{nj} & \cdots \end{bmatrix})=-f(\begin{bmatrix}\cdots & a_{1j} & \cdots & a_{1i} & \cdots \\ \cdots & a_{2j} & \cdots & a_{2i} & \cdots \\ \cdots & \vdots & \cdots & \vdots & \cdots \\ \cdots & a_{nj} & \cdots & a_{ni} & \cdots \end{bmatrix})$\\
+则$f(\begin{bmatrix}\cdots & a_{1i}+\lambda a_{1j} & \cdots & a_{1j} & \cdots \\ \cdots & a_{2i}+\lambda a_{2j} & \cdots & a_{2j} & \cdots \\ \cdots & \vdots & \cdots & \vdots & \cdots \\ \cdots & a_{ni}+\lambda a_{nj} & \cdots & a_{nj} & \cdots \end{bmatrix})=f(\begin{bmatrix}\cdots & a_{1i} & \cdots & a_{1j} & \cdots \\ \cdots & a_{2i} & \cdots & a_{2j} & \cdots \\ \cdots & \vdots & \cdots & \vdots & \cdots \\ \cdots & a_{ni} & \cdots & a_{nj} & \cdots \end{bmatrix})$\\
+\end{dingli}
+
+\begin{dingli}
+对数域$K$\\
+若有$f:K_{n\times n}\to K$且$f$为行/列线性函数\\
+则$f$为反对称的当且仅当对任意$A\in K_{n\times n},\rank(A)<n$,有$f(A)=0$
+\end{dingli}
+
+\begin{dingyi}
+对数域$K$\\
+若有$f:K_{n\times n}\to K$且$f$为行/列线性函数且$I\in K_{n\times n}$\\
+有对任意$A\in K_{n\times n},\rank(A)<n$,有$f(A)=0$且$f(I)=1$\\
+则称$f$为行列式函数
+\end{dingyi}
+
+\begin{dingli}
+对数域$K$\\
+若$f:K_{n\times n}\to K$为行列式函数,则$f$为唯一的\\
+则对任意$A=(a_{ij})\in K_{n\times n}$,有$f(A)=\sum\limits_{j_1\cdots j_n}(-1)^{\tau(j_1\cdots j_n)}a_{1j_1}\cdots a_{nj_n}$,记为$|A|$或$\det(A)$
+\end{dingli}
+
+\begin{zhu}
+对$n\in\N^*$,则称$\{j_1,\cdots,j_n\}=\{1,\cdots,n\}$为$n$元排列\\
+则称$\tau(j_1\cdots j_n)=\sum\limits_{i=1}^{n}|\{j_{k}|j_{k}<j_{i}\text{且}k>i\}|$为$n$元排列的逆序数\\
+则有$(-1)^{\tau(\cdots a\cdots b\cdots)}=-(-1)^{\tau(\cdots b\cdots a\cdots)}$
+\end{zhu}
+
+\begin{dingli}
+Laplace:\\
+对数域$K$\\
+若有$A=(a_{ij})\in K_{n\times n}$和$\{i_1<\cdots<i_k\}\subset\{1,\cdots,n\}\supset\{j_1<\cdots<j_k\}$\\
+则称$A\begin{pmatrix}i_1,\cdots,i_k\\ j_1,\cdots,j_k\end{pmatrix}=\begin{vmatrix} a_{i_1j_1}& \cdots & a_{i_1j_k} \\ \vdots & \ddots & \vdots \\ a_{i_kj_1} & \cdots & a_{i_kj_k} \end{vmatrix}$为$A$的$k$阶子式\\
+则称$A\begin{pmatrix}i_1,\cdots,i_k\\ i_1,\cdots,i_k\end{pmatrix}=\begin{vmatrix} a_{i_1i_1}& \cdots & a_{i_1i_k} \\ \vdots & \ddots & \vdots \\ a_{i_ki_1} & \cdots & a_{i_ki_k} \end{vmatrix}$为$A$的$k$阶主子式\\
+记$\{i'_1,\cdots,i'_{n-k}\}=\{1,\cdots,n\}\backslash\{i_1,\cdots,i_k\}$且$\{j'_1,\cdots,j'_{n-k}\}=\{1,\cdots,n\}\backslash\{j_1,\cdots,j_k\}$\\
+则称$A\begin{pmatrix}i'_1,\cdots,i'_{n-k}\\ j'_1,\cdots,j'_{n-k}\end{pmatrix}$为$A\begin{pmatrix}i_1,\cdots,i_k\\ j_1,\cdots,j_k\end{pmatrix}$的余子式\\
+则称$(-1)^{\sum\limits_{l=1}^{k}i_l+j_l}A\begin{pmatrix}i'_1,\cdots,i'_{n-k}\\ j'_1,\cdots,j'_{n-k}\end{pmatrix}$为$A\begin{pmatrix}i_1,\cdots,i_k\\ j_1,\cdots,j_k\end{pmatrix}$的代数余子式\\
+记$M_{ij}$为$A\begin{pmatrix}i \\ j\end{pmatrix}$的余子式,记$A_{ij}$为$A\begin{pmatrix}i \\ j\end{pmatrix}$的代数余子式\\
+对取定的$k\in\{1,\cdots,n\}$和$\{i_1<\cdots<i_k\}\subset\{1,\cdots,n\}$\\
+则有$|A|=\sum\limits_{1\leq j_1<\cdots<j_k\leq n}(-1)^{\sum\limits_{l=1}^{k}i_l+j_l}A\begin{pmatrix}i_1,\cdots,i_k\\ j_1,\cdots,j_k\end{pmatrix}A\begin{pmatrix}i'_1,\cdots,i'_{n-k}\\ j'_1,\cdots,j'_{n-k}\end{pmatrix}$
+\end{dingli}
+
+\begin{dingli}
+Vandermonde:\\
+对数域$K$\\
+若有$V=\begin{pmatrix} 1 & 1 & \cdots & 1 \\ a_1 & a_2 & \cdots & a_n \\ \vdots & \vdots & \ddots & \vdots \\ a_1^{n-1} & a_2^{n-1} & \cdots & a_n^{n-1} \end{pmatrix}$
+\mbox{则称$|V|=\prod\limits_{1\leq j<i\leq n}(a_i-a_j)$为$n$阶Vandermonde行列式}
+\end{dingli}
+
+\begin{dingyi}
+对数域$K$\\
+若有$A=(a_{ij})\in K_{m\times n}$\\
+定义矩阵转置:$A^{T}=(\widetilde{a}_{ij})\in K_{n\times m}$,其中$\widetilde{a}_{ij}=a_{ji}$
+\end{dingyi}
+
+\begin{dingli}
+对数域$K$\\
+若有$A,B\in K_{*\times *},k\in K$\\
+则$(A+B)^{T}=A^{T}+B^{T}$且$(kA)^{T}=kA^{T}$且$(AB)^{T}=B^{T}A^{T}$且$|A^{T}|=|A|$
+\end{dingli}
+
+\begin{dingyi}
+对数域$K$\\
+若有$A=(a_{ij})\in K_{n\times n}$且$a_{ij}=0,i\neq j$\\
+则称$A$为对角矩阵,记为$diag(a_{11},\cdots,a_{nn})$\\
+若有$A=(a_{ij})\in K_{n\times n}$且$a_{ij}=0,i\neq k$或$j\neq l$\\
+则称$A$为基本矩阵,记为$E_{kl}$\\
+若有$A=(a_{ij})\in K_{n\times n}$且$a_{ij}=0,i>j$/$i<j$\\
+则称$A$为上三角/下三角矩阵\\
+若有$A=(a_{ij})\in K_{n\times n}$且$A=A^{T}$/$A+A^{T}={\bf0}$\\
+则称$A$为对称/反对称矩阵\\
+若有$A=(a_{ij})\in K_{n\times n}$且$A$可由$I\in K_{n\times n}$做一次初等行/列变换得到\\
+则称$A$为初等矩阵,记为$P(i,j(k))$/$P(i,j)$/$P(i(c))$
+\end{dingyi}
+
+\begin{dingli}
+对数域$K$\\
+若有$A=(a_{ij})\in K_{n\times n}$,则$A=\sum\limits_{i=1}^{n}\sum\limits_{j=1}^{n}a_{ij}E_{ij}$\\
+则左乘对角矩阵相当于对角元乘行,则右称对角矩阵相当于对角元乘列\\
+则左乘$E_{ij}$相当于只保留$j$行至$i$行,则右乘$E_{ij}$相当于只保留$i$列至$j$列\\
+\mbox{则左乘$P(i,j(k))$相当于$j$行乘$k$加至$i$行,则右乘$P(i,j(k))$相当于$i$列称$k$加至$j$列}\\
+则左乘$P(i,j)$相当于交换$i$行与$j$行,则右乘$P(i,j)$相当于交换$i$列与$j$列\\
+则左乘$P(i(c))$相当于用$c$乘$i$行,则右乘$P(i(c))$相当于用$c$乘$i$列
+\end{dingli}
+
+\begin{dingli}
+对数域$K$\\
+若有$A=(a_{ij}),B=(b_{ij})\in K_{n\times n}$且$A,B$为上三角/下三角矩阵\\
+则$AB$为上三角/下三角矩阵且$AB(i:i)=a_{ii}b_{ii}$\\
+若有$A=(a_{ij}),B=(b_{ij})\in K_{n\times n}$且$A,B$为对称/反对称矩阵且$k,l\in K$\\
+则$kA+lB$为对称/反对称矩阵且$AB$为对称/反对称矩阵当且仅当$A,B$可交换\\
+若有$A\in K_{n\times n}$且$A$为反对称矩阵且$n$为奇数,则$|A|=0$\\
+若有$A,B\in K_{n\times n}$且$A,B$为反对称矩阵,则$AB-BA$为反对称矩阵\\
+若有$A\in K_{n\times n}$与任意$B\in K_{n\times n}$可交换,则$A=kI,k\in K$
+\end{dingli}
+
+\begin{dingyi}
+对数域$K$\\
+若有$A=(a_{ij})\in K_{n\times n}$,存在$B=(b_{ij})\in K_{n\times n}$,有$AB=BA=I$\\
+则称$B=A^{-1}$为$A$的逆矩阵,则称$A$为可逆矩阵,否则,则称$A$为奇异矩阵\\
+则称$A^*=(A_{ij})$为$A$的伴随矩阵,有$AA^*=|A|I$
+\end{dingyi}
+
+\begin{dingli}
+对数域$K$\\
+若有$A\in K_{n\times n}$,则$A$为可逆矩阵当且仅当$|A|\neq0$/$\rank(A)=n$\\
+则$A$为可逆矩阵当且仅当存在初等矩阵$P_1,\cdots,P_m\in K_{n\times n}$,有$A=P_1,\cdots,P_n$
+\end{dingli}
+
+\begin{dingli}
+对数域$K$\\
+若有$A,B\in K_{n\times n}$且$AB=I$,则$A,B$均为可逆矩阵且$A=B^{-1},B=A^{-1}$\\
+若有$A\in K_{n\times n}$且$A$为可逆矩阵,则$A^{-1}$为可逆矩阵且$(A^{-1})^{-1}=A$\\
+若有$A\in K_{n\times n}$且$A$为可逆矩阵,则$A^{T}$为可逆矩阵且$(A^{T})^{-1}=(A^{-1})^{T}$\\
+若有$A,B\in K_{n\times n}$且$A,B$均为可逆矩阵,则$AB$为可逆矩阵且$(AB)^{-1}=B^{-1}A^{-1}$
+\end{dingli}
+
+\begin{dingli}
+对数域$K$\\
+若有$A,B\in K_{n\times n}$,则$\rank(A+B)\leq\rank(A)+\rank(B)$\\
+若有$A,B\in K_{n\times n}$,则$\rank(AB)\leq\min\{\rank(A),\rank(B)\}$\\
+若有$A,B\in K_{n\times n}$,则$\rank(AA^{T})=\rank(A^{T}A)=\rank(A)$\\
+若有$A,B\in K_{n\times n}$且$A$为可逆矩阵,则$\rank(AB)=\rank(BA)=\rank(B)$
+\end{dingli}
+
+\begin{dingyi}
+对数域$K$\\
+若有$A,B\in K_{m\times n}$且$A$做初等行/列变换可得到$B$\\
+则称$A,B$为相抵的,相抵关系为等价关系
+\end{dingyi}
+
+\begin{dingli}
+对数域$K$\\
+若有$A,B\in K_{m\times n}$,则$A,B$为相抵的\\
+$\Leftrightarrow$存在初等矩阵$P_1,\cdots,P_l\in K_{m\times m},Q_1,\cdots,Q_p\in K_{n\times n}$,有$P_1\cdots P_lAQ_1\cdots Q_n=B$\\
+$\Leftrightarrow$存在可逆矩阵$P\in K_{m\times m},Q\in K_{n\times n}$,有$PAQ=B$\\
+$\Leftrightarrow$存在$R=\begin{pmatrix}I_r&\bf0\\ \bf0&\bf0\end{pmatrix}$,有$A,B,R$为相抵的\\
+$\Leftrightarrow$存在$r\in \N^*$,有$\rank(A)=\rank(B)=r$
+\end{dingli}
+
+\begin{dingyi}
+对数域$K$\\
+若对$A=(a_{ij})\in K_{m\times n}$,则称$A=\begin{pmatrix}U_{11}&\cdots&U_{1t}\\ \vdots&\ddots&\vdots\\ U_{u1}&\cdots&U_{ut}\end{pmatrix}$为矩阵分块\\
+其中$U_{kl}\in K_{m_k\times n_l},k\in\{1,\cdots,u\},l\in \{1,\cdots,t\},\sum\limits_{k=1}^{u}m_k=m,\sum\limits_{l=1}^{t}n_l=n$
+\end{dingyi}
+
+\begin{dingli}
+对数域$K$\\
+若对$A\in K_{m\times n},B\in K_{n\times p}$,有矩阵分块$A=\begin{pmatrix}U_{11}&\cdots&U_{1t}\\ \vdots&\ddots&\vdots\\ U_{u1}&\cdots&U_{ut}\end{pmatrix},B=\begin{pmatrix}V_{11}&\cdots&V_{1v}\\ \vdots&\ddots&\vdots\\ V_{t1}&\cdots&V_{tv}\end{pmatrix}$\\
+其中$U_{kl}\in K_{m_k\times n_l},k\in\{1,\cdots,u\},l\in \{1,\cdots,t\}$\\
+且$V_{lq}\in K_{n_l\times p_q},l\in \{1,\cdots,t\},q\in \{1,\cdots,v\}$且$\sum\limits_{k=1}^{u}m_k=m,\sum\limits_{l=1}^{t}n_l=n,\sum\limits_{q=1}^{v}p_q=p$\\
+则$AB=\begin{pmatrix}U_{11}V_{11}+\cdots+U_{1t}V_{t1}&\cdots&U_{11}V_{1v}+\cdots+U_{1t}V_{tv}\\ \vdots&\ddots&\vdots\\ U_{u1}V_{11}+\cdots+U_{ut}V_{t1}&\cdots&U_{u1}V_{1v}+\cdots+U_{ut}V_{tv}\end{pmatrix}$
+\end{dingli}
+
+\begin{zhu}
+分块矩阵也可做分块初等行/列变换
+\end{zhu}
+
+\begin{dingli}
+对数域$K$\\
+若$A\in K_{m\times n},B\in K_{n\times m},I_n\in K_{n\times n},I_m\in K_{m\times m}$,则$\begin{vmatrix}I_n&B\\ A&I_m\end{vmatrix}=|I_m-AB|=|I_n-BA|$\\
+若$A\in K_{n\times n},B\in K_{m\times m},C\in K_{m\times n},D\in K_{n\times m}$,则$\begin{vmatrix}A&{\bf0}\\ C&B\end{vmatrix}=\begin{vmatrix}A&D\\ {\bf0}&B\end{vmatrix}=|A||B|$\\
+若$A,B\in K_{n\times n},I_n\in K_{n\times n}$\\
+则$|AB|=\begin{vmatrix}I_n&{\bf0}\\ A&AB\end{vmatrix}=\begin{vmatrix}A&{\bf0}\\ I_n&B\end{vmatrix}=|A||B|=\begin{vmatrix}B&{\bf0}\\ I_n&A\end{vmatrix}=\begin{vmatrix}I_n&{\bf0}\\ B&BA\end{vmatrix}=|BA|$\\
+若$A,B,C,D\in K_{n\times n}$且$A$为可逆矩阵且$A,C$可交换\\
+则$\begin{vmatrix}A&B\\ C&D\end{vmatrix}=\begin{vmatrix}A&B\\ {\bf0}&-CA^{-1}B\end{vmatrix}=|A||D-CA^{-1}B|=|AD-CB|$
+\end{dingli}
+
+\begin{dingli}
+Binet-Cauchy:\\
+对数域$K$\\
+若有$A=(a_{ij})\in K_{m\times n},B=(b_{ji})\in K_{n\times m}$\\
+则若$m>n$,则$|AB|=0$\\
+则若$m\leq n$,则$|AB|=\sum\limits_{1\leq j_1<\cdots<j_{m}\leq n}A\begin{pmatrix}1,\cdots,m\\ j_1,\cdots,j_{m}\end{pmatrix}B\begin{pmatrix} j_1,\cdots,j_{m}\\1,\cdots,m\end{pmatrix}$
+\end{dingli}
+
+\begin{dingli}
+对数域$K$\\
+若对$A\in K_{m\times n},B\in K_{n\times l},C\in K_{l\times p},D,I\in K_{n\times n}$\\
+则若$AB={\bf0}$,有$\rank(A)+\rank(B)\leq n$\\
+则有Sylvester: $\rank(AB)\geq \rank(A)+\rank(B)-n$\\
+则有Frobenius: $\rank(ABC)\geq \rank(AB)+\rank(BC)-\rank(B)$\\
+则有$D^2=D$当且仅当$\rank(D)+\rank(I-D)=n$\\
+则有\mbox{$\rank(D^*)=n,\rank(D)=n$/$\rank(D^*)=1,\rank(D)=n-1$/$\rank(D^*)=0,\rank(D)<n-1$}
+\end{dingli}
+
+\begin{dingli}
+对数域$K$\\
+则$n$方程$n$元线性方程组有唯一解当且仅当$|\text{系数矩阵}|\neq0$\\
+则$n$方程$n$元齐次线性方程组有非零解当且仅当$|\text{系数矩阵}|=0$
+\end{dingli}
+
+\begin{dingli}
+Cramer:\\
+对数域$K$\\
+若有$n$方程$n$元线性方程组,记系数矩阵为$A$\\
+记$B_{i}=A(I-e_ie_i^{T})+e_i(b_1,\cdots,b_n)$,其中$e_i=(\chi_{\{i\}}(j))\in K_{1\times n}$\\
+则若$|A|\neq 0$,方程组有唯一解$(\frac{|B_1|}{|A|},\cdots,\frac{|B_n|}{|A|})^{T}$
+\end{dingli}
+
+\chapter{线性空间}
+
+\begin{dingyi}
+对集合$V$和数域$K$\\
+若有加法运算: $V\times V\to V,(\alpha,\beta)=\alpha+\beta\mapsto\gamma$\\
+且有数乘运算: $K\times V\to V,(k,\alpha)=k\alpha\mapsto \delta$\\
+对任意$\alpha,\beta,\gamma\in V,k,l,1\in K$满足:\\
+加法交换律:$\alpha+\beta=\beta+\alpha$\\
+加法结合律:$(\alpha+\beta)+\gamma=\alpha+(\beta+\gamma)$\\
+加法含幺元:存在${\bf0}\in V$,有$\alpha+{\bf0}={\bf0}+\alpha=\alpha$\\
+加法含逆元:存在$-\alpha\in V$,有$\alpha+(-\alpha)=(-\alpha)+\alpha=0$\\
+数乘不变性:$1\alpha=\alpha$\\
+数乘结合律:$(kl)\alpha=k(l\alpha)$\\
+加法分配律:$k(\alpha+\beta)=k\alpha+k\beta$\\
+数乘分配律:$(k+l)\alpha=k\alpha+l\alpha$\\
+则称$V$为$K$上线性空间
+\end{dingyi}
+
+\begin{dingli}
+对数域$K$上线性空间$V$\\
+则${\bf0}\in V$为唯一的且对任意$\alpha\in V$,有$-\alpha=(-1)\alpha\in V$为唯一的\\
+则对任意$\alpha\in V,k,0\in K$,有$0\alpha=k{\bf0}={\bf0}$\\
+则对任意$\alpha\in V,k\in K$,若$k\alpha=0$,则$k=0$或$\alpha={\bf0}$
+\end{dingli}
+
+\begin{dingyi}
+对数域$K$上线性空间$K^n$\\
+则有$\alpha=(a_1,\cdots,a_n)^{T}\in K^n$\\
+对$n$元线性方程组$\begin{cases}a_{11}x_1+a_{12}x_2+\cdots+a_{1n}x_n=b_1\\ a_{21}x_1+a_{22}x_2+\cdots+a_{2n}x_n=b_2\\ \cdots\\ a_{m1}x_1+a_{m2}x_2+\cdots+a_{mn}x_n=b_n\end{cases}$\\
+则$n$元线性方程组可化为$x_1\alpha_1+\cdots+x_n\alpha_n=\beta$\\
+其中$\alpha_i=(a_{1i},\cdots,a_{mi})^{T}\in K^n$且$\beta=(b_1,\cdots,b_n)^{T}\in K^n$\\
+对矩阵$A=\begin{bmatrix}a_{11} & a_{12} & \cdots & a_{1n}\\ a_{21} & a_{22} & \cdots & a_{2n}\\ \vdots & \vdots & \ddots & \vdots\\ a_{m1} & a_{m2} & \cdots & a_{mn} \end{bmatrix}$为$K$上$m\times n$\\
+则矩阵可化为$A=[\alpha_1,\cdots,\alpha_n]=[\gamma_1,\cdots,\gamma_m]^{T}$\\
+其中$\alpha_i=(a_{1i},\cdots,a_{mi})^{T}\in K^n$且$\gamma_j=(a_{j1},\cdots,a_{jn})^{T}$\\
+则$n$元线性方程组可化为$AX=b$\\
+其中$X=(x_1,\cdots,x_n)^{T}$且$b=(b_1,\cdots,b_n)^{T}\in K^n$
+\end{dingyi}
+
+\begin{dingyi}
+对数域$K$上线性空间$V$\\
+若有$\alpha_1,\cdots,\alpha_n\in V,k_1,\cdots,k_n\in K$\\
+则称$k_1\alpha_1+\cdots+k_n\alpha_n$为$\alpha_1,\cdots,\alpha_n$的线性组合\\
+则称$\alpha_1,\cdots,\alpha_n(\cdots)$为$V$中向量组\\
+若对$\beta\in V$,有$\beta=k_1\alpha_1+\cdots+k_n\alpha_n$\\
+则称$\beta$可由$\alpha_1,\cdots,\alpha_n$线性表出\\
+若对$\alpha_1,\cdots,\alpha_n\in V$,存在$k_1,\cdots,k_n\in K$,有$k_1\alpha_1+\cdots+k_n\alpha_n={\bf0}$且存在$k_i\neq0$\\
+则称$\alpha_1,\cdots,\alpha_n$为线性相关的\\
+若对$\alpha_1,\cdots,\alpha_n\in V$,有$k_1\alpha_1+\cdots+k_n\alpha_n={\bf0}$,则$k_1=\cdots=k_n=0$\\
+则称$\alpha_1,\cdots,\alpha_n$为线性无关的
+\end{dingyi}
+
+\begin{zhu}
+无限元向量组的线性相关/线性无关即为存在/任意有限子集的线性相关/线性无关
+\end{zhu}
+
+\begin{dingyi}
+对数域$K$上线性空间$K^n$\\
+对$n$元齐次线性方程组$x_1\alpha_1+\cdots+x_n\alpha_n={\bf0}$,其中$\alpha_1,\cdots,\alpha_n\in K^n$\\
+则$\alpha_1,\cdots,\alpha_n\in K^n$为线性相关的当且仅当$n$元齐次线性方程组有非零解\\
+则$\alpha_1,\cdots,\alpha_n\in K^n$为线性无关的当且仅当$n$元齐次线性方程组只有零解\\
+对矩阵$A=[\alpha_1,\cdots,\alpha_n]\in K_{n\times n}$,其中$\alpha_1,\cdots,\alpha_n\in K^n$\\
+则$|A|=0$当且仅当$\alpha_1,\cdots,\alpha_n$为线性相关的\\
+则$|A|\neq0$当且仅当$\alpha_1,\cdots,\alpha_n$为线性无关的
+\end{dingyi}
+
+\begin{dingli}
+对数域$K$上线性空间$V$\\
+若对$\alpha_1,\cdots,\alpha_n\in V$\\
+存在$\{i_1,\cdots,i_m\}\subset\{1,\cdots,n\}$且$m\leq n$有$\alpha_{i_1},\cdots,\alpha_{i_m}$为线性相关\\
+则$\alpha_1,\cdots,\alpha_n$为线性相关的\\
+存在$i\in\{1,\cdots,n\}$,有$\alpha_i={\bf0}$\\
+则$\alpha_1,\cdots,\alpha_n$为线性相关的\\
+存在$i\in\{1,\cdots,n\},\{j_1,\cdots,j_m\}\subset\{1,\cdots,n\}\backslash\{i\}$,有$\alpha_i$可由$\alpha_{j_1},\cdots,\alpha_{j_m}$线性表出\\
+则称$\alpha_1,\cdots,\alpha_n$为线性相关的\\
+任意$i\in\{1,\cdots,n\},\{j_1,\cdots,j_m\}\subset\{1,\cdots,n\}\backslash\{i\}$,有$\alpha_i$不可由$\alpha_{j_1},\cdots,\alpha_{j_m}$线性表出\\
+则称$\alpha_1,\cdots,\alpha_n$为线性无关的
+\end{dingli}
+
+\begin{dingli}
+对数域$K$上线性空间$V$\\
+若对$\alpha_1,\cdots,\alpha_n,\beta\in V$,有$\beta$可由$\alpha_1,\cdots,\alpha_n$线性表出\\
+则$\beta$由$\alpha_1,\cdots,\alpha_n$线性表出为唯一的当且仅当$\alpha_1,\cdots,\alpha_n$为线性无关的\\
+若对$\alpha_1,\cdots,\alpha_n,\beta\in V$,有$\alpha_1,\cdots,\alpha_n$为线性无关的\\
+则$\beta$可由$\alpha_1,\cdots,\alpha_n$线性表出当且仅当$\alpha_1,\cdots,\alpha_n,\beta$为线性相关的
+\end{dingli}
+
+\begin{dingyi}
+对数域$K$上线性空间$V$\\
+若对$\alpha_1,\cdots,\alpha_n\in V$,存在$\{i_1,\cdots,i_m\}\subset\{1,\cdots,n\}$且$m\leq n$,有$\alpha_{i_1},\cdots,\alpha_{i_m}$为线性无关的且对任意$j\in\{1,\cdots,n\}\backslash\{i_1,\cdots,i_m\}$,有$\alpha_{i_1},\cdots,\alpha_{i_m},\alpha_j$为线性相关的\\
+则称$\alpha_{i_1},\cdots,\alpha_{i_m}$为$\alpha_1,\cdots,\alpha_n$的极大线性无关组\\
+若对$\alpha_1,\cdots,\alpha_n,\beta_1,\cdots,\beta_m\in V$\\
+有任意$\beta_j$可由$\alpha_1,\cdots,\alpha_n$线性表出且任意$\alpha_i$可由$\beta_1,\cdots,\beta_m$线性表出\\
+则称$\alpha_1,\cdots,\alpha_n$与$\beta_1,\cdots,\beta_m$为线性等价的,记为$\{\alpha_1,\cdots,\alpha_n\}\cong\{\beta_1,\cdots,\beta_m\}$
+\end{dingyi}
+
+\begin{dingli}
+对数域$K$上线性空间$V$\\
+若对$\alpha_1,\cdots,\alpha_n\in V$有极大线性无关组$\alpha_{i_1},\cdots,\alpha_{i_m}$\\
+则$\alpha_1,\cdots,\alpha_n$与$\alpha_{i_1},\cdots,\alpha_{i_m}$为线性等价的\\
+若对$\beta_1,\cdots,\beta_m\in V$可由$\alpha_1,\cdots,\alpha_n\in V$线性表出且$m>n$\\
+则$\beta_1,\cdots,\beta_m$为线性相关的,即等价的线性无关向量组大小相同
+\end{dingli}
+
+\begin{dingyi}
+对数域$K$上线性空间$V$\\
+若对$\alpha_1,\cdots,\alpha_n\in V$有极大线性无关组$\alpha_{i_1},\cdots,\alpha_{i_m}$\\
+则称$m$为$\alpha_1,\cdots,\alpha_n$的秩,记为$\rank\{\alpha_1,\cdots,\alpha_n\}=m$
+\end{dingyi}
+
+\begin{dingli}
+对数域$K$上线性空间$K^n$\\
+对$n$元线性方程组$x_1\alpha_1+\cdots+x_n\alpha_n=\beta$,其中$\alpha_1,\cdots,\alpha_n,\beta\in K^m$\\
+则$\rank\{\alpha_1,\cdots,\alpha_n\}=r_{r}(\text{系数矩阵})$且$\rank\{\alpha_1,\cdots,\alpha_n,\beta\}=r_{r}(\text{增广矩阵})$
+对矩阵$A=[\alpha_1,\cdots,\alpha_n]=[\gamma_1,\cdots,\gamma_m]^{T}\in K_{m\times n}$,其中$\alpha_1,\cdots,\alpha_n\in K^m,\gamma_1,\cdots,\gamma_m\in K^n$\\
+则$\rank\{\alpha_1,\cdots,\alpha_n\}=r_{r}(A)$且$\rank\{\gamma_1,\cdots,\gamma_m\}=r_{c}(A)$
+\end{dingli}
+
+\begin{dingli}
+对数域$K$上线性空间$V$\\
+则有$\alpha_1,\cdots,\alpha_n\in V$为线性无关的当且仅当$\rank\{\alpha_1,\cdots,\alpha_n\}=n$\\
+则若$\beta_1,\cdots,\beta_m\in V$可由$\alpha_1,\cdots,\alpha_n\in V$线性表出,则$\rank\{\beta_1,\cdots,\beta_m\}\leq \rank\{\alpha_1,\cdots,\alpha_n\}$\\
+则若$\beta_1,\cdots,\beta_m\in V$与$\alpha_1,\cdots,\alpha_n\in V$为线性等价的,则$\rank\{\beta_1,\cdots,\beta_m\}=\rank\{\alpha_1,\cdots,\alpha_n\}$
+\end{dingli}
+
+\begin{dingyi}
+对数域$K$上线性空间$V$\\
+若对向量组$S\subset V$且$|S|\leq\infty$,有$S$为线性无关的\\
+且对任意$\alpha\in V$,存在$S_{\alpha}\subset S$且$|S_{\alpha}|<\infty$,有$\alpha$可由$S_{\alpha}$线性表出\\
+则称$S$为$V$的基,则称$|S|$为$V$的维数,记为$\dim V=|S|$,记$\dim\{{\bf0}\}=0$
+\end{dingyi}
+
+\begin{dingli}
+对数域$K$上线性空间$V$\\
+若向量组$S_1,S_2\subset V$为$V$的基,则$|S_1|=|S_2|$
+\end{dingli}
+
+\begin{dingli}
+对数域$K$上线性空间$V$\\
+若对$\alpha_1,\cdots,\alpha_n,\alpha_{n+1}\in V$且$\dim V=n$\\
+则$\alpha_1,\cdots,\alpha_n,\alpha_{n+1}$为线性相关的\\
+若对$\alpha_1,\cdots,\alpha_n\in V$为线性无关的且$\dim V=n$\\
+则$\alpha_1,\cdots,\alpha_n$为$V$的基\\
+若对$\alpha_1,\cdots,\alpha_n\in V$且$\dim V=n$且任意$\beta\in V$可由$\alpha_1,\cdots,\alpha_n$线性表出\\
+则$\alpha_1,\cdots,\alpha_n$为$V$的基
+\end{dingli}
+
+\begin{dingli}
+对数域$K$上线性空间$V$\\
+若对$\alpha_1,\cdots,\alpha_m\in V$为线性无关的且$\dim V=n$\\
+则存在$\alpha_{m+1},\cdots,\alpha_{n}\in V$,有$\alpha_1,\cdots,\alpha_n$为$V$的基
+\end{dingli}
+
+\begin{dingyi}
+对数域$K$上线性空间$V$\\
+若有$\alpha_1,\cdots,\alpha_n\in V$为$V$的基且对$\beta\in V$,有$\beta=a_1\alpha_1+\cdots+a_n\alpha_n$\\
+则称$(a_1,\cdots,a_n)^{T}$为$\beta$在基$\alpha_1,\cdots,\alpha_n$下的坐标,记为$\beta=(\alpha_1,\cdots,\alpha_n)(a_1,\cdots,a_n)^{T}$\\
+若有$\alpha_1,\cdots,\alpha_n\in V$为$V$的基且$\beta_1,\cdots,\beta_n\in V$为$V$的基\\
+记$\beta_i=(\alpha_1,\cdots,\alpha_n)(a_{1i},\cdots,a_{ni})^{T},i=1,\cdots,n$,记$A=\begin{pmatrix}a_{11}&\cdots&a_{1n}\\ \vdots&\ddots&\vdots\\ a_{n1}&\cdots&a_{nn}\end{pmatrix}$\\
+则称$(\beta_1,\cdots,\beta_n)=(\alpha_1,\cdots,\alpha_n)A$为基变换\\
+则称$A$为从$\alpha_1,\cdots,\alpha_n$到$\beta_1,\cdots,\beta_n$的过渡矩阵\\
+若有$\gamma=(\alpha_1,\cdots,\alpha_n)(x_1,\cdots,x_n)^{T}=(\beta_1,\cdots,\beta_n)(y_1,\cdots,y_n)^{T}$\\
+由$(\beta_1,\cdots,\beta_n)=(\alpha_1,\cdots,\alpha_n)A$有$(\alpha_1,\cdots,\alpha_n)(x_1,\cdots,x_n)^{T}=(\alpha_1,\cdots,\alpha_n)A(y_1,\cdots,y_n)^{T}$\\
+则称$x=Ay$/$y=A^{-1}x$为坐标变换
+\end{dingyi}
+
+\begin{dingli}
+对数域$K$上线性空间$V$\\
+若有$\alpha_1,\cdots,\alpha_n\in V$为$V$的基且$\beta_1,\cdots,\beta_n\in V$为$V$的基且$A,B\in K_{n\times n}$为过渡矩阵且$k\in K$\\
+则$(\alpha_1,\cdots,\alpha_n)A+(\beta_1,\cdots,\beta_n)A=(\alpha_1+\beta_1,\cdots,\alpha_n+\beta_n)A$\\
+则$(\alpha_1,\cdots,\alpha_n)A+(\alpha_1,\cdots,\alpha_n)B=(\alpha_1,\cdots,\alpha_n)(A+B)$\\
+则$(k\alpha_1,\cdots,k\alpha_n)A=(\alpha_1,\cdots,\alpha_n)(kA)=k((\alpha_1,\cdots,\alpha_n)A)$\\
+则$(((\alpha_1,\cdots,\alpha_n)A)B)=(\alpha_1,\cdots,\alpha_n)(AB)$
+\end{dingli}
+
+\begin{dingli}
+对数域$K$上线性空间$V$\\
+若有$\alpha_1,\cdots,\alpha_n\in V$为$V$的基且$\beta_1,\cdots,\beta_n\in V$且$A\in K_{n\times n}$\\
+则若$(\beta_1,\cdots,\beta_n)=(\alpha_1,\cdots,\alpha_n)A$,则$\beta_1,\cdots,\beta_n$为$V$的基当且仅当$A$为可逆矩阵
+\end{dingli}
+
+\begin{dingyi}
+对数域$K$上线性空间$V$\\
+若对$U\subset V$,有$U\neq\varnothing$且$U$关于$V$的加法数乘构成线性空间\\
+则称$U$为$V$的线性子空间,则称$\{0\},V$为$V$的平凡子空间\\
+若对$\alpha_1,\cdots,\alpha_m\in V$,记$\langle\alpha_1,\cdots,\alpha_n\rangle=\{k_1\alpha_1,\cdots,k_n\alpha_n|k_1,\cdots,k_n\in K\}$\\
+则称$\langle\alpha_1,\cdots,\alpha_n\rangle$为$\alpha_1,\cdots,\alpha_n$生成的线性子空间\\
+若对$V_1,V_2\subset V$为$V$的子空间\\
+记$V_1\cap V_2=\{\alpha|\alpha\in V_1,\alpha\in V_2\},V_1+V_2=\{\alpha_1+\alpha_2|\alpha_1\in V_1,\alpha_2\in V_2\}$\\
+则称$V_1\cap V_2$为$V_1,V_2$的交,则称$V_1+V_2$为$V_1,V_2$的和
+\end{dingyi}
+
+\begin{dingli}
+对数域$K$上线性空间$V$\\
+若对$U\subset V$,则$U$为$V$的线性子空间当且仅当对任意$\alpha,\beta\in U,k,l\in U$,有$k\alpha+l\beta\in U$\\
+若对$\alpha_1,\cdots,\alpha_n\in V$为$V$的基,则$V=\langle\alpha_1,\cdots,\alpha_n\rangle$\\
+若对$V_1,V_2\subset V$为$V$的子空间,则$V_1\cap V_2,V_1+V_2$为$V$的线性子空间
+\end{dingli}
+
+\begin{dingli}
+对数域$K$上线性空间$V$\\
+若对$U$为$V$的线性子空间,则$\dim U\leq \dim V$\\
+若对$V_1,V_2$为$V$的线性子空间且$\max\{\dim V_1,\dim V_2\}<\infty$\\
+则$\dim V_1\cap V_2<\infty,\dim V_1+V_2<\infty$且$\dim V_1+\dim V_2=\dim V_1\cap V_2+\dim V_1\cap V_2$
+\end{dingli}
+
+\begin{dingyi}
+对数域$K$上线性空间$V$\\
+若对$V_1,V_2$为$V$的线性子空间\\
+且对任意$\alpha\in V_1+V_2$,存在唯一$\alpha_1\in V_1,\alpha_2\in V_2$,有$\alpha=\alpha_1+\alpha_2$\\
+则称$V_1+V_2$为$V_1,V_2$的直和,记为$V_1\oplus V_2$\\
+若对$V_1,V_2$为$V$的线性子空间且$V_1\oplus V_2=V$\\
+则称$V_2$为$V_1$的补空间\\
+若对$V_1,\cdots,V_n$为$V$的线性子空间,记$\sum\limits_{i=1}^{n}V_i=V_1+\cdots+V_n$\\
+且对任意$\alpha\in \sum\limits_{i=1}^{n}V_i$,存在唯一$\alpha_1\in V_1,\cdots,\alpha_n\in V_n$,有$\alpha=\alpha_1+\cdots+\alpha_n$\\
+则称$V_1+\cdots+V_n$为$V_1,,\cdots,V_n$的直和,记为$V_1\oplus\cdots\oplus V_n$
+\end{dingyi}
+
+\begin{dingli}
+对数域$K$上线性空间$V$\\
+若对$V_1,V_2$为$V$的线性子空间,则$V_1\oplus V_2$\\
+$\Leftrightarrow$若$\alpha_1\in V_1,\alpha_2\in V_2$且${\bf0}=\alpha_1+\alpha_2\in V_1+V_2$,则$\alpha_1=\alpha_2={\bf0}$\\
+$\Leftrightarrow$有$V_1\cap V_2=\{{\bf0}\}$\\
+若对$V_1,\cdots,V_n$为$V$的线性子空间,则$V_1\oplus\cdots\oplus V_n$\\
+$\Leftrightarrow$若$\alpha_1\in V_1,\cdots,\alpha_n\in V_n$且${\bf0}=\alpha_1+\cdots+\alpha_n\in \sum\limits_{i=1}^{n}V_i$,则$\alpha_1=\cdots=\alpha_n={\bf0}$\\
+$\Leftrightarrow$有$V_j\cap\sum\limits_{i=1\atop i\neq j}^{n}V_i=\{{\bf0}\},j=1,\cdots,n$
+\end{dingli}
+
+\begin{dingli}
+对数域$K$上线性空间$V$\\
+若对$V_1,V_2$为$V$的线性子空间且$\max\{\dim V_1,\dim V_2\}<\infty$,则$V_1\oplus V_2$\\
+$\Leftrightarrow$有$\dim V_1+\dim V_2=\dim V_1+V_2$\\
+$\Leftrightarrow$有$\alpha_1,\cdots,\alpha_k\in V_1$为$V_1$的基且$\beta_1,\cdots,\beta_l\in V_2$为$V_2$的基,则$\alpha_1,\cdots,\alpha_k,\beta_1,\cdots,\beta_l$为$V_1+V_2$的基\\
+若对$V_1,\cdots,V_n$为$V$的线性子空间$\max\{\dim V_1,\cdots,\dim V_n\}<\infty$,则$V_1\oplus\cdots\oplus V_n$\\
+$\Leftrightarrow$有$\dim V_1+\cdots+\dim V_n=\dim V_1+\cdots+V_n$\\
+$\Leftrightarrow$有$S_1$为$V_1$的基,$\cdots$,$S_n$为$V_n$的基,则$\bigcup\limits_{i=1}^{n}S_i$为$\sum\limits_{i=1}^{n}V_i$的基
+\end{dingli}
+
+\begin{dingyi}
+对数域$K$上线性空间$V$\\
+若有$U$为$V$的子空间,对$\alpha,\beta\in V$,若$\alpha-\beta\in U$,记$\alpha\sim\beta$\\
+则$\sim$为$V$的等价关系,记等价类为$\overline{\alpha}=\alpha+U$\\
+记$V/U=\{\overline{\alpha}|\alpha\in V\}$,在$V/U$上定义加法和数乘:\\
+对$\overline{\alpha},\overline{\beta}\in V/U,k\in K$,有$\overline{\alpha}+\overline{\beta}=\overline{\alpha+\beta}$且$k\overline{\alpha}=\overline{k\alpha}$\\
+则称$V/U$为$V$关于$U$的商空间,则称$\dim V/U$为$V$关于$U$的余维数,记为$\codim_{V}U$
+\end{dingyi}
+
+\begin{dingli}
+对数域$K$上线性空间$V$\\
+若有$U$为$V$的子空间,则$\dim V/U=\dim V-\dim U$\\
+若有$\overline{\alpha_1},\cdots,\overline{\alpha_n}\in V/U$为$V/U$的基,则$V=U\oplus\langle\alpha_1,\cdots,\alpha_n\rangle$
+\end{dingli}
+
+\begin{dingli}
+对数域$K$\\
+对$n$元齐次线性方程组$x_1\alpha_1+\cdots+x_n\alpha_n={\bf0}$,其中$\alpha_1,\cdots,\alpha_n\in K^n$\\
+记$W_{\bf0}=\{\xi=(x_1,\cdots,x_n)^{T}\in K^n|\xi\text{为}n\text{元齐次线性方程组的解}\}$\\
+则$W_{\bf0}$为$K^n$的线性子空间,则称$W_{\bf0}$为解空间,则称$W_{\bf0}$的基$\eta_1,\cdots,\eta_m$为基础解系\\
+则$\dim W_{\bf0}=n-\rank(A)$,其中$A=[\alpha_1,\cdots,\alpha_n]$
+\end{dingli}
+
+\begin{dingli}
+对数域$K$\\
+对$n$元线性方程组$x_1\alpha_1+\cdots+x_n\alpha_n=\beta$,其中$\alpha_1,\cdots,\alpha_n,\beta\in K^n$\\
+记$W_{\beta}=\{\xi=(x_1,\cdots,x_n)^{T}\in K^n|\xi\text{为}n\text{元线性方程组的解}\}$\\
+则$W_{\beta}\in K^n/W_{\bf0}$,则称$W_{\beta}$为$K^n$上的$W_{\bf0}$-线性流形,则称$\dim W_{\bf0}$为$W_{\beta}$的维数\\
+则$\dim W_{\beta}=n-\rank(A)$,其中$A=[\alpha_1,\cdots,\alpha_n]$
+\end{dingli}
+
+\chapter{线性映射}
+
+\begin{dingyi}
+对数域$K$上线性空间$V,U$\\
+若对$\sca:V\to U$,对任意$\alpha,\beta\in V,k\in K$\\
+有$\sca(\alpha+\beta)=\sca(\alpha)+\sca(\beta)$且$\sca(k\alpha)=k\sca(\alpha)$\\
+则称$\sca$为从$V$到$U$的线性映射\\
+若对$\sca:V\to V$为从$V$到$V$的线性映射\\
+则称$\sca$为$V$上的线性变换\\
+若对$\sca:V\to U$为从$V$到$U$的线性映射且$\sca$为双射\\
+则称$\sca$为从$V$到$U$的线性同构,则称$V,U$为同构的,记为$V\cong U$
+\end{dingyi}
+
+\begin{dingli}
+对数域$K$上线性空间$V,U$\\
+若对线性映射$\sca:V\to U$,则对任意$\alpha,\alpha_1,\cdots,\alpha_n\in V,k_1,\cdots,k_n\in K$\\
+则有$\sca({\bf0_{V}})={\bf0_{U}}$且$\sca(-\alpha)=-\sca(\alpha)$\\
+则有$\sca(k_1\alpha_1+\cdots+k_n\alpha_n)=k_1\sca(\alpha_1)+\cdots+k_n\sca(\alpha_n)$\\
+若对线性同构$\sca:V\to U$\\
+则若$\alpha_1,\cdots,\alpha_n\in V$为$V$的基,则$\sca(\alpha_1),\cdots,\sca(\alpha_n)$为$U$的基
+\end{dingli}
+
+\begin{dingli}
+对数域$K$上线性空间$V,U$\\
+若有$\max{\dim V,\dim U}<\infty$,则$V\cong U$当且仅当$\dim V=\dim U$
+\end{dingli}
+
+\begin{dingli}
+对数域$K$上线性空间$V,U$\\
+若有$\dim V=n$且$\alpha_1,\cdots,\alpha_n\in V$为$V$的基\\
+则对任意$\beta_1,\cdots,\beta_n\in U$,记$\sca:V\to U,\sum\limits_{i=1}^{n}k_i\alpha_i\mapsto\sum\limits_{i=1}^{n}k_i\beta_i$\\
+则$\sca$为从$V$到$U$的线性映射且为唯一将$\alpha_i\mapsto\beta_i,i=1,\cdots,n$的线性映射
+\end{dingli}
+
+\begin{dingyi}
+对数域$K$上线性空间$V,U,W$\\
+记$\Hom(V,U)=\{\sca:V\to U|\sca\text{为从}V\text{到}U\text{的线性映射}\}$\\
+对任意$\sca,\scb\in \Hom(V,U)$,对任意$\alpha\in V,k\in K$\\
+定义映射加法:$(\sca+\scb)(\alpha)=\sca(\alpha)+\scb(\alpha)$\\
+定义映射数乘:$(k\sca)(\alpha)=k\sca(\alpha)$\\
+则$\Hom(V,U)$为$K$上线性空间\\
+对任意$\sca\in \Hom(V,U),\scb\in \Hom(U,W)$\\
+定义映射乘法:$(\scb\sca)(\alpha)=\scb(\sca(\alpha))$\\
+对任意$\sca\in \Hom(V,V)$\\
+定义映射幂乘:$\sca^n(\alpha)=\sca(\cdots(\sca(\alpha)))$\\
+若对$\sca\in\Hom(V,V)$,存在$\scb\in\Hom(V,V)$,有$\sca\scb=\scb\sca=\sci$\\
+则称$\sca$为可逆线性变换,则称$\scb$为$\sca$的逆变换,记为$\sca^{-1}$
+\end{dingyi}
+
+\begin{zhu}
+以下为常见的线性变换:\\
+对数域$K$上线性空间$V$,有$V=U\oplus W$\\
+则称$\sco:V\to V,\alpha\mapsto{\bf0}$为$V$上的恒零变换\\
+则称$\sci:V\to V,\alpha\mapsto\alpha$为$V$上的恒等变换\\
+则称$\sck:V\to V,\alpha\mapsto k\alpha$为$V$上的数乘变换\\
+则称$\scp_{U}:V\to V,\alpha\mapsto \alpha_{U}$为$V$关于$U$的投影变换\\
+若对$\sca\in \Hom(V,V)$,有$\sca^2=\sca$,则称$\sca$为幂等变换\\
+若对$\sca\in \Hom(V,V)$,有$\sca^2=\sci$,则称$\sca$为对合变换\\
+若对$\sca\in \Hom(V,V)$,存在$n\in \N^*$,有$\sca^n=\sco$且$\sca^{n-1}\neq\sco$\\
+则称$\sca$为幂零变换,则称$n$为$\sca$的幂零指数,有$n\leq\dim V$
+\end{zhu}
+
+\begin{dingli}
+对数域$K$上线性空间$V$\\
+若有$V=U\oplus W$,则$\scp_{U}\scp_{W}=\scp_{W}\scp_{U}=\sco$且$\scp_{U}^2=\scp$\\
+若有$\alpha\in \Hom(V,V)$为幂零指数为$n$的幂零变换\\
+则对任意$\alpha\in V$,有$\alpha,\sca(\alpha),\cdots,\sca^{n-1}(\alpha)$为线性无关的
+\end{dingli}
+
+\begin{dingyi}
+对数域$K$上线性空间$V,U$\\
+若有$\sca\in \Hom(V,U)$\\
+则称$\{\alpha\in V|\sca(\alpha)={\bf0_{U}}\}$为$\sca$的核,记为$\Ker\sca$\\
+则称$\{\sca(\alpha)\in U|\alpha\in V\}$为$\sca$的像,记为$\Im\sca$\\
+则称$\dim(\Im\sca)$为$\sca$的秩,记为$\rank(\sca)$
+\end{dingyi}
+
+\begin{dingli}
+对数域$K$上线性空间$V,U$\\
+若有$\sca\in \Hom(V,U)$,则$\Ker\sca$为$V$的线性子空间且$\Im\sca$为$U$的线性子空间\\
+则$\sca$为单射当且仅当$\Ker\sca=\{\bf0\}$,则$\sca$为满射当且仅当$\Im\sca=U$\\
+则$\dim(\Ker\sca)+\dim(\Im\sca)=\dim V$
+\end{dingli}
+
+\begin{dingli}
+对数域$K$上线性空间$V,U$\\
+若有$\sca\in \Hom(V,U)$且$\dim V=\dim U<\infty$,则$\sca$为单射当且仅当$\sca$为满射\\
+若有$\sca\in \Hom(V,V)$且$\dim V<\infty$且$\Ker\sca\cap\Im\sca=\{\bf0\}$,则$V=\Ker\sca\oplus\Im\sca$\\
+若有$\sca\in \Hom(V,V)$为幂等变换,则$V=\Ker\sca\oplus\Im\sca$且$\sca=\scp_{\Im\sca}$
+\end{dingli}
+
+\begin{dingyi}
+对数域$K$上线性空间$V,U$\\
+若对$\alpha_1,\cdots,\alpha_n\in V$为$V$的基且$\beta_1,\cdots,\beta_m\in U$为$U$的基\\
+对$\sca\in \Hom(V,U)$,有$\sca(\alpha_i)=a_{1i}\beta_1+\cdots+a_{mi}\beta_m,i=1,\cdots,n$\\
+则$\sca(\alpha_1,\cdots,\alpha_n)=(\beta_1,\cdots,\beta_m)\begin{pmatrix}a_{11}&\cdots&a_{1n}\\ \vdots&\ddots&\vdots\\ a_{m1}&\cdots&a_{mn}\end{pmatrix}$,记$A=(a_{ij})\in K_{m\times n}$\\
+则称$A$为$\sca$在$\alpha_1,\cdots,\alpha_n$和$\beta_1,\cdots,\beta_m$下的矩阵
+\end{dingyi}
+
+\begin{dingli}
+对数域$K$上线性空间$V,U$\\
+若对$\alpha_1,\cdots,\alpha_n\in V$为$V$的基且$\beta_1,\cdots,\beta_m\in U$为$U$的基\\
+记$\sigma:\Hom(V,U)\to K_{m\times n},\sca\mapsto A$,其中$A$为$\sca$的矩阵,则$\rank(\sca)=\rank(A)$\\
+则$\sigma$为线性同构,即$\Hom(V,U)\cong K_{m\times n}$且$\dim(\Hom(V,U))=\dim V\cdot\dim U$
+\end{dingli}
+
+\begin{dingli}
+对数域$K$上线性空间$V$\\
+若对$\alpha_1,\cdots,\alpha_n\in V$为$V$的基\\
+记$\sigma:\Hom(V,U)\to K_{m\times n},\sca\mapsto A$,其中$A$为$\sca$的矩阵\\
+则对任意$\sca,\scb\in\Hom(V,V)$,有$\sigma(\sca\scb)=\sigma(\sca)\sigma(\scb)$,即$\sigma$保持乘法\\
+则$\sca\in \Hom(V,V)$为可逆线性变换当且仅当$\sigma(\sca)$为可逆矩阵\\
+则$\sca\in \Hom(V,V)$为恒零/恒等/数乘变换当且仅当$\sigma(\sca)={\bf0}$/$\sigma(\sca)=I$/$\sigma(\sca)=kI$\\
+则$\sca\in \Hom(V,V)$为幂等/对合/幂零变换当且仅当$\sigma(\sca)$为幂等/对合/幂零矩阵
+\end{dingli}
+
+\begin{zhu}
+对$\sca,\scb\in \Hom(V,V)$,记$\sigma(\sca)=A,\sigma(\scb)=B$且$\alpha=(\alpha_1,\cdots,\alpha_n)x$\\
+则$(\sca\scb)(\alpha_1,\cdots,\alpha_n)=\sca((\alpha_1,\cdots,\alpha_n)B)=(\sca\alpha_1,\cdots,\sca\alpha_n)B=(\alpha_1,\cdots,\alpha_n)(AB)$\\
+则$\sca(\alpha)=\sca((\alpha_1,\cdots,\alpha_n)x)=(\sca\alpha_1,\cdots,\sca\alpha_n)x=(\alpha_1,\cdots,\alpha_n)(Ax)$
+\end{zhu}
+
+\begin{dingli}
+对数域$K$上线性空间$V$\\
+若有$\sca\in \Hom(V,V)$\\
+在基$\alpha_1,\cdots,\alpha_n\in V$下的矩阵为$A$,在基$\beta_1,\cdots,\beta_n\in V$下的矩阵为$B$\\
+则若$P$为从$\alpha_1,\cdots,\alpha_n$到$\beta_1,\cdots,\beta_n$的过渡矩阵,则$B=P^{-1}AP$
+\end{dingli}
+
+\begin{zhu}
+$(\beta_1,\cdots,\beta_n)B=\sca(\beta_1,\cdots,\beta_n)=\sca((\alpha_1,\cdots,\alpha_n)P)$\\
+$\ \ =(\sca\alpha_1,\cdots,\sca\alpha_n)P=(\alpha_1,\cdots,\alpha_n)(AP)=(\beta_1,\cdots,\beta_n)(P^{-1}AP)$
+\end{zhu}
+
+\begin{dingyi}
+对数域$K$\\
+若对$A,B\in K_{n\times n}$,存在$P\in K_{n\times n}$为可逆矩阵,有$B=P^{-1}AP$\\
+则称$A,B$为相似的,记为$A\sim B$,相似关系为等价关系\\
+若对$A=(a_{ij})\in K_{n\times n}$,则称$\sum\limits_{i=1}^{n}a_{ii}$为$A$的迹,记为$\Tr(A)$
+\end{dingyi}
+
+\begin{dingli}
+对数域$K$\\
+若对$A_1,A_2,B_1,B_2,P\in K_{n\times n}$,有$B_1=P^{-1}A_1P,B_2=P^{-1}A_2P$\\
+则$B_1+B_2=P^{-1}(A_1+A_2)P$且$B_1B_2=P^{-1}A_1A_2P$且$B_1^{n}=P^{-1}A^{n}P$\\
+若对$A,B\in K_{n\times n},k,l\in K$\\
+则$\Tr(kA+lB)=k\Tr(A)+l\Tr(B)$且$\Tr(AB)=\Tr(BA)$\\
+若对$A,B\in K_{n\times n}$,有$A,B$为相似的\\
+则$|A|=|B|$且$\rank(A)=\rank(B)$且$\Tr(A)=\Tr(B)$\\
+则$A$为可逆矩阵当且仅当$B$为可逆矩阵$($有$A^{-1},B^{-1}$为相似的$)$
+\end{dingli}
+
+\begin{dingli}
+对数域$K$上线性空间$V$\\
+若对$A,B\in K_{n\times n}$,有$A,B$为相似的\\
+则存在$\sca\in\Hom(V,V)$,有$A,B$为$\sca$在两组基下的矩阵
+\end{dingli}
+
+\begin{dingyi}
+对数域$K$上线性空间$V$\\
+若对$\sca\in\Hom(V,V)$,存在$\lambda\in K,\alpha\in V$,有$\alpha\neq{\bf0}$且$\sca(\alpha)=\lambda\alpha$\\
+则称$\lambda$为$\sca$的特征值,则称$\alpha$为$\sca$关于$\lambda$的特征向量\\
+则称$\Ker(\sca-\lambda\sci)=\{\alpha\in V|\sca\alpha=\lambda\alpha\}$为$\sca$关于$\lambda$的特征子空间,记为$V_{\lambda}$\\
+若对$A\in K_{n\times n}$,存在$\lambda\in K,\alpha\in K^n$,有$\alpha\neq{\bf0}$且$A\alpha=\lambda\alpha$\\
+则称$\lambda$为$A$的特征值,则称$\alpha$为$A$关于$\lambda$的特征向量\\
+则称$(\lambda I-A)x={\bf0}$的解空间为$A$关于$\lambda$的特征子空间,记为$W_{\lambda}$
+\end{dingyi}
+
+\begin{dingli}
+对数域$K$上线性空间$V$\\
+若对$\sca\in\Hom(V,V)$,有特征值$\lambda_1,\lambda_2\in K$且$\lambda_1\neq\lambda_2$\\
+则若$\alpha_1,\cdots,\alpha_m\in V_{\lambda_1}$为线性无关的且$\beta_1,\cdots,\beta_n\in V_{\lambda_2}$为线性无关的\\
+有$\alpha_1,\cdots,\alpha_m,\beta_1,\cdots,\beta_n$为线性无关的
+\end{dingli}
+
+\begin{dingli}
+对数域$K$上线性空间$V$\\
+若有$\sca\in \Hom(V,V)$,在基$\alpha_1,\cdots,\alpha_n\in V$下的矩阵为$A$\\
+则若$\lambda\in K,\alpha\in V$且$\alpha$在基$\alpha_1,\cdots,\alpha_n\in V$下的坐标为$x\in K^n$\\
+有$\lambda$为$\sca$的特征值且$\alpha$为$\sca$关于$\lambda$的特征向量当且仅当\\
+$\ \ \lambda$为$A$的特征值且$x$为$\sca$关于$\lambda$的特征向量
+\end{dingli}
+
+\begin{dingyi}
+对数域$K$上线性空间$V$\\
+若对$A,I\in K_{n\times n}$,取不定元$\lambda\in K$\\
+则称$\lambda I-A$为$A$的特征矩阵,则称$|\lambda I-A|$为$A$的特征多项式\\
+若对$\sca\in \Hom(V,V)$,在基$\alpha_1,\cdots,\alpha_n\in V$下的矩阵为$A$,取不定元$\lambda\in K$\\
+则称$|\lambda I-A|$为$\sca$的特征多项式
+\end{dingyi}
+
+\begin{dingli}
+对数域$K$上线性空间$V$\\
+若对$A,I\in K_{n\times n},\lambda\in K,\alpha\in K_{n\times n}$\\
+则$\lambda$为$A$的特征值当且仅当$\lambda$为$A$的特征多项式$|\lambda I-A|$在$K$中的根\\
+则$\alpha$为$A$关于$\lambda$的特征向量当且仅当$\alpha$为$(\lambda I-A)x=0$的非零解
+\end{dingli}
+
+\begin{dingli}
+对数域$K$上线性空间$V$\\
+若有$\sca\in \Hom(V,V)$,在基$\alpha_1,\cdots,\alpha_n\in V$下的矩阵为$A$\\
+记$\sigma:V\to K^n,\alpha\mapsto x$,其中$x$为$\alpha$在基$\alpha_1,\cdots,\alpha_n\in V$下的坐标\\
+则$\sigma$为同构映射且$\sigma(V_{\lambda})=W_{\lambda}$
+\end{dingli}
+
+\begin{dingyi}
+对数域$K$上线性空间$V$\\
+若对$A\in K_{n\times n}$,有特征值$\lambda\in K$\\
+则称$\dim W_{\lambda}$为$A$的几何重数,记为$n_g(A,\lambda)$\\
+则称$\lambda$作为$A$特征多项式的根的重数为$A$的代数重数,记为$n_a(A,\lambda)$\\
+若对$\sca\in \Hom(V,V)$,有特征值$\lambda\in K$\\
+则称$\dim V_{\lambda}$为$A$的几何重数,记为$n_g(\sca,\lambda)$\\
+则称$\lambda$作为$A$的特征多项式的根的重数为$A$的代数重数,记为$n_a(A,\lambda)$
+\end{dingyi}
+
+\begin{dingli}
+对数域$K$上线性空间$V$\\
+若有$\sca\in \Hom(V,V)$,在基$\alpha_1,\cdots,\alpha_n\in V$下的矩阵为$A$\\
+则$n_g(\sca,\lambda)=n_g(A,\lambda)\leq n_a(\sca,\lambda)=n_a(A,\lambda)$
+\end{dingli}
+
+\begin{dingli}
+对数域$K$上线性空间$V$\\
+若有$A,B\in K_{n\times n}$且$A,B$为相似矩阵\\
+则$A,B$有相同的特征多项式和相同的特征值\\
+若有$\sca\in \Hom(V,V)$,在基$\alpha_1,\cdots,\alpha_n\in V$下的矩阵为$A$\\
+则$|\lambda I-A|=\lambda^n-\Tr(A)\lambda^{n-1}+*+(-1)^n|A|$\\
+记所有$\sca$/$A$的特征值为$\lambda_1,\cdots,\lambda_n\in \C$\\
+则$\lambda_1+\cdots+\lambda_n=\Tr(A)$且$\lambda_1\cdots\lambda_n=|A|$
+\end{dingli}
+
+\begin{dingyi}
+对数域$K$上线性空间$V$\\
+若对$\sca\in \Hom(V,V)$,存在基$\alpha_1,\cdots,\alpha_n\in V$下的矩阵为对角矩阵\\
+则称$\sca$为可对角化的\\
+若对$A\in K_{n\times n}$,存在$D$为对角矩阵,有$A,D$为相似的\\
+则称$A$为可对角化的
+\end{dingyi}
+
+\begin{dingli}
+对数域$K$上线性空间$V$\\
+若有$\sca\in \Hom(V,V)$且$\dim V=n$,则$\sca$为可对角化的\\
+$\Leftrightarrow$存在$\alpha_1,\cdots,\alpha_n\in V$为$\sca$的特征向量且为线性无关的\\
+$\Leftrightarrow$所有$\sca$不同的特征值$\lambda_1,\cdots,\lambda_m$,有$V=V_{\lambda_1}\oplus\cdots\oplus V_{\lambda_m}$\\
+$\Leftrightarrow$所有$\sca$不同的特征值$\lambda_1,\cdots,\lambda_m$,有$n_g(\sca,\lambda_i)=n_a(\sca,\lambda_i)$且$\sum\limits_{i=1}^{m}n_a(\sca,\lambda_i)=n$\\
+若有$A\in K_{n\times n}$,则$A$为可对角化的\\
+$\Leftrightarrow$存在$\alpha_1,\cdots,\alpha_n\in K^n$为$\sca$的特征向量且为线性无关的\\
+$\Leftrightarrow$所有$\sca$不同的特征值$\lambda_1,\cdots,\lambda_m$,有$K^n=W_{\lambda_1}\oplus\cdots\oplus W_{\lambda_m}$\\
+$\Leftrightarrow$所有$\sca$不同的特征值$\lambda_1,\cdots,\lambda_m$,有$n_g(A,\lambda_i)=n_a(A,\lambda_i)$且$\sum\limits_{i=1}^{m}n_a(A,\lambda_i)=n$
+\end{dingli}
+
+\begin{zhu}
+若记$P=[\alpha_1,\cdots,\alpha_n]$,则$P^{-1}AP=diag(\lambda_1,\cdots,\lambda_n)$且$A\alpha_i=\lambda_i\alpha_i$
+\end{zhu}
+
+\begin{dingyi}
+对数域$K$上线性空间$V$\\
+若对$\sca\in \Hom(V,V)$,存在$U$为$V$的子空间,对任意$\alpha\in U$,有$\sca(\alpha)\in U$\\
+则称$W$为$\sca$的不变子空间,记为$\sca$-子空间\\
+则称$\{\bf0\},V$为$\sca$的平凡不变子空间
+\end{dingyi}
+
+\begin{dingli}
+对数域$K$上线性空间$V$\\
+若对$\sca,\scb\in \Hom(V,V)$,有$\sca\scb=\scb\sca$且$\alpha\in V$\\
+则对任意$V_1,V_2\subset V$为$\sca$的不变子空间,有$V_1\cap V_2,V_1+V_2$为$\sca$的不变子空间\\
+则对任意$\lambda\in K$为$\sca$的特征值,有$\Ker\sca,\Im\sca,V_{\lambda}$为$\sca$的不变子空间\\
+则对任意$\lambda\in K$为$\scb$的特征值,有$\Ker\scb,\Im\scb,V_{\lambda}$为$\sca$的不变子空间\\
+则有$\langle\alpha\rangle$为$\sca$的不变子空间当且仅当$\alpha$为$\sca$的特征向量
+\end{dingli}
+
+\begin{dingli}
+对数域$K$上线性空间$V$\\
+若对$\sca\in \Hom(V,V)$,有$U$为$\sca$的不变子空间\\
+则对任意$\alpha\in U$,有$\sca|_{U}(\alpha)=\sca(\alpha)$,即$\sca|_{U}\in \Hom(U,U)$\\
+则$W=\langle\alpha_1,\cdots,\alpha_r\rangle$为$\sca$的不变子空间且$\dim W=r$当且仅当\\
+有$\sca$在基$\alpha_1,\cdots,\alpha_r,\alpha_{r+1},\alpha_n$下的矩阵为$A=\begin{pmatrix}A_1&A_3\\ {\bf0}&A_2\end{pmatrix}$,其中$A_1\in K_{r\times r}$
+则$\sca$在基$\alpha_{11},\cdots,\alpha_{1r_1},\cdots,\alpha_{s1},\cdots,\alpha_{sr_s}$下矩阵为$A=diag(A_1,\cdots,A_s)$当且仅当\\
+有$V=W_1\oplus\cdot\oplus W_s$,其中$W_i=\langle\alpha_{i1},\cdots,\alpha_{ir_i}\rangle$为$\sca$的非平凡不变子空间
+\end{dingli}
+
+\begin{zhu}
+其中$A_i$为$\sca|_{W_i}$在基$\alpha_{i1},\cdots,\alpha_{ir_i}$下的矩阵
+\end{zhu}
+
+\begin{dingyi}
+对数域$K$上线性空间$V$\\
+若对$\sca\in \Hom(V,V)$,存在$f(x)\in K[x]$,有$f(\sca)=\sco$\\
+则称$f(x)$为$\sca$的化零多项式\\
+若对$A\in K_{n\times n}$,存在$f(x)\in K[x]$,有$f(A)={\bf0}$\\
+则称$f(x)$为$A$的化零多项式\\
+则称次数最低的首一非零化零多项式为最小多项式$($存在唯一$)$
+\end{dingyi}
+
+\begin{zhu}
+以下为常见的最小多项式:\\
+则$\sco$的最小多项式为$m(x)=x$\\
+则$\sci$的最小多项式为$m(x)=x-1$\\
+则$\sck$的最小多项式为$m(x)=x-k$\\
+则幂等变换$\sca$的最小多项式为$m(x)=x^2-x$或$x$或$x-1$\\
+则幂零指数为$n$的幂零变换$\sca$的最小多项式为$m(x)=x^n$\\
+则幂零指数为$n$的幂零变换$\sca$,$k\sci+\sca$的最小多项式为$m(x)=(x-k)^n$
+\end{zhu}
+
+\begin{dingli}
+对数域$K$上线性空间$V$\\
+若对$\sca\in \Hom(V,V)$,对$f(x),m(x)\in K[x]$,有$m(x)$为$\sca$的最小多项式\\
+则$f(x)$为$\sca$的化零多项式当且仅当$m(x)\mid f(x)$\\
+若有$A,B\in K_{n\times n}$且$A,B$为相似矩阵\\
+则$A,B$有相同的化零多项式和最小多项式
+\end{dingli}
+
+\begin{dingli}
+对数域$K$上线性空间$V$\\
+若对$\sca\in \Hom(V,V)$,对$f(x),f_1(x),\cdots,f_m(x)\in K[x]$\\
+有$f_1,\cdots,f_m$两两互素且$f=f_1\cdots f_m$\\
+则$\Ker f(\sca)=\Ker f_1(\sca)\oplus\cdots\oplus\Ker f_m(\sca)$
+\end{dingli}
+
+\begin{dingli}
+Hamilton-Cayley:\\
+对数域$K$上线性空间$V$\\
+若对$\sca\in \Hom(V,V)$,在基$\alpha_1,\cdots,\alpha_n\in V$下的矩阵为$A$\\
+则$f(x)\in K[x]$为$\sca$的化零多项式当且仅当$f(x)\in K[x]$为$A$的化零多项式\\
+则特征多项式$|\lambda I-A|$为$\sca$的化零多项式且为$A$的化零多项式
+\end{dingli}
+
+\begin{dingli}
+对数域$K$上线性空间$V$\\
+若对$\sca\in \Hom(V,V)$\\
+有$m(x)\in K[x]$为$\sca$的最小多项式且$f(x)\in K[x]$为$\sca$的特征多项式\\
+则对任意$\lambda\in K$,有$m(\lambda)=0$当且仅当$f(\lambda)=0$
+\end{dingli}
+
+\begin{dingli}
+对数域$K$上线性空间$V$\\
+若对$\sca\in \Hom(V,V)$,有特征值$\lambda$且$n_a(\sca,\lambda)=l$\\
+则称$\Ker(\sca-\lambda\sci)^{l}$为$\sca$的根子空间
+\end{dingli}
+
+\begin{dingli}
+对数域$K$上线性空间$V$\\
+若对$\sca\in \Hom(V,V)$,有特征多项式$f(\lambda)=(\lambda-\lambda_1)^{l_1}\cdots(\lambda-\lambda_m)^{l_m}$\\
+则$V=\Ker(\sca-\lambda_1\sci)^{l_1}\oplus\cdots\oplus\Ker(\sca-\lambda_m\sci)^{l_m}$
+\end{dingli}
+
+\begin{dingli}
+对数域$K$上线性空间$V$\\
+若对$\sca\in \Hom(V,V)$,有$W_1,\cdots,W_l$为$\sca$的非平凡不变子空间且$V=W_1\oplus\cdots\oplus W_l$\\
+$\Leftrightarrow$存在$V$的基$\alpha_1,\cdots,\alpha_n$,有$\sca$的矩阵为$A=diag(A_1,\cdots,A_l),A_i\in K_{\dim W_i\times\dim W_i}$\\
+则$\sca$/$A$的最小多项式为$m(\lambda)=[m_1(\lambda),\cdots,m_l(\lambda)]$\\
+其中$m_i(\lambda)$为$\sca|_{W_i}$的最小多项式
+\end{dingli}
+
+\begin{dingli}
+对数域$K$上线性空间$V$\\
+若对$\sca\in \Hom(V,V)$,,在基$\alpha_1,\cdots,\alpha_n\in V$下的矩阵为$A$\\
+则$\sca$/$A$为可对角化的当且仅当\\
+存在$\lambda_1,\cdots,\lambda_l\in K$,有$\sca$/$A$的最小多项式$m(\lambda)=(\lambda-\lambda_1)\cdots(\lambda-\lambda_l)$
+\end{dingli}
+
+\begin{zhu}
+以下为常见变换的可对角化性质:\\
+则$\sco,\sci,\sck$为可对角化的\\
+则幂等变换$\sca$为可对角化的\\
+则幂零指数为$n(n>1)$的幂零变换$\sca$为不可对角化的\\
+则幂零指数为$n(n>1)$的幂零变换$\sca$,$k\sci+\sca$为不可对角化的
+\end{zhu}
+
+\begin{dingyi}
+对数域$K$上线性空间$V$\\
+若对$\sca\in \Hom(V,V)$,存在幂零指数为$n$的幂零变换$\scb$和$\lambda\in K$,有$\sca=\lambda\sci+\scb$\\
+则称$\sca$为Jordan变换,则称$n$为Jordan变换的阶数\\
+若对$A\in K_{n\times n}$,存在$\lambda\in K$,有$A=\begin{pmatrix} \lambda&1&0&\cdots&0\\ 0&\lambda&\ddots&\ddots&\vdots\\ \vdots&\ddots&\ddots&\ddots&0\\ \vdots&\ddots&\ddots&\ddots&1\\ 0&\cdots&\cdots&0&\lambda\end{pmatrix}$\\
+则称$A$为Jordan矩阵,则称$n$为Jordan矩阵的阶数
+\end{dingyi}
+
+\begin{dingli}
+对数域$K$上线性空间$V$\\
+若有$\sca\in \Hom(V,V)$为Jordan变换\\
+则存在$V$的基$\alpha_1,\cdots,\alpha_n$下的矩阵$A$为Jordan矩阵
+\end{dingli}
+
+\begin{dingli}
+对数域$K$上线性空间$V$\\
+若对$\sca\in \Hom(V,V)$,存在$\lambda_1,\cdots,\lambda_m\in K,l_1,\cdots,l_m\in\N^*$\\
+有$\sca$的最小多项式为$m(\lambda)=(\lambda-\lambda_1)^{l_1}\cdots(\lambda-\lambda_m)^{l_m}$\\
+则$V=\Ker(\sca-\lambda_1\sci)^{l_1}\oplus\cdots\oplus\Ker(\sca-\lambda_m)^{l_m}$\\
+且$\sca$的矩阵为$A=diag(A_1,\cdots,A_m)$,其中$A_i$为$\sca|_{\Ker(\sca-\lambda_i\sci)^{l_i}}$的矩阵\\
+且$\sca|_{\Ker(\sca-\lambda_i\sci)^{l_i}}$的最小多项式为$m_i(\lambda)=(\lambda-\lambda_i)^{l_i}$\\
+且$\sca|_{\Ker(\sca-\lambda_i\sci)^{l_i}}=\lambda_i\sci+\scb_i$,其中$\scb_i$为$\Ker(\sca-\lambda_i\sci)^{l_i}$上幂零指数为$l_i$的幂零变换
+\end{dingli}
+
+\begin{dingyi}
+对数域$K$上线性空间$V$\\
+若有$\sca\in \Hom(V,V)$为幂零变换,对$\alpha\in V,\alpha\neq {\bf0}$,存在$m\in\N^*$\\
+有$\sca^{m-1}(\alpha)\neq{\bf0}$且$\sca^m(\alpha)={\bf0}$,则$\alpha,\sca^1(\alpha),\cdots,\sca^{m-1}(\alpha)$为线性无关的\\
+则称$\langle\alpha,\sca^1(\alpha),\cdots,\sca^{m-1}(\alpha)\rangle$为$\sca$-强循环子空间
+\end{dingyi}
+
+\begin{dingli}
+对数域$K$上线性空间$V$\\
+若对$\sca\in \Hom(V,V)$,有$\sca$为幂零变换,记$\dim V_0=m$\\
+则存在$V_1,\cdots,V_m$为$\sca$-强循环子空间,有$V=V_1\oplus\cdots\oplus V_n$
+\end{dingli}
+
+\begin{dingli}
+对数域$K$上线性空间$V$\\
+若对$\sca\in \Hom(V,V)$,有$\sca$为幂零指数为$l$的幂零变换,则存在$V$的基$\alpha_1,\cdots,\alpha_n\in V$\\
+有$\sca$的矩阵为Jordan标准形$diag(A_1,\cdots,A_N)$\\
+其中$A_i$为Jordan矩阵且$A_i(j:j)=0$且$N=\dim V_0=\dim V-\rank(\sca)$\\
+且阶数$t\in[1,l]$的Jordan矩阵个数为$\rank(\sca^{t-1})+\rank(\sca^{t+1})-2\rank(\sca^t)$
+\end{dingli}
+
+\begin{dingli}
+对数域$K$上线性空间$V$\\
+若对$\sca\in \Hom(V,V)$,存在$\lambda_1,\cdots,\lambda_m\in K,l_1,\cdots,l_m\in\N^*$\\
+有$\sca$的最小多项式为$m(\lambda)=(\lambda-\lambda_1)^{l_1}\cdots(\lambda-\lambda_m)^{l_m}$,则存在$V$的基$\alpha_1,\cdots,\alpha_n\in V$\\
+有$\sca$的矩阵为Jordan标准形$diag(A_{11},\cdots,A_{1N_1},\cdots,A_{m1},\cdots,A_{mN_m})$\\
+其中$A_{ij}$为Jordan矩阵且$A_{ij}(k:k)=\lambda_i$且$N_i=\dim V_{\lambda_i}=\dim V-\rank(\sca-\lambda_i\sci)$\\
+且阶数为$t\in[1,l_i]$对角元为$\lambda_i$的Jordan矩阵个数为\\
+\ \ $\rank((\sca-\lambda_i\sci)^{t-1})+\rank((\sca-\lambda_i\sci)^{t+1})-2\rank((\sca-\lambda_i\sci)^{t})$
+\end{dingli}
+
+\begin{dingli}
+对数域$K$上线性空间$V$\\
+若对$\sca\in \Hom(V,V)$,则$\sca$的矩阵有Jordan标准形当且仅当\\
+存在$\lambda_1,\cdots,\lambda_m\in K,l_1,\cdots,l_m\in\N^*$\\
+有$\sca$的最小多项式为$m(\lambda)=(\lambda-\lambda_1)^{l_1}\cdots(\lambda-\lambda_m)^{l_m}$
+\end{dingli}
+
+\begin{zhu}
+上述三定理的矩阵形式略去
+\end{zhu}
+
+
+\chapter{线性函数}
+
+\begin{dingyi}
+对数域$K$\\
+若对$A,B\in K_{n\times n}$,存在$P\in K_{n\times n}$为可逆矩阵,有$B=P^{T}AP$\\
+则称$A,B$为合同的,记为$A\simeq B$,合同关系为等价关系
+\end{dingyi}
+
+\begin{dingli}
+对数域$K$\\
+若对$A,B\in K_{n\times n}$,有$A,B$为合同的,则有$\rank(A)=\rank(B)$\\
+若对$A,B\in K_{n\times n}$,对任意$x,y\in K^n$,有$x^{T}Ay=x^{T}By$,则$A=B$
+\end{dingli}
+
+\begin{dingyi}
+对数域$K$上线性空间$V$\\
+若有$f:V\times V\to K$,对任意$\alpha,\alpha_1,\alpha_2,\beta,\beta_1,\beta_2\in V,k_1,k_2\in K$\\
+有$f(k_1\alpha_1+k_2\alpha_2,\beta)=k_1f(\alpha_1,\beta)+k_2f(\alpha_2,\beta)$\\且$f(\alpha,k_1\beta_1+k_2\beta_2)=k_1f(\alpha,\beta_1)+k_2f(\alpha,\beta_2)$\\
+则称$f$为$V$上双线性函数\\
+若有$f:V\times V\to K$为$V$上双线性函数且有$V$的基$\alpha_1,\cdots,\alpha_n$,记$a_{ij}=f(\alpha_i,\alpha_j)$\\
+则对任意$\alpha=(\alpha_1,\cdots,\alpha_n)x,\beta=(\alpha_1,\cdots,\alpha_n)y\in V$,有$f(\alpha,\beta)=x^{T}Ay$\\
+则称$A=(a_{ij})$为$f$在$\alpha_1,\cdots,\alpha_n$下的度量矩阵
+\end{dingyi}
+
+\begin{dingli}
+对数域$K$上线性空间$V$\\
+若有$f:V\times V\to K$为$V$上双线性函数\\
+在基$\alpha_1,\cdots,\alpha_n\in V$下的度量矩阵为$A$,在基$\beta_1,\cdots,\beta_n\in V$下的度量矩阵为$B$\\
+则若$P$为从$\alpha_1,\cdots,\alpha_n$到$\beta_1,\cdots,\beta_n$的过渡矩阵,则$B=P^{T}AP$\\
+若对$A,B\in K_{n\times n}$,有$A,B$为合同的\\
+则存在$f:V\times V\to K$为$V$上双线性函数,有$A,B$为$f$在两组基下的度量矩阵
+\end{dingli}
+
+\begin{dingyi}
+对数域$K$上线性空间$V$\\
+若有$f:V\times V\to K$为$V$上双线性函数\\
+则称$\{\alpha\in V|\text{对任意}\beta\in V,\text{有}f(\alpha,\beta)=0\}$为$f$在$V$上的左根,记为$\rad_{L}V$\\
+则称$\{\beta\in V|\text{对任意}\alpha\in V,\text{有}f(\alpha,\beta)=0\}$为$f$在$V$上的右根,记为$\rad_{R}V$\\
+若有$f:V\times V\to K$为$V$上双线性函数,有$\rad_{L}V=\rad_{R}V=\{\bf0\}$\\
+则称$f$为非退化的,否则,则称$f$为退化的
+\end{dingyi}
+
+\begin{dingli}
+对数域$K$上线性空间$V$\\
+若有$f:V\times V\to K$为$V$上双线性函数,则$\rad_{L}V,\rad_{R}V$为$V$的子空间\\
+则$f$为非退化的当且仅当$\rad_{L}V=\{\bf0\}$当且仅当$\rad_{R}=\{\bf0\}$\\
+则$f$为非退化的当且仅当$\rank\text{度量矩阵}=\dim V$
+\end{dingli}
+
+\begin{dingyi}
+对数域$K$上线性空间$V$\\
+若有$f:V\times V\to K$为$V$上双线性函数\\
+对任意$\alpha,\beta\in V$,有$f(\alpha,\beta)=f(\beta,\alpha)$,则称$f$为对称的\\
+对任意$\alpha,\beta\in V$,有$f(\alpha,\beta)+f(\beta,\alpha)=0$,则称$f$为反对称的\\
+若有$f:V\times V\to K$为$V$上双线性函数且$f$为对称/反对称的且$U$为$V$的子空间\\
+则$\{\alpha\in V|\text{对任意}\beta\in U,\text{有}f(\alpha,\beta)=0\}$为$U$关于$f$的正交补,记为$U^{\perp}$
+\end{dingyi}
+
+\begin{dingli}
+对数域$K$上线性空间$V$\\
+若有$f:V\times V\to K$为$V$上双线性函数\\
+则$f$为对称的当且仅当$f$的度量矩阵为对称矩阵\\
+则存在$V$的基,有$f$的度量矩阵为对角矩阵\\
+则$f$为反对称的当且仅当$f$的度量矩阵为反对称矩阵\\
+则$f$为反对称的当且仅当对任意$\alpha\in V$,有$f(\alpha,\alpha)=0$\\
+则存在$V$的基,有$f$的度量矩阵为$diag(\begin{pmatrix}0&1\\-1&0\end{pmatrix},\cdots,\begin{pmatrix}0&1\\-1&0\end{pmatrix},0,\cdots,0)$
+\end{dingli}
+
+\begin{dingli}
+Witt:\\
+对数域$K$\\
+若有$A_1,A_2\in K_{n\times n}$为对称矩阵且$B_1,B_2\in K_{m\times m}$为对称矩阵\\
+则若$diag(A_1,B_1)\simeq diag(A_2,B_2)$且$A_1\simeq A_2$,则$B_1\simeq B_2$
+\end{dingli}
+
+\begin{dingyi}
+对数域$K$\\
+若有$f(x_1,\cdots,x_n)\in K[x_1,\cdots,x_n]$为$2$次齐次多项式\\
+则称$f$为$n$元二次型\\
+若有$f$为$n$元二次型且$f(x_1,\cdots,x_n)=\sum\limits_{i=1}^{n}\sum\limits_{j=1}^{n}a_{ij}x_ix_j$,其中$a_{ij}=a_{ji}$\\
+则对$x=(x_1,\cdots,x_n)^{T},A=(a_{ij})$,有$f(x_1,\cdots,x_n)=x^{T}Ax$\\
+则称$A$为$f$的矩阵\\
+若有$x=(x_1,\cdots,x_n)^{T},y=(y_1,\cdots,y_n)^{T}$,存在$C\in K_{n\times n}$为可逆矩阵,有$x=Cy$\\
+则称$x=Cy$为从$x_1,\cdots,x_n$到$y_1,\cdots,y_n$的非退化线性替换\\
+若有$f,g$为$n$元二次型,矩阵为$A,B$,存在$x=Cy$为非退化线性替换,有$x^{T}Ax=y^{T}By$\\
+则称$f,g$为等价的,记为$f\simeq g$
+\end{dingyi}
+
+\begin{dingli}
+对数域$K$\\
+若有$f$为$n$元二次型,矩阵为$A$,则对$x=Cy$为非退化线性替换,\mbox{有$f$的矩阵为$C^{T}AC$}\\
+若有$f,g$为$n$元二次型,矩阵为$A,B$,则$f,g$为等价的当且仅当$A,B$为合同的
+\end{dingli}
+
+\begin{dingli}
+对数域$K$\\
+若有$f$为$n$元二次型,矩阵为$A$,则存在$d_1,\cdots,d_n\in K$\\
+有$f(x_1,\cdots,x_n)$等价于$d_1y_1^2+\cdots+d_ny_n^2$且$\rank(A)=|\{d_i\in K|d_i\neq 0\}|$\\
+则称$d_1y_1^2+\cdots+d_ny_n^2$为$f$的标准型\\
+则称$|\{d_i\in K|d_i\neq 0\}|$为$f$的秩,记为$\rank(f)$
+\end{dingli}
+
+\begin{dingli}
+对实数域$\R$\\
+若有$f$为$n$元二次型,则存在唯一$p,r\in\N^*$\\
+有$f(x_1,\cdots,x_n)$等价于$z_1^2+\cdots+z_p^2-z_{p+1}^2-\cdots-z_r^2$\\
+则称$z_1^2+\cdots+z_p^2-z_{p+1}^2-\cdots-z_r^2$为$f$的规范型\\
+则称$p$为$f$的正惯性指数,则称$r-p$为$f$的负惯性指数,则称$2p-r$为$f$的符号差\\
+若有$f,g$为$n$元二次型,则$f,g$为等价的当且仅当$\rank(f)=\rank(g)$且$p_{f}=p_{g}$\\
+若有$A\in \R_{n\times n}$为对称矩阵,则$A$合同于$diag(I_p,-I_{r-p},{\bf0_{n-r}})$
+\end{dingli}
+
+\begin{dingli}
+对复数域$\C$\\
+若有$f$为$n$元二次型,则存在唯一$r\in\N^*$\\
+有$f(x_1,\cdots,x_n)$等价于$z_1^2+\cdots+z_r^2$\\
+则称$z_1^2+\cdots+z_r^2$为$f$的规范型\\
+若有$f,g$为$n$元二次型,则$f,g$为等价的当且仅当$\rank(f)=\rank(g)$\\
+若有$A\in \C_{n\times n}$为对称矩阵,则$A$合同于$diag(I_r,{\bf0_{n-r}})$
+\end{dingli}
+
+\begin{dingyi}
+对实数域$\R$\\
+若有$f$为$n$元二次型,矩阵为$A$,对任意$x\in\R^n,x\neq{\bf0}$,有$x^{T}Ax>0$\\
+则称$f$为正定的,则称$A$为正定矩阵\\
+若有$f$为$n$元二次型,矩阵为$A$,对任意$x\in\R^n,x\neq{\bf0}$,有$x^{T}Ax\geq0$\\
+则称$f$为半正定的,则称$A$为半正定矩阵\\
+若有$f$为$n$元二次型,矩阵为$A$,对任意$x\in\R^n,x\neq{\bf0}$,有$x^{T}Ax<0$\\
+则称$f$为负定的的,则称$A$为负定矩阵矩阵\\
+若有$f$为$n$元二次型,矩阵为$A$,对任意$x\in\R^n,x\neq{\bf0}$,有$x^{T}Ax\leq0$\\
+则称$f$为半负定的的,则称$A$为半负定矩阵
+\end{dingyi}
+
+\begin{dingli}
+对实数域$\R$\\
+若有$f$为$n$元二次型,则$f$为正定的当且仅当$p_{f}=n$\\
+若有$A\in\R_{n\times n}$为对称矩阵,则$A$为正定矩阵当且仅当$A$合同于$I$\\
+则若$A$为正定矩阵,则存在$C\in K_{n\times n}$为可逆矩阵,有$A=C^{T}C$且$|A|=|C|^2>0$\\
+则有$A$为正定矩阵当且仅当顺序主子式$A\begin{pmatrix}1,\cdots,i\\ 1,\cdots,i\end{pmatrix}>0,i=1,\cdots,n$
+\end{dingli}
+
+\begin{dingli}
+对实数域$\R$\\
+若有$f$为$n$元二次型,则$f$为半正定的当且仅当$p_{f}=\rank(f)$\\
+若有$A\in\R_{n\times n}$为对称矩阵,则$A$为半正定矩阵当且仅当$A$合同于$diag(I_r,{\bf0_{n-r}})$
+\end{dingli}
+
+\begin{dingyi}
+对数域$K$上线性空间$V$\\
+若对$(\ ,):V\times V\to K$,对任意$\alpha,\beta,\gamma\in V,k\in K$\\
+有$(\alpha+\gamma,\beta)=(\alpha,\beta)+(\gamma,\beta)$且$(k\alpha,\beta)=k(\alpha,\beta)$\\
+且$(\alpha,\beta)=\overline{(\beta,\alpha)}$且$(\alpha,\alpha)\geq 0\ ($取等当且仅当$\alpha={\bf0}\ )$\\
+则称$(\ ,)$为$V$上的内积,则称$\sqrt{(\alpha,\alpha)}$为$\alpha$的长度,记为$|\alpha|$\\
+则称$\|\alpha-\beta\|$为$\alpha,\beta$的距离,则称$\langle\alpha,\beta\rangle=\arccos\frac{(\alpha,\beta)}{|\alpha||\beta|}\in [0,\frac{\pi}{2}]$为$\alpha,\beta$的夹角\\
+若$(\alpha,\beta)=0$,则称$\alpha,\beta$为正交的,记为$\alpha\perp\beta$\\
+若$K=\R$,则称$(V,(\ ,))$为Euclidean空间,即$(\ ,)$为正定的\\
+若$K=\C$,则称$(V,(\ ,))$为Unitary空间
+\end{dingyi}
+
+\begin{zhu}
+以下为常见的标准内积:\\
+对$x=(x_1,\cdots,x_n)^{T},y=(y_1,\cdots,y_n)^{T}\in\R^n$,有$(x,y)=x_1y_1+\cdots+x_ny_n$\\
+对$x=(x_1,\cdots,x_n)^{T},y=(y_1,\cdots,y_n)^{T}\in\C^n$,有$(x,y)=x_1\overline{y_1}+\cdots+x_n\overline{y_n}$\\
+对$A,B\in K_{n\times n}$,有$(A,B)=\Tr(A\overline{B}^{T})$\\
+对$f,g\in K[a,b]$,有$(f,g)=\int_{a}^{b}f(x)\overline{g(x)}\d x$
+\end{zhu}
+
+\begin{dingli}
+对数域$K$上线性空间$V$\\
+若有$(\ ,)$为$V$上的内积,则对任意$\alpha,\beta,\gamma\in V$\\
+则若$\alpha\perp\beta$,则$|\alpha+\beta|^2=|\alpha|^2+|\beta|^2$\\
+则有$|(\alpha,\beta)|\leq|\alpha||\beta|$且$|\alpha+\beta|\leq|\alpha|+|\beta|$\\
+则有$|\alpha-\beta|=|\beta-\alpha|\geq0$且$|\alpha-\beta|\leq|\alpha-\gamma|+|\gamma-\beta|$
+\end{dingli}
+
+\begin{dingyi}
+对数域$K$上线性空间$V$\\
+若有$(\ ,)$为$V$上的内积,对$\alpha\in V$,有$|\alpha|=1$\\
+则称$\alpha$为单位向量\\
+对$V$的基$\alpha_1,\cdots,\alpha_n\in V$为单位向量且为两两正交的\\
+则称$\alpha_1,\cdots,\alpha_n$为$V$的标准正交基\\
+对$\alpha_1,\cdots,\alpha_n\in V$,记$a_{ij}=(\alpha_i,\alpha_j)$\\
+则称$A=(a_{ij})$为$\alpha_1,\cdots,\alpha_n$的Gram矩阵
+\end{dingyi}
+
+\begin{dingli}
+对数域$K$上线性空间$V$\\
+若有$(\ ,)$为$V$上的内积,对$\alpha_1,\cdots,\alpha_n\in V$为两两正交的\\
+则$\alpha_1,\cdots,\alpha_n$为线性无关的\\
+若有$(\ ,)$为$V$上的内积,对$\alpha_1,\cdots,\alpha_n\in V$为线性无关的\\
+记$\beta_1=\alpha_1,\beta_2=\alpha_2-\frac{(\alpha_2,\beta_1)}{(\beta_1,\beta_1)}\beta_1,\cdots,\beta_n=\alpha_n-\sum\limits_{i=1}^{n-1}\frac{(\alpha_n,\beta_i)}{(\beta_i,\beta_i)}\beta_i$\\
+则$\beta_1,\cdots,\beta_n$为两两正交的且$\alpha_1,\cdots,\alpha_n$与$\beta_1,\cdots,\beta_n$为线性等价的\\
+即$(V,(\ ,))$存在标准正交基
+\end{dingli}
+
+\begin{dingli}
+对数域$K$上线性空间$V$\\
+若有$(\ ,)$为$V$上的内积\\
+则$\alpha_1,\cdots,\alpha_n\in V$为$V$的标准正交基当且仅当$\alpha_1,\cdots,\alpha_n\in V$的Gram矩阵为$I$\\
+则对任意$\alpha\in V$,有Fourier: $\alpha=\sum\limits_{i=1}^{n}(\alpha,\alpha_i)\alpha_i$
+\end{dingli}
+
+\begin{dingli}
+对数域$K$上线性空间$V$\\
+若有$(\ ,)$为$V$上的内积,有$\alpha_1,\cdots,\alpha_n\in V$为$V$的标准正交基\\
+记$\alpha,\beta\in V$在基$\alpha_1,\cdots,\alpha_n$下的坐标为$(x_1,\cdots,x_n)^{T},y=(y_1,\cdots,y_n)^{T}\in K^n$\\
+则若$K=\R$,则$(\alpha,\beta)=x_1y_1+\cdots+x_ny_n$\\
+则若$K=\C$,则$(\alpha,\beta)=x_1\overline{y_1}+\cdots+x_n\overline{y_n}$
+\end{dingli}
+
+\begin{dingli}
+对数域$K$上线性空间$V$\\
+若有$(\ ,)$为$V$上的内积,有$\alpha_1,\cdots,\alpha_n\in V$/$\beta_1,\cdots,\beta_n\in V$为$V$的标准正交基\\
+记$\alpha_1,\cdots,\alpha_n$到$\beta_1,\cdots,\beta_n$的过渡矩阵为$P$,则$P\overline{P}^{T}=\overline{P}^{T}P=I$
+\end{dingli}
+
+\begin{dingli}
+对数域$K$\\
+若$K=\R$,对$A\in \R_{n\times n}$,有$A^{T}A=I$,则称$A$为正交矩阵\\
+若$K=\C$,对$A\in \C_{n\times n}$,有$A^*A=I$,则称$A$为酉矩阵
+\end{dingli}
+
+\begin{dingli}
+对数域$K$上线性空间$V$\\
+若有$(\ ,)$为$V$上的内积,有$\alpha_1,\cdots,\alpha_n\in V$为$V$的标准正交基且$P\in K_{n\times n}$\\
+对$\beta_1,\cdots,\beta_n\in V$,有$(\beta_1,\cdots,\beta_n)=(\alpha_1,\cdots,\alpha_n)P$\\
+则$\beta_1,\cdots,\beta_n$为$V$的标准正交基当且仅当$P$为正交/酉矩阵
+\end{dingli}
+
+\begin{dingli}
+对数域$K$\\
+若$K=\R$,对$A\in \R_{n\times n}$,则$A^{T}A=I$当且仅当$AA^{T}=I$\\
+当且仅当$A$为可逆矩阵且$A^{-1}=A^{T}$当且仅当$A$的列向量组为$\R^n$的标准正交基\\
+若$K=\C$,对$A\in \C_{n\times n}$,则$\overline{A}^{T}A=I$当且仅当$\overline{A}^{T}$\\
+当且仅当$A$为可逆矩阵且$A^{-1}=\overline{A}^{T}$当且仅当$A$的列向量组为$\C^n$的标准正交基
+\end{dingli}
+
+\begin{dingli}
+对数域$K$\\
+若对$A,B\in K_{n\times n}$为正交/酉矩阵,则$AB,A^{-1}$为正交/酉矩阵且$|A|=\pm1$/$\e^{\theta\i}$
+\end{dingli}
+
+\begin{dingli}
+对数域$K$上线性空间$V$\\
+若有$(\ ,)$为$V$上的内积,有$U$为$V$的子空间\\
+记$U^{\perp}$为$U$关于$(\ ,)$的正交补,则有$V=U\oplus U^{\perp}$
+\end{dingli}
+
+\begin{dingyi}
+对数域$K$上线性空间$V,U$\\
+若有$(\ ,)$为$V,U$上的内积,存在$\sigma:V\to U$,对任意$\alpha,\beta\in V$\\
+有$(\sigma(\alpha),\sigma(\beta))=(\alpha,\beta)$且$\sigma$为满射\\
+则称$\sigma$为从$V$到$U$的保距同构,则称$V,U$为保距同构的
+\end{dingyi}
+
+\begin{dingli}
+对数域$K$上线性空间$V,U$\\
+若有$(\ ,)$为$V,U$上的内积且$\sigma$为从$V$到$U$的保距同构\\
+则对任意$\alpha,\beta\in V,k,l\in K$,有$|\sigma(\alpha)|=|\alpha|$且$\sigma(k\alpha+l\beta)=k\sigma(\alpha)+l\sigma(\beta)$且$\sigma$为双射\\
+若有$(\ ,)$为$V,U$上的内积\\
+则$V,U$为保距同构的当且仅当$\dim V=\dim U$\\
+若有$(\ ,)$为$V,U$上的内积且$\sca$为从$V$到$U$的线性映射\\
+则$\sca$为保距同构当且仅当\\
+$\sca(\{V\text{的标准正交基}\})=\{U\text{的标准正交基}\}$且$|\sca(\{V\text{的标准正交基}\})|=|\{U\text{的标准正交基}\}|$
+\end{dingli}
+
+\begin{dingyi}
+对数域$K$上线性空间$V$\\
+若有$(\ ,)$为$V$上的内积,对$\sca:V\to V$,对任意$\alpha,\beta\in V$,有$(\sca(\alpha),\sca(\beta))=(\alpha,\beta)$且$K=\R$,
+则称$\sca$为$V$的正交变换\\
+若有$(\ ,)$为$V$上的内积,对$\sca:V\to V$,对任意$\alpha,\beta\in V$,有$(\sca(\alpha),\sca(\beta))=(\alpha,\beta)$且$K=\C$,
+则称$\sca$为$V$的酉变换\\
+若有$(\ ,)$为$V$上的内积,有$\sca:V\to V$为$V$的正交变换,有$\sca$的矩阵为$A$,有$\alpha\in V$\\
+则若$|A|=1$,则称$\sca$为第一类正交变换\\
+则若$|A|=-1$,则称$\sca$为第二类正交变换\\
+则称$\sci-2\scp_{\langle\alpha\rangle}$为关于超平面$\langle\alpha\rangle^{\perp}$的反射
+\end{dingyi}
+
+\begin{dingli}
+对数域$K$上线性空间$V$\\
+若有$(\ ,)$为$V$上的内积,则$\sca$为$V$上的正交/酉变换当且仅当$\sca$为从$V$到$V$的保距同构\\
+则对任意$\alpha,\beta\in V$,有$\langle\sca(\alpha),\sca(\beta)\rangle=\langle\alpha,\beta\rangle$且$|\sca(\alpha)-\sca(\beta)|=|\alpha-\beta|$且$\sca$的矩阵为正交/酉矩阵\\
+则对任意$\alpha\in V$且$K=\R$,有$\sci-2\scp_{\langle\alpha\rangle}$为第二类正交变换
+\end{dingli}
+
+\begin{dingli}
+对数域$K$上线性空间$V$\\
+若有$(\ ,)$为$V$上的内积,有$\sca$为$V$上的正交/酉变换且$U$为$V$的子空间\\
+则若$U$为$\sca$的不变子空间,则$U^{\perp}$为$\sca$的不变子空间\\
+则若$\lambda$为$\sca$的特征值,则$\lambda=\pm1$/$\e^{\theta\i}$
+\end{dingli}
+
+\begin{dingli}
+对数域$K$上线性空间$V$\\
+若有$(\ ,)$为$V$上的内积,有$\sca$为$V$上的酉变换\\
+则存在$V$的标准正交基,有$\sca$的矩阵为$diag(\e^{\theta_1\i},\cdots,\e^{\theta_n\i})$\\
+若有$(\ ,)$为$V$上的内积,有$\sca$为$V$上的正交变换\\
+则$\sca$关于特征值$\lambda_1=1$的特征向量和$\sca$关于特征值$\lambda_2=-1$的特征向量为正交的\\\
+若有$(\ ,)$为$V$上的内积,有$\sca$为$V$上的正交变换\\
+则存在$V$的标准正交基,有$\sca$的矩阵为$diag(\lambda_1,\cdots,\lambda_r,\begin{pmatrix}\cos\theta_1&-\sin\theta_1\\ \sin\theta_1&\cos\theta_1\end{pmatrix},\cdots,\begin{pmatrix}\cos\theta_l&-\sin\theta_l\\ \sin\theta_l&\cos\theta_l\end{pmatrix})$
+\end{dingli}
+
+\begin{dingyi}
+对数域$K$上线性空间$V$\\
+若有$(\ ,)$为$V$上的内积,对$\sca:V\to V$,对任意$\alpha,\beta\in V$,有$(\sca(\alpha),\beta)=(\alpha,\sca(\beta))$且$K=\R$,
+则称$\sca$为$V$的对称变换\\
+若有$(\ ,)$为$V$上的内积,对$\sca:V\to V$,对任意$\alpha,\beta\in V$,有$(\sca(\alpha),\beta)=(\alpha,\sca(\beta))$且$K=\C$,
+则称$\sca$为$V$的Hermite变换\\
+若对$A\in K_{n\times n}$,有$\overline{A}^{T}=A$,则称$A$为Hermite矩阵
+\end{dingyi}
+
+\begin{dingli}
+对数域$K$上线性空间$V$\\
+若有$(\ ,)$为$V$上的内积,有$\sca$为$V$上的对称/Hermite变换\\
+则$\sca$为$V$上的线性变换且$\sca$的矩阵为对称/Hermite矩阵
+\end{dingli}
+
+\begin{dingli}
+对数域$K$上线性空间$V$\\
+若有$(\ ,)$为$V$上的内积,有$\sca$为$V$上的对称/Hermite变换且$U$为$V$的子空间\\
+则若$U$为$\sca$的不变子空间,则$U^{\perp}$为$\sca$的不变子空间\\
+则若$\lambda\in K$为$\sca$的特征值,则$\lambda\in \R$\\
+则存在$V$的标准正交基,有$\sca$的矩阵为$diag(\lambda_1,\cdots,\lambda_n)\in \R_{n\times n}$
+\end{dingli}
+
+\begin{dingli}
+对数域$\R$\\
+若有$A\in \R_{n\times n}$为对称矩阵\\
+则存在$\lambda_1,\cdots,\lambda_n\in \R$,有$A$合同于$diag(\lambda_1,\cdots,\lambda_n)$\\
+则$A$为正定半正定矩阵当且仅当对任意$\lambda$为$A$的特征值,有$\lambda>0$/$\lambda\geq0$
+\end{dingli}
+
+\begin{dingyi}
+对数域$K$上线性空间$V$\\
+若对$f$为$V$上双线性函数\\
+对$\alpha,\beta\in V$,有$f(\alpha,\beta)=0$,则称$\alpha,\beta$为正交的\\
+对$\alpha\in V,\alpha\neq 0$,有$f(\alpha,\alpha)=0$,则称$\alpha$为迷向的,则称$(V,f)$为迷向的\\
+对任意$\alpha\in V$,有$f(\alpha,\alpha)=0$,则称$(V,f)$为全迷向的,即$f=0$
+\end{dingyi}
+
+\begin{dingyi}
+对数域$K$上线性空间$V$\\
+若对$f$为$V$上双线性函数为对称的,则称$(V,f)$为正交空间\\
+若对$f$为$V$上双线性函数为对称的且为非退化的,则称$(V,f)$为正则正交空间
+\end{dingyi}
+
+\begin{dingli}
+对数域$K$上线性空间$V$\\
+若对$f$为$V$上双线性函数为对称的且为非退化的,有$U$为$V$的子空间\\
+则对$U$关于$f$的正交补$U^{\perp}$,有$\dim U+\dim U^{\perp}=\dim V$且$(U^{\perp})^{\perp}=U$\\
+若对$f$为$V$上双线性函数为对称的,有$U$为$V$的子空间\\
+则$V=U\oplus U^{\perp}$当且仅当$(U,f)$为正则空间
+\end{dingli}
+
+\begin{dingli}
+对数域$K$上线性空间$V$\\
+若对$f$为$V$上双线性函数为对称的,则存在$V$的基$\alpha_1,\cdots,\alpha_n\in V$为两两正交的
+\end{dingli}
+
+\begin{dingli}
+对数域$K$上线性空间$V,U$\\
+若对$f_1,f_2$为$V,U$上双线性函数为对称的,存在$\sigma:V\to U$为同构映射\\
+且对任意$\alpha,\beta\in V$,有$f_1(\alpha,\beta)=f_2(\sigma(\alpha),\sigma(\beta))$\\
+则称$\sigma$为从$(V,f_1)$到$(U,f_2)$的保距同构,则称$(V,f_1),(U,f_2)$为保距同构的
+\end{dingli}
+
+\begin{dingli}
+对数域$K$上线性空间$V,U$\\
+若对$f_1,f_2$为$V,U$上双线性函数为对称的,则$(V,f_1),(U,f_2)$为保距同构的当且仅当\\
+存在$V$的基$\alpha_1,\cdots,\alpha_n$和$U$的基$\beta_1,\cdots,\beta_n$,有$f_1,f_2$的矩阵为$A,B$且$A=P^{T}AP$\\
+其中$P$为$\sigma$在$\alpha_1,\cdots,\alpha_n$和$\beta_1,\cdots,\beta_n$下的矩阵\\
+若$K=\R$,则$(V,f_1),(U,f_2)$为保距同构的当且仅当$\rank(f_1)=\rank(f_2)$且$p_{f_1}=p_{f_2}$\\
+若$K=\C$,则$(V,f_1),(U,f_2)$为保距同构的当且仅当$\rank(f_1)=\rank(f_2)$
+\end{dingli}
+
+\begin{dingyi}
+对数域$K$上线性空间$V$\\
+若对$f$为$V$上双线性函数为对称的且为非退化的,有$\sca$为$V$上的线性变换\\
+对任意$\alpha,\beta\in V$,有$f(\alpha,\beta)=f(\sca(\alpha),\sca(\beta))$\\
+则称$\sca$为$V$上的正交变换
+\end{dingyi}
+
+\begin{dingli}
+对数域$K$上线性空间$V$\\
+若对$f$为$V$上双线性函数为对称的且为非退化的\\
+则$\sca$为$V$上的正交变换当且仅当$\sca$为从$(V,f)$到$(V,f)$的保距同构\\
+则$\sca$为$V$上的正交变换当且仅当\\
+有$\sca$的矩阵$T$和$f$的矩阵$A$,有$A=T^{T}AT\ (|T|=\pm1)$
+\end{dingli}
+
+\begin{dingyi}
+对数域$K$上线性空间$V$\\
+若对$f$为$V$上双线性函数为反对称的,则称$(V,f)$为辛空间,有辛空间为全迷向的\\
+若对$f$为$V$上双线性函数为反对称的且为非退化的,则称$(V,f)$为正则辛空间\\
+若对$f$为$V$上双线性函数为反对称的,有$U$为$V$的子空间且$U\subset U^{\perp}$\\
+则称$U$为迷向子空间\\
+若对$f$为$V$上双线性函数为反对称的,有$U$为$V$的子空间且$U=U^{\perp}$\\
+则称$U$为Lagrange子空间\\
+若对$f$为$V$上双线性函数为反对称的,有$U$为$V$的子空间且$U\cap U^{\perp}=\{\bf0\}$\\
+则称$U$为正则子空间
+\end{dingyi}
+
+\begin{dingli}
+对数域$K$上线性空间$V$\\
+若对$f$为$V$上双线性函数为反对称的且为非退化的,有$U$为$V$的子空间\\
+则$\dim U+\dim U^{\perp}=\dim V$且$(U^{\perp})^{\perp}=U$\\
+若对$f$为$V$上双线性函数为反对称的,有$U$为$V$的子空间\\
+则$V=U\oplus U^{\perp}$当且仅当$U$为正则子空间
+\end{dingli}
+
+\begin{dingli}
+对数域$K$上线性空间$V$\\
+若对$f$为$V$上双线性函数为反对称的\\
+则存在$V$的辛基$\delta_1,\delta_{-1},\cdots,\delta_{r},\delta_{-r},\eta_1,\cdots,\eta_l$,有$f$的矩阵为$diag(\begin{pmatrix}0&1\\-1&0\end{pmatrix},\cdots,\begin{pmatrix}0&1\\-1&0\end{pmatrix},0,\cdots,0)$\\
+则存在$V$的辛基$\delta_1,\cdots,\delta_{r},\delta_{-1},\delta_{-r},\eta_1,\cdots,\eta_l$,有$f$的矩阵为$\begin{pmatrix}\bf0&I_r&\bf0\\ -I_r&\bf0&\bf0\\ \bf0&\bf0&\bf0\end{pmatrix}$\\
+则若$f$为非退化的,对任意$\alpha\in V$,有$\alpha=\sum\limits_{i=1}^{r}(f(\alpha,\delta_{-i})\delta_{i}-f(\alpha,\delta_{i})\delta_{-i})$
+\end{dingli}
+
+\begin{dingli}
+对数域$K$上线性空间$V,U$\\
+若对$f_1,f_2$为$V,U$上双线性函数为反对称的,存在$\sigma:V\to U$为同构映射\\
+且对任意$\alpha,\beta\in V$,有$f_1(\alpha,\beta)=f_2(\sigma(\alpha),\sigma(\beta))$\\
+则称$\sigma$为从$(V,f_1)$到$(U,f_2)$的保距同构,则称$(V,f_1),(U,f_2)$为保距同构的
+\end{dingli}
+
+\begin{dingli}
+对数域$K$上线性空间$V,U$\\
+若对$f_1,f_2$为$V,U$上双线性函数为反对称的\\
+则$(V,f_1),(U,f_2)$为保距同构的当且仅当$\dim V=\dim U$且$\rank(f_1)=\rank(f_2)$
+\end{dingli}
+
+\begin{dingyi}
+对数域$K$上线性空间$V$\\
+若对$f$为$V$上双线性函数为反对称的且为非退化的,有$\sca$为$V$上的线性变换\\
+对任意$\alpha,\beta\in V$,有$f(\alpha,\beta)=f(\sca(\alpha),\sca(\beta))$\\
+则称$\sca$为$V$上的辛变换
+\end{dingyi}
+
+\begin{dingli}
+对数域$K$上线性空间$V$\\
+若对$f$为$V$上双线性函数为反对称的且为非退化的\\
+则$\sca$为$V$上的辛变换当且仅当$\sca$为从$(V,f)$到$(V,f)$的保距同构\\
+则$\sca$为$V$上的辛变换当且仅当\\
+有$\sca$的矩阵$T$和$f$的矩阵$A=\begin{pmatrix}\bf0&I_r\\-I_r&\bf0\end{pmatrix}$,有$A=T^{T}AT\ (|T|=1)$
+\end{dingli}
+
+\chapter{线性项式}
+
+\begin{dingyi}
+对数域$K$\\
+若有$n\in\N$且$a_n,\cdots,a_0\in K$\\
+则称$f(x)=a_nx^n+\cdots+a_0$为$K$上一元多项式\\
+则称$x$为不定元,则称$a_ix^i$为$f(x)$的$i$次项,则称$0$为零多项式\\
+则称$\max(\{i\in\N|a_i\neq 0\}\cup\{-\infty\})$为$f(x)$的次数,记为$\deg f(x)$\\
+若有$f(x)$的$\deg f(x)$次项为$x^{\deg f(x)}$,则称$f(x)$为首一多项式\\
+记$K[x]=\{f(x)|f(x)\text{为}K\text{上一元多项式}\}$,记$-f(x)=(-a_n)x^n+\cdots+(-a_0)$
+\end{dingyi}
+
+\begin{dingyi}
+对一元多项式$K[x]$\\
+若有$f(x)=\sum\limits_{i=0}^{n}a_ix^i,g(x)=\sum\limits_{i=0}^{m}b_ix^i\in K[x]$\\
+定义加法:$f(x)+g(x)=\sum\limits_{i=0}^{\max\{m,n\}}(a_i+b_i)x^i$;定义乘法:$f(x)+g(x)=\sum\limits_{i=0}^{n+m}(\sum\limits_{j+k=i}a_jb_k)x^i$
+\end{dingyi}
+
+\begin{zhu}
+加法和乘法满足交换律,结合律,分配律
+\end{zhu}
+
+\begin{dingli}
+对一元多项式$K[x]$\\
+若有$f(x),g(x),h(x)\in K[x]$\\
+则若$f(x)g(x)=0$,有$f(x)=0$或$g(x)=0$\\
+则若$f(x)g(x)=f(x)h(x)$且$f(x)\neq0$,有$g(x)=h(x)$\\
+则有$\deg f(x)+g(x)\leq \max\{\deg f(x),\deg g(x)\}$且$\deg(f(x)g(x))=\deg f(x)+g(x)$
+\end{dingli}
+
+\begin{dingli}
+对一元多项式$K[x]$\\
+若有$f(x),g(x)\in K[x]$且$g(x)\neq0$\\
+则存在唯一$h(x),r(x)\in K[x]$,有$f(x)=h(x)g(x)+r(x)$且$\deg r(x)<\deg g(x)$\\
+则称$f(x)=h(x)g(x)+r(x)$为$f/g$带余除法\\
+则称$h(x)$为$f/g$商式,则称$r(x)$为$f/g$余式
+\end{dingli}
+
+\begin{dingyi}
+对一元多项式$K[x]$\\
+若有$f(x),g(x)\in K[x]$,存在$h(x)\in K[x]$,有$f(x)=h(x)g(x)$\\
+则称$g(x)$为$f(x)$的因式,则称$f(x)$为$g(x)$的倍式\\
+则称$g(x)$整除$f(x)$,记为$g(x)\mid f(x)$,否则,则称$g(x)$不整除$f(x)$,记为$g(x)\nmid f(x)$\\
+若有$f(x),g(x)\in K[x]$且$f(x)\mid g(x),g(x)\mid f(x)$\\
+则称$f(x),g(x)$为相伴的,记为$f(x)\sim g(x)$
+\end{dingyi}
+
+\begin{dingli}
+对一元多项式$K[x]$\\
+若有$f(x)\in K[x]$,则对任意$a,\frac{1}{a}\in K$,有$a\mid f(x)$\\
+若有$f(x)\in K[x]$,则有$f(x)\mid 0$\\
+若有$f(x),g(x)\in K[x]$且$g(x)\neq0$,则$f(x)\mid g(x)$当且仅当$f/g$余式为$0$\\
+若有$f(x),g(x)\in K[x]$且$f(x)\sim g(x)$,则存在$a,\frac{1}{a}\in K$,有$f(x)=ag(x)$\\
+若有$f(x),g(x),h(x)\in K[x]$且$f(x)\mid g(x),g(x)\mid h(x)$,则$f(x)\mid h(x)$\\
+若有$f(x)|g_1(x),\cdots,f(x)\mid g_N(x)$,则对任意$u_i(x)\in K[x]$,有$f(x)\mid \sum\limits_{i=1}^{N}u_i(x)g_i(x)$
+\end{dingli}
+
+\begin{dingyi}
+对一元多项式$K[x]$\\
+若有$f(x),g(x),h(x)\in K[x]$且$f(x)\mid g(x),f(x)\mid h(x)$\\
+则称$f(x)$为$g(x),h(x)$的公因式\\
+若有$f(x),g(x)\in K[x]$,存在$d(x)\in K[x]$为$f(x),g(x)$的公因式\\
+有对任意$h(x)\in K[x]$为$f(x),g(x)$的公因式,有$h(x)\mid d(x)$\\
+则称$d(x)$为$f(x),g(x)$的最大公因式\\
+记$f(x),g(x)$的首一最大公因式为$(f(x),g(x))$
+\end{dingyi}
+
+\begin{dingli}
+对一元多项式$K[x]$\\
+若有$f(x),g(x)\in K[x]$\\
+则若$d_1(x),d_2(x)\in K[x]$为$f(x),g(x)$的公因式,有$d_1(x)\sim d_2(x)$\\
+若有$f(x),g(x)\in K[x]$\\
+则存在$d(x)\in K[x]$为$f(x),g(x)$的最大公因式
+\end{dingli}
+
+\begin{dingli}
+Bézout:\\
+对一元多项式$K[x]$\\
+若有$f(x),g(x)\in K[x]$且$d(x)\in K[x]$为$f(x),g(x)$的最大公因式\\
+则存在$u(x),v(x)\in K[x]$,有$u(x)f(x)+v(x)g(x)=d(x)$
+\end{dingli}
+
+\begin{dingyi}
+对一元多项式$K[x]$\\
+若有$f_1(x),\cdots,f_N(x),d(x)\in K[x]$,有$d(x)\mid f_1(x),\cdots,d(x)\mid f_N(x)$\\
+则称$d(x)$为$f_1(x),\cdots,f_N(x)$的公因式\\
+若有$f_1(x),\cdots,f_N(x)\in K[x]$,存在$d(x)\in K[x]$为$f_1(x),\cdots,f_N(x)$的公因式\\
+有对任意$g(x)\in K[x]$为$f_1(x),\cdots,f_N(x)$的公因式,有$g(x)\mid d(x)$\\
+则称$d(x)$为$f_1(x),\cdots,f_N(x)$的最大公因式\\
+记$f_1(x),\cdots,f_N(x)$的首一最大公因式为$(f_1(x),\cdots,f_N(x))$
+\end{dingyi}
+
+\begin{dingli}
+对一元多项式$K[x]$\\
+若有$f_1(x),\cdots,f_N(x)\in K[x]$,则$(f_1(x),\cdots,f_N(x))=(f_1(x),(f_2(x),\cdots,f_N(x)))$\\
+若有$f_1(x),\cdots,f_N(x)\in K[x]$,则存在$d(x)\in K[x]$为$f_1(x),\cdots,f_N(x)$的最大公因式
+\end{dingli}
+
+\begin{dingyi}
+对一元多项式$K[x]$\\
+若有$f(x),g(x)\in K[x]$且$(f(x),g(x))=1$,则称$f(x),g(x)$为互素的
+\end{dingyi}
+
+\begin{dingli}
+对一元多项式$K[x]$\\
+则$f(x),g(x)\in K[x]$为互素的当且仅当存在$u(x),v(x)\in K[x]$有$u(x)f(x)+v(x)g(x)=1$\\
+若有$f(x),g(x)\in K[x]$为互素的\\
+则若$h(x)\in K[x]$且$f(x)\mid g(x)h(x)$,则$f(x)\mid h(x)$\\
+则若$h(x)\in K[x]$且$f(x)\mid h(x),g(x)\mid h(x)$,则$f(x)g(x)\mid h(x)$\\
+若有$f(x),g(x)\in K[x]$为互素的且$f(x),h(x)\in K[x]$为互素的\\
+则有$(f(x),g(x)h(x))=1$
+\end{dingli}
+
+\begin{dingyi}
+对一元多项式$K[x]$\\
+若有$f(x),g(x),h(x)\in K[x]$且$g(x)\mid f(x),h(x)\mid f(x)$\\
+则称$f(x)$为$g(x),h(x)$的公倍式\\
+若有$f(x),g(x)\in K[x]$,存在$m(x)\in K[x]$为$f(x),g(x)$的公倍式\\
+有对任意$h(x)\in K[x]$为$f(x),g(x)$的公倍式,有$m(x)\mid h(x)$\\
+则称$m(x)$为$f(x),g(x)$的最小公倍式\\
+记$f(x),g(x)$的首一最小公倍式为$[f(x),g(x)]$
+\end{dingyi}
+
+\begin{dingli}
+对一元多项式$K[x]$\\
+若有$f(x),g(x)\in K[x]$\\
+则若$m_1(x),m_2(x)\in K[x]$为$f(x),g(x)$的公倍式,有$m_1(x)\sim m_2(x)$\\
+若有$f(x),g(x)\in K[x]$\\
+则存在$m(x)\in K[x]$为$f(x),g(x)$的最小公倍式
+\end{dingli}
+
+\begin{dingli}
+对一元多项式$K[x]$\\
+若有$f(x),g(x)\in K[x]$为首一多项式,则$(f(x),g(x))[f(x),g(x)]=f(x)g(x)$
+\end{dingli}
+
+\begin{dingyi}
+对一元多项式$K[x]$\\
+若有$f_1(x),\cdots,f_N(x),m(x)\in K[x]$,有$f_1(x)\mid m(x),\cdots,f_N(x)\mid m(x)$\\
+则称$d(x)$为$f_1(x),\cdots,f_N(x)$的公倍式\\
+若有$f_1(x),\cdots,f_N(x)\in K[x]$,存在$m(x)\in K[x]$为$f_1(x),\cdots,f_N(x)$的公倍式\\
+有对任意$g(x)\in K[x]$为$f_1(x),\cdots,f_N(x)$的公倍式,有$m(x)\mid g(x)$\\
+则称$m(x)$为$f_1(x),\cdots,f_N(x)$的最小公倍式\\
+记$f_1(x),\cdots,f_N(x)$的首一最小公倍式为$[f_1(x),\cdots,f_N(x)]$
+\end{dingyi}
+
+\begin{dingli}
+对一元多项式$K[x]$\\
+若有$f_1(x),\cdots,f_N(x)\in K[x]$,则$[f_1(x),\cdots,f_N(x)]=[f_1(x),[f_2(x),\cdots,f_N(x)]]$\\
+若有$f_1(x),\cdots,f_N(x)\in K[x]$,则存在$m(x)\in K[x]$为$f_1(x),\cdots,f_N(x)$的最小公倍式
+\end{dingli}
+
+\begin{dingyi}
+对一元多项式$K[x]$\\
+若有$f(x)\in K[x]$的因式只有$f(x)$或$a,\frac{1}{a}\in K$\\
+则称$f(x)$为$K$上不可约多项式,否则,则称$f(x)$为$K$上可约多项式
+\end{dingyi}
+
+\begin{dingli}
+对一元多项式$K[x]$\\
+则$f(x)\in K[x]$为$K$上不可约多项式\\
+$\Leftrightarrow$对任意$g(x)\in K[x]$,则$(f(x),g(x))=1$或$g(x)\mid f(x)$\\
+$\Leftrightarrow$对任意$g(x),h(x)\in K[x]$,若$f(x)\mid g(x)h(x)$,则$f(x)\mid g(x)$或$f(x)\mid h(x)$\\
+$\Leftrightarrow$不存在$g(x),h(x)\in K[x]$,有$\max\{\deg g(x),\deg h(x)\}<\deg f(x)$且$f(x)=g(x)h(x)$
+\end{dingli}
+
+\begin{dingli}
+对一元多项式$K[x]$\\
+则对任意$f(x)\in K[x]$,存在$g_1(x),\cdots,g_n(x)\in K[x]$为$K$上不可约多项式\\
+有$f(x)=g_1(x)\cdots g_n(x)$\\
+若还有$h_1(x),\cdots,h_m(x)\in K[x]$为$K$上不可约多项式且$f(x)=h_1(x)\cdots h_m(x)$\\
+则有$n=m$且存在$n$元排列$n_1,\cdots n_n$,有$g_{n_i}(x)\sim h_{i}(x)$
+\end{dingli}
+
+\begin{dingyi}
+对一元多项式$K[x]$\\
+若对$f(x)\in K[x]$为$K$上不可约多项式,有$g(x)\in K[x]$\\
+存在$k\in \N$,有$f(x)^{k}\mid g(x)$且$f(x)^{k+1}\nmid g(x)$\\
+则称$f(x)$为$g(x)$的$k$重因式,则称$1$重因式为单因式\\
+若对$f(x)=\sum\limits_{i=0}^{n}a_ix^i\in K[x]$\\
+记$f'(x)=f^{(1)}(x)=\sum\limits_{i=0}^{n-1}(i+1)a_{i+1}x^i$且$f^{(m)}(x)=(f^{(m-1)}(x))'$\\
+则称$f^{(m)}(x)$为$f(x)$的$m$阶导数,则称$1$阶导数为导数
+\end{dingyi}
+
+\begin{dingli}
+对一元多项式$K[x]$\\
+若对$f(x),g(x)\in K[x]$且$\deg f(x)>0$且$g(x)$为$K$上不可约多项式\\
+则若$g(x)$为$f(x)$的$k$重因式且$k\in\N^*$,则$g(x)$为$f'(x)$的$k-1$重因式\\
+则有$g(x)$为$f(x)$的$k$重因式且$k\geq 2$当且仅当$g(x)\mid (f(x),f'(x))$
+\end{dingli}
+
+\begin{dingli}
+对一元多项式$K[x]$\\
+若对$f(x)\in K[x]$且$\deg f(x)>0$\\
+则存在$g(x)\in K[x]$为$f(x)$的$k$重因式且$k\geq 2$当且仅当$\deg (f(x),f'(x))>0$\\
+则不存在$g(x)\in K[x]$为$f(x)$的$k$重因式且$k\geq 2$当且仅当$(f(x),f'(x))=1$
+\end{dingli}
+
+\begin{dingli}
+对一元多项式$K[x]$\\
+若对$f(x)\in K[x]$且$a\in K$,则$f(x)/(x-a)$余式为$f(a)\in K$\\
+即$(x-a)\mid f(x)$当且仅当$f(a)=0$
+\end{dingli}
+
+\begin{dingyi}
+对一元多项式$K[x]$\\
+若对$f(x)\in K[x]$,存在$a\in K$,有$f(a)=0$\\
+则称$a$为$f(x)$在$K$上的根,即$(x-a)\mid f(x)$\\
+若对$f(x)\in K[x]$,存在$a\in K$且$k\in\N^*$,有$(x-a)$为$f(x)$的$k$重因式\\
+则称$a$为$f(x)$在$K$上的$k$重根,则称$1$重根为单根
+\end{dingyi}
+
+\begin{dingli}
+对一元多项式$K[x]$\\
+若对$f(x)\in K[x]$且$\deg f(x)>0$,则有$f(x)$在$K$上至多有$\deg f(x)$个根\\
+若对$f(x),g(x)\in K[x]$且$\max\{\deg f(x),\deg g(x)\}\leq n$\\
+则若$f(c_i)=g(c_i), i=1,\cdots,n+1$且$c_i\neq c_j\in K,i\neq j$,则$f(x)=g(x)$
+\end{dingli}
+
+\begin{dingli}
+对复一元多项式$\C[x]$\\
+若有$f(x)\in \C[x]$且$\deg f(x)>0$,则存在$c\in\C$为$f(x)$在$\C$上的根\\
+若有$f(x)\in \C[x]$为$\C$上不可约多项式,则$\deg f(x)=1$\\
+若有$f(x)\in \C[x]$且$\deg f(x)>0$,则存在唯一$a,c_1,\cdots,c_n\in \C$\\
+则$f(x)=a(x-c_1)^{l_1}\cdots (x-c_n)^{l_n}$且$l_1+\cdots+l_n=\deg f(x)$,其中$l_1,\cdots,l_n\in \N^*$\\
+若有$f(x)=x^n+a_{n-1}x^{n-1}+\cdots a_1x+a_0=(x-c_1)(x-c_2)\cdots (x-c_n)\in\C[x]$\\
+则$a_{n-k}=(-1)^{k}\sum\limits_{1\leq i_1<i_2<\cdots<i_{k}\leq n}c_{i_1}c_{i_2}\cdots c_{i_k}$
+\end{dingli}
+
+\begin{dingli}
+对实一元多项式$\R[x]$\\
+若有$f(x)\in\R[x]$且$c\in\C$为$f(x)$在$\C$上的根,则$\overline{c}$为$f(x)$在$\C$上的根\\
+若有$f(x)\in\R[x]$为$\R$上不可约多项式,记$\delta(f)=a_1^2-4a_2a_0$\\
+则$\deg f(x)=1$或$\deg f(x)=2$且$\delta(f)<0$\\
+若有$f(x)\in \R[x]$且$\deg f(x)>0$,则存在唯一$a,c_1,\cdots,c_n,p_1,q_1,\cdots,p_m,q_m\in\R$\\
+则$f(x)=a(x-c_1)^{r_1}\cdots(x-c_n)^{r_n}(x^2+p_1x+q_1)^{k_1}\cdots(x^2+p_mx+q_m)^{k_m}$\\
+其中$r_1,\cdots,r_n,k_1,\cdots,k_m\in\N^*$且$p_i^2-4q_i<0, i=1,\cdots,m$
+\end{dingli}
+
+\begin{dingli}
+对有理一元多项式$\Q[x]$\\
+若有$f(x)\in\Q[x]$且$(a_0,\cdots,a_{\deg f(x)})=1$,则称$f(x)$为本原多项式\\
+若有$f(x),g(x)\in\Q[x]$为本原多项式,则$f(x)g(x)\in\Q[x]$为本原多项式\\
+若有$f(x)\in\Q[x]$为本原多项式且为$\Q$上可约多项式\\
+则存在$g(x),h(x)\in\Q[x]$为本原多项式且$f(x)=g(x)h(x)$\\
+若有$f(x)\in\Q[x]$为本原多项式且$\deg f(x)>0$\\
+则存在$g_1(x),\cdots,g_n(x)\in \Q[x]$为本原多项式且为$\Q$上不可约多项式\\
+有$f(x)=g_1(x)\cdots g_n(x)$\\
+若还有$h_1(x),\cdots,h_m(x)\Q[x]$为本原多项式且$f(x)=h_1(x)\cdots h_m(x)$\\
+则有$n=m$且存在$n$元排列$n_1,\cdots n_n$,有$g_{n_i}(x)\sim h_{i}(x)$
+\end{dingli}
+
+\begin{dingli}
+对有理一元多项式$\Q[x]$\\
+若有$f(x)\in\Z[x]\subset\Q[x]$且$\deg f(x)>0$\\
+则$f(x)$为$\Q$上可约多项式当且仅当\\
+存在$g(x),h(x)\in\Z[x]$且$\max\{\deg g(x),h(x)\}<\deg f(x)$且$f(x)=g(x)h(x)$\\
+若有$f(x)=a_nx^n+\cdots+a_1x_1+a_0\in\Z[x]\subset\Q[x]$且$\deg f(x)>0$\\
+则若$\frac{p}{q}\in\Q$为$f(x)$的根且$(p,q)=1$,则$p|a_n$且$q|a_0$\\
+若有$f(x)=a_nx^n+\cdots+a_1x_1+a_0\in\Q[x]$且$\deg f(x)>0$\\
+则若存在$p\in\Z$为素数且$p|a_i, i=0,\cdots,n-1$且$p\nmid a_n$且$p^2\nmid a_0$\\
+则$f(x)$为$\Q$上不可约多项式
+\end{dingli}
+
+\begin{dingyi}
+对数域$K$\\
+若有$n\in\N$且$a_{i_1\cdots i_n}\in K$\\
+则称$f(x_1,\cdots,x_n)=\sum\limits_{i_1,\cdots,i_n}a_{i_1\cdots i_n}x_1^{i_1}\cdots x_n^{i_n}$为$K$上$n$元多项式\\
+则称$x_1,\cdots,x_n$为不定元,则称$0$为零多项式\\
+则称$\max(\{\sum\limits_{j=1}^{n}i_j\in\N|a_{i_1\cdots i_n}\neq 0\}\cup\{-\infty\})$为$f(x)$的次数,记为$\deg f(x)$\\
+记$K[x_1,\cdots,x_n]=\{f(x_1,\cdots,x_n)|f(x_1,\cdots,x_n)\text{为}K\text{上}n\text{元多项式}\}$
+\end{dingyi}
+
+\begin{dingyi}
+对$n$元多项式$K[x_1,\cdots,x_n]$\\
+若有$f(x_1,\cdots,x_n)=\sum\limits_{i_1,\cdots,i_n}a_{i_1\cdots i_n}x_1^{i_1}\cdots x_n^{i_n}\in K[x_1,\cdots,x_n]$\\
+且对任意$i_1,\cdots,i_n$,有$\sum\limits_{j=1}^{n}i_j=m$\\
+则称$f(x_1,\cdots,x_n)$为$m$次齐次多项式\\
+若有$f(x_1,\cdots,x_n)\in K[x_1,\cdots,x_n]$\\
+对任意$n$元排列$n_1,\cdots,n_n$,有$f(x_1,\cdots,x_n)=f(x_{n_1},\cdots,x_{n_n})$\\
+则称$f(x_1,\cdots,x_n)$为$n$元对称多项式\\
+记$W[x_1,\cdots,x_n]=\{f(x_1,\cdots,x_n)|f(x_1,\cdots,x_n)\text{为}K\text{上}n\text{元对称多项式}\}$\\
+则称$\sigma_{k}(x_1,\cdots,x_n)=\sum\limits_{1\leq j_1<\cdots<j_k\leq n}x_{j_1}\cdots x_{j_k}$为$n$元初等对称多项式
+\end{dingyi}
+
+\begin{dingli}
+对$n$元多项式$K[x_1,\cdots,x_n]$\\
+若$f_1,\cdots,f_m\in W[x_1,\cdots,x_n]$,则对任意$g(x_1,\cdots,x_n)\in K[x_1,\cdots,x_n]$\\
+则$g(f_{n_1},\cdots,f_{n_n})$为$n$元对称多项式,其中$n_1,\cdots,n_n\in\{1,\cdots,m\}$
+\end{dingli}
+
+\begin{dingli}
+对$n$元多项式$K[x_1,\cdots,x_n]$\\
+若$f(x_1,\cdots,x_n)\in W[x_1,\cdots,x_n]$,则存在唯一$g(x_1,\cdots,x_n)\in K[x_1,\cdots,x_n]$\\
+则$f(x_1,\cdots,x_n)=g(\sigma_1,\cdots,\sigma_n)$
+\end{dingli}
+
+\begin{dingli}
+对一元多项式$K[x]$\\
+若有$f(x)=x^n+a_{n-1}x^{n-1}+\cdots+a_1x+a_0=(x-c_1)\cdots(x-c_n)\in K[x]$且$c_1,\cdots,c_n\in\C$
+则$f(x)$在$\C$上有重根当且仅当$\prod\limits_{1\leq i<j\leq n}(c_i-c_j)^2=0$\\
+记存在唯一$g(x_1,\cdots,x_n)\in K[x_1,\cdots,x_n]$,有$\prod\limits_{1\leq i<j\leq n}(x_i-x_j)^2=g(\sigma_1,\cdots,\sigma_n)$\\
+则$f(x)$在$\C$上有重根当且仅当$g((-1)a_{n-1},\cdots,(-1)^na_0)=0$\\
+则称$g((-1)a_{n-1},\cdots,(-1)^na_0)=0$为$f(x)$的判别式,记为$D(f)$
+\end{dingli}
+
+\begin{dingyi}
+对一元多项式$K[x]$\\
+若有$f(x)=\sum\limits_{i=0}^{n}a_ix^i,g(x)=\sum\limits_{i=0}^{n}b_ix^i\in K[x]$且$\min\{\deg f(x),\deg g(x)\}>0$\\
+则称$\begin{array}{c@{\quad}c}\begin{array}{c}m\text{行}\left\{\begin{array}{c}\\ \\ \\ \\ \end{array}\right.\\[0.5em]n\text{行}\left\{\begin{array}{c}\\ \\ \\ \\ \end{array}\right.\end{array}&
+\begin{vmatrix} a_n&\cdots&a_0& & & & \\ &a_n&\cdots&a_0& & & \\ & &\ddots&\ddots&\ddots& & \\ & & &a_n&\cdots&a_0\\ b_m&\cdots&b_0& & & & \\ &b_m&\cdots&b_0& & & \\ & &\ddots&\ddots&\ddots& & \\ & & &b_m&\cdots&b_0\end{vmatrix}\end{array}$
+为$f(x),g(x)$的结式,记为$\Res(f,g)$
+\end{dingyi}
+
+\begin{dingli}
+对一元多项式$K[x]$\\
+若有$f(x)=\sum\limits_{i=0}^{n}a_ix^i,g(x)=\sum\limits_{i=0}^{n}b_ix^i\in K[x]$且$\min\{\deg f(x),\deg g(x)\}>0$\\
+则$\Res(f,g)=0$当且仅当$a_n=b_m=0$或存在$c\in\C$为$f(x),g(x)$在$\C$上的根\\
+若有$f(x)\in K[x]$在$\C$上的根为$c_1,\cdots,c_n$且$g(x)\in K[x]$在$\C$上的根为$d_1,\cdots,d_m$\\
+则$\Res(f,g)=a_n^m\prod\limits_{i=1}^{n}g(c_i)=(-1)^{mn}b_m^n\prod\limits_{j=1}^{m}f(d_j)$
+\end{dingli}
+
+\begin{dingli}
+对一元多项式$K[x]$\\
+若有$f(x)=\sum\limits_{i=0}^{n}a_ix^i\in K[x]$,则$D(f)=(-1)^{\frac{n(n-1)}{2}}a_n^{-1}\Res(f,f')$
+\end{dingli}
+
+
+%\end{document}

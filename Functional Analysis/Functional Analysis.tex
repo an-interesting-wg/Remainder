@@ -1,0 +1,960 @@
+%\documentclass[12pt,oneside,a4paper]{book}
+
+%\usepackage{amsmath}
+%\usepackage{mathtools}
+%\usepackage{amsfonts}
+%\usepackage{unicode-math}
+%\usepackage{geometry}
+%\usepackage{ctex}
+
+%\begin{document}
+
+%\setcounter{chapter}{0}
+\setcounter{section}{0}
+\setcounter{subsection}{0}
+
+\chapter{度量空间}
+
+\begin{dingyi}
+对集合$X\neq \varnothing$\\
+有函数$\rho:X\times X\to \R$,对任意$x,y,z\in X$\\
+有$\rho(x,y)\geq 0$且$\rho(x,y)=0$当且仅当$x=y$,有$\rho(x,y)=\rho(y,x)$,有$\rho(x,y)\leq \rho(x,z)+\rho(z,y)$\\
+则称$\rho$为$X$上的度量,则称$(X,\rho)$为度量空间
+\end{dingyi}
+
+\begin{dingyi}
+对度量空间$(X,\rho)$\\
+对点列$\{x_n\}\subset X$和$x_0\in X$,有$\lim\limits_{n\to \infty}\rho(x_n,x_0)=0$\\
+则称$\{x_n\}$收敛于$x_0$,记为$\lim\limits_{n\to\infty}x_n=x_0$\\
+若对子集$S\subset X$,对任意点列$\{s_n\}\subset S$\\
+若$\lim\limits_{n\to\infty}s_n=s_0$,有$s_0\in S$\\
+则称$S$为$X$上闭集,则称$\overline{S}$为满足$S\subset \overline{S}$的最小闭集\\
+若对子集$S\subset X$,有$S^{c}=X\backslash S$为$X$上闭集\\
+则称$S$为$X$上开集则称$\mathring{S}$为满足$\mathring{S}\subset S$的最大开集
+\end{dingyi}
+
+\begin{dingyi}
+对度量空间$(X,\rho)$\\
+对点列$\{x_n\}\subset X$,若$\lim\limits_{n\to\infty\atop m\to\infty}\rho(x_n,x_m)=0$\\
+则称$\{x_n\}$为$X$上基本列\\
+若对任意$X$上基本列$\{x_n\}$,存在$x_0\in X$,有$\lim\limits_{n\to\infty}x_n=x_0$\\
+则称$(X,\rho)$为完备的
+\end{dingyi}
+
+\begin{dingyi}
+对度量空间$(X,\rho)$和$(Y,\varrho)$\\
+若有映射$f:(X,\rho)\to(Y,\varrho)$,对任意点列$\{x_n\}\subset X$和$x_0\in X$\\
+若$\lim\limits_{n\to\infty}x_n=x_0$,则$\lim\limits_{n\to\infty}f(x_n)=f(x_0)$\\
+则称$f$为连续映射\\
+若有映射$f:(X,\rho)\to(X,\rho)$,存在$0<\alpha<1$\\
+对任意$x,y\in X$,有$\rho(f(x),f(y))\leq \alpha\rho(x,y)$\\
+则称$f$为压缩映射
+\end{dingyi}
+
+\begin{zhu}
+度量空间连续映射的定义与度量诱导的拓扑空间的连续映射定义等价
+\end{zhu}
+
+\begin{dingli}
+对度量空间$(X,\rho)$和$(Y,\varrho)$\\
+则映射$f:(X,\rho)\to(Y,\varrho)$为连续映射当且仅当对任意$\varepsilon>0,x_0\in X$,存在$\delta>0$\\
+对任意$x\in X$,若$\rho(x,x_0)<\delta$,有$\varrho(f(x),f(x_0))<\varepsilon$
+\end{dingli}
+
+\begin{dingli}
+Banach:\\
+对度量空间$(X,\rho)$为完备的\\
+若有映射$f:(X,\rho)\to(X,\rho)$为压缩映射,则存在唯一$x\in X$,有$f(x)=x$
+\end{dingli}
+
+\begin{dingyi}
+对度量空间$(X,\rho)$和$(Y,\varrho)$\\
+若映射$f:(X,\rho)\to(Y,\varrho)$为满射且对任意$x,y\in X$,有$\varrho(f(x),f(y))=\rho(x,y)$\\
+则称$f$为等距同构映射,则称$(X,\rho)$和$(Y,\varrho)$为等距同构的
+\end{dingyi}
+
+\begin{dingyi}
+对度量空间$(X,\rho)$\\
+若对子集$U\subset X$,对任意$x\in X,\varepsilon>0$,存在$u\in U$,有$\rho(x,u)<\varepsilon$\\
+则称$U$为$X$的稠密子集
+\end{dingyi}
+
+\begin{dingli}
+对度量空间$(X,\rho)$\\
+则子集$U$为$X$的稠密子集当且仅当对任意$x\in X$,存在$\{x_n\}\subset U$,有$\lim\limits_{n\to\infty}x_n=x$
+\end{dingli}
+
+\begin{dingyi}
+对度量空间$(X,\rho)$\\
+若存在度量空间$(\overline{X},\overline{\rho})\supset (X,\rho)$为完备的且$\overline{\rho}|_{X\times X}=\rho$\\
+对任意度量空间$(Y,\varrho)\supset (X,\rho)$为完备的且$\overline{\varrho}|_{X\times X}=\rho$\\
+有$(\overline{X},\overline{\rho})$为$(Y,\varrho)$的子空间\\
+则称$(\overline{X},\overline{\rho})$为$(X,\rho)$的完备化空间
+\end{dingyi}
+
+\begin{dingli}
+对度量空间$(X,\rho)$和$(Y,\varrho)$\\
+若$(Y,\varrho)$为完备的且$(X,\rho)$为$(Y,\varrho)$的子空间且$X$为$Y$的稠密子集\\
+则$(Y,\varrho)$为$(X,\rho)$的完备化空间
+\end{dingli}
+
+\begin{dingli}
+对度量空间$(X,\rho)$\\
+存在度量空间$(Y,\varrho)$为完备的,有$(Y,\varrho)$为$(X,\rho)$的完备化空间
+\end{dingli}
+
+\begin{dingyi}
+对度量空间$(X,\rho)$\\
+对$\varepsilon>0,x_0\in X$,记$B(x,\varepsilon)=\{x\in X|\rho(x,x_0)<\varepsilon\}$\\
+若对子集$U\subset X$,存在$V\subset U$,存在$\varepsilon>0$,有$U\subset \bigcup\limits_{v\in V}B(v,\varepsilon)$\\
+则称$V$为$U$的$\varepsilon$网\\
+若$|V|<\infty$,则称$V$为$U$的有限$\varepsilon$网\\
+若对子集$U\subset X$,存在$\varepsilon>0,x_0\in X$,有$U\subset B(x_0,\varepsilon)$\\
+则称$U$为有界的\\
+若对子集$U\subset X$,对任意$\varepsilon>0$,存在$V$为$U$的有限$\varepsilon$网\\
+则称$U$为完全有界的
+\end{dingyi}
+
+\begin{dingyi}
+对度量空间$(X,\rho)$\\
+若对子集$U\subset X$和任意开覆盖$U\subset \bigcup\limits_{i\in I}U_{i}$\\
+存在$J\subset I,|J|<\infty$,有$U\subset \bigcup\limits_{j\in J}U_{j}$\\
+则称$U$为紧的\\
+若对子集$U\subset X$,对任意$\{x_n\}\subset U$,存在子列$\{x_{n_i}\}$为收敛的\\
+则称$U$为列紧的\\
+若对子集$U\subset X$为列紧的,对任意$\{x_n\}\subset U$的收敛子列$\{x_{n_i}\}$,有$\lim\limits_{i\to\infty}x_{n_i}=\in U$\\
+则称$U$为自列紧的
+\end{dingyi}
+
+\begin{dingli}
+对度量空间$(X,\rho)$\\
+对子集$U\subset X$,则$U$为自列紧的当且仅当$U$为列紧的且为闭的\\
+对子集$U\subset X$,若$U$为自列紧的,则$U$为有界闭集\\
+若对$X$为列紧的,则$X$为完备的
+\end{dingli}
+
+\begin{dingli}
+对度量空间$(X,\rho)$\\
+若子集$U\subset X$为列紧的,则$U$为完全有界的\\
+若$X$为完备的,则子集$U$为列紧的当且仅当$U$为完全有界的
+\end{dingli}
+
+\begin{dingli}
+对度量空间$(X,\rho)$\\
+对子集$U\subset X$,则$U$为列紧的当且仅当$U$为紧的
+\end{dingli}
+
+\begin{dingli}
+对度量空间$(X,\rho)$\\
+若$X$为紧的且有$C(X)=\{f|f:X\to\R\text{为连续映射}\}$\\
+有函数$d:C(X)\times C(X)\to \R,(f_1,f_2)\mapsto \max\limits_{x\in X}|f_1(x)-f_2(x)|$\\
+则$(C(X),d)$为度量空间且为完备的
+\end{dingli}
+
+\begin{dingyi}
+对度量空间$(C(X),d)$\\
+若对子集$F\subset C(X)$,存在$M>0$,对任意$x\in X,f\in F$,有$|f(x)|\leq M$\\
+则称$F$为一致有界的\\
+若对子集$F\subset C(X)$,对任意$\varepsilon>0$,存在$\delta>0$\\
+对任意$x_1,x_2\in X,f\in F$,若$\rho(x_1,x_2)<\delta$,则$|f(x_1,x_2)|<\varepsilon$\\
+则称$F$为等度连续的
+\end{dingyi}
+
+\begin{dingli}
+Arzelà-Ascoli:\\
+对度量空间$(C(X),d)$\\
+对子集$F\subset C(X)$,则$F$为列紧的当且仅当$F$为一致有界的且为等度连续的
+\end{dingli}
+
+\begin{dingyi}
+对度量空间$(X,\rho)$\\
+若对子集$U\subset X$,有$\mathring{\overline{U}}=\varnothing$,则称$U$为疏集\\
+若对子集$U\subset X$,存在子集族$\{U_{n}|n\in\N^*\}$,对任意$n\in \N^*$,有$U_{n}$为疏集且$X=\bigcup\limits_{n=1}^{\infty}U_{n}$\\
+则称$U$为第一纲集,否则,则称$U$为第二纲集
+\end{dingyi}
+
+\begin{dingli}
+对度量空间$(X,\rho)$\\
+则子集$U\subset X$为疏集当且仅当对任意$B_{r}(x)\subset X$,存在$B_{r_0}(x_0)\subset B_{r}(x)$,有$\overline{E}\cap\overline{B_{r_0}(x_0)}=\varnothing$
+\end{dingli}
+
+\begin{dingli}
+Baire:\\
+对度量空间$(X,\rho)$\\
+若$(X,\rho)$为完备的,则$(X,\rho)$为第二纲集
+\end{dingli}
+
+\begin{zhu}
+在$C[0,1]$中,处处不可微的函数集$E\neq\varnothing$且$E^{c}$为第一纲集
+\end{zhu}
+
+\begin{dingyi}
+对线性空间$X$上定义度量$\rho$,其中数域为$K$\\
+对任意$\lim\limits_{n\to\infty}x_n=x,\lim\limits_{n\to\infty}y_n=y\in X$,有$\lim\limits_{n\to\infty}x_n+y_n=x+y$\\
+则称$\rho$为加法连续的\\
+对任意$k\in K,\lim\limits_{n\to\infty}x_n=x\in X$,有$\lim\limits_{n\to\infty}kx_n=kx$\\
+对任意$x\in X,\lim\limits_{n\to\infty}k_n=k\in K$,有$\lim\limits_{n\to\infty}k_nx=kx$\\
+则称$\rho$为数乘连续的
+\end{dingyi}
+
+\begin{zhu}
+$\rho$为加法连续当且仅当对任意$x,y,z\in X$,有$\rho(x,y)=\rho(x+z,y+z)$
+\end{zhu}
+
+\begin{dingyi}
+对线性空间$X$上定义函数$||\ ||:X\to K$,其中数域为$K$\\
+若对$x_n,x\in X$,有$\lim\limits_{n\to\infty}||x_n-x||=0$\\
+则称$\lim\limits_{n\to\infty}x_n=x$,即以此函数定义线性空间上的收敛性\\
+对任意$x\in X$,有$||x||\geq 0$且$||x||=0$当且仅当$x=x_0$\\
+对任意$x,y\in X$,有$||x+y||\leq ||x||+||y||$\\
+对任意$x\in X$,有$||x||=||-x||$\\
+对任意$x\in X,\lim\limits_{n\to\infty}k_n=0\in K$,有$\lim\limits_{n\to\infty}||k_nx||=0$\\
+对任意$k\in K,x_n\in X,\lim\limits_{n\to\infty}||x_n||=0$,有$\lim\limits_{n\to\infty}||kx_n||0$\\
+则称$||\ ||$为$X$上的准范数\\
+则称$(X,||\ ||)$为$F^*$空间,即赋准范数线性空间\\
+若$F^*$空间为完备的,则称为$F$空间,即Frechet空间\\
+对任意$x\in X$,有$||x||\geq 0$且$||x||=0$当且仅当$x=x_0$\\
+对任意$x,y\in X$,有$||x+y||\leq ||x||+||y||$\\
+对任意$x\in X,k\in K$,有$||kx||=|k|\cdot||x||$\\
+则称$||\ ||$为$X$上的范数\\
+则称$(X,||\ ||)$为$B^*$空间,即赋范线性空间\\
+若$B^*$空间为完备的,则称为$B$空间,即Banach空间
+\end{dingyi}
+
+\begin{zhu}
+以下为基本例子:\\
+对线性空间$S=\{x=(x_1,\cdots,x_n,\cdots)|x_i\in K\}$和$||x||=\sum\limits_{i=1}^{\infty}\frac{1}{2^i}\frac{|x_i|}{1+|x_i|}$\\
+则$S$为Frechet空间\\
+对线性空间$C(M)=\{f(x)|f(x)\text{为}M\text{上连续函数}\}$和$||f||=\max\limits_{x\in M}|f(x)|$,其中度量空间$M$为紧的\\
+则$C(M)$为Banach空间\\
+对线性空间$L^p(\Omega)=\{f(x)|\int_{\Omega}|f(x)|^p\d x<\infty\}$和$||f||=(\int_{\Omega}|f(x)|^p\d x)^{\frac{1}{p}}$,其中$\Omega\subset \R^n$为可测集\\
+则$L^p(\Omega)$为Banach空间\\
+对线性空间$l^p=\{x=\{x_n\}|\sum\limits_{n=1}^{\infty}|x_n|^p<\infty\}$和$||x||=(\sum\limits_{n=1}^{\infty}|x_n|^p)^{\frac{1}{p}}$\\
+则$l^p$为Banach空间\\
+对线性空间$L^{\infty}(\Omega)=\{f(x)|f(x)=g(x)\ a.e.,\exists M>0,\forall x\in \Omega,|g(x)|\leq M\}$,其中$\Omega\subset \R^n$为可测集\\
+和$||f||=\inf\limits_{\mu(E_0)=0,E_0\subset \Omega}\sup\limits_{x\in\Omega\backslash E_0}|f(x)|$\\
+则$L^{\infty}(\Omega)$为Banach空间\\
+对线性空间$l^{\infty}=\{x=\{x_n\}|\exists M>0,\forall n\in \N^*,|x_n|<M\}$\\
+和$||x||=\sup\limits_{n\in\N^*}|x_n|$\\
+则$l^{\infty}$为Banach空间\\
+对线性空间$H^{m,p}(\Omega)=\overline{\{f(x)\in C^{m}(\overline{\Omega})|\sum\limits_{|\alpha|\leq m}\int_{\Omega}|\partial^{\alpha}f(x)|^{p}\d x<\infty\}}$,其中$\Omega\subset \R^n$为有界连通开区域且$m\in\N, p\in[1,\infty)$\\
+和$||f||=(\sum\limits_{|\alpha|\leq m}\int_{\Omega}|\partial^{\alpha}f(x)|^{p}\d x)^{\frac{1}{p}}$\\
+则$H^{m,p}(\Omega)$为Banach空间
+\end{zhu}
+
+\begin{dingyi}
+对线性空间$X$上的范数$||\ ||_{1}$和$||\ ||_{2}$\\
+若对$\{x_n\}\subset X$,有$\lim\limits_{n\to\infty}||x_n||_{1}=0$,则$\lim\limits_{n\to\infty}||x_n||_{2}=0$\\
+则称$||\ ||_{1}$比$||\ ||_{2}$强\\
+若对$\{x_n\}\subset X$,有$\lim\limits_{n\to\infty}||x_n||_{1}=0$当且仅当$\lim\limits_{n\to\infty}||x_n||_{2}=0$\\
+则称$||\ ||_{1}$与$||\ ||_{2}$等价
+\end{dingyi}
+
+\begin{dingli}
+对线性空间$X$上的范数$||\ ||_{1}$和$||\ ||_{2}$\\
+则$||\ ||_{1}$比$||\ ||_{2}$强当且仅当存在$C\geq 0$,对任意$x\in X$,有$C||x||_{1}\geq ||x||_{2}$\\
+则$||\ ||_{1}$与$||\ ||_{2}$等价当且仅当存在$C_1,C_2\geq 0$,对任意$x\in X$,有$C_1||x||_{1}\leq ||x||_{2}\leq C_2||x||_{1}$
+\end{dingli}
+
+\begin{dingli}
+对线性空间$X$,其中数域为$K$\\
+若$\dim X<\infty$,则$X$上范数$||\ ||$均为等价的且等价于$K^n$上范数\\
+若$\dim X<\infty$且$X$为$B^*$空间,则$X$为Banach空间\\
+若$X$为$B^*$空间且有子空间$Y\subset X,\dim Y<\infty$,则$Y$为闭子空间
+\end{dingli}
+
+\begin{dingyi}
+对$B^*$空间$(X,||\ ||)$\\
+若对任意$x,y\in X,x\neq y$,有$||x||=||y||=1$\\
+则对任意$\alpha+\beta=1,\alpha>0,\beta>0$,有$||\alpha x+\beta y||<1$\\
+则称$X$为严格凸的
+\end{dingyi}
+
+\begin{zhu}
+在Banach空间中,有$C(M)$和$L^1(\Omega)$不为严格凸的,$L^p(\Omega),1<p<\infty$为严格凸的
+\end{zhu}
+
+\begin{dingli}
+对$B^*$空间$(X,||\ ||)$\\
+则$\dim X<\infty$当且仅当对任意$Y\subset X$,若存在$M>0$,对任意$y\in Y$,有$||y||<M$,则$Y$为列紧的\\
+则$\dim X<\infty$当且仅当$S_1=\{x\in X|\ ||x||=1\}$为列紧的
+\end{dingli}
+
+\begin{dingli}
+Riesz:\\
+对$B^*$空间$(X,||\ ||)$\\
+若$Y\subsetneq X$为闭子空间,则对任意$0<\varepsilon<1$,存在$x\in X$,有$||x||=1$\\
+对任意$y\in Y$,有$||y-x||\geq 1-\varepsilon$
+\end{dingli}
+
+\begin{dingli}
+对$B^*$空间$(X,||\ ||)$\\
+若$Y\subsetneq X$为闭子空间,则有商空间$X/Y$\\
+定义$X/Y$上范数$||[x]||_{X/Y}=\inf\limits_{x'\in [x]}||x'||$\\
+则$(X/Y,||\ ||_{X/Y})$为$B^*$空间\\
+若$(X,||\ ||)$为Banach空间,则$(X/Y,||\ ||_{X/Y})$为Banach空间
+\end{dingli}
+
+\begin{dingyi}
+对线性空间$X$,其中数域为$K$\\
+若对子集$E\subset X$,对任意$x,y\in E,\lambda\in[0,1]$,有$\lambda x+(1-\lambda)y\in E$\\
+则称$E$为凸集\\
+若对子集$E\subset X$,有集合族$\{E_i\supset E|E_i\subset X\text{为凸集},i\in I\}$\\
+则称$co(E)=\bigcap\limits_{i\in I}E_i$为$E$的凸包\\
+若对子集$E\subset X$,有$x_1,\cdots,x_n\in E$且$\lambda_1,\cdots,\lambda_n\in[0,1],\sum\limits_{i=1}^{n}\lambda_i=1$\\
+则称$x=\sum\limits_{i=1}^{n}\lambda_ix_i$为$E$的凸组合
+\end{dingyi}
+
+\begin{dingli}
+对线性空间$X$,其中数域为$K$\\
+若有凸集族$\{E_i|i\in I\}$,则有$\bigcap\limits_{i\in I}E_i$为凸集\\
+若有子集$E$,则有$co(E)=\{x=\sum\limits_{i=1}^{n}\lambda_ix_i|\text{对任意}n\in\N^*,\text{有}x\text{为}E\text{的凸组合}\}$
+\end{dingli}
+
+\begin{dingyi}
+对线性空间$X$,其中数域为$K$\\
+若有凸集$E$且$x_0\in E$,记$P:X\to [0,\infty],x\to\inf\{\lambda>0|\frac{x}{\lambda}\in E\}$\\
+则称$P(x)$为$E$的Minkowski泛函\\
+若有凸集$E$且$x_0\in E$,对任意$x\in X$,存在$\lambda>0$,有$\frac{x}{\lambda}\in E$\\
+则称$E$为吸收的\\
+若有凸集$E$且$x_0\in E$,对任意$x\in E$,有$-x\in E$\\
+则称$E$为对称的\\
+若有凸集$E$且$x_0\in E$,对任意$x\in E,\lambda\in K$且$|\lambda|=1$,有$\lambda x\in E$\\
+则称$E$为均衡的
+\end{dingyi}
+
+\begin{dingli}
+对线性空间$X$,其中数域为$K$\\
+若有凸集$E$且$x_0\in E$,有$P(x)$为$E$的Minkowski泛函\\
+则对任意$x\in X$,有$P(x)\in[0,\infty],P(x_0)=0,P(\lambda x)=\lambda P(x)$\\
+则对任意$x,y\in X$,有$P(x)+P(y)\geq P(x+y)$
+\end{dingli}
+
+\begin{dingli}
+对线性空间$X$,其中数域为$\R$\\
+若有凸集$E$且$x_0\in E$,有$P(x)$为$E$的Minkowski泛函\\
+则$E$为吸收的当且仅当对任意$x\in X$,有$P(x)\in [0,\infty)$\\
+则$E$为对称的当且仅当对任意$\lambda\in K$,有$P(\lambda x)=|\lambda|P(x)$
+\end{dingli}
+
+\begin{dingli}
+对线性空间$X$,其中数域为$\C$\\
+若有凸集$E$且$x_0\in E$,有$P(x)$为$E$的Minkowski泛函\\
+则若$E$为均衡的,则$P(x)$为$X$上的准范数
+\end{dingli}
+
+\begin{dingyi}
+对$B^*$空间$(X,||\ ||)$\\
+若有函数$f:X\to \R$,对$y\in X$,有$\varliminf\limits_{x\to y}f(x)\geq f(y)$\\
+则称$f(x)$在$y$处下半连续\\
+若有函数$f:X\to \R$,对$y\in X$,有$\varlimsup\limits_{x\to y}f(x)\leq f(y)$\\
+则称$f(x)$在$y$处上半连续
+\end{dingyi}
+
+\begin{dingli}
+对$B^*$空间$(X,||\ ||)$\\
+若有凸集$E$且$x_0\in E$,有$P(x)$为$E$的Minkowski泛函\\
+则若$E$为闭集,则$P(x)$在$X$上下半连续且$E=\{x\in X|P(x)\leq 1\}$\\
+则若$E$为有界闭集,则$P(x)=0$当且仅当$x=x_0$\\
+则若$x_0$为$E$的内点,则$E$为吸收的且$P(x)$为一致连续的
+\end{dingli}
+
+\begin{zhu}
+对$E\subset \R^n$为凸集且为紧集,则存在$m\leq n$,有$E$与$\R^m$同胚\\
+Brouwer:对$B\subset\R^n$为闭单位球,若$f:B\to B$为连续映射,则存在$x\in B$,有$f(x)=x$\\
+对$E\subset \R^n$为凸集且为紧集,若$f:E\to E$为连续映射,则存在$x\in E$,有$f(x)=x$
+\end{zhu}
+
+\begin{dingyi}
+对$B^*$空间$(X,||\ ||)$\\
+若有子集$E\subset X$和$f:E\to X$为连续映射\\
+若对任意$U\subset E$为有界的,有$f(U)$为列紧的,则称$f$为紧的
+\end{dingyi}
+
+\begin{dingli}
+Schauder:\\
+对$B^*$空间$(X,||\ ||)$\\
+若有凸集$E\subset X$和$f:E\to E$为连续映射\\
+则若$E$为闭集且$f(E)$为列紧的,则存在$x\in E$,有$f(x)=x$\\
+则若$E$为有界闭集且$f$为紧的,则存在$x\in E$,有$f(x)=x$
+\end{dingli}
+
+\begin{dingyi}
+对线性空间$X$,其中数域为$K$\\
+若有函数$(\ \ ,\ ):X\times X\to K$,对任意$x_1,x_2,y_1,y_2\in X,a,b\in K$\\
+有$(ax_1+bx_2,y_1)=a(x_1,y_1)+b(x_2,y_1),(x_1,ay_1+by_2)=\overline{a}(x_1,y_1)+\overline{b}(x_1,y_2)$\\
+有$(x_1,y_1)=\overline{(y_1,x_1)}$且$(x_1,x_1)\geq 0$且$(x_1,x_1)=0$当且仅当$x=x_0$\\
+则称$(\ \ ,\ )$为$X$上的内积,则称$(X,(\ \ ,\ ))$为$H^*$空间,即内积空间\\
+若$(X,(\ \ ,\ ))$为完备的,则称为$H$空间,即Hilbert空间
+\end{dingyi}
+
+\begin{zhu}
+以下为基本例子:\\
+对$x,y\in \R^n$,有$(x,y)=\sum\limits_{i=1}^{n}x_iy_i$\\
+对$x,y\in \C^n$,有$(x,y)=\sum\limits_{i=1}^{n}x_i\overline{y_i}$\\
+对$x,y\in l^2$,有$(x,y)=\sum\limits_{i=1}^{\infty}x_i\overline{y_i}$\\
+对$f,g\in L^2(\Omega)$,有$(f,g)=\int_{\Omega}f(x)\overline{g(x)}\d x$
+\end{zhu}
+
+\begin{dingli}
+Cauchy-Schwarz:\\
+对$H^*$空间$(X,(\ \ ,\ ))$\\
+若对任意$x\in X$,记范数$||x||=(x,x)^{\frac{1}{2}}$\\
+则对任意$x,y\in X$,有$|(x,y)|\leq||x||\ ||y||$且$|(x,y)|=||x||\ ||y||$当且仅当存在$a\in K$,有$x=ay$或$y=ax$\\
+则有$(X,||\ ||)$为$B^*$空间且为严格凸的且$(\ \ ,\ )$关于$||\ ||$为连续映射
+\end{dingli}
+
+\begin{dingli}
+对$B^*$空间$(X,||\ ||)$\\
+则存在内积$(\ \ ,\ )$,对任意$x\in X$,有$(x,x)^{\frac{1}{2}}=||x||$当且仅当\\
+对任意$x,y\in X$,有$||x+y||^2+||x-y||^2=2(||x||^2+||y||^2)$
+\end{dingli}
+
+\begin{dingyi}
+对$H^*$空间$(X,(\ \ ,\ ))$\\
+若对$x,y\in X$,有$(x,y)=0$,则称$x$与$y$为正交的,记为$x\bot y$\\
+若对子集$M\subset X$,存在$x\in X$,对任意$y\in M$,有$x\bot y$,则称$x$与$M$为正交的,记为$x\bot M$\\
+则称$M^{\bot}=\{x\in X|x\bot M\}$为$M$的正交补\\
+若对子集$\{e_i|i\in I\}\subset X$,对任意$i,j\in I,i\neq j$,有$e_i\bot e_j$\\
+则称$\{e_i|i\in I\}$为正交集\\
+若对子集$\{e_i|i\in I\}\subset X$,对任意$i,j\in I,i\neq j$,有$e_i\bot e_j$且$||e_i||=1$\\
+则称$\{e_i|i\in I\}$为标准正交集\\
+若对子集$\{e_i|i\in I\}\subset X$为正交集,不存在$x\in X,x\neq x_0$,有$x\bot \{e_i|i\in I\}$\\
+则称$\{e_i|i\in I\}$为完备正交集\\
+若对子集$\{e_i|i\in I\}\subset X$为标准正交集,对任意$x\in X$,有$x=\sum\limits_{i\in I}(x,e_i)e_i$\\
+则称$\{e_i|i\in I\}$为$X$的基\\
+则称$\{(x,e_i)|i\in I\}$为$x$关于$\{e_i|i\in I\}$的Fourier系数
+\end{dingyi}
+
+\begin{dingli}
+对$H^*$空间$(X,(\ \ ,\ ))$\\
+若对任意$x,y_1,y_2,\cdots\in X,a,b\in K,M\subset X$\\
+则若$x\bot y_1,x\bot y_2$,则$x\bot ay_1+by_2$\\
+则若$x=y_1+y_2,y_1\bot y_2$,则$||x||^2=||y_1||^2+||y_2||^2$\\
+则若$x\bot y_i,i=1,2,\cdots$且$\lim\limits_{i\to\infty}y_i=y$,则$x\bot y$\\
+则有$M^{\bot}$为$X$上的闭子空间
+\end{dingli}
+
+\begin{dingli}
+对$H^*$空间$(X,(\ \ ,\ ))$\\
+若$X\neq \{x_0\}$,则存在子集$M\subset X$为完备正交集
+\end{dingli}
+
+\begin{dingli}
+Bessel:\\
+对$H^*$空间$(X,(\ \ ,\ ))$\\
+若有子集$\{e_i|i\in I\}\subset X$为标准正交集\\
+则对任意$x\in  X$,有$\sum\limits_{i\in I}|(x,e_i)|^2\leq ||x||^2$\\
+若$(X,(\ \ ,\ ))$为Hilbert空间\\
+则对任意$x\in  X$,有$\sum\limits_{i\in I}(x,e_i)e_i\in X$且$||x-\sum\limits_{i\in I}(x,e_i)e_i||^2=||x||^2-\sum\limits_{i\in I}|(x,e_i)|^2$
+\end{dingli}
+
+\begin{dingli}
+Parseval:\\
+对Hilbert空间$(X,(\ \ ,\ ))$\\
+若有子集$\{e_i|i\in I\}\subset X$为标准正交集\\
+则$\{e_i|i\in I\}$为$X$的基当且仅当$\{e_i|i\in I\}$为完备正交集\\
+当且仅当对任意$x\in X$,有$||x||^2=\sum\limits_{i\in I}|(x,e_i)|^2$
+\end{dingli}
+
+\begin{dingli}
+对Hilbert空间$(X,(\ \ ,\ ))$\\
+则存在子集$M$为$X$的稠密子集且$|M|\leq \aleph_0$当且仅当\\
+存在$\{e_i|i\in I\}$为$X$的标准正交基且$|I|\leq \aleph_0$\\
+若$|I|\in\N^*$,则$X\simeq K^{|I|}$;若$|I|=\aleph_0$,则$X\simeq l^2$
+\end{dingli}
+
+\begin{dingli}
+对Hilbert空间$(X,(\ \ ,\ ))$\\
+若有子集$M\subset X$为闭集且为凸集\\
+则存在唯一$y\in M$,有$||y||=\inf\limits_{x\in M}||x||$\\
+则对任意$y\in X$,存在唯一$y_0\in M$,有$||y-y_0||=\inf\limits_{x\in M}||x-y_0||$\\
+则$y_0\in M$为$y\in X$最佳逼近元当且仅当对任意$x\in M$,有$\re(y-y_0,y_0-x)\geq 0$\\
+若$M$为闭子空间,对任意$y\in X$,存在唯一$x\in M,x'\in M^{\bot}$,有$y=x+x'$
+\end{dingli}
+
+\chapter{线性算子}
+
+\begin{dingyi}
+对线性空间$X$,其中数域为$K$\\
+若有映射$f:X\to \R$,则称$X$为定义域,则称$T(D)$为值域\\
+若对任意$x_1,x_2\in X,\lambda>0$,有$f(x_1+x_2)\leq f(x_1)+f(x_2), f(\lambda x_1)=\lambda f(x_1)$\\
+则称$f$为$X$上次线性泛函\\
+若有映射$f:X\to \R$为次线性泛函,对任意$x\in X,\alpha\in K$,有$f(\alpha x)=|\alpha|f(x),f(x)\geq 0$\\
+则称$f$为$X$上次线性范数
+\end{dingyi}
+
+\begin{dingyi}
+对线性空间$X,Y$,其中数域为$K$\\
+若有映射$T:X\to Y$,对任意$x_1,x_2\in X,\alpha,\beta\in K$,有$T(\alpha x_1+\beta x_2)=\alpha T(x_1)+\beta T(x_2)$\\
+则称$T$为线性算子\\
+若$Y=\R$或$\C$且$f:X\to Y$为线性算子\\
+则称$f$为$X$上线性泛函
+\end{dingyi}
+
+\begin{dingyi}
+对$F^*$空间$(X,||\ ||),(Y,||\ ||)$\\
+若映射$T:X\to Y$为线性算子,对$x_0\in X$\\
+若对任意$\{x_n\}\subset X,\lim\limits_{n\to \infty}x_n=x_0$,有$\lim\limits_{n\to\infty}T(x_n)=T(x_0)$\\
+则称$T$在$x_0$处连续\\
+若线性算子$T$在任意$x_0\in X$处连续\\
+则称$T$在$X$上连续
+\end{dingyi}
+
+\begin{dingli}
+对$F^*$空间$(X,||\ ||),(Y,||\ ||)$\\
+则线性算子$T:X\to Y$在$X$上连续当且仅当$T$在$0\in X$处连续
+\end{dingli}
+
+\begin{dingyi}
+对$B^*$空间$(X,||\ ||),(Y,||\ ||)$,其中数域为$K$\\
+若映射$T:X\to Y$为线性算子\\
+若存在$M>0$,对任意$x\in X$,有$||T(x)||\leq M||x||$\\
+则称$T$在$X$上有界\\
+记$\scl(X,Y)=\{T:X\to Y|T\text{为线性算子且在}X\text{上有界}\}$\\
+对任意$T_1,T_2\in \scl(X,Y),\alpha,\beta\in K$,对任意$x\in X$\\
+有$(\alpha T_1+\beta T_2)(x)=\alpha T_1(x)+\beta T_2(x)$\\
+对任意$T\in \scl(X,Y)$\\
+有$||T||=\sup\limits_{x\in X\backslash\{0\}}\frac{||T(x)||}{||x||}=\sup\limits_{x\in X\backslash \{0\}}||T(\frac{x}{||x||})||=\sup\limits_{||x||=1}||T(x)||$\\
+则有界线性算子空间$(\scl(X,Y),||\ ||)$为$B^*$空间
+\end{dingyi}
+
+\begin{dingli}
+对$B^*$空间$(X,||\ ||),(Y,||\ ||)$\\
+则线性算子$T:X\to Y$在$X$上连续当且仅当$T$在$X$上有界
+\end{dingli}
+
+\begin{dingli}
+对$B^*$空间$(X,||\ ||)$和Banach空间$(Y,||\ ||)$\\
+则有界线性算子空间$(\scl(X,Y),||\ ||)$为Banach空间
+\end{dingli}
+
+\begin{dingli}
+对$B^*$空间$(X,||\ ||)$和Banach空间$(Y,||\ ||)$\\
+则对任意映射$T\in\scl(X,Y)$,存在$\overline{T}\in \scl(\overline{X},Y)$,有$\overline{T}|_{X}=T$且$||\overline{T}||=||T||$
+\end{dingli}
+
+\begin{zhu}
+对Banach空间$(X,||\ ||_{1}), (X,||\ ||_{2})$,若$||\ ||_{1}$比$||\ ||_{2}$强,则$||\ ||_{1}$与$||\ ||_{2}$等价
+\end{zhu}
+
+\begin{dingyi}
+对$B^*$空间$(X,||\ ||)$\\
+则称$X^{*}=\scl(X,K)$为$X$的对偶空间,其中$X^{*}$为Banach空间
+\end{dingyi}
+
+\begin{zhu}
+以下为基本例子:\\
+对$p,q\in(1,\infty),\frac{1}{p}+\frac{1}{q}=1$\\
+则有$(L^{p}(\Omega))^{*}\cong L^{q}(\Omega), (l^{p})^{*}\cong l^{q}$\\
+则有$(L^{1}(\Omega))^{*}\cong L^{\infty}(\Omega), (l^{1})^{*}\cong l^{\infty}$
+\end{zhu}
+
+\begin{dingli}
+对$B^*$空间$(X,||\ ||)$\\
+若$X^{*}$为可分的,则$X$为可分的
+\end{dingli}
+
+\begin{dingli}
+对$B^*$空间$(X,||\ ||)$\\
+则自然映射$f:X\to \mathscr{X}\subset X^{**},x\mapsto F_{x}$为等距同构映射\\
+即$X$和$X^{**}$的子空间为等距同构的,其中$F_{x}:X^{*}\to K, f\mapsto f(x)$
+\end{dingli}
+
+\begin{dingli}
+Pettis:\\
+对$B^*$空间$(X,||\ ||)$\\
+若有$X^{**}\cong X$,则对任意$X$的闭子空间$X_0$,有$X_0^{**}\cong X_0$
+\end{dingli}
+
+\begin{dingyi}
+对$B^*$空间$(X,||\ ||),(Y,||\ ||)$\\
+若映射$T:X\to Y$为线性算子,对映射$T^{*}:Y^{*}\to X^{*}$\\
+若对任意$f\in Y^{*}, x\in X$,有$T^{*}(f)(x)=f(T(x))$\\
+则称$T^{*}$为$T$的对偶算子
+\end{dingyi}
+
+\begin{dingli}
+对$B^*$空间$(X,||\ ||),(Y,||\ ||)$\\
+则自然映射$\pi^{*}:\scl(X,Y)\to\scl(Y^{*},X^{*}),T\to T^{*}$为等距同构映射\\
+即$\scl(X,Y)$和$\scl(Y^{*},X^{*})$为等距同构的
+\end{dingli}
+
+\begin{dingli}
+对$B^*$空间$(X,||\ ||),(Y,||\ ||)$\\
+若有$T\in\scl(X,Y)$,则对$T^{**}\in \scl(X^{**},Y^{**})$,有$T^{**}|_{\mathscr{X}}=T$且$||T^{**}||=||T||$
+\end{dingli}
+
+\begin{zhu}
+以下为基本例子:\\
+对$\Omega\times\Omega$上函数$K(x,y)\in L^{2}(\Omega\times\Omega)$,有映射$T:L^{2}(\Omega)\to L^{2}(\Omega)$\\
+对任意$u\in L^{2}(\Omega)$,有$T(u)(x)=\int_{\Omega}K(x,y)u(y)\d y$,则$T\in \scl(L^{2}(\Omega),L^{2}(\Omega))$\\
+对任意$v\in L^{2}(\Omega)$,有$T^{*}(v)(y)=\int_{\Omega}K(x,y)v(x)\d x$\\
+对$\R$上函数$K(x)\in L^{1}(\R)$,有映射$K*:L^{p}(\R)\to L^{p}(\R)$\\
+对任意$f\in L^{p}(\R)$,有$K*f(x)=\int_{\R}K(x-y)f(y)\d y$,则$K*\in \scl(L^{p}(\R),L^{p}(\R))$\\
+对任意$g\in L^{p}(\R)$,有$K*^{*}f(y)=\int_{\R}K(x-y)f(x)\d x$\\
+Young:对$K\in L^{1}(\R), f\in L^{p}(\R), p\in[1,\infty]$,有$||K*f||_{p}\leq ||K||_{1}\cdot||f||_{p}$
+\end{zhu}
+
+\begin{dingli}
+Riesz:\\
+对Hilbert空间$(X,(\ \ ,\ ))$\\
+若映射$T:X\to K$为线性泛函且在$X$上连续\\
+则存在唯一$x_{f}\in X$,对任意$x\in X$,有$f(x)=(x,x_{f})$且$||f||=||x_{f}||$
+\end{dingli}
+
+\begin{dingyi}
+对Banach空间$(X,||\ ||),(Y,||\ ||)$\\
+若映射$T:X\to Y$,对任意$U\subset X$为开集,有$T(U)\subset Y$为开集\\
+则称$T$为开映射\\
+若映射$T:X\to Y$为线性算子,有图像$Graph(T)=\{(x,Tx)\in X\times Y\}$为$X\times Y$的闭集\\
+则称$T$为闭算子
+\end{dingyi}
+
+\begin{dingli}
+Open Mapping:\\
+对Banach空间$(X,||\ ||),(Y,||\ ||)$\\
+若映射$T\in \scl(X,Y)$且$T$为满射,则$T$为开映射\\
+若映射$T\in \scl(X,Y)$且$T$为双射,则$T^{-1}\in \scl(Y,X)$
+\end{dingli}
+
+\begin{dingli}
+Close Graph:\\
+对Banach空间$(X,||\ ||),(Y,||\ ||)$\\
+若映射$T:X\to Y$为线性算子且$T$为闭算子且$T(X)$为第二纲集,则$T(X)=Y$\\
+若映射$T:X\to Y$为线性算子且$T$为闭算子且$T$的定义域为闭集,则$T$为连续的
+\end{dingli}
+
+\begin{dingli}
+Uniformly Bounded:\\
+对Banach空间$(X,||\ ||)$和$B^*$空间$(Y,||\ ||)$\\
+若对子集$W\subset \scl(X,Y)$,对任意$x\in X$,有$\sup\limits_{T\in W}||Tx||<\infty$\\
+则存在$M>0$,对任意$T\in W$,有$||T||\leq M$
+\end{dingli}
+
+\begin{dingli}
+Banach-Steinhaus:\\
+对Banach空间$(X,||\ ||)$和$B^*$空间$(Y,||\ ||)$\\
+若有$T,T_{1},\cdots,T_{n},\cdots\in \scl(X,Y)$且对子集$U\subset X$,有$\overline{U}=X$\\
+则对任意$x\in X$,有$\lim\limits_{n\to\infty}T_{n}x=Tx$当且仅当$\sup\limits_{n\in \N^*}||T_{n}||<\infty$且对任意$x\in M$,有$\lim\limits_{n\to\infty}T_{n}x=Tx$
+\end{dingli}
+
+\begin{dingli}
+对线性空间$X$,其中数域为$\R$\\
+若有$p$为$X$上次线性泛函且$X_0$为$X$的子空间\\
+若有$X_0$上线性泛函$f_0:X\to \R$,对任意$x\in X_0$,有$f_0(x)\leq p(x)$\\
+则存在$X$上线性泛函$f:X\to \R$,对任意$x\in X$,有$f(x)\leq p(x)$且$f|_{X_0}=f_{0}$
+\end{dingli}
+
+\begin{dingli}
+对线性空间$X$,其中数域为$\C$\\
+若有$p$为$X$上次线性范数且$X_0$为$X$的子空间\\
+若有$X_0$上线性泛函$f_0:X\to \C$,对任意$x\in X_0$,有$|f_0(x)|\leq p(x)$\\
+则存在$X$上线性泛函$f:X\to \C$,对任意$x\in X$,有$|f(x)|\leq p(x)$且$f|_{X_0}=f_{0}$
+\end{dingli}
+
+\begin{dingli}
+Hahn-Banach:\\
+对$B^*$空间$(X,||\ ||)$\\
+若有$X_0$为$X$的子空间且$f_0\in X_0^{*}$\\
+则存在$f\in X^{*}$,有$f|_{X_0}=f_{0}$且$||f||=||f_{0}||$
+\end{dingli}
+
+\begin{dingli}
+对$B^*$空间$(X,||\ ||)$\\
+则对任意$x_1,x_2\in X, x_1\neq x_2$,存在$f\in X^{*}$,有$f(x_1)\neq f(x_2)$\\
+则对任意$x_0\in X\backslash\{0\}$,存在$f\in X^{*}$,有$f(x_0)=||x_0||$且$||f||=1$
+\end{dingli}
+
+\begin{dingli}
+对$B^*$空间$(X,||\ ||)$\\
+若有$X_0$为$X$的子空间,对$x_0\in X,\inf\limits_{y\in X_0}||x_0-y||>0$\\
+则存在$f\in X^{*}$,有$||f||=1$且$f|_{X_0}=0$且$f(x_0)=\inf\limits_{y\in X_0}||x_0-y||$
+\end{dingli}
+
+\begin{dingli}
+对$B^*$空间$(X,||\ ||)$\\
+若有子集$M\subset X$和$x_0\in X\backslash\{0\}$\\
+则$x_0\in \overline{span M}$当且仅当对$f\in X^{*},f|_{M}=0$,则$f(x_0)=0$
+\end{dingli}
+
+\begin{dingyi}
+对线性空间$X$,其中数域为$\R$\\
+则$X_0$为$X$的极大子空间当且仅当对任意$x_0\in X\backslash M$,有$X=span\{x_0\}\oplus M$\\
+则称$L=x_0+M,x_0\in X$为$X$上的超平面
+\end{dingyi}
+
+\begin{dingli}
+对线性空间$X$,其中数域为$\R$\\
+则$L$为$X$上的超平面当且仅当存在$X$上线性泛函$f\neq 0$和$r\in\R$,有$L=\{x\in X|f(x)=r\}$
+\end{dingli}
+
+\begin{dingli}
+对$B^*$空间$(X,||\ ||)$,其中数域为$\R$\\
+则$L$为$X$上的闭超平面当且仅当存在$f\in X^*,f\neq 0$和$r\in\R$,有$L=\{x\in X|f(x)=r\}$
+\end{dingli}
+
+\begin{dingli}
+Hahn-Banach:\\
+对$B^*$空间$(X,||\ ||)$,其中数域为$\R$\\
+若有$E$为$X$上真凸子集且$0\in E$,则对任意$x_0\in X\backslash E$\\
+存在超平面$L=\{x\in X|f(x)=r\}$,对任意$x\in E$,有$f(x)\leq r\leq f(x_0)$
+\end{dingli}
+
+\begin{dingli}
+对$B^*$空间$(X,||\ ||)$,其中数域为$\R$\\
+若有$E_1,E_2$为$X$上凸集且$E_1\cap E_2=\varnothing$且$E_1$有内点\\
+则存在$s\in \R,f\in X^{*},f\neq 0$,对任意$x_1\in E_1,x_2\in E_2$,有$f(x_1)\leq s\leq f(x_2)$
+\end{dingli}
+
+\begin{dingli}
+Ascoli:\\
+对$B^*$空间$(X,||\ ||)$,其中数域为$\R$\\
+若有$E$为$X$上闭凸集,则对任意$x_0\in X\backslash E$\\
+则存在$s\in\R,f\in X^{*}$,对任意$x\in E$,有$f(x)<s<f(x_0)$
+\end{dingli}
+
+\begin{dingli}
+Mazur:\\
+对$B^*$空间$(X,||\ ||)$,其中数域为$\R$\\
+若有$E$为$X$上闭凸集和$F=x_0+X_0$,其中$X_0$为$X$的子空间且$x_0\in X$且$\mathring{E}\cap F=\varnothing$\\
+则存在$s\in\R,f\in X^{*},f\neq 0$,对任意$x_1\in E,x_2\in F$,有$f(x_1)\leq s=f(x_2)$
+\end{dingli}
+
+\begin{dingyi}
+对$B^*$空间$(X,||\ ||)$\\
+若对$\{x_n\}\subset X, x\in X$,对任意$f\in X^{*}$,有$\lim\limits_{n\to\infty}f(x_n)=f(x)$\\
+则称$\{x_n\}$弱收敛于$x$,记为$\wlim\limits_{n\to\infty}x_n=x$\\
+若对$\{f_n\}\subset X^{*}, f\in X^{*}$,对任意$x\in X$,有$\lim\limits_{n\to\infty}f_n(x)=f(x)$\\
+则称$\{f_n\}$弱$^{*}$收敛于$f$,记为$\wlim\limits_{n\to\infty}^{*}f_n=f$
+\end{dingyi}
+
+\begin{zhu}
+以下为基本例子:\\
+oscillation:\\
+在$L^2([0,1])$上, $f_n(x)=\sin n\pi x$弱收敛于$0$\\
+在$H^{1,2}((0,1))$上, $f_n(x)=x-\frac{k}{n} (x\in[\frac{k}{n},\frac{2k+1}{2n}])$或$-x+\frac{k+1}{n} (x\in[\frac{2k+1}{2n},\frac{k+1}{n}])$弱收敛于$0$\\
+translation:\\
+在$L^{p}(\R)$中, 若$p\in(1,\infty),f\in L^{p}(\R)\backslash\{0\}$, $f_n(x)=f(x+n)$弱收敛于$0$
+\end{zhu}
+
+\begin{dingyi}
+对$B^*$空间$(X,||\ ||)$\\
+若有子集$U\subset X$,对任意$\{x_n\}\subset U$,存在$x\in X$和子列$\{x_{n_{i}}\}$,有$\{x_{n_{i}}\}$弱收敛于$x$\\
+则称$U$为弱列紧的\\
+若有子集$U^{*}\subset X^{*}$,对任意$\{f_n\}\subset U^{*}$,存在$f\in X^{*}$和子列$\{f_{n_i}\}$,有$\{f_{n_i}\}$弱$^{*}$收敛于$f$\\
+则称$U$为弱$^{*}$列紧的
+\end{dingyi}
+
+\begin{dingli}
+对$B^*$空间$(X,||\ ||)$\\
+若$X$为可分的,则对任意$\{f_n\}\subset X^{*}$为有界的,存在$f\in X^{*}$和子列$\{f_{n_i}\}$,有$\{f_{n_i}\}$弱$^{*}$收敛于$f$
+\end{dingli}
+
+\begin{dingli}
+Eberlein-Smulian:\\
+对$B^*$空间$(X,||\ ||)$\\
+若有$X^{**}\cong X$,则$B_{0}(1)\subset X$为弱列紧的
+\end{dingli}
+
+\begin{dingyi}
+对$B^*$空间$(X,||\ ||),(Y,||\ ||)$,考虑$\scl(X,Y)$上算子拓扑\\
+若对$\{T_n\}\subset \scl(X,Y),T\in\scl(X,Y)$,对任意$x\in X$,有$\lim\limits_{n\to\infty}T_n(x)=T(x)$\\
+则称$\{T_n\}$强收敛于$T$\\
+若对$\{T_n\}\subset \scl(X,Y),T\in\scl(X,Y)$,对任意$f\in Y^{*},x\in X$,有$\lim\limits_{n\to\infty}f(T_n(x))=f(T(x))$\\
+则称$\{T_n\}$弱收敛于$T$
+\end{dingyi}
+
+\begin{dingli}
+对Banach空间$(X,||\ ||)$\\
+若有映射$T:X\to X$为闭算子,若对$\lambda_0\in\C$,存在$x_0\in X\backslash\{0\}$,有$Tx_0=\lambda_0x_0$\\
+则称$x_0$为$T$的特征值,则称$x_0$为$\lambda_0$的特征元\\
+记$\rho(T)=\{\lambda\in\C|(\lambda\id-T)^{-1}\in\scl(X,X)\}$且$\lambda\in\rho(T)$\\
+则称$\lambda_0$为$T$的正则值,则称$\rho(T)$为$T$的预解集\\
+若有映射$R_{T}:\rho(A)\to \scl(X,X),\lambda\mapsto(\lambda\id-T)^{-1}$\\
+则称$R_{T}$为$T$的预解式\\
+若有$\dim X=\infty$\\
+则称$\sigma_{p}(T)=\{\lambda\in\C|(\lambda\id-T)^{-1}\text{不存在}\}$为$T$的特征谱\\
+则称$\sigma_{c}(T)=\{\lambda\in\C|(\lambda\id-T)(X)\neq X, \overline{(\lambda\id-T)(X)}=X\}$为$T$的连续谱\\
+则称$\sigma_{r}(T)=\{\lambda\in\C|(\lambda\id-T)(X)\neq X, \overline{(\lambda\id-T)(X)}\neq X\}$为$T$的剩余谱\\
+则称$\sigma(T)=\C\backslash\rho(T)=\sigma_{p}(T)\cup\sigma_{c}(T)\cup\sigma_{r}(T)$为$T$的谱集\\
+若有$T\in\scl(X,X)$\\
+则称$r(\sigma(T))=\sup\{|\lambda|\Big|\lambda\in\sigma(T)\}$为$T$的谱半径
+\end{dingli}
+
+\begin{dingli}
+对Banach空间$(X,||\ ||)$\\
+若有$T\in\scl(X,X)$且$||T||<1$,则$(\id-T)^{-1}\in\scl(X,X)$且$||(\id-T)^{-1}\leq\frac{1}{1-||T||}$\\
+若有$T$为闭算子,则$\rho(T)$为开集
+\end{dingli}
+
+\begin{dingli}
+对Banach空间$(X,||\ ||)$\\
+若有$\lambda_1,\lambda_2\in\rho(T)$,则$R_{T}(\lambda_1)-R_{T}(\lambda_2)=(\lambda_2-\lambda_1)R_{T}(\lambda_1)R_{T}(\lambda_2)$\\
+若有$T$为闭算子,则$R_{T}$为解析函数
+\end{dingli}
+
+\begin{dingli}
+对Banach空间$(X,||\ ||)$\\
+若有$T\in\scl(X,X)$为闭算子,则$\sigma(T)\neq\varnothing$
+\end{dingli}
+
+\begin{dingli}
+Gelfand:\\
+对Banach空间$(X,||\ ||)$\\
+若有$T\in\scl(X,X)$为闭算子,则$r(\sigma(T))=\lim\limits_{n\to\infty}||T^n||^{\frac{1}{n}}$
+\end{dingli}
+
+\begin{dingyi}
+对Banach空间$(X,||\ ||),(Y,||\ ||)$\\
+若有映射$T:X\to Y$为线性算子,有$\overline{T(B_{0}(1))}$为紧的\\
+即对任意$U\subset X$为有界的,有$\overline{T(U)}$为紧的\\
+即对任意$\{x_n\}\subset X$,存在$\{Ax_n\}$的子列$\{Ax_{n_i}\}$为收敛的
+则称$T$为紧算子\\
+则紧算子空间$(\scc(X,Y),||\ ||)$为Banach空间
+\end{dingyi}
+
+\begin{dingli}
+对Banach空间$(X,||\ ||),(Y,||\ ||)$\\
+则对任意$T_1,T_2\in\scc(X,Y),\alpha,\beta\in\C$,有$\alpha T_1+\beta T_2\in\scc(X,Y)$\\
+则对任意$T\in\scc(X,Y)$和$X_0\subset X$为闭子空间,则$T_{X_0}\in\scc(X_0,Y)$\\
+则对任意$T\in\scc(X,Y)$,有$T(X)$为可分的\\
+则有$\scc(X,Y)\subset\scl(X,Y)$为闭子空间
+\end{dingli}
+
+\begin{dingli}
+对Banach空间$(X,||\ ||),(Y,||\ ||),(Z,||\ ||)$\\
+若$T_1\in\scc(X,Y),T_2\in\scl(Y,Z)$或$T_1\in\scl(X,Y),T_2\in\scc(X,Y)$,则$T_2T_1\in\scc(X,Z)$
+\end{dingli}
+
+\begin{dingyi}
+对Banach空间$(X,||\ ||),(Y,||\ ||)$\\
+若有$T\in\scl(X,Y)$,对任意$\{x_n\}\subset X$弱收敛于$x$,有$\lim\limits_{n\to\infty}Ax_n=Ax$\\
+则称$T$为全连续的
+\end{dingyi}
+
+\begin{dingli}
+对Banach空间$(X,||\ ||),(Y,||\ ||)$\\
+若有$X^{**}\cong X$且$T$为全连续的,则$T\in\scc(X,Y)$\\
+若有$T\in\scc(X,Y)$,则$T$为全连续的
+\end{dingli}
+
+\begin{dingli}
+对Banach空间$(X,||\ ||),(Y,||\ ||)$\\
+则$T\in\scc(X,Y)$当且仅当$T^{*}\in\scc(Y^{*},X^{*})$
+\end{dingli}
+
+\begin{dingyi}
+对Banach空间$(X,||\ ||),(Y,||\ ||)$\\
+若对$T\in\scl(X,Y)$,有$\dim T(X)<\infty$\\
+则称$T$为有限秩算子\\
+则有限秩算子空间$(\scf(X,Y),||\ ||)$为$B^*$空间
+\end{dingyi}
+
+\begin{dingyi}
+对Banach空间$(X,||\ ||),(Y,||\ ||)$\\
+若有$f\in X^{*},y\in Y$,记$y\otimes f:X\to Y,x\mapsto f(x)y$\\
+则称$y\otimes f$为秩一算子
+\end{dingyi}
+
+\begin{dingli}
+对Banach空间$(X,||\ ||),(Y,||\ ||)$\\
+则$T\in\scf(X,Y)$当且仅当存在$f_i\in X^{*},y_i\in Y$,有$T=\sum\limits_{i=1}^{n}y_i\otimes f_i$\\
+则$\scf(X,Y)\subset \scc(X,Y)$
+\end{dingli}
+
+\begin{dingli}
+对Hilbert空间$(X,(\ \ ,\ )),(Y,(\ \ ,\ ))$\\
+则$\overline{\scf(X,Y)}=\scc(X,Y)$
+\end{dingli}
+
+\begin{dingli}
+对Banach空间$(X,||\ ||)$\\
+若有$T\in\scl(X,X)$,则$\sigma(T)=\sigma(T^{*})$\\
+若有$T\in\scc(X,X)$且$T_1=\id-T$,则$\overline{T_1(X)}=T_1(X)$\\
+若有$T\in\scc(X,X)$且$T_1=\id-T$且$\Ker(T_1)=\{0\}$,则$T_1(X)=X$
+\end{dingli}
+
+\begin{dingli}
+对Banach空间$(X,||\ ||)$\\
+若有$T\in\scl(X,X)$,则$\overline{T(X)}=\{x\in X|\text{对任意}f\in\Ker(T^{*}),\text{有}f(x)=0\}$\\
+若有$T\in\scc(X,X)$且$T_1=\id-T$,则$\dim \Ker(T)<\infty$且$\dim\Ker(T^{*})<\infty$\\
+若有$\{x_1,\cdots,x_n\}$为$\Ker(T_1)$的一组基,则存在$X_1\subset X$为闭子空间,有$X=X_1\oplus span\{x_1,\cdots,x_n\}$\\
+若有$\{f_1,\cdots,f_m\}$为$\Ker(T_1^{*})$的一组基,则存在$y_1,\cdots,y_m\in X$,有$f_i(y_j)=\delta_{ij}$
+\end{dingli}
+
+\begin{dingli}
+Riesz-Fredholm:\\
+对Banach空间$(X,||\ ||)$\\
+若有$T\in\scc(X,X)$且$T_1=\id-T$\\
+则$\sigma(T_1)=\sigma(T_1^{*})$且$\dim \Ker(T_1)=\dim \Ker(T_1^{*})<\infty$\\
+则$T_1(X)=\{x\in X|\text{对任意}f\in \Ker(T_1^{*}),\text{有}f(x)=0\}$\\
+则$T_1^{*}(X^{*})=\{f\in X^{*}|\text{对任意}x\in \Ker(T_1),\text{有}f(x)=0\}$
+\end{dingli}
+
+\begin{dingli}
+对Banach空间$(X,||\ ||)$\\
+若有$T\in\scc(X,X)$且$T_1=\id-T$,则存在$U\subset X$为闭子空间和$V\subset Y$为子空间\\
+有$\dim Y=\dim \Ker(T_1)<\infty$且$X=\Ker (T_1)\oplus U=V\oplus T_1(X)$
+\end{dingli}
+
+\begin{dingli}
+对Banach空间$(X,||\ ||)$\\
+若有$T\in\scc(X,X)$且$\dim X=\infty$,则$0\in\sigma(T)$\\
+则$\sigma(T)\backslash\{0\}=\sigma_{p}(T)\backslash\{0\}$且$\sigma_{p}(T)$至多有聚点$0$
+\end{dingli}
+
+\begin{dingli}
+对Banach空间$(X,||\ ||)$\\
+若有$T\in\scc(X,X)$且$\dim X\geq 2$,则存在$X_0\subsetneq X$,有$\overline{X_0}=X_0\neq\{0\}$且$T(X_0)\subset X_0$
+\end{dingli}
+
+\begin{dingli}
+对Banach空间$(X,||\ ||)$\\
+若有$T\in\scc(X,X)$且$T_1=\id-T$,则存在$p\in\N$\\
+有$X=\Ker(T_1^{p})\oplus T_1^{p}(X)$且$T_1|_{T_1^{p}(X)}^{-1}\in\scl(T^{p}(X),X)$
+\end{dingli}
+
+\begin{zhu}
+若有$T\in\scc(X,X)$且$T_1=\id-T$\\
+则$\min\{p\in\N|\Ker(T_1^{p}=\Ker(T_1^{p+1}))\}=\min\{q\in\N|T_1^{q}(X)=T_1^{q+1}(X)\}$
+\end{zhu}
+
+\begin{dingyi}
+对Hilbert空间$(X,(\ \ ,\ ))$\\
+若对$T\in\scl(X,X)$,对任意$x_1,x_2\in X$,有$(T(x_1),x_2)=(x_1,T(x_2))$\\
+即$T^{*}\cong T$,则称$T$为自伴算子
+\end{dingyi}
+
+\begin{dingli}
+对Hilbert空间$(X,(\ \ ,\ ))$\\
+若对任意$T_1,T_2,T\in\scl(X,X),\alpha\in\C$,则$X^{*}\cong X$\\
+则$(T_1+T_2)^{*}=T_1^{*}+T_2^{*}$且$(\alpha T)^{*}=\overline{\alpha}T{*}$\\
+则$T^{**}=T$且$(T_1T_2)^{*}=T_2^{*}T_1^{*}$\\
+则$\sigma(T^{*})=\overline{\sigma(T)}$
+\end{dingli}
+
+\begin{dingli}
+对Hilbert空间$(X,(\ \ ,\ ))$\\
+则$T$为自伴算子当且仅当对任意$x\in X$,有$(T(x),x)\in\R$\\
+若$T$为自伴算子\\
+则$\sigma(T)\subset\R$且$||T||=\sup\limits_{||x||=1}|(T(x),x)|$\\
+则对任意$x\in X,\lambda\in\C,\im\lambda\neq0$,有$||(\lambda\id-T)^{-1}(x)||\leq\frac{1}{|\im\lambda|}||x||$\\
+则对任意$X_1\subset X$为闭子空间且$T(X_1)\subset X_1$,有$T_{X_1}$为自伴算子\\
+则对任意$\lambda_1,\lambda_2\in\sigma(T),\lambda_1\neq\lambda_2$,对任意$x_1\in\Ker(\lambda_1\id-T),x_2\in\Ker(\lambda_2\id-T)$,有$(x_1,x_2)=0$
+\end{dingli}
+
+\begin{dingli}
+对Hilbert空间$(X,(\ \ ,\ ))$\\
+若有$T\in\scc(X,X)$为自伴算子,则存在$x_0\in X,||x_0||=1$\\
+有$|(T(x_0),x_0)|=\sup\limits_{||x||=1}|(T(x),x)|$且$T(x_0)=|(T(x_0),x_0)|x_0$,即$||T||=|(T(x_0),x_0)|$
+\end{dingli}
+
+\begin{dingli}
+Hilbert-Schmidt:\\
+对Hilbert空间$(X,(\ \ ,\ ))$\\
+若有$T\in\scc(X,X)$为自伴算子,则存在$\{\lambda_i\}\subset\R$和其所对应的$X$的正交规范基$\{e_i\}$\\
+有$|\{\lambda_i\}|\leq\aleph_0$且$\{\lambda_i\}$至多有聚点$0$且$T(\sum\limits_{i}(x,e_i)e_i)=\sum\limits_{i}\lambda_i(x,e_i)e_i$
+\end{dingli}
+
+%\end{document}
